@@ -21,8 +21,8 @@ namespace eadLab5.DAL
             //Create Adapter
             //WRITE SQL Statement to retrieve all columns from Customer by customer Id using query parameter
             StringBuilder sqlCommand = new StringBuilder();
-            sqlCommand.AppendLine("Select * from Customer where");
-            sqlCommand.AppendLine("custId = @paraCustId");
+            sqlCommand.AppendLine("Select * from saleslt.Customer where");
+            sqlCommand.AppendLine("customerId = @paraCustId");
             //***TO Simulate system error  *****
             // change custId in where clause to custId1 or 
             // change connection string in web config to a wrong file name  
@@ -38,11 +38,11 @@ namespace eadLab5.DAL
             if (rec_cnt > 0)
             {
                 DataRow row = ds.Tables["custTable"].Rows[0];  // Sql command returns only one record
-                obj.customerId = row["custId"].ToString();
-                obj.customerName = row["custName"].ToString();
-                obj.customerAddress = row["custAddress"].ToString() + " Singapore " + row["custPostal"].ToString();
-                obj.customerMobile = row["custMobile"].ToString();
-                obj.customerHomePhone = row["custHomePhone"].ToString();
+                obj.customerId = row["customerId"].ToString();
+                obj.customerName = row["namestyle"].ToString();
+                obj.customerAddress = row["Title"].ToString();
+                obj.customerMobile = row["phone"].ToString();
+                obj.customerHomePhone = row["firstname"].ToString();
             }
             else
             {

@@ -34,11 +34,11 @@ namespace eadLab5
                 Session["SScustId"] = tbCustId.Text.ToString();
                 Session["SScustName"] = cusObj.customerName;
 
-                timeDepositDAO tdDAO = new timeDepositDAO();
-                List<timeDeposit> tdList = new List<timeDeposit>();
-                tdList = tdDAO.getTDbyCustomerId(tbCustId.Text);
-                GridView_TD.DataSource = tdList;
-                GridView_TD.DataBind();
+                //timeDepositDAO tdDAO = new timeDepositDAO();
+                //List<timeDeposit> tdList = new List<timeDeposit>();
+                //tdList = tdDAO.getTDbyCustomerId(tbCustId.Text);
+                //GridView_TD.DataSource = tdList;
+                //GridView_TD.DataBind();
             }
             else
             {
