@@ -119,6 +119,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.4.min.map" />
     <Content Include="MasterPage1.master" />
     <None Include="Web.Debug.config">
@@ -135,6 +137,7 @@
     <Content Include="TermDeposit.aspx" />
     <Content Include="TermDepositPlacement.aspx" />
     <Content Include="TermDepositUpdate.aspx" />
+    <Content Include="TripDetails.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +200,13 @@
     </Compile>
     <Compile Include="TermDepositUpdate.aspx.designer.cs">
       <DependentUpon>TermDepositUpdate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TripDetails.aspx.cs">
+      <DependentUpon>TripDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TripDetails.aspx.designer.cs">
+      <DependentUpon>TripDetails.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>
