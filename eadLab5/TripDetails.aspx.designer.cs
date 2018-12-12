@@ -22,6 +22,24 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.TextBox tbAddTitle;
         
         /// <summary>
+        /// tbAddId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbAddId;
+        
+        /// <summary>
+        /// tbAddLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbAddLocation;
+        
+        /// <summary>
         /// tbAddStart control.
         /// </summary>
         /// <remarks>
@@ -65,6 +83,15 @@ namespace eadLab5 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbAddCost;
+        
+        /// <summary>
+        /// tbAddType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbAddType;
         
         /// <summary>
         /// addTripBtn control.

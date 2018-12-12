@@ -54,7 +54,7 @@ namespace eadLab5
         protected void addTrip(object sender, EventArgs e)
         {
             TripDAO addTD = new DAL.TripDAO();
-            int results = addTD.insertTrip(tbAddTitle.Text, Convert.ToDateTime(tbAddStart.Text), Convert.ToDateTime(tbAddEnd.Text), Convert.ToInt32(tbAddDays.Text), tbAddActivities.Text, Convert.ToInt16(tbAddCost.Text));
+            int results = addTD.insertTrip(Convert.ToInt32(tbAddId.Text),tbAddLocation.Text,tbAddTitle.Text, Convert.ToDateTime(tbAddStart.Text), Convert.ToDateTime(tbAddEnd.Text), Convert.ToInt32(tbAddDays.Text), tbAddActivities.Text, Convert.ToInt16(tbAddCost.Text),tbAddType.Text);
         }
     }
 }

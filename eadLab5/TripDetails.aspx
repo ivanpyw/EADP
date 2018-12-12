@@ -30,6 +30,8 @@
                             <p>Activities: <%=trip.tripActivities %></p>
                             <p>Estimated cost: <%=trip.tripCost.ToString("c") %></p>
                             <p>In charge: <%=trip.staffHonorifics %> <%=trip.staffName %></p>--%>
+                            <p> Trip Id: <asp:TextBox ID="tbAddId" runat="server"></asp:TextBox></p>
+                            <p> Trip Location: <asp:TextBox ID="tbAddLocation" runat="server"></asp:TextBox></p>
                             <p> Images: <input type="file"/></p>
                             <p>When:
                                 <asp:TextBox ID="tbAddStart" runat="server" placeholder="Start date"></asp:TextBox>
@@ -38,7 +40,7 @@
                             <p>Duration: <asp:TextBox ID="tbAddDays" runat="server" placeholder="Duration"></asp:TextBox></p>
                             <p>Activities: <asp:TextBox ID="tbAddActivities" runat="server" TextMode="MultiLine" Width="100%"></asp:TextBox></p>
                             <p>Estimated cost: <asp:TextBox ID="tbAddCost" runat="server" placeholder="Estimated Cost"></asp:TextBox></p>
-                        </div>
+                            <p>Trip type: <asp:TextBox ID="tbAddType" runat="server"></asp:TextBox></p></div>
                         <div class="modal-footer">
                             <asp:Button ID="addTripBtn" runat="server" Text="Add" OnClick="addTrip" CssClass="btn btn-primary" />
                         </div>
