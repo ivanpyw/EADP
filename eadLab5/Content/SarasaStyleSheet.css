@@ -6,6 +6,9 @@
 .trip-panels {
     background-color: aqua;
     overflow:hidden;
+    border: 3px solid black;
+    border-radius:25px;
+    margin-bottom: 25px;
 }
 
 .trip-image {
@@ -14,6 +17,3 @@
 }
 
 
-.swear{
-    color:blue;
-}
