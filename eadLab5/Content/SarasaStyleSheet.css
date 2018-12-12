@@ -1,4 +1,19 @@
-﻿#trips-tab{
-    width:40%;
-    margin:0 auto;
+﻿#trips-tab {
+    width: 40%;
+    margin: 0 auto;
+}
+
+.trip-panels {
+    background-color: aqua;
+    overflow:hidden;
+}
+
+.trip-image {
+    width: 300px;
+    height: 150px;
+}
+
+
+.swear{
+    color:blue;
 }
