@@ -99,6 +99,7 @@
     <Content Include="App_Data\TimeDeposit_log.ldf">
       <DependentUpon>TimeDeposit.mdf</DependentUpon>
     </Content>
+    <Content Include="ChooseInterview.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -143,6 +144,7 @@
     <Content Include="UpdateFeedBackSubmitted.aspx" />
     <Content Include="ViewFeedBacksSubmitted.aspx" />
     <Content Include="ViewFeedBackStaff.aspx" />
+    <Content Include="WaitingList.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +154,13 @@
     </Compile>
     <Compile Include="Acknowledge.aspx.designer.cs">
       <DependentUpon>Acknowledge.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChooseInterview.aspx.cs">
+      <DependentUpon>ChooseInterview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChooseInterview.aspx.designer.cs">
+      <DependentUpon>ChooseInterview.aspx</DependentUpon>
     </Compile>
     <Compile Include="Corporate.aspx.cs">
       <DependentUpon>Corporate.aspx</DependentUpon>
@@ -244,6 +253,13 @@
     </Compile>
     <Compile Include="ViewFeedBackStaff.aspx.designer.cs">
       <DependentUpon>ViewFeedBackStaff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WaitingList.aspx.cs">
+      <DependentUpon>WaitingList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WaitingList.aspx.designer.cs">
+      <DependentUpon>WaitingList.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>
