@@ -50,5 +50,11 @@ namespace eadLab5
             System.Diagnostics.Debug.WriteLine(tbCost.Text+"This is cost");
             int results = updTd.updateTrip(id,tripTitle,tripStart,tripEnd,tripDays,tripActivities,tripCost);
         }
+
+        protected void addTrip(object sender, EventArgs e)
+        {
+            TripDAO addTD = new DAL.TripDAO();
+            int results = addTD.insertTrip(tbAddTitle.Text, Convert.ToDateTime(tbAddStart.Text), Convert.ToDateTime(tbAddEnd.Text), Convert.ToInt32(tbAddDays.Text), tbAddActivities.Text, Convert.ToInt16(tbAddCost.Text));
+        }
     }
 }

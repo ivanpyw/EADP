@@ -84,5 +84,32 @@ namespace eadLab5.DAL
             myConn.Close();
             return result;
         }
+
+        public int insertTrip(string title, DateTime start, DateTime end,int days, string activities, double cost)
+        {
+            StringBuilder sqlStr = new StringBuilder();
+            int result = 0;
+            SqlCommand sqlCmd = new SqlCommand();
+
+            sqlStr.AppendLine("INSERT INTO Trip(TripId,Location,Image,TripTitle,Days,TripStart,TripEnd,Activities,cost,[Trip type],status,staffId)");
+            sqlStr.AppendLine("VALUES (6,'Malaysia','jpg',@pTitle,@pDuration,@pStart,@pEnd,@pActivities,@pCost,'Study','pending',1)");
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+
+            sqlCmd.Parameters.AddWithValue("@pTitle", title);
+            sqlCmd.Parameters.AddWithValue("@pDuration", days);
+            sqlCmd.Parameters.AddWithValue("@pStart", start);
+            sqlCmd.Parameters.AddWithValue("@pEnd", end);
+            sqlCmd.Parameters.AddWithValue("@pActivities", activities);
+            sqlCmd.Parameters.AddWithValue("@pCost", cost);
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+
+            myConn.Close();
+            return result;
+        }
     }
 }
