@@ -23,7 +23,8 @@ namespace eadLab5.DAL
             DataSet ds = new DataSet();
 
             StringBuilder tripCommand = new StringBuilder();
-            tripCommand.AppendLine("Select * from Trip");
+            tripCommand.AppendLine("Select * from Trip t");
+            tripCommand.AppendLine("INNER JOIN Staff s on s.StaffId = t.StaffId ");
             Trip obj = new Trip();
 
             SqlConnection myConn = new SqlConnection(DBConnect);
@@ -48,7 +49,8 @@ namespace eadLab5.DAL
                     myTd.tripStart = Convert.ToDateTime(row["TripStart"]);
                     myTd.tripEnd = Convert.ToDateTime(row["TripEnd"]);
                     myTd.tripStatus = row["Status"].ToString();
-                    myTd.staffId = Convert.ToInt32(row["StaffId"]);
+                    myTd.staffName = row["Name"].ToString();
+                    myTd.staffHonorifics = row["Honorifics"].ToString();
                     tdList.Add(myTd);
                 }
             }else
@@ -58,5 +60,7 @@ namespace eadLab5.DAL
 
             return tdList;
         }
+
+        public 
     }
 }
