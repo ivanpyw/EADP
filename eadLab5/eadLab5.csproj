@@ -107,6 +107,7 @@
     <Content Include="Corporate.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Enquiry.aspx" />
+    <Content Include="FeedBackFormStudent.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -158,6 +159,8 @@
     </Compile>
     <Compile Include="DAL\customer.cs" />
     <Compile Include="DAL\customerDAO.cs" />
+    <Compile Include="DAL\FeedbackForm.cs" />
+    <Compile Include="DAL\FeedbackFormDAO.cs" />
     <Compile Include="DAL\interestRte.cs" />
     <Compile Include="DAL\InterestRteDAO.cs" />
     <Compile Include="DAL\timeDeposit.cs" />
@@ -175,6 +178,13 @@
     </Compile>
     <Compile Include="Enquiry.aspx.designer.cs">
       <DependentUpon>Enquiry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FeedBackFormStudent.aspx.cs">
+      <DependentUpon>FeedBackFormStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FeedBackFormStudent.aspx.designer.cs">
+      <DependentUpon>FeedBackFormStudent.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage1.master.cs">
       <DependentUpon>MasterPage1.master</DependentUpon>
