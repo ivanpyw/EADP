@@ -140,6 +140,9 @@
     <Content Include="TermDepositPlacement.aspx" />
     <Content Include="TermDepositUpdate.aspx" />
     <Content Include="TripDetails.aspx" />
+    <Content Include="UpdateFeedBackSubmitted.aspx" />
+    <Content Include="ViewFeedBacksSubmitted.aspx" />
+    <Content Include="ViewFeedBackStaff.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +223,27 @@
     </Compile>
     <Compile Include="TripDetails.aspx.designer.cs">
       <DependentUpon>TripDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateFeedBackSubmitted.aspx.cs">
+      <DependentUpon>UpdateFeedBackSubmitted.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateFeedBackSubmitted.aspx.designer.cs">
+      <DependentUpon>UpdateFeedBackSubmitted.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewFeedBacksSubmitted.aspx.cs">
+      <DependentUpon>ViewFeedBacksSubmitted.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewFeedBacksSubmitted.aspx.designer.cs">
+      <DependentUpon>ViewFeedBacksSubmitted.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewFeedBackStaff.aspx.cs">
+      <DependentUpon>ViewFeedBackStaff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewFeedBackStaff.aspx.designer.cs">
+      <DependentUpon>ViewFeedBackStaff.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>

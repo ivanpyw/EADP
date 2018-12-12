@@ -6,8 +6,8 @@ namespace eadLab5.DAL
 {
       public class timeDeposit
     {
-        public string tdAccount { get; set; }
-        public string tdCustId { get; set; }
+        public string Affordability { get; set; }
+        public string Enjoyment { get; set; }
         public double tdPrincipal { get; set; }
         public int tdTerm { get; set; }
         public DateTime tdEffDte { get; set; }

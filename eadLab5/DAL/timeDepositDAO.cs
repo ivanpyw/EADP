@@ -14,6 +14,7 @@ namespace eadLab5.DAL
     {
         // Place the DBConnect to class variable to be shared by all the methodsin this class
         string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
+       
         public int InsertTD(String acNum, String customerId, double principal, int term, float tdIntRte, DateTime maturityDte, double maturedAmt, double tdInterest, int tdRenewMode)
         {
 
@@ -102,8 +103,8 @@ namespace eadLab5.DAL
 
                     // Step 8 Set attribute of timeDeposit instance for each row of record in TableTD
 
-                    myTD.tdAccount = row["tdAccount"].ToString();
-                    myTD.tdCustId = row["custId"].ToString();
+                    myTD.Affordability = row["tdAccount"].ToString();
+                    myTD.Enjoyment = row["custId"].ToString();
                     myTD.tdPrincipal = Convert.ToDouble(row["principal"]);
                     myTD.tdTerm = Convert.ToInt32(row["tdTerm"]);
                     myTD.tdEffDte = Convert.ToDateTime(row["tdEffectFrom"]);
@@ -168,8 +169,8 @@ namespace eadLab5.DAL
                 // DataRow is set to Rows[0] because only one row is returned
                 //
                 DataRow row = ds.Tables["TableTD"].Rows[0];
-                myTD.tdAccount = row["tdAccount"].ToString();
-                myTD.tdCustId = row["custId"].ToString();
+                myTD.Affordability = row["tdAccount"].ToString();
+                myTD.Enjoyment = row["custId"].ToString();
                 myTD.tdPrincipal = Convert.ToDouble(row["principal"]);
                 myTD.tdTerm = Convert.ToInt32(row["tdTerm"]);
                 myTD.tdEffDte = Convert.ToDateTime(row["tdEffectFrom"]);
@@ -187,6 +188,7 @@ namespace eadLab5.DAL
      }
      return myTD;
     }
+
     public int updateTD(String acNum, int tdRenewMode)
     {
 

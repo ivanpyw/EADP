@@ -14,7 +14,7 @@ namespace eadLab5
         {
             if(Page.IsPostBack == false)
             {
-                if(Session["SSTDAcNo"] != null)
+                if(Session["AdminNo"] != null)
                 {
                     LblCustId.Text = Session["SScustId"].ToString();
                     LblCustname.Text = Session["SSCustName"].ToString();
