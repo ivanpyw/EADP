@@ -81,6 +81,7 @@
                         <p>Program period: <%=tripObj[0].tripStart.ToString("MM/dd/yy") %> to <%= tripObj[0].tripEnd.ToString("MM/dd/yy") %></p>
                         <p>Program duration: <%= tripObj[0].tripDays %></p>
                         <p>Expected cost: $<%= tripObj[0].tripCost.ToString("c") %></p>
+                        <p>Location: <b><%= tripObj[0].tripLocation %></b></p>
                     </div>
                     <button type="button" class="trip-btn btn btn-primary" data-toggle="modal" data-target="#tripModal<%= tripObj[0].tripId+3 %>">
                         View details
@@ -94,7 +95,7 @@
                             <div class="modal-header">
                                 <h5 class="text-center modal-title">Trip title: </h5>
                                 <%--<input id="tbTitle" type="text" value="<%=tripObj[0].tripTitle %>" disabled="true"/>--%>
-                                <asp:TextBox ID="tbTitle" runat="server" Text='Empty' ReadOnly="True"></asp:TextBox>
+                                <asp:TextBox ID="tbTitle" runat="server" ReadOnly="True"></asp:TextBox>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -121,21 +122,24 @@
                                         <span class="sr-only">Next</span>
                                     </a>
                                 </div>
-                                <p>Frequency and duration: <asp:TextBox ID="tbFrequency" runat="server" Text='Empty' ReadOnly="True"></asp:TextBox></p>
-                                <p>Duration: <asp:TextBox ID="tbDays" runat="server" Text='Empty' ReadOnly="True"></asp:TextBox></p>
-                                <p>Activities: <asp:TextBox ID="tbActivities" runat="server" Text='Empty' ReadOnly="True"></asp:TextBox></p>
-                                <p>Estimated cost: <asp:TextBox ID="tbCost" runat="server" Text='Empty' ReadOnly="True"></asp:TextBox></p>
+                                <p>When: <asp:TextBox ID="tbStart" runat="server" ReadOnly="True"></asp:TextBox> to <asp:TextBox ID="tbEnd" runat="server" ReadOnly="True"></asp:TextBox></p>
+                                <p>Duration: <asp:TextBox ID="tbDays" runat="server" ReadOnly="True"></asp:TextBox></p>
+                                <p>Activities: <asp:TextBox ID="tbActivities" runat="server"  ReadOnly="True"></asp:TextBox></p>
+                                <p>Estimated cost: <asp:TextBox ID="tbCost" runat="server" ReadOnly="True"></asp:TextBox></p>
+                                <asp:TextBox ID="tbId" runat="server" ReadOnly="True" Font-Size="10"></asp:TextBox>
                             </div>
                             <script>
+                                document.getElementById("ContentPlaceHolder1_tbId").value = "<%=tripObj[0].tripId%>"
                                 document.getElementById("ContentPlaceHolder1_tbTitle").value = "<%=tripObj[0].tripTitle%>";
-                                document.getElementById("ContentPlaceHolder1_tbFrequency").value = "<%=tripObj[0].tripStart.ToString("MM/dd/yy")%> to <%=tripObj[0].tripEnd.ToString("MM/dd/yy") %>";
+                                document.getElementById("ContentPlaceHolder1_tbStart").value = "<%=tripObj[0].tripStart.ToString("MM/dd/yy")%>";
+                                document.getElementById("ContentPlaceHolder1_tbEnd").value = "<%=tripObj[0].tripEnd.ToString("MM/dd/yy")%>";
                                 document.getElementById("ContentPlaceHolder1_tbDays").value = "<%=tripObj[0].tripDays%>";
                                 document.getElementById("ContentPlaceHolder1_tbActivities").value = "<%=tripObj[0].tripActivities%>";
-                                document.getElementById("ContentPlaceHolder1_tbCost").value = "<%=tripObj[0].tripCost.ToString("c")%>";
+                                document.getElementById("ContentPlaceHolder1_tbCost").value = "<%=tripObj[0].tripCost%>";
                             </script>
                             <div class="modal-footer">
                                 <asp:Button ID="EnableBtn" runat="server" Text="Enable edit" OnClick="AllowEdit" CausesValidation="False"/>
-                                <asp:Button ID="UpdateBtn" runat="server" Text="Update" Enabled="False" OnClick="UpdateTrip" />
+                                <asp:Button ID="UpdateBtn" runat="server" Text="Update" Enabled="True" OnClick="UpdateTrip" />
                             </div>
                         </form>
                     </div>

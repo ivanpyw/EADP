@@ -12,11 +12,9 @@ namespace eadLab5.DAL
     public class TripDAO
     {
         public int count = 0;
-
+        string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
         public List<Trip> getTrip()
         {
-            string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
-
             List<Trip> tdList = new List<Trip>();
 
             SqlDataAdapter da;
@@ -61,6 +59,30 @@ namespace eadLab5.DAL
             return tdList;
         }
 
-        public 
+        public int updateTrip(int id,string title,DateTime start,DateTime end,int days,string activities,double cost)
+        {
+            StringBuilder sqlStr = new StringBuilder();
+            int result = 0;    // Execute NonQuery return an integer value
+            SqlCommand sqlCmd = new SqlCommand();
+
+            sqlStr.AppendLine("UPDATE Trip");
+            sqlStr.AppendLine("SET TripTitle = @pTitle,Activities = @pActivities, Days =@pDays, Cost = @pCost, TripStart = @pStart, TripEnd = @pEnd ");
+            sqlStr.AppendLine("WHERE TripId = @pId");
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+            sqlCmd.Parameters.AddWithValue("@pId", id);
+            sqlCmd.Parameters.AddWithValue("@pTitle", title);
+            sqlCmd.Parameters.AddWithValue("@pStart", start);
+            sqlCmd.Parameters.AddWithValue("@pEnd", end);
+            sqlCmd.Parameters.AddWithValue("@pDays", days);
+            sqlCmd.Parameters.AddWithValue("@pActivities", activities);
+            sqlCmd.Parameters.AddWithValue("@pCost", cost);
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+            myConn.Close();
+            return result;
+        }
     }
 }

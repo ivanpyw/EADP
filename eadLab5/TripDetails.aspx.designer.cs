@@ -22,13 +22,22 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.TextBox tbTitle;
         
         /// <summary>
-        /// tbFrequency control.
+        /// tbStart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbFrequency;
+        protected global::System.Web.UI.WebControls.TextBox tbStart;
+        
+        /// <summary>
+        /// tbEnd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbEnd;
         
         /// <summary>
         /// tbDays control.
@@ -56,6 +65,15 @@ namespace eadLab5 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbCost;
+        
+        /// <summary>
+        /// tbId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbId;
         
         /// <summary>
         /// EnableBtn control.

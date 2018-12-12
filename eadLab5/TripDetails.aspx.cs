@@ -25,14 +25,30 @@ namespace eadLab5
             tbActivities.ReadOnly = false;
             tbCost.ReadOnly = false;
             tbDays.ReadOnly = false;
-            tbFrequency.ReadOnly = false;
+            tbStart.ReadOnly = false;
+            tbEnd.ReadOnly = false;
             tbTitle.ReadOnly = false;
+            tbId.ReadOnly = false;
             UpdateBtn.Enabled = true;
         }
 
         protected void UpdateTrip(object sender, EventArgs e)
         {
-
+            TripDAO updTd = new TripDAO();
+            int id = Convert.ToInt32(tbId.Text);
+            System.Diagnostics.Debug.WriteLine(id+"this is id");
+            string tripTitle = tbTitle.Text;
+            System.Diagnostics.Debug.WriteLine(tripTitle + "this is title");
+            DateTime tripStart = Convert.ToDateTime(tbStart.Text);
+            //LOOK AT THIS SHIT, TRIPSTART WORKS BUT END DOESNT
+            System.Diagnostics.Debug.WriteLine(tbStart.Text);
+            DateTime tripEnd = Convert.ToDateTime(tbEnd.Text);
+            System.Diagnostics.Debug.WriteLine(tripEnd);
+            int tripDays = Convert.ToInt32(tbDays.Text);
+            string tripActivities = tbActivities.Text;
+            double tripCost = Convert.ToInt16(tbCost.Text);
+            System.Diagnostics.Debug.WriteLine(tbCost.Text+"This is cost");
+            int results = updTd.updateTrip(id,tripTitle,tripStart,tripEnd,tripDays,tripActivities,tripCost);
         }
     }
 }
