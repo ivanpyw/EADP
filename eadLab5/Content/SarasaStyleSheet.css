@@ -19,3 +19,7 @@
 .trip-btn{
     margin-bottom:20px;
 }
+
+.add-trip-btn{
+    display: flex;
+}

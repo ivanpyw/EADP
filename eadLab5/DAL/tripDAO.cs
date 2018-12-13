@@ -12,11 +12,9 @@ namespace eadLab5.DAL
     public class TripDAO
     {
         public int count = 0;
-
+        string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
         public List<Trip> getTrip()
         {
-            string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
-
             List<Trip> tdList = new List<Trip>();
 
             SqlDataAdapter da;
@@ -63,6 +61,6 @@ namespace eadLab5.DAL
             return tdList;
         }
 
-
+        public 
     }
 }
