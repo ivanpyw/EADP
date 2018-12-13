@@ -33,7 +33,8 @@ namespace eadLab5.DAL
 
             int rec_cnt = ds.Tables["tripTable"].Rows.Count;
             count = rec_cnt;
-            if (rec_cnt > 0){
+            if (rec_cnt > 0)
+            {
                 foreach (DataRow row in ds.Tables["tripTable"].Rows)
                 {
                     Trip myTd = new Trip();
@@ -53,7 +54,8 @@ namespace eadLab5.DAL
                     myTd.staffHonorifics = row["Honorifics"].ToString();
                     tdList.Add(myTd);
                 }
-            }else
+            }
+            else
             {
                 tdList = null;
             }
@@ -61,6 +63,6 @@ namespace eadLab5.DAL
             return tdList;
         }
 
-        public 
+
     }
 }

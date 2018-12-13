@@ -16,14 +16,60 @@ namespace eadLab5
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
-            SqlConnection myConn = new SqlConnection(DBConnect);
-            SqlCommand cmd1 = new SqlCommand("select * from Feedback", myConn);
-            SqlDataAdapter sda1 = new SqlDataAdapter(cmd1);
-            DataTable dt = new DataTable();
-            sda1.Fill(dt);
-            GridView_GetFB.DataSource = dt;
+            FeedbackFormDAO tdDAO = new FeedbackFormDAO();
+            List<FeedbackForm> tdList = new List<FeedbackForm>();
+            tdList = tdDAO.GetAllFeedBack();
+            GridView_GetFB.DataSource = tdList;
             GridView_GetFB.DataBind();
+        }
+
+        protected void GridView_GetFB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = GridView_GetFB.SelectedRow;
+            // In this grid, the first cell (index 0) contains
+            // the TD Account.
+
+            Session["FeedBackId"] = row.Cells[0].Text;
+            Response.Redirect("StaffViewSpecificFeedBack.aspx");
+        }
+
+        protected void FilterBtn_Click(object sender, EventArgs e)
+        {
+            if (CountryFilterDropDown.SelectedIndex > 0 && AffordabilityFilterDropDown.SelectedIndex > 0)
+            {
+                FeedbackFormDAO tdDAO = new FeedbackFormDAO();
+                List<FeedbackForm> tdList = new List<FeedbackForm>();
+                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString());
+                GridView_GetFB.DataSource = tdList;
+                GridView_GetFB.DataBind();
+            }
+            else if (CountryFilterDropDown.SelectedIndex < 0 && AffordabilityFilterDropDown.SelectedIndex > 0)
+            {
+                FeedbackFormDAO tdDAO = new FeedbackFormDAO();
+                List<FeedbackForm> tdList = new List<FeedbackForm>();
+                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString());
+                GridView_GetFB.DataSource = tdList;
+                GridView_GetFB.DataBind();
+            }
+            else if (CountryFilterDropDown.SelectedIndex > 0 && AffordabilityFilterDropDown.SelectedIndex < 0)
+            {
+                FeedbackFormDAO tdDAO = new FeedbackFormDAO();
+                List<FeedbackForm> tdList = new List<FeedbackForm>();
+                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString());
+                GridView_GetFB.DataSource = tdList;
+                GridView_GetFB.DataBind();
+            }
+            else
+            {
+                FeedbackFormDAO tdDAO = new FeedbackFormDAO();
+                List<FeedbackForm> tdList = new List<FeedbackForm>();
+                tdList = tdDAO.GetAllFeedBack();
+                GridView_GetFB.DataSource = tdList;
+                GridView_GetFB.DataBind();
+                LabelFilter.Visible = true;
+                LabelFilter.Text = "Please select one a valid index in the dropdown below";
+            }
+
         }
     }
 }

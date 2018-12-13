@@ -26,7 +26,7 @@ namespace eadLab5
             int TripId = 1;
             String StudName = "Ivan";
             String AdminNo = "171058L";
-            String Country = "Australia";
+            String Country = "Beijing";
         
          try
             {

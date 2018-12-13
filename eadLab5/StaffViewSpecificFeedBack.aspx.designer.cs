@@ -10,69 +10,96 @@
 namespace eadLab5 {
     
     
-    public partial class ViewFeedBackStaff {
+    public partial class StaffViewSpecificFeedBack {
         
         /// <summary>
-        /// GridView_GetFB control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView_GetFB;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// LabelFilter control.
+        /// NameLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelFilter;
+        protected global::System.Web.UI.WebControls.Label NameLabel;
         
         /// <summary>
-        /// CountryFilter control.
+        /// AdminLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CountryFilter;
+        protected global::System.Web.UI.WebControls.Label AdminLabel;
         
         /// <summary>
-        /// CountryFilterDropDown control.
+        /// CountryLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList CountryFilterDropDown;
+        protected global::System.Web.UI.WebControls.Label CountryLabel;
         
         /// <summary>
-        /// AffordableFilter control.
+        /// AffordablitityLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AffordableFilter;
+        protected global::System.Web.UI.WebControls.Label AffordablitityLabel;
         
         /// <summary>
-        /// AffordabilityFilterDropDown control.
+        /// EnjoymentLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList AffordabilityFilterDropDown;
+        protected global::System.Web.UI.WebControls.Label EnjoymentLabel;
         
         /// <summary>
-        /// FilterBtn control.
+        /// Freedom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button FilterBtn;
+        protected global::System.Web.UI.WebControls.Label Freedom;
+        
+        /// <summary>
+        /// HighlightsLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label HighlightsLabel;
+        
+        /// <summary>
+        /// DownsidesLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DownsidesLabel;
+        
+        /// <summary>
+        /// ImprovementsLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ImprovementsLabel;
     }
 }
