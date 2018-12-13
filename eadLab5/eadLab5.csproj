@@ -179,6 +179,8 @@
     <Compile Include="DAL\timeDepositDAO.cs" />
     <Compile Include="DAL\Trip.cs" />
     <Compile Include="DAL\tripDAO.cs" />
+    <Compile Include="DAL\WaitingList.cs" />
+    <Compile Include="DAL\WaitingListDAO.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
