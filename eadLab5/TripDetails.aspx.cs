@@ -1,6 +1,7 @@
 ﻿using eadLab5.DAL;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -18,6 +19,19 @@ namespace eadLab5
         {
             tripObj = tripDao.getTrip();
             count = tripDao.count;
+        }
+
+
+        string SaveFile(HttpPostedFile file)
+        {
+            string savePath = "../Images/";
+            //string filename = file.FileName + DateTime.Now.ToString("ddmmyyyyfffffff");
+            string filename = Path.GetFileNameWithoutExtension(file.FileName);
+            string ext = Path.GetExtension(file.FileName);
+            savePath += filename + DateTime.Now.ToString("ddmmyyyyfffffff") + ext;
+            string fullPath = Path.Combine(Server.MapPath("~/Images"), savePath);
+            file.SaveAs(fullPath);
+            return savePath;
         }
 
         protected void AllowEdit(object sender, EventArgs e)
@@ -54,7 +68,16 @@ namespace eadLab5
         protected void addTrip(object sender, EventArgs e)
         {
             TripDAO addTD = new DAL.TripDAO();
-            int results = addTD.insertTrip(Convert.ToInt32(tbAddId.Text),tbAddLocation.Text,tbAddTitle.Text, Convert.ToDateTime(tbAddStart.Text), Convert.ToDateTime(tbAddEnd.Text), Convert.ToInt32(tbAddDays.Text), tbAddActivities.Text, Convert.ToInt16(tbAddCost.Text),tbAddType.Text);
+            if (tripImageUpload.HasFile)
+            {
+                
+                int results = addTD.insertTrip(Convert.ToInt32(tbAddId.Text), tbAddLocation.Text, SaveFile(tripImageUpload.PostedFile).ToString(), tbAddTitle.Text, Convert.ToDateTime(tbAddStart.Text), Convert.ToDateTime(tbAddEnd.Text), Convert.ToInt32(tbAddDays.Text), tbAddActivities.Text, Convert.ToInt16(tbAddCost.Text), tbAddType.Text);
+
+            }
+            else
+            {
+                //add validations?
+            }
         }
     }
 }

@@ -32,7 +32,7 @@
                             <p>In charge: <%=trip.staffHonorifics %> <%=trip.staffName %></p>--%>
                             <p> Trip Id: <asp:TextBox ID="tbAddId" runat="server"></asp:TextBox></p>
                             <p> Trip Location: <asp:TextBox ID="tbAddLocation" runat="server"></asp:TextBox></p>
-                            <p> Images: <input type="file"/></p>
+                            <p> Images: <asp:FileUpload ID="tripImageUpload" runat="server" />></p>
                             <p>When:
                                 <asp:TextBox ID="tbAddStart" runat="server" placeholder="Start date"></asp:TextBox>
                                 to
