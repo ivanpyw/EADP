@@ -168,6 +168,7 @@
                             <p>
                                 Duration:
                                     <asp:TextBox ID="tbDays" runat="server" ReadOnly="True"></asp:TextBox>
+                                <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
                             </p>
                             <p>
                                 Activities:
