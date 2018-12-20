@@ -61,6 +61,60 @@ namespace eadLab5.DAL
             return tdList;
         }
 
-        public 
+        public int updateTrip(int id, string title, DateTime start, DateTime end, int days, string activities, double cost)
+        {
+            StringBuilder sqlStr = new StringBuilder();
+            int result = 0;    // Execute NonQuery return an integer value
+            SqlCommand sqlCmd = new SqlCommand();
+
+            sqlStr.AppendLine("UPDATE Trip");
+            sqlStr.AppendLine("SET TripTitle = @pTitle,Activities = @pActivities, Days =@pDays, Cost = @pCost, TripStart = @pStart, TripEnd = @pEnd ");
+            sqlStr.AppendLine("WHERE TripId = @pId");
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+            sqlCmd.Parameters.AddWithValue("@pId", id);
+            sqlCmd.Parameters.AddWithValue("@pTitle", title);
+            sqlCmd.Parameters.AddWithValue("@pStart", start);
+            sqlCmd.Parameters.AddWithValue("@pEnd", end);
+            sqlCmd.Parameters.AddWithValue("@pDays", days);
+            sqlCmd.Parameters.AddWithValue("@pActivities", activities);
+            sqlCmd.Parameters.AddWithValue("@pCost", cost);
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+            myConn.Close();
+            return result;
+        }
+
+        public int insertTrip(int tripid, string location, string title, DateTime start, DateTime end, int days, string activities, double cost, string triptype)
+        {
+            StringBuilder sqlStr = new StringBuilder();
+            int result = 0;
+            SqlCommand sqlCmd = new SqlCommand();
+
+            sqlStr.AppendLine("INSERT INTO Trip(TripId,Location,Image,TripTitle,Days,TripStart,TripEnd,Activities,cost,[Trip type],status,staffId)");
+            sqlStr.AppendLine("VALUES (@pTripId,@pLocation,'jpg',@pTitle,@pDuration,@pStart,@pEnd,@pActivities,@pCost,@pType,'pending',1)");
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+
+            sqlCmd.Parameters.AddWithValue("@pTitle", title);
+            sqlCmd.Parameters.AddWithValue("@pDuration", days);
+            sqlCmd.Parameters.AddWithValue("@pStart", start);
+            sqlCmd.Parameters.AddWithValue("@pEnd", end);
+            sqlCmd.Parameters.AddWithValue("@pActivities", activities);
+            sqlCmd.Parameters.AddWithValue("@pCost", cost);
+            sqlCmd.Parameters.AddWithValue("@pTripId", tripid);
+            sqlCmd.Parameters.AddWithValue("@pLocation", location);
+            sqlCmd.Parameters.AddWithValue("@pType", triptype);
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+
+            myConn.Close();
+            return result;
+        }
     }
 }
