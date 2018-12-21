@@ -25,19 +25,13 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <%-- <p>Frequency and duration: <%= trip.tripStart.ToString("MM/dd/yy") %> to <%=trip.tripEnd.ToString("MM/dd/yy") %></p>
-                            <p>Duration: <%=trip.tripDays %></p>
-                            <p>Activities: <%=trip.tripActivities %></p>
-                            <p>Estimated cost: <%=trip.tripCost.ToString("c") %></p>
-                            <p>In charge: <%=trip.staffHonorifics %> <%=trip.staffName %></p>--%>
-                            <p> Trip Id: <asp:TextBox ID="tbAddId" runat="server"></asp:TextBox></p>
                             <p> Trip Location: <asp:TextBox ID="tbAddLocation" runat="server"></asp:TextBox></p>
                             <p> Images: <asp:FileUpload ID="tripImageUpload" runat="server" />></p>
                             <p>When:
                                 <asp:TextBox ID="tbAddStart" runat="server" placeholder="Start date"></asp:TextBox>
                                 to
                                 <asp:TextBox ID="tbAddEnd" runat="server" placeholder="End date"></asp:TextBox></p>
-                            <p>Duration: <asp:TextBox ID="tbAddDays" runat="server" placeholder="Duration"></asp:TextBox></p>
+                            <p>Open to sign up: <asp:TextBox ID="tbOpenDay" runat="server" placeholder="Students can sign up on"></asp:TextBox></p>
                             <p>Activities: <asp:TextBox ID="tbAddActivities" runat="server" TextMode="MultiLine" Width="100%"></asp:TextBox></p>
                             <p>Estimated cost: <asp:TextBox ID="tbAddCost" runat="server" placeholder="Estimated Cost"></asp:TextBox></p>
                             <p>Trip type: <asp:TextBox ID="tbAddType" runat="server"></asp:TextBox></p></div>
@@ -196,7 +190,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </form>
 </asp:Content>

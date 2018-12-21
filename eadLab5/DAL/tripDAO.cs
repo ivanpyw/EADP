@@ -41,7 +41,7 @@ namespace eadLab5.DAL
                     myTd.tripTitle = row["TripTitle"].ToString();
                     myTd.tripLocation = row["Location"].ToString();
                     myTd.tripActivities = row["Activities"].ToString();
-                    myTd.tripDays = Convert.ToInt32(row["Days"]);
+                    myTd.tripDays = Convert.ToInt32((Convert.ToDateTime(row["TripEnd"]).Subtract(Convert.ToDateTime(row["TripStart"])).TotalDays));
                     myTd.tripCost = Convert.ToInt16(row["Cost"]);
                     myTd.tripImg = row["Image"].ToString();
                     myTd.tripType = row["Trip type"].ToString();
@@ -50,6 +50,7 @@ namespace eadLab5.DAL
                     myTd.tripStatus = row["Status"].ToString();
                     myTd.staffName = row["Name"].ToString();
                     myTd.staffHonorifics = row["Honorifics"].ToString();
+                    myTd.tripOpen = Convert.ToDateTime(row["OpeningDay"]);
                     tdList.Add(myTd);
                 }
             }
@@ -87,26 +88,25 @@ namespace eadLab5.DAL
             return result;
         }
 
-        public int insertTrip(int tripid, string location, string tripImage, string title, DateTime start, DateTime end, int days, string activities, double cost, string triptype)
+        public int insertTrip(string location, string tripImage, string title, DateTime start, DateTime end, DateTime openingDay, string activities, double cost, string triptype)
         {
             StringBuilder sqlStr = new StringBuilder();
             int result = 0;
             SqlCommand sqlCmd = new SqlCommand();
 
-            sqlStr.AppendLine("INSERT INTO Trip(TripId,Location,Image,TripTitle,Days,TripStart,TripEnd,Activities,cost,[Trip type],status,staffId)");
-            sqlStr.AppendLine("VALUES (@pTripId,@pLocation,@pImage,@pTitle,@pDuration,@pStart,@pEnd,@pActivities,@pCost,@pType,'pending',1)");
+            sqlStr.AppendLine("INSERT INTO Trip(Location,Image,TripTitle,OpeningDay,TripStart,TripEnd,Activities,cost,[Trip type],status,staffId)");
+            sqlStr.AppendLine("VALUES (@pLocation,@pImage,@pTitle,@pOpeningDay,@pStart,@pEnd,@pActivities,@pCost,@pType,'pending',1)");
 
             SqlConnection myConn = new SqlConnection(DBConnect);
 
             sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
 
             sqlCmd.Parameters.AddWithValue("@pTitle", title);
-            sqlCmd.Parameters.AddWithValue("@pDuration", days);
+            sqlCmd.Parameters.AddWithValue("@pOpeningDay", openingDay);
             sqlCmd.Parameters.AddWithValue("@pStart", start);
             sqlCmd.Parameters.AddWithValue("@pEnd", end);
             sqlCmd.Parameters.AddWithValue("@pActivities", activities);
             sqlCmd.Parameters.AddWithValue("@pCost", cost);
-            sqlCmd.Parameters.AddWithValue("@pTripId", tripid);
             sqlCmd.Parameters.AddWithValue("@pLocation", location);
             sqlCmd.Parameters.AddWithValue("@pType", triptype);
             sqlCmd.Parameters.AddWithValue("@pImage", tripImage);

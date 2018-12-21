@@ -24,5 +24,6 @@ namespace eadLab5.DAL
         public string tripStatus { get; set; }
         public string staffName { get; set; }
         public string staffHonorifics { get; set; }
+        public DateTime tripOpen { get; set; }
     }
 }

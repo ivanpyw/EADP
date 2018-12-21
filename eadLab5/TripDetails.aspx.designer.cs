@@ -22,15 +22,6 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.TextBox tbAddTitle;
         
         /// <summary>
-        /// tbAddId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbAddId;
-        
-        /// <summary>
         /// tbAddLocation control.
         /// </summary>
         /// <remarks>
@@ -67,13 +58,13 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.TextBox tbAddEnd;
         
         /// <summary>
-        /// tbAddDays control.
+        /// tbOpenDay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbAddDays;
+        protected global::System.Web.UI.WebControls.TextBox tbOpenDay;
         
         /// <summary>
         /// tbAddActivities control.

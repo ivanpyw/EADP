@@ -71,12 +71,12 @@ namespace eadLab5
             if (tripImageUpload.HasFile)
             {
                 
-                int results = addTD.insertTrip(Convert.ToInt32(tbAddId.Text), tbAddLocation.Text, SaveFile(tripImageUpload.PostedFile).ToString(), tbAddTitle.Text, Convert.ToDateTime(tbAddStart.Text), Convert.ToDateTime(tbAddEnd.Text), Convert.ToInt32(tbAddDays.Text), tbAddActivities.Text, Convert.ToInt16(tbAddCost.Text), tbAddType.Text);
-
+                int results = addTD.insertTrip(tbAddLocation.Text, SaveFile(tripImageUpload.PostedFile).ToString(), tbAddTitle.Text, Convert.ToDateTime(tbAddStart.Text), Convert.ToDateTime(tbAddEnd.Text), Convert.ToDateTime(tbOpenDay.Text), tbAddActivities.Text, Convert.ToInt16(tbAddCost.Text), tbAddType.Text);
+                Response.Redirect("TripDetails.aspx");
             }
             else
             {
-                //add validations?
+                //add validations? later la
             }
         }
     }
