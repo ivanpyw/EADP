@@ -16,48 +16,47 @@
             <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-body">
                             <table class="table table-bordered">
                                 <tr>
                                     <td>
                                         Trip title:
+                                        
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Trip title is required" ControlToValidate="tbAddTitle" Text="*"></asp:RequiredFieldValidator>
                                     </td>
                                     <td>
                                         <asp:TextBox ID="tbAddTitle" runat="server" placeholder="Trip title" CssClass="form-control"></asp:TextBox></td>
                                 </tr>
-                            </table>
-                        </div>
-                        <div class="modal-body">
-                            <table class="table table-bordered">
                                 <tr>
-                                    <td>Trip Location:</td>
+                                    <td>Trip Location:<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Location is required" Text="*" ControlToValidate="tbAddLocation"></asp:RequiredFieldValidator></td>
+                                    
                                     <td>
                                         <asp:TextBox ID="tbAddLocation" placeholder="Trip held at" runat="server" CssClass="form-control"></asp:TextBox></td>
                                 </tr>
                                 <tr>
-                                    <td>Images:</td>
+                                    <td>Images:<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Image required" ControlToValidate="tripImageUpload" Text="*"></asp:RequiredFieldValidator></td>
                                     <td><asp:FileUpload ID="tripImageUpload" runat="server" CssClass="form-control-file"/></td>
                                 </tr>
                                 <tr>
-                                    <td>When:</td>
+                                    <td>When:<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Start date required" ControlToValidate="tbAddStart" Text="*"></asp:RequiredFieldValidator><asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="End date required" ControlToValidate="tbAddEnd" Text="*"></asp:RequiredFieldValidator></td>
                                 <td><asp:TextBox ID="tbAddStart" runat="server" placeholder="Start date" CssClass="form-control"></asp:TextBox>
                                     to
                                 <asp:TextBox ID="tbAddEnd" runat="server" placeholder="End date" CssClass="form-control"></asp:TextBox></td>
                                 </tr>
                                 <tr>
-                                    <td>Open to sign up:</td>
+                                    <td>Open to sign up:<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Trip open date required" ControlToValidate="tbOpenDay" Text="*"></asp:RequiredFieldValidator></td>
                                     <td><asp:TextBox ID="tbOpenDay" runat="server" placeholder="Students can sign up on" CssClass="form-control"></asp:TextBox></td>
                                 </tr>
                                 <tr>
-                                    <td>Activities:</td>
+                                    <td>Activities:<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Activities required" ControlToValidate="tbAddActivities" Text="*"></asp:RequiredFieldValidator></td>
                                     <td><asp:TextBox ID="tbAddActivities" runat="server" TextMode="MultiLine" Width="100%" placeholder="Activities to do there" CssClass="form-control"></asp:TextBox></td>
                                 </tr>
                                 <tr>
-                                    <td>Estimated cost:</td>
+                                    <td>Estimated cost:<asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Cost required" ControlToValidate="tbAddCost" Text="*"></asp:RequiredFieldValidator></td>
                                     <td><asp:TextBox ID="tbAddCost" runat="server" placeholder="Estimated Cost" CssClass="form-control"></asp:TextBox></td>
                                 </tr>
                                 <tr>
-                                    <td>Trip type:</td>
+                                    <td>Trip type:<asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="Please select type of trip" ControlToValidate="DdlAddTripType" Text="*"></asp:RequiredFieldValidator></td>
                                     <td>
                                     <asp:DropDownList ID="DdlAddTripType" CssClass="form-control" runat="server">
                                         <asp:ListItem Selected="True" Value="-1">--Selected--</asp:ListItem>
@@ -69,10 +68,11 @@
                             </table>
                         </div>
                         <div class="modal-footer">
-                            <asp:Button ID="addTripBtn" runat="server" Text="Add" OnClick="addTrip" CssClass="btn btn-primary" />
+                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
                             <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
                                 Close
                             </button>
+                            <asp:Button ID="addTripBtn" runat="server" Text="Add" OnClick="addTrip" CssClass="btn btn-primary" />
                         </div>
 
                     </div>
@@ -171,13 +171,13 @@
                         <p>Expected cost: $<%= tripObj[0].tripCost.ToString("c") %></p>
                         <p>Location: <b><%= tripObj[0].tripLocation %></b></p>
                     </div>
-                    <button type="button" class="trip-btn btn btn-primary" data-toggle="modal" data-target="#tripModal<%= tripObj[0].tripId+3 %>">
+                    <button type="button" class="trip-btn btn btn-primary" data-toggle="modal" data-target="#tripModal<%= tripObj[0].tripId+10 %>">
                         View details
                     </button>
                     <br />
                 </div>
             </div>
-            <div class="modal fade" id="tripModal<%=tripObj[0].tripId+3 %>" tabindex="-1" role="dialog" aria-labelledby="tripModal<%=tripObj[0].tripId+3%>" aria-hidden="true">
+            <div class="modal fade" id="tripModal<%=tripObj[0].tripId+10 %>" tabindex="-1" role="dialog" aria-labelledby="tripModal<%=tripObj[0].tripId+10%>" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
