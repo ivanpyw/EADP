@@ -58,7 +58,13 @@
                                 </tr>
                                 <tr>
                                     <td>Trip type:</td>
-                                    <td><asp:TextBox ID="tbAddType" runat="server" CssClass="form-control"></asp:TextBox></td>
+                                    <td>
+                                    <asp:DropDownList ID="DdlAddTripType" CssClass="form-control" runat="server">
+                                        <asp:ListItem Selected="True" Value="-1">--Selected--</asp:ListItem>
+                                        <asp:ListItem Value="1">Study</asp:ListItem>
+                                        <asp:ListItem Value="2">Immersion</asp:ListItem>
+                                    </asp:DropDownList></td>
+
                                 </tr>
                             </table>
                         </div>
@@ -168,6 +174,7 @@
                     <button type="button" class="trip-btn btn btn-primary" data-toggle="modal" data-target="#tripModal<%= tripObj[0].tripId+3 %>">
                         View details
                     </button>
+                    <br />
                 </div>
             </div>
             <div class="modal fade" id="tripModal<%=tripObj[0].tripId+3 %>" tabindex="-1" role="dialog" aria-labelledby="tripModal<%=tripObj[0].tripId+3%>" aria-hidden="true">
