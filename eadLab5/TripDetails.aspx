@@ -17,26 +17,56 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="text-center modal-title">Trip title:
-                                    <asp:TextBox ID="tbAddTitle" runat="server" placeholder="Trip title"></asp:TextBox>
-                            </h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>
+                                        Trip title:
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="tbAddTitle" runat="server" placeholder="Trip title" CssClass="form-control"></asp:TextBox></td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="modal-body">
-                            <p> Trip Location: <asp:TextBox ID="tbAddLocation" runat="server"></asp:TextBox></p>
-                            <p> Images: <asp:FileUpload ID="tripImageUpload" runat="server" />></p>
-                            <p>When:
-                                <asp:TextBox ID="tbAddStart" runat="server" placeholder="Start date"></asp:TextBox>
-                                to
-                                <asp:TextBox ID="tbAddEnd" runat="server" placeholder="End date"></asp:TextBox></p>
-                            <p>Open to sign up: <asp:TextBox ID="tbOpenDay" runat="server" placeholder="Students can sign up on"></asp:TextBox></p>
-                            <p>Activities: <asp:TextBox ID="tbAddActivities" runat="server" TextMode="MultiLine" Width="100%"></asp:TextBox></p>
-                            <p>Estimated cost: <asp:TextBox ID="tbAddCost" runat="server" placeholder="Estimated Cost"></asp:TextBox></p>
-                            <p>Trip type: <asp:TextBox ID="tbAddType" runat="server"></asp:TextBox></p></div>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>Trip Location:</td>
+                                    <td>
+                                        <asp:TextBox ID="tbAddLocation" placeholder="Trip held at" runat="server" CssClass="form-control"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>Images:</td>
+                                    <td><asp:FileUpload ID="tripImageUpload" runat="server" CssClass="form-control-file"/></td>
+                                </tr>
+                                <tr>
+                                    <td>When:</td>
+                                <td><asp:TextBox ID="tbAddStart" runat="server" placeholder="Start date" CssClass="form-control"></asp:TextBox>
+                                    to
+                                <asp:TextBox ID="tbAddEnd" runat="server" placeholder="End date" CssClass="form-control"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>Open to sign up:</td>
+                                    <td><asp:TextBox ID="tbOpenDay" runat="server" placeholder="Students can sign up on" CssClass="form-control"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>Activities:</td>
+                                    <td><asp:TextBox ID="tbAddActivities" runat="server" TextMode="MultiLine" Width="100%" placeholder="Activities to do there" CssClass="form-control"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>Estimated cost:</td>
+                                    <td><asp:TextBox ID="tbAddCost" runat="server" placeholder="Estimated Cost" CssClass="form-control"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>Trip type:</td>
+                                    <td><asp:TextBox ID="tbAddType" runat="server" CssClass="form-control"></asp:TextBox></td>
+                                </tr>
+                            </table>
+                        </div>
                         <div class="modal-footer">
                             <asp:Button ID="addTripBtn" runat="server" Text="Add" OnClick="addTrip" CssClass="btn btn-primary" />
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                Close
+                            </button>
                         </div>
 
                     </div>
@@ -75,13 +105,13 @@
                             <div id="carouselTrip<%=trip.tripId %>" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img class="d-block w-100" src="<%=trip.tripImg %>" alt="First slide" />
+                                        <img class="img-fluid" src="<%=trip.tripImg %>" alt="First slide" />
                                     </div>
                                     <div class="carousel-item">
-                                        <img class="d-block w-100" src="https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1440,w_2560,x_0,y_0/dpr_2.0/c_limit,w_740/fl_lossy,q_auto/v1531451526/180712-Weill--The-Creator-of-Pepe-hero_uionjj" alt="Second slide" />
+                                        <img class="img-fluid" src="https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1440,w_2560,x_0,y_0/dpr_2.0/c_limit,w_740/fl_lossy,q_auto/v1531451526/180712-Weill--The-Creator-of-Pepe-hero_uionjj" alt="Second slide" />
                                     </div>
                                     <div class="carousel-item">
-                                        <img class="d-block w-100" src="https://i.redd.it/pd2h9flg9fmy.png" alt="Third slide" />
+                                        <img class="img-fluid" src="https://i.redd.it/pd2h9flg9fmy.png" alt="Third slide" />
                                     </div>
                                 </div>
                                 <a class="carousel-control-prev" href="#carouselTrip<%=trip.tripId %>" role="button" data-slide="prev">
@@ -93,11 +123,31 @@
                                     <span class="sr-only">Next</span>
                                 </a>
                             </div>
-                            <p>Frequency and duration: <%= trip.tripStart.ToString("MM/dd/yy") %> to <%=trip.tripEnd.ToString("MM/dd/yy") %></p>
-                            <p>Duration: <%=trip.tripDays %></p>
-                            <p>Activities: <%=trip.tripActivities %></p>
-                            <p>Estimated cost: <%=trip.tripCost.ToString("c") %></p>
-                            <p>In charge: <%=trip.staffHonorifics %> <%=trip.staffName %></p>
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td>Frequency and duration:</td>
+                                        <td><%= trip.tripStart.ToString("MM/dd/yy") %> to <%=trip.tripEnd.ToString("MM/dd/yy") %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Duration: </td>
+                                        <td><%=trip.tripDays %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Activities: </td>
+                                        <td><%=trip.tripActivities %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Estimated cost: </td>
+                                        <td><%=trip.tripCost.ToString("c") %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>In charge:</td>
+                                        <td><%=trip.staffHonorifics %> <%=trip.staffName %></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -135,7 +185,7 @@
                             <div id="carouselTrip<%=tripObj[0].tripId+3 %>" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img class="d-block w-100" src="<%=tripObj[0].tripImg %>" alt="First slide" />
+                                        <img class="trip-modal-img" src="<%=tripObj[0].tripImg %>" alt="First slide" />
                                     </div>
                                     <div class="carousel-item">
                                         <img class="d-block w-100" src="https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1440,w_2560,x_0,y_0/dpr_2.0/c_limit,w_740/fl_lossy,q_auto/v1531451526/180712-Weill--The-Creator-of-Pepe-hero_uionjj" alt="Second slide" />
