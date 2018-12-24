@@ -62,25 +62,28 @@ namespace eadLab5.DAL
             return tdList;
         }
 
-        public int updateTrip(int id, string title, DateTime start, DateTime end, int days, string activities, double cost)
+        public int updateTrip(int id, string title,string location,string imgname, DateTime start, DateTime end, DateTime openingday, string activities, double cost,string type)
         {
             StringBuilder sqlStr = new StringBuilder();
             int result = 0;    // Execute NonQuery return an integer value
             SqlCommand sqlCmd = new SqlCommand();
 
             sqlStr.AppendLine("UPDATE Trip");
-            sqlStr.AppendLine("SET TripTitle = @pTitle,Activities = @pActivities, Days =@pDays, Cost = @pCost, TripStart = @pStart, TripEnd = @pEnd ");
+            sqlStr.AppendLine("SET TripTitle = @pTitle,Location = @pLocation,Activities = @pActivities, OpeningDay =@pOpeningday, Cost = @pCost, TripStart = @pStart, TripEnd = @pEnd, [trip type] = @pType ");
             sqlStr.AppendLine("WHERE TripId = @pId");
             SqlConnection myConn = new SqlConnection(DBConnect);
 
             sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
             sqlCmd.Parameters.AddWithValue("@pId", id);
             sqlCmd.Parameters.AddWithValue("@pTitle", title);
+            sqlCmd.Parameters.AddWithValue("@pLocation", location);
+            sqlCmd.Parameters.AddWithValue("@pImg", imgname);
             sqlCmd.Parameters.AddWithValue("@pStart", start);
             sqlCmd.Parameters.AddWithValue("@pEnd", end);
-            sqlCmd.Parameters.AddWithValue("@pDays", days);
+            sqlCmd.Parameters.AddWithValue("@pOpeningday", openingday);
             sqlCmd.Parameters.AddWithValue("@pActivities", activities);
             sqlCmd.Parameters.AddWithValue("@pCost", cost);
+            sqlCmd.Parameters.AddWithValue("@pType", type);
 
             myConn.Open();
             result = sqlCmd.ExecuteNonQuery();

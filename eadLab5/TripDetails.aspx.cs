@@ -36,14 +36,17 @@ namespace eadLab5
 
         protected void AllowEdit(object sender, EventArgs e)
         {
-            tbActivities.ReadOnly = false;
-            tbCost.ReadOnly = false;
-            tbDays.ReadOnly = false;
-            tbStart.ReadOnly = false;
-            tbEnd.ReadOnly = false;
-            tbTitle.ReadOnly = false;
+            tbUpdateActivities.ReadOnly = false;
+            tbUpdateCost.ReadOnly = false;
+            tbUpdateOpeningday.ReadOnly = false;
+            tbUpdateStart.ReadOnly = false;
+            tbUpdateEnd.ReadOnly = false;
+            tbUpdateTitle.ReadOnly = false;
             tbId.ReadOnly = false;
             UpdateBtn.Enabled = true;
+            tbUpdateLocation.ReadOnly = false;
+            tripUploadImg.Enabled = true;
+            DdlUpdateType.Enabled = true;
         }
 
         protected void UpdateTrip(object sender, EventArgs e)
@@ -51,18 +54,22 @@ namespace eadLab5
             TripDAO updTd = new TripDAO();
             int id = Convert.ToInt32(tbId.Text);
             System.Diagnostics.Debug.WriteLine(id+"this is id");
-            string tripTitle = tbTitle.Text;
+            string tripTitle = tbUpdateTitle.Text;
+            string tripLocation = tbUpdateLocation.Text;
+            string tripImgName = SaveFile(tripUploadImg.PostedFile).ToString();
             System.Diagnostics.Debug.WriteLine(tripTitle + "this is title");
-            DateTime tripStart = Convert.ToDateTime(tbStart.Text);
+            DateTime tripStart = Convert.ToDateTime(tbUpdateStart.Text);
             //LOOK AT THIS SHIT, TRIPSTART WORKS BUT END DOESNT
-            System.Diagnostics.Debug.WriteLine(tbStart.Text);
-            DateTime tripEnd = Convert.ToDateTime(tbEnd.Text);
+            System.Diagnostics.Debug.WriteLine(tbUpdateStart.Text);
+            DateTime tripEnd = Convert.ToDateTime(tbUpdateEnd.Text);
             System.Diagnostics.Debug.WriteLine(tripEnd);
-            int tripDays = Convert.ToInt32(tbDays.Text);
-            string tripActivities = tbActivities.Text;
-            double tripCost = Convert.ToInt16(tbCost.Text);
-            System.Diagnostics.Debug.WriteLine(tbCost.Text+"This is cost");
-            int results = updTd.updateTrip(id,tripTitle,tripStart,tripEnd,tripDays,tripActivities,tripCost);
+            DateTime tripOpeningDay = Convert.ToDateTime(tbUpdateOpeningday.Text);
+            string tripActivities = tbUpdateActivities.Text;
+            double tripCost = Convert.ToInt16(tbUpdateCost.Text);
+            System.Diagnostics.Debug.WriteLine(tbUpdateCost.Text+"This is cost");
+            string tripType = DdlUpdateType.SelectedValue;
+            int results = updTd.updateTrip(id,tripTitle,tripLocation,tripImgName,tripStart,tripEnd,tripOpeningDay,tripActivities,tripCost,tripType);
+            Response.Redirect("TripDetails.aspx");
         }
 
         protected void addTrip(object sender, EventArgs e)

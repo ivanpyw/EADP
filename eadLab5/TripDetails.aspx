@@ -16,63 +16,75 @@
             <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="text-center">Add Trip</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                         <div class="modal-body">
                             <table class="table table-bordered">
                                 <tr>
-                                    <td>
-                                        Trip title:
-                                        
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Trip title is required" ControlToValidate="tbAddTitle" Text="*"></asp:RequiredFieldValidator>
+                                    <td>Trip title:
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Trip title is required" ControlToValidate="tbAddTitle" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator>
                                     </td>
                                     <td>
                                         <asp:TextBox ID="tbAddTitle" runat="server" placeholder="Trip title" CssClass="form-control"></asp:TextBox></td>
                                 </tr>
                                 <tr>
-                                    <td>Trip Location:<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Location is required" Text="*" ControlToValidate="tbAddLocation"></asp:RequiredFieldValidator></td>
-                                    
+                                    <td>Trip Location:<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Location is required" Text="*" ControlToValidate="tbAddLocation" ValidationGroup="1"></asp:RequiredFieldValidator></td>
+
                                     <td>
                                         <asp:TextBox ID="tbAddLocation" placeholder="Trip held at" runat="server" CssClass="form-control"></asp:TextBox></td>
                                 </tr>
                                 <tr>
-                                    <td>Images:<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Image required" ControlToValidate="tripImageUpload" Text="*"></asp:RequiredFieldValidator></td>
-                                    <td><asp:FileUpload ID="tripImageUpload" runat="server" CssClass="form-control-file"/></td>
-                                </tr>
-                                <tr>
-                                    <td>When:<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Start date required" ControlToValidate="tbAddStart" Text="*"></asp:RequiredFieldValidator><asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="End date required" ControlToValidate="tbAddEnd" Text="*"></asp:RequiredFieldValidator></td>
-                                <td><asp:TextBox ID="tbAddStart" runat="server" placeholder="Start date" CssClass="form-control"></asp:TextBox>
-                                    to
-                                <asp:TextBox ID="tbAddEnd" runat="server" placeholder="End date" CssClass="form-control"></asp:TextBox></td>
-                                </tr>
-                                <tr>
-                                    <td>Open to sign up:<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Trip open date required" ControlToValidate="tbOpenDay" Text="*"></asp:RequiredFieldValidator></td>
-                                    <td><asp:TextBox ID="tbOpenDay" runat="server" placeholder="Students can sign up on" CssClass="form-control"></asp:TextBox></td>
-                                </tr>
-                                <tr>
-                                    <td>Activities:<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Activities required" ControlToValidate="tbAddActivities" Text="*"></asp:RequiredFieldValidator></td>
-                                    <td><asp:TextBox ID="tbAddActivities" runat="server" TextMode="MultiLine" Width="100%" placeholder="Activities to do there" CssClass="form-control"></asp:TextBox></td>
-                                </tr>
-                                <tr>
-                                    <td>Estimated cost:<asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Cost required" ControlToValidate="tbAddCost" Text="*"></asp:RequiredFieldValidator></td>
-                                    <td><asp:TextBox ID="tbAddCost" runat="server" placeholder="Estimated Cost" CssClass="form-control"></asp:TextBox></td>
-                                </tr>
-                                <tr>
-                                    <td>Trip type:<asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="Please select type of trip" ControlToValidate="DdlAddTripType" Text="*"></asp:RequiredFieldValidator></td>
+                                    <td>Images:<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Image required" ControlToValidate="tripImageUpload" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
                                     <td>
-                                    <asp:DropDownList ID="DdlAddTripType" CssClass="form-control" runat="server">
-                                        <asp:ListItem Selected="True" Value="-1">--Selected--</asp:ListItem>
-                                        <asp:ListItem Value="1">Study</asp:ListItem>
-                                        <asp:ListItem Value="2">Immersion</asp:ListItem>
-                                    </asp:DropDownList></td>
+                                        <asp:FileUpload ID="tripImageUpload" runat="server" CssClass="form-control-file" /></td>
+                                </tr>
+                                <tr>
+                                    <td>From:<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Start date required" ControlToValidate="tbAddStart" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
+                                    <td>
+                                        <asp:TextBox ID="tbAddStart" runat="server" placeholder="Start date" CssClass="form-control" TextMode="Date"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>To:<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="End date required" ControlToValidate="tbAddEnd" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
+                                    <td>
+                                        <asp:TextBox ID="tbAddEnd" runat="server" placeholder="End date" CssClass="form-control" TextMode="Date"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>Open to sign up:<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Trip open date required" ControlToValidate="tbOpenDay" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
+                                    <td>
+                                        <asp:TextBox ID="tbOpenDay" runat="server" placeholder="Students can sign up on" CssClass="form-control" TextMode="Date"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>Activities:<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Activities required" ControlToValidate="tbAddActivities" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
+                                    <td>
+                                        <asp:TextBox ID="tbAddActivities" runat="server" TextMode="MultiLine" Width="100%" placeholder="Activities to do there" CssClass="form-control"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>Estimated cost:<asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Cost required" ControlToValidate="tbAddCost" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
+                                    <td>
+                                        <asp:TextBox ID="tbAddCost" runat="server" placeholder="Estimated Cost" CssClass="form-control"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>Trip type:<asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="Type of trip required" ControlToValidate="DdlAddTripType" Text="*" InitialValue="-1" ValidationGroup="1"></asp:RequiredFieldValidator></td>
+                                    <td>
+                                        <asp:DropDownList ID="DdlAddTripType" CssClass="form-control" runat="server">
+                                            <asp:ListItem Selected="True" Value="-1">--Selected--</asp:ListItem>
+                                            <asp:ListItem Value="1">Study</asp:ListItem>
+                                            <asp:ListItem Value="2">Immersion</asp:ListItem>
+                                        </asp:DropDownList></td>
 
                                 </tr>
                             </table>
                         </div>
                         <div class="modal-footer">
-                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="1" />
                             <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
                                 Close
                             </button>
-                            <asp:Button ID="addTripBtn" runat="server" Text="Add" OnClick="addTrip" CssClass="btn btn-primary" />
+                            <asp:Button ID="addTripBtn" runat="server" Text="Add" OnClick="addTrip" CssClass="btn btn-primary" ValidationGroup="1" />
                         </div>
 
                     </div>
@@ -181,69 +193,82 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="text-center modal-title">Trip title: </h5>
-                            <%--<input id="tbTitle" type="text" value="<%=tripObj[0].tripTitle %>" disabled="true"/>--%>
-                            <asp:TextBox ID="tbTitle" runat="server" ReadOnly="True"></asp:TextBox>
+                            <h5>Update</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div id="carouselTrip<%=tripObj[0].tripId+3 %>" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img class="trip-modal-img" src="<%=tripObj[0].tripImg %>" alt="First slide" />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100" src="https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1440,w_2560,x_0,y_0/dpr_2.0/c_limit,w_740/fl_lossy,q_auto/v1531451526/180712-Weill--The-Creator-of-Pepe-hero_uionjj" alt="Second slide" />
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100" src="https://i.redd.it/pd2h9flg9fmy.png" alt="Third slide" />
-                                    </div>
-                                </div>
-                                <a class="carousel-control-prev" href="#carouselTrip<%=tripObj[0].tripId+3 %>" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#carouselTrip<%=tripObj[0].tripId+3 %>" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
-                            <p>
-                                When:
-                                    <asp:TextBox ID="tbStart" runat="server" ReadOnly="True"></asp:TextBox>
-                                to
-                                    <asp:TextBox ID="tbEnd" runat="server" ReadOnly="True"></asp:TextBox>
-                            </p>
-                            <p>
-                                Duration:
-                                    <asp:TextBox ID="tbDays" runat="server" ReadOnly="True"></asp:TextBox>
-                                <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
-                            </p>
-                            <p>
-                                Activities:
-                                    <asp:TextBox ID="tbActivities" runat="server" ReadOnly="True"></asp:TextBox>
-                            </p>
-                            <p>
-                                Estimated cost:
-                                    <asp:TextBox ID="tbCost" runat="server" ReadOnly="True"></asp:TextBox>
-                            </p>
-                            <asp:TextBox ID="tbId" runat="server" ReadOnly="True" Font-Size="10"></asp:TextBox>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>Trip title:<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="Trip title is required" ControlToValidate="tbUpdateTitle" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator> </td>
+                                    <td>
+                                        <asp:TextBox ID="tbUpdateTitle" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>Trip location:<asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="Location is required" Text="*" ControlToValidate="tbUpdateLocation" ValidationGroup="2"></asp:RequiredFieldValidator></td>
+                                    <td>
+                                        <asp:TextBox ID="tbUpdateLocation" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>Image:<asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="Image required" ControlToValidate="tripUploadImg" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator></td>
+                                    <td>
+                                        <asp:FileUpload ID="tripUploadImg" runat="server" Enabled="False" /><img id="tripImg" class="img-thumbnail" src="" /></td>
+                                </tr>
+                                <tr>
+                                    <td>From:<asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ErrorMessage="Start date required" ControlToValidate="tbUpdateStart" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator></td>
+                                    <td>
+                                        <asp:TextBox ID="tbUpdateStart" runat="server" ReadOnly="True" CssClass="form-control" TextMode="Date"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>To:<asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" Text="*" ValidationGroup="2" ErrorMessage="End date required" ControlToValidate="tbUpdateEnd"></asp:RequiredFieldValidator></td>
+                                    <td>
+                                        <asp:TextBox ID="tbUpdateEnd" runat="server" ReadOnly="True" CssClass="form-control" TextMode="Date"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>Open to sign up:<asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ErrorMessage="Trip open date required" ControlToValidate="tbUpdateOpeningDay" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator></td>
+                                    <td>
+                                        <asp:TextBox ID="tbUpdateOpeningday" runat="server" ReadOnly="True" CssClass="form-control" TextMode="Date"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>Activities:<asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ErrorMessage="Activities required" ControlToValidate="tbUpdateActivities" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator></td>
+                                    <td>
+                                        <asp:TextBox ID="tbUpdateActivities" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>Estimated cost:<asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ErrorMessage="Cost required" ControlToValidate="tbUpdateCost" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator></td>
+                                    <td>
+                                        <asp:TextBox ID="tbUpdateCost" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <td>Trip type:<asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ErrorMessage="Type of trip required" ControlToValidate="DdlUpdateType" Text="*" InitialValue="-1"></asp:RequiredFieldValidator></td>
+                                    <td>
+                                        <asp:DropDownList ID="DdlUpdateType" CssClass="form-control" runat="server" Enabled="False">
+                                            <asp:ListItem Selected="True" Value="-1">--Selected--</asp:ListItem>
+                                            <asp:ListItem Value="Study">Study</asp:ListItem>
+                                            <asp:ListItem Value="Immersion">Immersion</asp:ListItem>
+                                        </asp:DropDownList></td>
+                                </tr>
+                            </table>
                         </div>
-                        <script>
-                            document.getElementById("ContentPlaceHolder1_tbId").value = "<%=tripObj[0].tripId%>"
-                            document.getElementById("ContentPlaceHolder1_tbTitle").value = "<%=tripObj[0].tripTitle%>";
-                            document.getElementById("ContentPlaceHolder1_tbStart").value = "<%=tripObj[0].tripStart.ToString("MM/dd/yy")%>";
-                            document.getElementById("ContentPlaceHolder1_tbEnd").value = "<%=tripObj[0].tripEnd.ToString("MM/dd/yy")%>";
-                            document.getElementById("ContentPlaceHolder1_tbDays").value = "<%=tripObj[0].tripDays%>";
-                            document.getElementById("ContentPlaceHolder1_tbActivities").value = "<%=tripObj[0].tripActivities%>";
-                            document.getElementById("ContentPlaceHolder1_tbCost").value = "<%=tripObj[0].tripCost%>";
-                        </script>
                         <div class="modal-footer">
+                            <asp:ValidationSummary ID="ValidationSummary2" runat="server" ValidationGroup="2" />
+                            <asp:TextBox ID="tbId" runat="server" ReadOnly="True" Font-Size="0"></asp:TextBox>
                             <asp:Button ID="EnableBtn" runat="server" Text="Enable edit" OnClick="AllowEdit" CausesValidation="False" />
                             <asp:Button ID="UpdateBtn" runat="server" Text="Update" Enabled="False" OnClick="UpdateTrip" />
                         </div>
+                        <script>
+                            document.getElementById("ContentPlaceHolder1_tbId").value = "<%=tripObj[0].tripId%>"
+                            document.getElementById("ContentPlaceHolder1_tbUpdateLocation").value = "<%=tripObj[0].tripLocation%>";
+                            document.getElementById("ContentPlaceHolder1_tbUpdateTitle").value = "<%=tripObj[0].tripTitle%>";
+                            document.getElementById("tripImg").src = "<%=tripObj[0].tripImg%>";
+                            document.getElementById("ContentPlaceHolder1_tbUpdateStart").value = "<%=tripObj[0].tripStart.ToString("yyyy'-'MM'-'dd")%>";
+                            document.getElementById("ContentPlaceHolder1_tbUpdateEnd").value = "<%=tripObj[0].tripEnd.ToString("yyyy'-'MM'-'dd")%>";
+                            document.getElementById("ContentPlaceHolder1_tbUpdateOpeningday").value = "<%=tripObj[0].tripOpen.ToString("yyyy'-'MM'-'dd")%>";
+                            document.getElementById("ContentPlaceHolder1_tbUpdateActivities").value = "<%=tripObj[0].tripActivities%>";
+                            document.getElementById("ContentPlaceHolder1_tbUpdateCost").value = "<%=tripObj[0].tripCost%>";
+                            document.getElementById("ContentPlaceHolder1_DdlUpdateType").value = "<%=tripObj[0].tripType%>";
+                        </script>
                     </div>
                 </div>
             </div>
