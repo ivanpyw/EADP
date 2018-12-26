@@ -1,9 +1,57 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeBehind="TripDetails.aspx.cs" Inherits="eadLab5.TripDetails" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Content/SarasaStyleSheet.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script>
+        function addTripValidation(sender,args) {
+            var start = document.getElementById("ContentPlaceHolder1_tbAddStart").value;
+            var end = document.getElementById("ContentPlaceHolder1_tbAddEnd").value;
+            if (start != "" && end != "") {
+                if (end > start) {
+                    args.IsValid = true;
+                } else {
+                    args.IsValid = false;
+                }
+            }
+        }
+
+        function addOpenValidation(sender, args) {
+            var start = document.getElementById("ContentPlaceHolder1_tbAddStart").value;
+            var open = document.getElementById("ContentPlaceHolder1_tbOpenDay").value;
+            if(start != "" && open != "")
+                if (open > start) {
+                    args.IsValid = false;
+                } else {
+                    args.IsValid = true;
+                }
+        }
+        function addTripCompareNowStart(sender, args) {
+            var start = document.getElementById("ContentPlaceHolder1_tbAddStart").value;
+            var current = new Date();
+            var tripStart = new Date(start.toString());
+            if (start != "") {
+                if (current > tripStart) {
+                    args.IsValid = false;
+                } else {
+                    args.IsValid = true;
+                }
+            }
+        }
+        function addTripCompareNowOpen(sender, args) {
+            var open = document.getElementById("ContentPlaceHolder1_tbOpenDay").value;
+            var current = new Date();
+            var tripOpen = new Date(open.toString());
+            if (open != ""){
+                alert(current > tripOpen)
+                if (current > tripOpen) {
+                    args.IsValid = false;
+                } else {
+                    args.IsValid = true;
+                }
+            }
+        }
+    </script>
     <div id="trips-tab">
         <nav class="nav nav-pills nav-justified">
             <a class="nav-item nav-link active" href="#">Immersion trips</a>
@@ -32,10 +80,11 @@
                                         <asp:TextBox ID="tbAddTitle" runat="server" placeholder="Trip title" CssClass="form-control"></asp:TextBox></td>
                                 </tr>
                                 <tr>
-                                    <td>Trip Location:<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Location is required" Text="*" ControlToValidate="tbAddLocation" ValidationGroup="1"></asp:RequiredFieldValidator></td>
+                                    <td>Trip Location:<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Location is required" Text="*" ControlToValidate="ddlAddLocation" ValidationGroup="1"></asp:RequiredFieldValidator></td>
 
                                     <td>
-                                        <asp:TextBox ID="tbAddLocation" placeholder="Trip held at" runat="server" CssClass="form-control"></asp:TextBox></td>
+                                        <%--<asp:TextBox ID="tbAddLocation" placeholder="Trip held at" runat="server" CssClass="form-control"></asp:TextBox></td>--%>
+                                        <asp:DropDownList ID="ddlAddLocation" runat="server" CssClass="form-control"></asp:DropDownList>
                                 </tr>
                                 <tr>
                                     <td>Images:<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Image required" ControlToValidate="tripImageUpload" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
@@ -43,7 +92,7 @@
                                         <asp:FileUpload ID="tripImageUpload" runat="server" CssClass="form-control-file" /></td>
                                 </tr>
                                 <tr>
-                                    <td>From:<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Start date required" ControlToValidate="tbAddStart" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
+                                    <td>From:<asp:CustomValidator ID="CustomValidator5" runat="server" ErrorMessage="Trip start date cannot be in the past" ClientValidationFunction="addTripCompareNowStart" Text="*" ValidationGroup="1"></asp:CustomValidator><asp:CustomValidator ID="CustomValidator3" runat="server" ErrorMessage="Trip start date must be before trip end date" ClientValidationFunction="addTripValidation" ValidationGroup="1" Text="*"></asp:CustomValidator><asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Start date required" ControlToValidate="tbAddStart" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
                                     <td>
                                         <asp:TextBox ID="tbAddStart" runat="server" placeholder="Start date" CssClass="form-control" TextMode="Date"></asp:TextBox></td>
                                 </tr>
@@ -53,7 +102,7 @@
                                         <asp:TextBox ID="tbAddEnd" runat="server" placeholder="End date" CssClass="form-control" TextMode="Date"></asp:TextBox></td>
                                 </tr>
                                 <tr>
-                                    <td>Open to sign up:<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Trip open date required" ControlToValidate="tbOpenDay" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
+                                    <td>Open to sign up:<asp:CustomValidator ID="CustomValidator6" runat="server" ErrorMessage="Trip open date cannot be in the past" Text="*" ClientValidationFunction="addTripCompareNowOpen" ValidationGroup="1"></asp:CustomValidator><asp:CustomValidator ID="CustomValidator4" runat="server" ErrorMessage="Trip open date must be before trip start date" ValidationGroup="1" ClientValidationFunction="addOpenValidation" Text="*"></asp:CustomValidator><asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Trip open date required" ControlToValidate="tbOpenDay" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
                                     <td>
                                         <asp:TextBox ID="tbOpenDay" runat="server" placeholder="Students can sign up on" CssClass="form-control" TextMode="Date"></asp:TextBox></td>
                                 </tr>
@@ -84,7 +133,7 @@
                             <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
                                 Close
                             </button>
-                            <asp:Button ID="addTripBtn" runat="server" Text="Add" OnClick="addTrip" CssClass="btn btn-primary" ValidationGroup="1" />
+                            <asp:Button ID="addTripBtn" runat="server" Text="Add" OnClick="addTrip" CssClass="btn btn-primary" ValidationGroup="1"/>
                         </div>
 
                     </div>
@@ -216,7 +265,7 @@
                                         <asp:FileUpload ID="tripUploadImg" runat="server" Enabled="False" /><img id="tripImg" class="img-thumbnail" src="" /></td>
                                 </tr>
                                 <tr>
-                                    <td>From:<asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ErrorMessage="Start date required" ControlToValidate="tbUpdateStart" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator></td>
+                                    <td>From:<asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Trip start date must be before trip end date" ValidationGroup="2"></asp:CustomValidator><asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ErrorMessage="Start date required" ControlToValidate="tbUpdateStart" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator></td>
                                     <td>
                                         <asp:TextBox ID="tbUpdateStart" runat="server" ReadOnly="True" CssClass="form-control" TextMode="Date"></asp:TextBox></td>
                                 </tr>
@@ -226,7 +275,7 @@
                                         <asp:TextBox ID="tbUpdateEnd" runat="server" ReadOnly="True" CssClass="form-control" TextMode="Date"></asp:TextBox></td>
                                 </tr>
                                 <tr>
-                                    <td>Open to sign up:<asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ErrorMessage="Trip open date required" ControlToValidate="tbUpdateOpeningDay" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator></td>
+                                    <td>Open to sign up:<asp:CustomValidator ID="CustomValidator2" runat="server" ErrorMessage="Trip open date must be before trip start date" ValidationGroup="2"></asp:CustomValidator><asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ErrorMessage="Trip open date required" ControlToValidate="tbUpdateOpeningDay" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator></td>
                                     <td>
                                         <asp:TextBox ID="tbUpdateOpeningday" runat="server" ReadOnly="True" CssClass="form-control" TextMode="Date"></asp:TextBox></td>
                                 </tr>

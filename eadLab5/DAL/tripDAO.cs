@@ -44,7 +44,7 @@ namespace eadLab5.DAL
                     myTd.tripDays = Convert.ToInt32((Convert.ToDateTime(row["TripEnd"]).Subtract(Convert.ToDateTime(row["TripStart"])).TotalDays));
                     myTd.tripCost = Convert.ToInt16(row["Cost"]);
                     myTd.tripImg = row["Image"].ToString();
-                    myTd.tripType = row["Trip type"].ToString();
+                    myTd.tripType = row["TripType"].ToString();
                     myTd.tripStart = Convert.ToDateTime(row["TripStart"]);
                     myTd.tripEnd = Convert.ToDateTime(row["TripEnd"]);
                     myTd.tripStatus = row["Status"].ToString();
@@ -69,7 +69,7 @@ namespace eadLab5.DAL
             SqlCommand sqlCmd = new SqlCommand();
 
             sqlStr.AppendLine("UPDATE Trip");
-            sqlStr.AppendLine("SET TripTitle = @pTitle,Location = @pLocation,Activities = @pActivities, OpeningDay =@pOpeningday, Cost = @pCost, TripStart = @pStart, TripEnd = @pEnd, [trip type] = @pType ");
+            sqlStr.AppendLine("SET TripTitle = @pTitle,Location = @pLocation,Activities = @pActivities, OpeningDay =@pOpeningday, Cost = @pCost, TripStart = @pStart, TripEnd = @pEnd, TripType = @pType ");
             sqlStr.AppendLine("WHERE TripId = @pId");
             SqlConnection myConn = new SqlConnection(DBConnect);
 
@@ -97,7 +97,7 @@ namespace eadLab5.DAL
             int result = 0;
             SqlCommand sqlCmd = new SqlCommand();
 
-            sqlStr.AppendLine("INSERT INTO Trip(Location,Image,TripTitle,OpeningDay,TripStart,TripEnd,Activities,cost,[Trip type],status,staffId)");
+            sqlStr.AppendLine("INSERT INTO Trip(Location,Image,TripTitle,OpeningDay,TripStart,TripEnd,Activities,cost,TripType,status,staffId)");
             sqlStr.AppendLine("VALUES (@pLocation,@pImage,@pTitle,@pOpeningDay,@pStart,@pEnd,@pActivities,@pCost,@pType,'pending',1)");
 
             SqlConnection myConn = new SqlConnection(DBConnect);
@@ -119,6 +119,29 @@ namespace eadLab5.DAL
 
             myConn.Close();
             return result;
+        }
+
+        public List<String> getCountry()
+        {
+            List<String> country = new List<string>();
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            StringBuilder sqlCommand = new StringBuilder();
+            sqlCommand.AppendLine("select CountryName from country");
+            SqlDataAdapter da = new SqlDataAdapter(sqlCommand.ToString(), myConn);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "Country");
+            List<string> cName = new List<string>();
+            int countryRow = ds.Tables["Country"].Rows.Count;
+            for (int i = 0; i < countryRow; i++)
+            {
+                DataRow row3 = ds.Tables["Country"].Rows[i];
+                foreach (DataColumn column in ds.Tables["Country"].Columns)
+                {
+                    country.Add(row3[column].ToString());
+
+                }
+            }
+            return country;
         }
     }
 }

@@ -19,6 +19,9 @@ namespace eadLab5
         {
             tripObj = tripDao.getTrip();
             count = tripDao.count;
+            List<String> countryList = tripDao.getCountry();
+            ddlAddLocation.DataSource = countryList;
+            ddlAddLocation.DataBind();
         }
 
 
@@ -53,7 +56,7 @@ namespace eadLab5
         {
             TripDAO updTd = new TripDAO();
             int id = Convert.ToInt32(tbId.Text);
-            System.Diagnostics.Debug.WriteLine(id+"this is id");
+            System.Diagnostics.Debug.WriteLine(id + "this is id");
             string tripTitle = tbUpdateTitle.Text;
             string tripLocation = tbUpdateLocation.Text;
             string tripImgName = SaveFile(tripUploadImg.PostedFile).ToString();
@@ -66,24 +69,28 @@ namespace eadLab5
             DateTime tripOpeningDay = Convert.ToDateTime(tbUpdateOpeningday.Text);
             string tripActivities = tbUpdateActivities.Text;
             double tripCost = Convert.ToInt16(tbUpdateCost.Text);
-            System.Diagnostics.Debug.WriteLine(tbUpdateCost.Text+"This is cost");
+            System.Diagnostics.Debug.WriteLine(tbUpdateCost.Text + "This is cost");
             string tripType = DdlUpdateType.SelectedValue;
-            int results = updTd.updateTrip(id,tripTitle,tripLocation,tripImgName,tripStart,tripEnd,tripOpeningDay,tripActivities,tripCost,tripType);
+            int results = updTd.updateTrip(id, tripTitle, tripLocation, tripImgName, tripStart, tripEnd, tripOpeningDay, tripActivities, tripCost, tripType);
             Response.Redirect("TripDetails.aspx");
         }
 
         protected void addTrip(object sender, EventArgs e)
         {
-            TripDAO addTD = new DAL.TripDAO();
-            if (tripImageUpload.HasFile)
+            if (Page.IsValid)
             {
-                
-                int results = addTD.insertTrip(tbAddLocation.Text, SaveFile(tripImageUpload.PostedFile).ToString(), tbAddTitle.Text, Convert.ToDateTime(tbAddStart.Text), Convert.ToDateTime(tbAddEnd.Text), Convert.ToDateTime(tbOpenDay.Text), tbAddActivities.Text, Convert.ToInt16(tbAddCost.Text), DdlAddTripType.SelectedItem.Text);
-                Response.Redirect("TripDetails.aspx");
-            }
-            else
-            {
-                //add validations? later la
+                TripDAO addTD = new DAL.TripDAO();
+                if (tripImageUpload.HasFile)
+                {
+
+                    int results = addTD.insertTrip(ddlAddLocation.SelectedValue, SaveFile(tripImageUpload.PostedFile).ToString(), tbAddTitle.Text, Convert.ToDateTime(tbAddStart.Text), Convert.ToDateTime(tbAddEnd.Text), Convert.ToDateTime(tbOpenDay.Text), tbAddActivities.Text, Convert.ToInt16(tbAddCost.Text), DdlAddTripType.SelectedItem.Text);
+
+                    Response.Redirect("TripDetails.aspx");
+                }
+                else
+                {
+                    //add validations? later la
+                }
             }
         }
     }
