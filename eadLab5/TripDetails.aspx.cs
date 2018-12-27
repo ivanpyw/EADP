@@ -36,47 +36,6 @@ namespace eadLab5
             file.SaveAs(fullPath);
             return savePath;
         }
-
-        protected void AllowEdit(object sender, EventArgs e)
-        {
-            tbUpdateActivities.ReadOnly = false;
-            tbUpdateCost.ReadOnly = false;
-            tbUpdateOpeningday.ReadOnly = false;
-            tbUpdateStart.ReadOnly = false;
-            tbUpdateEnd.ReadOnly = false;
-            tbUpdateTitle.ReadOnly = false;
-            tbId.ReadOnly = false;
-            UpdateBtn.Enabled = true;
-            CancelBtn.Enabled = true;
-            DelTrip.Enabled = true;
-            tbUpdateLocation.ReadOnly = false;
-            tripUploadImg.Enabled = true;
-            DdlUpdateType.Enabled = true;
-        }
-
-        protected void UpdateTrip(object sender, EventArgs e)
-        {
-            TripDAO updTd = new TripDAO();
-            int id = Convert.ToInt32(tbId.Text);
-            System.Diagnostics.Debug.WriteLine(id + "this is id");
-            string tripTitle = tbUpdateTitle.Text;
-            string tripLocation = tbUpdateLocation.Text;
-            string tripImgName = SaveFile(tripUploadImg.PostedFile).ToString();
-            System.Diagnostics.Debug.WriteLine(tripTitle + "this is title");
-            DateTime tripStart = Convert.ToDateTime(tbUpdateStart.Text);
-            //LOOK AT THIS SHIT, TRIPSTART WORKS BUT END DOESNT
-            System.Diagnostics.Debug.WriteLine(tbUpdateStart.Text);
-            DateTime tripEnd = Convert.ToDateTime(tbUpdateEnd.Text);
-            System.Diagnostics.Debug.WriteLine(tripEnd);
-            DateTime tripOpeningDay = Convert.ToDateTime(tbUpdateOpeningday.Text);
-            string tripActivities = tbUpdateActivities.Text;
-            double tripCost = Convert.ToInt16(tbUpdateCost.Text);
-            System.Diagnostics.Debug.WriteLine(tbUpdateCost.Text + "This is cost");
-            string tripType = DdlUpdateType.SelectedValue;
-            int results = updTd.updateTrip(id, tripTitle, tripLocation, tripImgName, tripStart, tripEnd, tripOpeningDay, tripActivities, tripCost, tripType);
-            Response.Redirect("TripDetails.aspx");
-        }
-
         protected void addTrip(object sender, EventArgs e)
         {
             if (Page.IsValid)
@@ -94,15 +53,6 @@ namespace eadLab5
                     //add validations? later la
                 }
             }
-        }
-
-        protected void DelTrip_Click(object sender, EventArgs e)
-        {
-            TripDAO delTD = new DAL.TripDAO();
-            int id = Convert.ToInt32(tbId.Text);
-            int results = delTD.delTrip(id);
-            System.Diagnostics.Debug.WriteLine(id + "this is id");
-            Response.Redirect("TripDetails.aspx");
         }
     }
 }
