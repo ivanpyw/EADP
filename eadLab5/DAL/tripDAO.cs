@@ -143,5 +143,59 @@ namespace eadLab5.DAL
             }
             return country;
         }
+
+        public int delTrip(int id)
+        {
+            StringBuilder sqlStr = new StringBuilder();
+            int result = 0;    // Execute NonQuery return an integer value
+            SqlCommand sqlCmd = new SqlCommand();
+
+            sqlStr.AppendLine("UPDATE Trip");
+            sqlStr.AppendLine("SET Status = 'Cancelled'");
+            sqlStr.AppendLine("WHERE TripId = @pId");
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+            sqlCmd.Parameters.AddWithValue("@pId", id);
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+            myConn.Close();
+            return result;
+        }
+
+        public Trip getTripById(int id)
+        {
+            Trip tripDetails = new DAL.Trip();
+            DataSet ds = new DataSet();
+            DataTable tdData = new DataTable();
+
+            StringBuilder sqlStr = new StringBuilder();
+            sqlStr.AppendLine("SELECT * FROM Trip");
+            sqlStr.AppendLine("where TripId = @pTripId");
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            SqlDataAdapter da = new SqlDataAdapter(sqlStr.ToString(), myConn);
+
+            da.SelectCommand.Parameters.AddWithValue("pTripId", id);
+            da.Fill(ds, "TripTable");
+
+            int rec_cnt = ds.Tables["TripTable"].Rows.Count;
+            if (rec_cnt > 0)
+            {
+                DataRow row = ds.Tables["TripTable"].Rows[0];
+                tripDetails.tripTitle = row["TripTitle"].ToString();
+                tripDetails.tripLocation = row["Location"].ToString();
+                tripDetails.tripImg = row["Image"].ToString();
+                tripDetails.tripStart = Convert.ToDateTime(row["TripStart"]);
+                tripDetails.tripEnd = Convert.ToDateTime(row["TripEnd"]);
+                tripDetails.tripOpen = Convert.ToDateTime(row["OpeningDay"]);
+                tripDetails.tripActivities = row["Activities"].ToString();
+                tripDetails.tripCost = Convert.ToInt16(row["Cost"]);
+                tripDetails.tripType = row["TripType"].ToString();
+            }else
+            {
+                tripDetails = null;
+            }
+            return tripDetails;
+        }
     }
 }

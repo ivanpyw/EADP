@@ -123,6 +123,7 @@
     <Content Include="Content\SarasaStyleSheet.css" />
     <Content Include="Corporate.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="EditTripDetails.aspx" />
     <Content Include="Enquiry.aspx" />
     <Content Include="FeedBackFormStudent.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -205,6 +206,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditTripDetails.aspx.cs">
+      <DependentUpon>EditTripDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditTripDetails.aspx.designer.cs">
+      <DependentUpon>EditTripDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Enquiry.aspx.cs">
       <DependentUpon>Enquiry.aspx</DependentUpon>

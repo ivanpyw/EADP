@@ -9,21 +9,44 @@ using System.Web.UI.WebControls;
 
 namespace eadLab5
 {
-    public partial class TripDetails : System.Web.UI.Page
+    public partial class EditTripDetails : System.Web.UI.Page
     {
-
-        protected int count = 0;
-        protected List<Trip> tripObj = null;
-        TripDAO tripDao = new TripDAO();
+        public int tripid = 0;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            tripObj = tripDao.getTrip();
-            count = tripDao.count;
+            TripDAO tripDao = new TripDAO();
             List<String> countryList = tripDao.getCountry();
-            ddlAddLocation.DataSource = countryList;
-            ddlAddLocation.DataBind();
+            ddlUpdateLocation.DataSource = countryList;
+            ddlUpdateLocation.DataBind();
+            tripid = Convert.ToInt32(Request.QueryString["tripId"]);
+            Trip tripObj = tripDao.getTripById(tripid);
+            tbUpdateTitle.Text = tripObj.tripTitle.ToString();
+            ddlUpdateLocation.SelectedValue = tripObj.tripLocation.ToString();
+            tripImage.ImageUrl = tripObj.tripImg.ToString();
+            tbUpdateStart.Text = tripObj.tripStart.ToString("yyyy-MM-dd");
+            tbUpdateEnd.Text = tripObj.tripEnd.ToString("yyyy-MM-dd");
+            tbUpdateOpeningday.Text = tripObj.tripOpen.ToString("yyyy-MM-dd");
+            tbUpdateActivities.Text = tripObj.tripActivities;
+            tbUpdateCost.Text = tripObj.tripCost.ToString();
+            DdlUpdateType.SelectedValue = tripObj.tripType.ToString();
         }
 
+        protected void AllowEdit(object sender, EventArgs e)
+        {
+            tbUpdateActivities.ReadOnly = false;
+            tbUpdateCost.ReadOnly = false;
+            tbUpdateOpeningday.ReadOnly = false;
+            tbUpdateStart.ReadOnly = false;
+            tbUpdateEnd.ReadOnly = false;
+            tbUpdateTitle.ReadOnly = false;
+            UpdateBtn.Enabled = true;
+            CancelBtn.Enabled = true;
+            DelTrip.Enabled = true;
+            ddlUpdateLocation.Enabled = true;
+            tripUploadImg.Enabled = true;
+            DdlUpdateType.Enabled = true;
+        }
 
         string SaveFile(HttpPostedFile file)
         {
@@ -37,30 +60,13 @@ namespace eadLab5
             return savePath;
         }
 
-        protected void AllowEdit(object sender, EventArgs e)
-        {
-            tbUpdateActivities.ReadOnly = false;
-            tbUpdateCost.ReadOnly = false;
-            tbUpdateOpeningday.ReadOnly = false;
-            tbUpdateStart.ReadOnly = false;
-            tbUpdateEnd.ReadOnly = false;
-            tbUpdateTitle.ReadOnly = false;
-            tbId.ReadOnly = false;
-            UpdateBtn.Enabled = true;
-            CancelBtn.Enabled = true;
-            DelTrip.Enabled = true;
-            tbUpdateLocation.ReadOnly = false;
-            tripUploadImg.Enabled = true;
-            DdlUpdateType.Enabled = true;
-        }
-
         protected void UpdateTrip(object sender, EventArgs e)
         {
             TripDAO updTd = new TripDAO();
-            int id = Convert.ToInt32(tbId.Text);
+            int id = 0;
             System.Diagnostics.Debug.WriteLine(id + "this is id");
             string tripTitle = tbUpdateTitle.Text;
-            string tripLocation = tbUpdateLocation.Text;
+            string tripLocation = ddlUpdateLocation.SelectedValue;
             string tripImgName = SaveFile(tripUploadImg.PostedFile).ToString();
             System.Diagnostics.Debug.WriteLine(tripTitle + "this is title");
             DateTime tripStart = Convert.ToDateTime(tbUpdateStart.Text);
@@ -77,29 +83,10 @@ namespace eadLab5
             Response.Redirect("TripDetails.aspx");
         }
 
-        protected void addTrip(object sender, EventArgs e)
-        {
-            if (Page.IsValid)
-            {
-                TripDAO addTD = new DAL.TripDAO();
-                if (tripImageUpload.HasFile)
-                {
-
-                    int results = addTD.insertTrip(ddlAddLocation.SelectedValue, SaveFile(tripImageUpload.PostedFile).ToString(), tbAddTitle.Text, Convert.ToDateTime(tbAddStart.Text), Convert.ToDateTime(tbAddEnd.Text), Convert.ToDateTime(tbOpenDay.Text), tbAddActivities.Text, Convert.ToInt16(tbAddCost.Text), DdlAddTripType.SelectedItem.Text);
-
-                    Response.Redirect("TripDetails.aspx");
-                }
-                else
-                {
-                    //add validations? later la
-                }
-            }
-        }
-
         protected void DelTrip_Click(object sender, EventArgs e)
         {
             TripDAO delTD = new DAL.TripDAO();
-            int id = Convert.ToInt32(tbId.Text);
+            int id = 0;
             int results = delTD.delTrip(id);
             System.Diagnostics.Debug.WriteLine(id + "this is id");
             Response.Redirect("TripDetails.aspx");

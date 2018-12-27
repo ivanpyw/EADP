@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeBehind="TripDetails.aspx.cs" Inherits="eadLab5.TripDetails" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Content/SarasaStyleSheet.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script>
-        function addTripValidation(sender,args) {
+        function addTripValidation(sender, args) {
             var start = document.getElementById("ContentPlaceHolder1_tbAddStart").value;
             var end = document.getElementById("ContentPlaceHolder1_tbAddEnd").value;
             if (start != "" && end != "") {
@@ -19,7 +20,7 @@
         function addOpenValidation(sender, args) {
             var start = document.getElementById("ContentPlaceHolder1_tbAddStart").value;
             var open = document.getElementById("ContentPlaceHolder1_tbOpenDay").value;
-            if(start != "" && open != "")
+            if (start != "" && open != "")
                 if (open > start) {
                     args.IsValid = false;
                 } else {
@@ -42,7 +43,7 @@
             var open = document.getElementById("ContentPlaceHolder1_tbOpenDay").value;
             var current = new Date();
             var tripOpen = new Date(open.toString());
-            if (open != ""){
+            if (open != "") {
                 alert(current > tripOpen)
                 if (current > tripOpen) {
                     args.IsValid = false;
@@ -85,6 +86,7 @@
                                     <td>
                                         <%--<asp:TextBox ID="tbAddLocation" placeholder="Trip held at" runat="server" CssClass="form-control"></asp:TextBox></td>--%>
                                         <asp:DropDownList ID="ddlAddLocation" runat="server" CssClass="form-control"></asp:DropDownList>
+                                        </td>
                                 </tr>
                                 <tr>
                                     <td>Images:<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Image required" ControlToValidate="tripImageUpload" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
@@ -133,7 +135,7 @@
                             <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
                                 Close
                             </button>
-                            <asp:Button ID="addTripBtn" runat="server" Text="Add" OnClick="addTrip" CssClass="btn btn-primary" ValidationGroup="1"/>
+                            <asp:Button ID="addTripBtn" runat="server" Text="Add" OnClick="addTrip" CssClass="btn btn-primary" ValidationGroup="1" />
                         </div>
 
                     </div>
@@ -250,7 +252,8 @@
                         <div class="modal-body">
                             <table class="table table-bordered">
                                 <tr>
-                                    <td>Trip title:<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="Trip title is required" ControlToValidate="tbUpdateTitle" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator> </td>
+                                    <td>Trip title:<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="Trip title is required" ControlToValidate="tbUpdateTitle" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator>
+                                    </td>
                                     <td>
                                         <asp:TextBox ID="tbUpdateTitle" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox></td>
                                 </tr>
@@ -262,10 +265,10 @@
                                 <tr>
                                     <td>Image:<asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="Image required" ControlToValidate="tripUploadImg" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator></td>
                                     <td>
-                                        <asp:FileUpload ID="tripUploadImg" runat="server" Enabled="False" /><img id="tripImg" class="img-thumbnail" src="" /></td>
+                                        <asp:FileUpload ID="tripUploadImg" runat="server" Enabled="False" /><img id="tripImg" class="img-thumbnail" src="../Images/capture" /></td>
                                 </tr>
                                 <tr>
-                                    <td>From:<asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Trip start date must be before trip end date" ValidationGroup="2"></asp:CustomValidator><asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ErrorMessage="Start date required" ControlToValidate="tbUpdateStart" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator></td>
+                                    <td>From:<asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Trip start date must be before trip end date" ValidationGroup="2" Text="*"></asp:CustomValidator><asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ErrorMessage="Start date required" ControlToValidate="tbUpdateStart" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator></td>
                                     <td>
                                         <asp:TextBox ID="tbUpdateStart" runat="server" ReadOnly="True" CssClass="form-control" TextMode="Date"></asp:TextBox></td>
                                 </tr>
@@ -275,7 +278,7 @@
                                         <asp:TextBox ID="tbUpdateEnd" runat="server" ReadOnly="True" CssClass="form-control" TextMode="Date"></asp:TextBox></td>
                                 </tr>
                                 <tr>
-                                    <td>Open to sign up:<asp:CustomValidator ID="CustomValidator2" runat="server" ErrorMessage="Trip open date must be before trip start date" ValidationGroup="2"></asp:CustomValidator><asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ErrorMessage="Trip open date required" ControlToValidate="tbUpdateOpeningDay" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator></td>
+                                    <td>Open to sign up:<asp:CustomValidator ID="CustomValidator2" runat="server" ErrorMessage="Trip open date must be before trip start date" ValidationGroup="2" Text="*"></asp:CustomValidator><asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ErrorMessage="Trip open date required" ControlToValidate="tbUpdateOpeningDay" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator></td>
                                     <td>
                                         <asp:TextBox ID="tbUpdateOpeningday" runat="server" ReadOnly="True" CssClass="form-control" TextMode="Date"></asp:TextBox></td>
                                 </tr>
@@ -303,8 +306,10 @@
                         <div class="modal-footer">
                             <asp:ValidationSummary ID="ValidationSummary2" runat="server" ValidationGroup="2" />
                             <asp:TextBox ID="tbId" runat="server" ReadOnly="True" Font-Size="0"></asp:TextBox>
-                            <asp:Button ID="EnableBtn" runat="server" Text="Enable edit" OnClick="AllowEdit" CausesValidation="False" />
-                            <asp:Button ID="UpdateBtn" runat="server" Text="Update" Enabled="False" OnClick="UpdateTrip" />
+                            <asp:Button ID="EnableBtn" runat="server" Text="Enable edit" OnClick="AllowEdit" CausesValidation="False" CssClass="btn btn-secondary" />
+                            <asp:Button ID="UpdateBtn" runat="server" Text="Update" Enabled="False" OnClick="UpdateTrip" CssClass="btn btn-success" />
+                            <%--<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteWarning">Delete</button>--%>
+                            <asp:Button ID="CancelBtn" runat="server" Text="Cancel trip" CssClass="btn btn-danger" data-toggle="modal" data-target="#deleteWarning" CausesValidation="False" UseSubmitBehavior="False" OnClientClick="return false;" Enabled="False" />
                         </div>
                         <script>
                             document.getElementById("ContentPlaceHolder1_tbId").value = "<%=tripObj[0].tripId%>"
@@ -318,6 +323,21 @@
                             document.getElementById("ContentPlaceHolder1_tbUpdateCost").value = "<%=tripObj[0].tripCost%>";
                             document.getElementById("ContentPlaceHolder1_DdlUpdateType").value = "<%=tripObj[0].tripType%>";
                         </script>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="deleteWarning" tabindex="-1" role="dialog" aria-labelledby="deleteWarningLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="alert alert-danger">
+                                Warning <i class="fas fa-exclamation-triangle"></i>
+                                <p>Cancelling this trip will notify all students who have signed up for the trip</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <asp:Button ID="DelTrip" runat="server" Text="Cancel trip and notify" CausesValidation="False" OnClick="DelTrip_Click" CssClass="btn btn-danger"/>
+                        </div>
                     </div>
                 </div>
             </div>
