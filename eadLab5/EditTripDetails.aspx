@@ -24,6 +24,7 @@
                     <td>
                         <asp:FileUpload ID="tripUploadImg" runat="server" Enabled="False" />
                         <asp:Image ID="tripImage" runat="server" CssClass="img-thumbnail"/>
+                    </td>
                 </tr>
                 <tr>
                     <td>From:<asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Trip start date must be before trip end date" ValidationGroup="2" Text="*"></asp:CustomValidator><asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ErrorMessage="Start date required" ControlToValidate="tbUpdateStart" Text="*" ValidationGroup="2"></asp:RequiredFieldValidator></td>
