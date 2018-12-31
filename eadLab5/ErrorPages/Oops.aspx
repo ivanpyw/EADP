@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container text-center">
-        <img src="../Images/oops(1).png" class="img-fluid"/>
+        <img src="../Images/oops.png" class="img-fluid"/>
         <h2>Oops! Something went wrong</h2>
         <h5>You may refresh the page or try again later!</h5>
     </div>

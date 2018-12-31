@@ -12,24 +12,34 @@ namespace eadLab5
     public partial class EditTripDetails : System.Web.UI.Page
     {
         public int tripid = 0;
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            TripDAO tripDao = new TripDAO();
-            List<String> countryList = tripDao.getCountry();
-            ddlUpdateLocation.DataSource = countryList;
-            ddlUpdateLocation.DataBind();
-            tripid = Convert.ToInt32(Request.QueryString["tripId"]);
-            Trip tripObj = tripDao.getTripById(tripid);
-            tbUpdateTitle.Text = tripObj.tripTitle.ToString();
-            ddlUpdateLocation.SelectedValue = tripObj.tripLocation.ToString();
-            tripImage.ImageUrl = tripObj.tripImg.ToString();
-            tbUpdateStart.Text = tripObj.tripStart.ToString("yyyy-MM-dd");
-            tbUpdateEnd.Text = tripObj.tripEnd.ToString("yyyy-MM-dd");
-            tbUpdateOpeningday.Text = tripObj.tripOpen.ToString("yyyy-MM-dd");
-            tbUpdateActivities.Text = tripObj.tripActivities;
-            tbUpdateCost.Text = tripObj.tripCost.ToString();
-            DdlUpdateType.SelectedValue = tripObj.tripType.ToString();
+            if (!IsPostBack)
+            {
+                TripDAO tripDao = new TripDAO();
+                List<String> countryList = tripDao.getCountry();
+                ddlUpdateLocation.DataSource = countryList;
+                ddlUpdateLocation.DataBind();
+                tripid = Convert.ToInt32(Request.QueryString["tripId"]);
+                Trip tripObj = tripDao.getTripById(tripid);
+                if (tripObj == null)
+                {
+                    Response.Redirect("asd.aspx");
+                }
+                else
+                {
+                    tbUpdateTitle.Text = tripObj.tripTitle.ToString();
+                    ddlUpdateLocation.SelectedValue = tripObj.tripLocation.ToString();
+                    tripImage.ImageUrl = tripObj.tripImg.ToString();
+                    tbUpdateStart.Text = tripObj.tripStart.ToString("yyyy-MM-dd");
+                    tbUpdateEnd.Text = tripObj.tripEnd.ToString("yyyy-MM-dd");
+                    tbUpdateOpeningday.Text = tripObj.tripOpen.ToString("yyyy-MM-dd");
+                    tbUpdateActivities.Text = tripObj.tripActivities;
+                    tbUpdateCost.Text = tripObj.tripCost.ToString();
+                    DdlUpdateType.SelectedValue = tripObj.tripType.ToString();
+                }
+            }
         }
 
         protected void AllowEdit(object sender, EventArgs e)
