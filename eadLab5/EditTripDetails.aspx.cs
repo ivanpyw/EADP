@@ -11,18 +11,17 @@ namespace eadLab5
 {
     public partial class EditTripDetails : System.Web.UI.Page
     {
-        public int tripid = 0;
-
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 TripDAO tripDao = new TripDAO();
                 List<String> countryList = tripDao.getCountry();
                 ddlUpdateLocation.DataSource = countryList;
                 ddlUpdateLocation.DataBind();
-                tripid = Convert.ToInt32(Request.QueryString["tripId"]);
-                Trip tripObj = tripDao.getTripById(tripid);
+                int tripId = Convert.ToInt32(Request.QueryString["tripId"]);
+                Trip tripObj = tripDao.getTripById(tripId);
                 if (tripObj == null)
                 {
                     Response.Redirect("asd.aspx");
@@ -73,8 +72,8 @@ namespace eadLab5
         protected void UpdateTrip(object sender, EventArgs e)
         {
             TripDAO updTd = new TripDAO();
-            int id = 0;
-            System.Diagnostics.Debug.WriteLine(id + "this is id");
+            int tripId = Convert.ToInt32(Request.QueryString["tripId"]);
+            System.Diagnostics.Debug.WriteLine(tripId + "this is id");
             string tripTitle = tbUpdateTitle.Text;
             string tripLocation = ddlUpdateLocation.SelectedValue;
             string tripImgName = SaveFile(tripUploadImg.PostedFile).ToString();
@@ -89,7 +88,7 @@ namespace eadLab5
             double tripCost = Convert.ToInt16(tbUpdateCost.Text);
             System.Diagnostics.Debug.WriteLine(tbUpdateCost.Text + "This is cost");
             string tripType = DdlUpdateType.SelectedValue;
-            int results = updTd.updateTrip(id, tripTitle, tripLocation, tripImgName, tripStart, tripEnd, tripOpeningDay, tripActivities, tripCost, tripType);
+            int results = updTd.updateTrip(tripId, tripTitle, tripLocation, tripImgName, tripStart, tripEnd, tripOpeningDay, tripActivities, tripCost, tripType);
             Response.Redirect("TripDetails.aspx");
         }
 
