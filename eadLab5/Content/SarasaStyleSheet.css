@@ -23,3 +23,8 @@
 .add-trip-btn{
     display: flex;
 }
+
+.trip-modal-img{
+    width: 466px;
+    height: 262px
+}

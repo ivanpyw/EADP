@@ -1,6 +1,7 @@
 ﻿using eadLab5.DAL;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -18,43 +19,40 @@ namespace eadLab5
         {
             tripObj = tripDao.getTrip();
             count = tripDao.count;
+            List<String> countryList = tripDao.getCountry();
+            ddlAddLocation.DataSource = countryList;
+            ddlAddLocation.DataBind();
         }
 
-        protected void AllowEdit(object sender, EventArgs e)
+
+        string SaveFile(HttpPostedFile file)
         {
-            tbActivities.ReadOnly = false;
-            tbCost.ReadOnly = false;
-            tbDays.ReadOnly = false;
-            tbStart.ReadOnly = false;
-            tbEnd.ReadOnly = false;
-            tbTitle.ReadOnly = false;
-            tbId.ReadOnly = false;
-            UpdateBtn.Enabled = true;
+            string savePath = "../Images/";
+            //string filename = file.FileName + DateTime.Now.ToString("ddmmyyyyfffffff");
+            string filename = Path.GetFileNameWithoutExtension(file.FileName);
+            string ext = Path.GetExtension(file.FileName);
+            savePath += filename + DateTime.Now.ToString("ddmmyyyyfffffff") + ext;
+            string fullPath = Path.Combine(Server.MapPath("~/Images"), savePath);
+            file.SaveAs(fullPath);
+            return savePath;
         }
-
-        protected void UpdateTrip(object sender, EventArgs e)
-        {
-            TripDAO updTd = new TripDAO();
-            int id = Convert.ToInt32(tbId.Text);
-            System.Diagnostics.Debug.WriteLine(id+"this is id");
-            string tripTitle = tbTitle.Text;
-            System.Diagnostics.Debug.WriteLine(tripTitle + "this is title");
-            DateTime tripStart = Convert.ToDateTime(tbStart.Text);
-            //LOOK AT THIS SHIT, TRIPSTART WORKS BUT END DOESNT
-            System.Diagnostics.Debug.WriteLine(tbStart.Text);
-            DateTime tripEnd = Convert.ToDateTime(tbEnd.Text);
-            System.Diagnostics.Debug.WriteLine(tripEnd);
-            int tripDays = Convert.ToInt32(tbDays.Text);
-            string tripActivities = tbActivities.Text;
-            double tripCost = Convert.ToInt16(tbCost.Text);
-            System.Diagnostics.Debug.WriteLine(tbCost.Text+"This is cost");
-            int results = updTd.updateTrip(id,tripTitle,tripStart,tripEnd,tripDays,tripActivities,tripCost);
-        }
-
         protected void addTrip(object sender, EventArgs e)
         {
-            TripDAO addTD = new DAL.TripDAO();
-            int results = addTD.insertTrip(Convert.ToInt32(tbAddId.Text),tbAddLocation.Text,tbAddTitle.Text, Convert.ToDateTime(tbAddStart.Text), Convert.ToDateTime(tbAddEnd.Text), Convert.ToInt32(tbAddDays.Text), tbAddActivities.Text, Convert.ToInt16(tbAddCost.Text),tbAddType.Text);
+            if (Page.IsValid)
+            {
+                TripDAO addTD = new DAL.TripDAO();
+                if (tripImageUpload.HasFile)
+                {
+
+                    int results = addTD.insertTrip(ddlAddLocation.SelectedValue, SaveFile(tripImageUpload.PostedFile).ToString(), tbAddTitle.Text, Convert.ToDateTime(tbAddStart.Text), Convert.ToDateTime(tbAddEnd.Text), Convert.ToDateTime(tbOpenDay.Text), tbAddActivities.Text, Convert.ToInt16(tbAddCost.Text), DdlAddTripType.SelectedItem.Text);
+
+                    Response.Redirect("TripDetails.aspx");
+                }
+                else
+                {
+                    //add validations? later la
+                }
+            }
         }
     }
 }
