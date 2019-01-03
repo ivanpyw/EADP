@@ -33,13 +33,23 @@ namespace eadLab5
             Response.Redirect("StaffViewSpecificFeedBack.aspx");
         }
 
+        public string flipDate(string originalD)
+        {
+            string year = originalD.Substring(0, 4);
+            string month = originalD.Substring(5, 2);
+            string day = originalD.Substring(8, 2);
+            string newdate = day + "-" + month + "-" + year;
+            return newdate;
+        }
         protected void FilterBtn_Click(object sender, EventArgs e)
         {
             if (CountryFilterDropDown.SelectedIndex > 0 && AffordabilityFilterDropDown.SelectedIndex > 0)
             {
                 FeedbackFormDAO tdDAO = new FeedbackFormDAO();
                 List<FeedbackForm> tdList = new List<FeedbackForm>();
-                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), txtDateCheckStart.Text, txtDateCheckEnd.Text);
+                string startD = flipDate( txtDateCheckStart.Text);
+                string endD = flipDate(txtDateCheckEnd.Text);                
+                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), startD, endD);
                 GridView_GetFB.DataSource = tdList;
                 GridView_GetFB.DataBind();
             }
