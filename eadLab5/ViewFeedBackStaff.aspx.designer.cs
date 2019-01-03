@@ -13,24 +13,6 @@ namespace eadLab5 {
     public partial class ViewFeedBackStaff {
         
         /// <summary>
-        /// GridView_GetFB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView_GetFB;
-        
-        /// <summary>
-        /// LabelFilter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelFilter;
-        
-        /// <summary>
         /// CountryFilter control.
         /// </summary>
         /// <remarks>
@@ -67,6 +49,42 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.DropDownList AffordabilityFilterDropDown;
         
         /// <summary>
+        /// FreedomFilterDropDown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList FreedomFilterDropDown;
+        
+        /// <summary>
+        /// txtDateCheckStart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDateCheckStart;
+        
+        /// <summary>
+        /// txtDateCheckEnd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDateCheckEnd;
+        
+        /// <summary>
+        /// LabelFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelFilter;
+        
+        /// <summary>
         /// FilterBtn control.
         /// </summary>
         /// <remarks>
@@ -74,5 +92,14 @@ namespace eadLab5 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button FilterBtn;
+        
+        /// <summary>
+        /// GridView_GetFB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView_GetFB;
     }
 }

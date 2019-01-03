@@ -39,7 +39,7 @@ namespace eadLab5
             {
                 FeedbackFormDAO tdDAO = new FeedbackFormDAO();
                 List<FeedbackForm> tdList = new List<FeedbackForm>();
-                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString());
+                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), txtDateCheckStart.Text, txtDateCheckEnd.Text);
                 GridView_GetFB.DataSource = tdList;
                 GridView_GetFB.DataBind();
             }
@@ -47,7 +47,7 @@ namespace eadLab5
             {
                 FeedbackFormDAO tdDAO = new FeedbackFormDAO();
                 List<FeedbackForm> tdList = new List<FeedbackForm>();
-                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString());
+                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), txtDateCheckStart.Text, txtDateCheckEnd.Text);
                 GridView_GetFB.DataSource = tdList;
                 GridView_GetFB.DataBind();
             }
@@ -55,7 +55,7 @@ namespace eadLab5
             {
                 FeedbackFormDAO tdDAO = new FeedbackFormDAO();
                 List<FeedbackForm> tdList = new List<FeedbackForm>();
-                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString());
+                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), txtDateCheckStart.Text, txtDateCheckEnd.Text);
                 GridView_GetFB.DataSource = tdList;
                 GridView_GetFB.DataBind();
             }
@@ -67,9 +67,11 @@ namespace eadLab5
                 GridView_GetFB.DataSource = tdList;
                 GridView_GetFB.DataBind();
                 LabelFilter.Visible = true;
-                LabelFilter.Text = "Please select one a valid index in the dropdown below";
+                LabelFilter.Text = "Please select a valid index in the dropdown above";
             }
 
         }
+
+       
     }
 }

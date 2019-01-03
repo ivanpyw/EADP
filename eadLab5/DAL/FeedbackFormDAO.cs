@@ -14,7 +14,7 @@ namespace eadLab5.DAL
     {
         // Place the DBConnect to class variable to be shared by all the methodsin this class
         string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
-        public int InsertTD(string Affordability, string Enjoyment, string Freedom, string ReviewPros, string ReviewCons, string ReviewImprovement, string StudentName, string Country, string AdminNo, int TripId)
+        public int InsertTD(string Affordability, string Enjoyment, string Freedom, string ReviewPros, string ReviewCons, string ReviewImprovement, string StudentName, string Country, string AdminNo, int TripId, string DateCreated)
         {
 
             StringBuilder sqlStr = new StringBuilder();
@@ -24,8 +24,8 @@ namespace eadLab5.DAL
 
             //         parameterised query in values clause
             //
-            sqlStr.AppendLine("INSERT INTO FeedBack(Affordability,Enjoyment,Freedom,ReviewPros,ReviewCons,ReviewImprovement, StudentName, Country, AdminNo, TripId) ");
-            sqlStr.AppendLine("VALUES (@paraAffordability,@paraEnjoyment,@paraFreedom,@paraReviewPros,@paraReviewCons,@paraReviewImprovement,@paraStudentName,@paraCountry,@paraAdminNo,@paraTripId)");
+            sqlStr.AppendLine("INSERT INTO FeedBack(Affordability,Enjoyment,Freedom,ReviewPros,ReviewCons,ReviewImprovement, StudentName, Country, AdminNo, TripId, DateCreated) ");
+            sqlStr.AppendLine("VALUES (@paraAffordability,@paraEnjoyment,@paraFreedom,@paraReviewPros,@paraReviewCons,@paraReviewImprovement,@paraStudentName,@paraCountry,@paraAdminNo,@paraTripId,@paraDateCreated)");
 
             // Step 2 :Instantiate SqlConnection instance and SqlCommand instance
 
@@ -46,6 +46,7 @@ namespace eadLab5.DAL
             sqlCmd.Parameters.AddWithValue("@paraCountry", Country);
             sqlCmd.Parameters.AddWithValue("@paraAdminNo", AdminNo);
             sqlCmd.Parameters.AddWithValue("@paraTripId", TripId);
+            sqlCmd.Parameters.AddWithValue("@paraDateCreated", DateCreated);
 
 
             // Step 4 Open connection the execute NonQuery of sql command   
@@ -185,7 +186,7 @@ namespace eadLab5.DAL
         }
         
 
-        public List<FeedbackForm> GetFilteredFeedBacks(string Country, string Affordability)
+        public List<FeedbackForm> GetFilteredFeedBacks(string Country, string Affordability, string Freedom, string DateStart, string DateEnd)
         {
             // Step 2 : declare a list to hold collection of customer's timeDeposit
             //           DataSet instance and dataTable instance 
@@ -199,7 +200,7 @@ namespace eadLab5.DAL
 
             StringBuilder sqlStr = new StringBuilder();
             sqlStr.AppendLine("SELECT * From FeedBack");
-            sqlStr.AppendLine("WHERE Country = @paraCountry and Affordability = @paraAffordability");
+            sqlStr.AppendLine("WHERE Country = @paraCountry and Affordability = @paraAffordability and Freedom = @paraFreedom and DateCreated BETWEEN @paraDateStart and @paraDateEnd");
 
             // Step 4 :Instantiate SqlConnection instance and SqlDataAdapter instance
 
@@ -209,6 +210,9 @@ namespace eadLab5.DAL
             // Step 5 :add value to parameter 
             da.SelectCommand.Parameters.AddWithValue("paraCountry", Country);
             da.SelectCommand.Parameters.AddWithValue("paraAffordability", Affordability);
+            da.SelectCommand.Parameters.AddWithValue("paraFreedom", Freedom);
+            da.SelectCommand.Parameters.AddWithValue("paraDateStart", DateStart);
+            da.SelectCommand.Parameters.AddWithValue("paraDateEnd", DateEnd);
 
             // Step 6: fill dataset
             da.Fill(ds, "TableTD");

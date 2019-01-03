@@ -27,12 +27,13 @@ namespace eadLab5
             String StudName = "Ivan";
             String AdminNo = "171058L";
             String Country = "Beijing";
-        
-         try
+            String DateCreated = DateTime.Now.ToString("dd/MM/yyyy");
+
+            try
             {
                 
         FeedbackFormDAO FBF = new FeedbackFormDAO();
-        int insCnt = FBF.InsertTD(Affordability, Enjoyment, Freedom, ReviewPros, ReviewCons, ReviewCons, StudName, Country, AdminNo, TripId);
+        int insCnt = FBF.InsertTD(Affordability, Enjoyment, Freedom, ReviewPros, ReviewCons, ReviewCons, StudName, Country, AdminNo, TripId, DateCreated);
                 if (insCnt == 1)
                 {
                     LblResult.Text = "Feedback Submitted! Thank you!";

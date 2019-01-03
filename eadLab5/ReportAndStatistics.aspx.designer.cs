@@ -10,69 +10,51 @@
 namespace eadLab5 {
     
     
-    public partial class ViewFeedBackStaff {
+    public partial class ReportAndStatistics {
         
         /// <summary>
-        /// GridView_GetFB control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView_GetFB;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// LabelFilter control.
+        /// Chart1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelFilter;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart1;
         
         /// <summary>
-        /// CountryFilter control.
+        /// Chart2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CountryFilter;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart2;
         
         /// <summary>
-        /// CountryFilterDropDown control.
+        /// AZURETEST control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList CountryFilterDropDown;
+        protected global::System.Web.UI.WebControls.SqlDataSource AZURETEST;
         
         /// <summary>
-        /// AffordableFilter control.
+        /// AZURE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AffordableFilter;
-        
-        /// <summary>
-        /// AffordabilityFilterDropDown control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList AffordabilityFilterDropDown;
-        
-        /// <summary>
-        /// FilterBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button FilterBtn;
+        protected global::System.Web.UI.WebControls.SqlDataSource AZURE;
     }
 }
