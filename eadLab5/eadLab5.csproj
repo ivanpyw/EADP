@@ -198,6 +198,8 @@
     <Compile Include="DAL\FeedbackFormDAO.cs" />
     <Compile Include="DAL\interestRte.cs" />
     <Compile Include="DAL\InterestRteDAO.cs" />
+    <Compile Include="DAL\Student.cs" />
+    <Compile Include="DAL\StudentDAO.cs" />
     <Compile Include="DAL\timeDeposit.cs" />
     <Compile Include="DAL\timeDepositDAO.cs" />
     <Compile Include="DAL\Trip.cs" />
