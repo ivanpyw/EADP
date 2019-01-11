@@ -131,6 +131,7 @@
                                 Warning <i class="fas fa-exclamation-triangle"></i>
                                 <p>Cancelling this trip will notify all students who have signed up for the trip</p>
                             </div>
+                            <p>Reasons: </p><asp:TextBox ID="tbReason" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="modal-footer">
                             <asp:Button ID="DelTrip" runat="server" Text="Cancel trip and notify" CausesValidation="False" OnClick="DelTrip_Click" CssClass="btn btn-danger"/>
