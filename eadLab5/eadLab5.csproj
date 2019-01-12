@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JWT, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JWT.2.3.2\lib\net45\JWT.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -92,6 +96,10 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="OpenTok, Version=3.1.6873.25151, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTok.3.1.0\lib\net452\OpenTok.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -131,6 +139,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Images\Capture.PNG" />
     <Content Include="Images\oops.png" />
+    <Content Include="Interview.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -240,6 +249,13 @@
     </Compile>
     <Compile Include="FeedBackFormStudent.aspx.designer.cs">
       <DependentUpon>FeedBackFormStudent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interview.aspx.cs">
+      <DependentUpon>Interview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interview.aspx.designer.cs">
+      <DependentUpon>Interview.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage1.master.cs">
       <DependentUpon>MasterPage1.master</DependentUpon>
