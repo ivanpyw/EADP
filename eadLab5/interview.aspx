@@ -7,14 +7,16 @@
         <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
     <div class="container">
         <div id="videos">
-            <div id="subscriber">
-                <div id="publisher"></div>
+            <div id="subscriber">Mr Tham
             </div>
+            <div class="container">
+            <div id="publisher">You</div>
+                </div>
         </div>
         <script type="text/javascript">
             var apiKey = "46243942";
-            var sessionId = "2_MX40NjI0Mzk0Mn5-MTU0NzI4Mzg4NzI2NX4zTkZ1VmxhdDBzWm51UHFyNmlKQVRxUXJ-fg";
-            var token = "T1==cGFydG5lcl9pZD00NjI0Mzk0MiZzaWc9ZWM0ODIwNzQ1NDA3MTM4MzM5ZDNiMjNmMWJhZjM3ZmY1Mjk4NTkxNTpzZXNzaW9uX2lkPTJfTVg0ME5qSTBNemswTW41LU1UVTBOekk0TXpnNE56STJOWDR6VGtaMVZteGhkREJ6V201MVVIRnlObWxLUVZSeFVYSi1mZyZjcmVhdGVfdGltZT0xNTQ3MjgzOTMxJm5vbmNlPTAuODMxOTg0NzYzMDc3MzEwMSZyb2xlPXB1Ymxpc2hlciZleHBpcmVfdGltZT0xNTQ3Mjg3NTMzJmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9";
+            var sessionId = "2_MX40NjI0Mzk0Mn5-MTU0NzMwNzQwNDU2NH52aWFaYmJleTk3dnhwVk9pTWZtWlZBQXZ-UH4";
+            var token = "T1==cGFydG5lcl9pZD00NjI0Mzk0MiZzaWc9NTQ4ZWYwMjAwY2JkYWRmYzIzOGZmMDQ2ZTNmZGQzYjk5NGZkMGVjYjpzZXNzaW9uX2lkPTJfTVg0ME5qSTBNemswTW41LU1UVTBOek13TnpRd05EVTJOSDUyYVdGYVltSmxlVGszZG5od1ZrOXBUV1p0V2xaQlFYWi1VSDQmY3JlYXRlX3RpbWU9MTU0NzMwNzQwNyZub25jZT00MTk4NyZyb2xlPVBVQkxJU0hFUg==";
 
             // (optional) add server code here
             initializeSession();

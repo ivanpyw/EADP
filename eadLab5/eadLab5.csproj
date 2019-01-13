@@ -129,6 +129,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Interview.css" />
     <Content Include="Content\SarasaStyleSheet.css" />
     <Content Include="Corporate.aspx" />
     <Content Include="Default.aspx" />
@@ -177,7 +178,9 @@
     <Content Include="ViewFeedBacksSubmitted.aspx" />
     <Content Include="ViewFeedBackStaff.aspx" />
     <Content Include="WaitingList.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Acknowledge.aspx.cs">

@@ -8,18 +8,18 @@
 
 #subscriber {
     position: relative;
-    width: 30%;
-    height: 30%;
+    width: 40%;
+    height: 40%;
     z-index: 10;
 }
 
 #publisher {
-    position: absolute;
     width: 360px;
     height: 240px;
-    bottom: 10px;
+    bottom: 50px;
     left: 10px;
-    z-index: 1;
+    z-index: 10;
     border: 3px solid white;
     border-radius: 3px;
+    margin: 0 auto;
 }

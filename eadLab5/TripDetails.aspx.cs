@@ -17,7 +17,7 @@ namespace eadLab5
         TripDAO tripDao = new TripDAO();
         protected void Page_Load(object sender, EventArgs e)
         {
-            tripObj = tripDao.getTrip();
+            tripObj = tripDao.getTrip("Study");
             count = tripDao.count;
             List<String> countryList = tripDao.getCountry();
             ddlAddLocation.DataSource = countryList;
