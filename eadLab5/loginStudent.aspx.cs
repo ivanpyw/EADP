@@ -39,6 +39,8 @@ namespace eadLab5
                 }
                 else
                 {
+                    Session["AdminNo"] = stuObj.AdminNo;
+                    Session["Year"] = stuObj.Year;
                     Response.Redirect("student.aspx");
                 }
             }

@@ -38,7 +38,8 @@ namespace eadLab5
                 }
                 else
                 {
-                    //Session["PEMClass"] = logObj.PEMClass;
+                    Session["Staffid"] = logObj.Staffid;
+                    Session["role"] = logObj.Role;
                     Response.Redirect("PEMMain.aspx");
                 }
             }

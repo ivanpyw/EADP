@@ -45,6 +45,7 @@ namespace eadLab5.DAL
                 DataRow row = ds.Tables["custTable"].Rows[0];  // Sql command returns only one record
                 obj.AdminNo = row["AdminNo"].ToString();
                 obj.Password = row["Password"].ToString();
+                
             }
             else
             {
