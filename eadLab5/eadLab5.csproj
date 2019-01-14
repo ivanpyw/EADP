@@ -159,6 +159,8 @@
     <Content Include="Images\Capture.PNG" />
     <Content Include="Images\oops.png" />
     <Content Include="Interview.aspx" />
+    <Content Include="loginStaff.aspx" />
+    <Content Include="loginStudent.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -171,6 +173,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="PEMMain.aspx" />
     <Content Include="ReportAndStatistics.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -188,6 +191,7 @@
     <Content Include="Scripts\jquery-2.2.4.js" />
     <Content Include="Scripts\jquery-2.2.4.min.js" />
     <Content Include="StaffViewSpecificFeedBack.aspx" />
+    <Content Include="student.aspx" />
     <Content Include="TermDeposit.aspx" />
     <Content Include="TermDepositPlacement.aspx" />
     <Content Include="TermDepositUpdate.aspx" />
@@ -228,8 +232,12 @@
     <Compile Include="DAL\FeedbackFormDAO.cs" />
     <Compile Include="DAL\interestRte.cs" />
     <Compile Include="DAL\InterestRteDAO.cs" />
+    <Compile Include="DAL\StaffLogin.cs" />
+    <Compile Include="DAL\StaffLoginDAO.cs" />
     <Compile Include="DAL\Student.cs" />
     <Compile Include="DAL\StudentDAO.cs" />
+    <Compile Include="DAL\StudentLogin.cs" />
+    <Compile Include="DAL\StudentLoginDAO.cs" />
     <Compile Include="DAL\timeDeposit.cs" />
     <Compile Include="DAL\timeDepositDAO.cs" />
     <Compile Include="DAL\Trip.cs" />
@@ -278,9 +286,30 @@
     <Compile Include="Interview.aspx.designer.cs">
       <DependentUpon>Interview.aspx</DependentUpon>
     </Compile>
+    <Compile Include="loginStaff.aspx.cs">
+      <DependentUpon>loginStaff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="loginStaff.aspx.designer.cs">
+      <DependentUpon>loginStaff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="loginStudent.aspx.cs">
+      <DependentUpon>loginStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="loginStudent.aspx.designer.cs">
+      <DependentUpon>loginStudent.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MasterPage1.master.cs">
       <DependentUpon>MasterPage1.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PEMMain.aspx.cs">
+      <DependentUpon>PEMMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PEMMain.aspx.designer.cs">
+      <DependentUpon>PEMMain.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportAndStatistics.aspx.cs">
@@ -296,6 +325,13 @@
     </Compile>
     <Compile Include="StaffViewSpecificFeedBack.aspx.designer.cs">
       <DependentUpon>StaffViewSpecificFeedBack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student.aspx.cs">
+      <DependentUpon>student.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student.aspx.designer.cs">
+      <DependentUpon>student.aspx</DependentUpon>
     </Compile>
     <Compile Include="TermDeposit.aspx.cs">
       <DependentUpon>TermDeposit.aspx</DependentUpon>
