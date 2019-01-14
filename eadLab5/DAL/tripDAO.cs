@@ -23,7 +23,10 @@ namespace eadLab5.DAL
             StringBuilder tripCommand = new StringBuilder();
             tripCommand.AppendLine("Select * from Trip t");
             tripCommand.AppendLine("INNER JOIN Staff s on s.StaffId = t.StaffId ");
-            tripCommand.AppendLine("WHERE TripType = '"+tripType+"' AND Status <> 'Cancelled'" );
+            if(tripType == null)
+                tripCommand.AppendLine("WHERE TripType = '' OR 1=1 AND Status <> 'Cancelled'");
+            else
+                tripCommand.AppendLine("WHERE TripType = '" + tripType + "' AND Status <> 'Cancelled'");
             Trip obj = new Trip();
 
             SqlConnection myConn = new SqlConnection(DBConnect);

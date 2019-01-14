@@ -14,14 +14,27 @@ namespace eadLab5
 
         protected int count = 0;
         protected List<Trip> tripObj = null;
+        protected string tripType = null;
         TripDAO tripDao = new TripDAO();
         protected void Page_Load(object sender, EventArgs e)
         {
-            tripObj = tripDao.getTrip("Study");
+            tripType = Request.QueryString["tripType"];
+            tripObj = tripDao.getTrip(tripType);
             count = tripDao.count;
             List<String> countryList = tripDao.getCountry();
             ddlAddLocation.DataSource = countryList;
             ddlAddLocation.DataBind();
+            if(tripType == "")
+            {
+                System.Diagnostics.Debug.WriteLine("its empty");
+            }else if(tripType == null)
+            {
+                System.Diagnostics.Debug.WriteLine("its null");
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine(tripType);
+            }
         }
 
 

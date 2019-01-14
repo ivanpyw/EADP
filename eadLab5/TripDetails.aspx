@@ -58,8 +58,24 @@
     </div>
     <div id="trips-tab">
         <nav class="nav nav-pills nav-justified">
-                <a class="nav-item nav-link active" href="#immerseTrip" data-toggle="pill" aria-controls="immerseTrip" aria-selected="true">Immersion trips</a>
-                <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Study" aria-controls="studyTrip" aria-selected="false">Study trips</a>
+            <% if (tripType == null)
+                { %>
+            <a class="nav-item nav-link active" href="#immerseTrip" data-toggle="pill" aria-controls="allTrip" aria-selected="true">All trips</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Immersion" aria-controls="immerseTrip" aria-selected="false">Immersion trips</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Study" aria-controls="studyTrip" aria-selected="false">Study trips</a>
+            <% }
+    else if (tripType == "Immersion")
+    { %>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?" aria-controls="studyTrip" aria-selected="false">All trips</a>
+            <a class="nav-item nav-link active" href="#immerseTrip" data-toggle="pill" aria-controls="immerseTrip" aria-selected="true">Immersion trips</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Study" aria-controls="studyTrip" aria-selected="false">Study trips</a>
+            <% }
+    else if (tripType == "Study")
+    { %>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?" aria-controls="studyTrip" aria-selected="false">All trips</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Immersion" aria-controls="immerseTrip" aria-selected="false">Immersion trips</a>
+            <a class="nav-item nav-link active" href="#studyTrip" data-toggle="pill" aria-controls="immerseTrip" aria-selected="true">Study trips</a>
+            <% } %>
         </nav>
     </div>
     <form runat="server">
@@ -145,86 +161,86 @@
             </div>
         </div>
         <div class="row">
-                    <% foreach (var trip in tripObj)
-                        { %>
-                    <div class="col-md-4">
-                        <div class="text-center trip-panels">
-                            <h4><%= trip.tripTitle %></h4>
-                            <img src="<%=trip.tripImg %>" class="trip-image" />
-                            <div class="trip-text">
-                                <p>Program period: <%=trip.tripStart.ToString("MM/dd/yy") %> to <%= trip.tripEnd.ToString("MM/dd/yy") %></p>
-                                <p>Program duration: <%= trip.tripDays %></p>
-                                <p>Expected cost: <%= trip.tripCost.ToString("c") %></p>
-                                <p>Location: <b><%= trip.tripLocation %></b></p>
-                            </div>
-                            <button type="button" class="btn btn-primary trip-btn" data-toggle="modal" data-target="#tripModal<%= trip.tripId %>">
-                                View details
+            <% foreach (var trip in tripObj)
+                { %>
+            <div class="col-md-4">
+                <div class="text-center trip-panels">
+                    <h4><%= trip.tripTitle %></h4>
+                    <img src="<%=trip.tripImg %>" class="trip-image" />
+                    <div class="trip-text">
+                        <p>Program period: <%=trip.tripStart.ToString("MM/dd/yy") %> to <%= trip.tripEnd.ToString("MM/dd/yy") %></p>
+                        <p>Program duration: <%= trip.tripDays %></p>
+                        <p>Expected cost: <%= trip.tripCost.ToString("c") %></p>
+                        <p>Location: <b><%= trip.tripLocation %></b></p>
+                    </div>
+                    <button type="button" class="btn btn-primary trip-btn" data-toggle="modal" data-target="#tripModal<%= trip.tripId %>">
+                        View details
+                    </button>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="tripModal<%=trip.tripId %>" tabindex="-1" role="dialog" aria-labelledby="tripModal<%=trip.tripId %>" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="text-center modal-title"><%=trip.tripTitle %></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                    </div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="tripModal<%=trip.tripId %>" tabindex="-1" role="dialog" aria-labelledby="tripModal<%=trip.tripId %>" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="text-center modal-title"><%=trip.tripTitle %></h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div id="carouselTrip<%=trip.tripId %>" class="carousel slide" data-ride="carousel">
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <img class="img-fluid" src="<%=trip.tripImg %>" alt="First slide" />
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img class="img-fluid" src="https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1440,w_2560,x_0,y_0/dpr_2.0/c_limit,w_740/fl_lossy,q_auto/v1531451526/180712-Weill--The-Creator-of-Pepe-hero_uionjj" alt="Second slide" />
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img class="img-fluid" src="https://i.redd.it/pd2h9flg9fmy.png" alt="Third slide" />
-                                            </div>
-                                        </div>
-                                        <a class="carousel-control-prev" href="#carouselTrip<%=trip.tripId %>" role="button" data-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                        <a class="carousel-control-next" href="#carouselTrip<%=trip.tripId %>" role="button" data-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
+                        <div class="modal-body">
+                            <div id="carouselTrip<%=trip.tripId %>" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="img-fluid" src="<%=trip.tripImg %>" alt="First slide" />
                                     </div>
-                                    <table class="table table-hover">
-                                        <tbody>
-                                            <tr>
-                                                <td>Frequency and duration:</td>
-                                                <td><%= trip.tripStart.ToString("MM/dd/yy") %> to <%=trip.tripEnd.ToString("MM/dd/yy") %></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Duration: </td>
-                                                <td><%=trip.tripDays %></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Activities: </td>
-                                                <td><%=trip.tripActivities %></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Estimated cost: </td>
-                                                <td><%=trip.tripCost.ToString("c") %></td>
-                                            </tr>
-                                            <tr>
-                                                <td>In charge:</td>
-                                                <td><%=trip.staffHonorifics %> <%=trip.staffName %></td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                    <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="btn btn-success">Edit details</a>
+                                    <div class="carousel-item">
+                                        <img class="img-fluid" src="https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1440,w_2560,x_0,y_0/dpr_2.0/c_limit,w_740/fl_lossy,q_auto/v1531451526/180712-Weill--The-Creator-of-Pepe-hero_uionjj" alt="Second slide" />
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="img-fluid" src="https://i.redd.it/pd2h9flg9fmy.png" alt="Third slide" />
+                                    </div>
                                 </div>
+                                <a class="carousel-control-prev" href="#carouselTrip<%=trip.tripId %>" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselTrip<%=trip.tripId %>" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                             </div>
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td>Frequency and duration:</td>
+                                        <td><%= trip.tripStart.ToString("MM/dd/yy") %> to <%=trip.tripEnd.ToString("MM/dd/yy") %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Duration: </td>
+                                        <td><%=trip.tripDays %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Activities: </td>
+                                        <td><%=trip.tripActivities %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Estimated cost: </td>
+                                        <td><%=trip.tripCost.ToString("c") %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>In charge:</td>
+                                        <td><%=trip.staffHonorifics %> <%=trip.staffName %></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="btn btn-success">Edit details</a>
                         </div>
                     </div>
-                    <% } %>
+                </div>
+            </div>
+            <% } %>
         </div>
     </form>
 </asp:Content>
