@@ -235,7 +235,10 @@
 
                                 </tbody>
                             </table>
+                            <% if (role == "Teacher   ")
+                                { %>
                             <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="btn btn-success">Edit details</a>
+                            <% } %>
                         </div>
                     </div>
                 </div>

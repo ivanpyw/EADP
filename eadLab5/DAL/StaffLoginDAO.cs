@@ -51,7 +51,7 @@ namespace eadLab5.DAL
                 obj.Email = row["Email"].ToString();
                 obj.Role = row["Role"].ToString();
                 obj.Password = row["Password"].ToString();
-                obj.PEMClass = row["PEMClass"].ToString();
+                //obj.PEMClass = row["PEMClass"].ToString();
             }
             else
             {
