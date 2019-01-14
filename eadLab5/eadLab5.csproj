@@ -191,7 +191,7 @@
     <Content Include="Scripts\jquery-2.2.4.js" />
     <Content Include="Scripts\jquery-2.2.4.min.js" />
     <Content Include="StaffViewSpecificFeedBack.aspx" />
-    <Content Include="student.aspx" />
+    <Content Include="Student.aspx" />
     <Content Include="TermDeposit.aspx" />
     <Content Include="TermDepositPlacement.aspx" />
     <Content Include="TermDepositUpdate.aspx" />
@@ -326,12 +326,12 @@
     <Compile Include="StaffViewSpecificFeedBack.aspx.designer.cs">
       <DependentUpon>StaffViewSpecificFeedBack.aspx</DependentUpon>
     </Compile>
-    <Compile Include="student.aspx.cs">
-      <DependentUpon>student.aspx</DependentUpon>
+    <Compile Include="Student.aspx.cs">
+      <DependentUpon>Student.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="student.aspx.designer.cs">
-      <DependentUpon>student.aspx</DependentUpon>
+    <Compile Include="Student.aspx.designer.cs">
+      <DependentUpon>Student.aspx</DependentUpon>
     </Compile>
     <Compile Include="TermDeposit.aspx.cs">
       <DependentUpon>TermDeposit.aspx</DependentUpon>

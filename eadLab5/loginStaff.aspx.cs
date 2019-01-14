@@ -14,7 +14,6 @@ namespace eadLab5
         {
             lblErrorMessage.Visible = false;
         }
-
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             validateLogin.Visible = false;

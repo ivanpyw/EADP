@@ -1,9 +1,8 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeBehind="loginStudent.aspx.cs" Inherits="eadLab5._login" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeBehind="loginStudent.aspx.cs" Inherits="eadLab5.loginStudent" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <form id="form1" runat="server">
+<form id="form1" runat="server">
     <div>
 
             <table style="margin:auto;border:5px solid white">
