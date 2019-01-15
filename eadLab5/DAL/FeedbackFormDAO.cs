@@ -137,7 +137,7 @@ namespace eadLab5.DAL
 
             StringBuilder sqlStr = new StringBuilder();
             sqlStr.AppendLine("SELECT * From FeedBack");
-           
+
 
             // Step 4 :Instantiate SqlConnection instance and SqlDataAdapter instance
 
@@ -183,7 +183,7 @@ namespace eadLab5.DAL
 
             return tdList;
         }
-        
+
 
         public List<FeedbackForm> GetFilteredFeedBacks(string Country, string Affordability, string Freedom, string DateStart, string DateEnd)
         {
@@ -198,8 +198,72 @@ namespace eadLab5.DAL
             //          where TD is not matured yet
 
             StringBuilder sqlStr = new StringBuilder();
-            sqlStr.AppendLine("SELECT * From FeedBack");
-            sqlStr.AppendLine("WHERE Country = @paraCountry and Affordability = @paraAffordability and Freedom = @paraFreedom and DateCreated BETWEEN @paraDateStart and @paraDateEnd");
+            sqlStr.AppendLine("SELECT * From FeedBack ");
+
+            if (!Country.Equals("All") || (!Affordability.Equals("-Select-")) || (!Freedom.Equals("-Select-")) || (!DateStart.Equals(" ")) || (!DateEnd.Equals(" ")))
+            {
+                sqlStr.AppendLine("WHERE ");
+
+                if (!Country.Equals("All"))
+                {
+                    sqlStr.AppendLine("Country = @paraCountry ");
+
+                    if (!Affordability.Equals("-Select-"))
+                    {
+                        sqlStr.AppendLine("AND ");
+                        sqlStr.AppendLine("Affordability = @paraAffordability ");
+
+                        if (!Freedom.Equals("-Select-"))
+                        {
+                            sqlStr.AppendLine("AND ");
+                            sqlStr.AppendLine("Freedom = @paraFreedom ");
+
+                            if (!DateStart.Equals(" ") && !DateEnd.Equals(" "))
+                            {
+                                sqlStr.AppendLine("AND ");
+                                sqlStr.AppendLine("DateCreated BETWEEN @paraDateStart and @paraDateEnd ");
+                            }
+                        }
+
+
+                    }
+
+                }
+
+                else if(!Affordability.Equals("-Select-"))
+                {
+                    sqlStr.AppendLine("Affordability = @paraAffordability ");
+
+                    if (!Freedom.Equals("-Select-"))
+                    {
+                        sqlStr.AppendLine("AND ");
+                        sqlStr.AppendLine("Freedom = @paraFreedom ");
+
+                        if (!DateStart.Equals(" ") && !DateEnd.Equals(" "))
+                        {
+                            sqlStr.AppendLine("AND ");
+                            sqlStr.AppendLine("DateCreated BETWEEN @paraDateStart and @paraDateEnd ");
+                        }
+                    }
+
+                }
+
+                else if (!Freedom.Equals("-Select-"))
+                {
+                    sqlStr.AppendLine("Freedom = @paraFreedom ");
+
+                    if (!DateStart.Equals(" ") && !DateEnd.Equals(" "))
+                    {
+                        sqlStr.AppendLine("AND ");
+                        sqlStr.AppendLine("DateCreated BETWEEN @paraDateStart and @paraDateEnd ");
+                    }
+                }
+
+                else if (!DateStart.Equals(" ") && !DateEnd.Equals(" "))
+                {
+                    sqlStr.AppendLine("DateCreated BETWEEN @paraDateStart and @paraDateEnd ");
+                }
+            }
 
             // Step 4 :Instantiate SqlConnection instance and SqlDataAdapter instance
 
@@ -207,11 +271,31 @@ namespace eadLab5.DAL
             SqlDataAdapter da = new SqlDataAdapter(sqlStr.ToString(), myConn);
 
             // Step 5 :add value to parameter 
-            da.SelectCommand.Parameters.AddWithValue("paraCountry", Country);
-            da.SelectCommand.Parameters.AddWithValue("paraAffordability", Affordability);
-            da.SelectCommand.Parameters.AddWithValue("paraFreedom", Freedom);
-            da.SelectCommand.Parameters.AddWithValue("paraDateStart", DateStart);
-            da.SelectCommand.Parameters.AddWithValue("paraDateEnd", DateEnd);
+            if (!Country.Equals("All"))
+            {
+                da.SelectCommand.Parameters.AddWithValue("paraCountry", Country);
+            }
+           
+            if (!Affordability.Equals("-Select-"))
+            {
+                da.SelectCommand.Parameters.AddWithValue("paraAffordability", Affordability);
+            }
+
+            if (!Freedom.Equals("-Select-"))
+            {
+                da.SelectCommand.Parameters.AddWithValue("paraFreedom", Freedom);
+            }
+
+            if (!DateStart.Equals(" "))
+            {
+                da.SelectCommand.Parameters.AddWithValue("paraDateStart", DateStart);
+            }
+
+            if (!DateEnd.Equals(" "))
+            {
+                da.SelectCommand.Parameters.AddWithValue("paraDateEnd", DateEnd);
+            }
+
 
             // Step 6: fill dataset
             da.Fill(ds, "TableTD");
@@ -367,7 +451,49 @@ namespace eadLab5.DAL
 
         }
 
+        //public customer getSpecificFeedBackDetails(string FBid)
+        //{
+        //    //Get connection string from web.config
+        //    string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
 
+        //    SqlDataAdapter da;
+        //    DataSet ds = new DataSet();
+
+        //    //Create Adapter
+        //    //WRITE SQL Statement to retrieve all columns from Customer by customer Id using query parameter
+        //    StringBuilder sqlCommand = new StringBuilder();
+        //    sqlCommand.AppendLine("Select * from Customer where");
+        //    sqlCommand.AppendLine("custId = @paraCustId");
+        //    //***TO Simulate system error  *****
+        //    // change custId in where clause to custId1 or 
+        //    // change connection string in web config to a wrong file name  
+
+        //    customer obj = new customer();   // create a customer instance
+
+        //    SqlConnection myConn = new SqlConnection(DBConnect);
+        //    da = new SqlDataAdapter(sqlCommand.ToString(), myConn);
+        //    da.SelectCommand.Parameters.AddWithValue("paraCustId", custId);
+        //    // fill dataset
+        //    da.Fill(ds, "custTable");
+        //    int rec_cnt = ds.Tables["custTable"].Rows.Count;
+        //    if (rec_cnt > 0)
+        //    {
+        //        DataRow row = ds.Tables["custTable"].Rows[0];  // Sql command returns only one record
+        //        obj.customerId = row["custId"].ToString();
+        //        obj.customerName = row["custName"].ToString();
+        //        obj.customerAddress = row["custAddress"].ToString() + " Singapore " + row["custPostal"].ToString();
+        //        obj.customerMobile = row["custMobile"].ToString();
+        //        obj.customerHomePhone = row["custHomePhone"].ToString();
+        //    }
+        //    else
+        //    {
+        //        obj = null;
+        //    }
+
+        //    return obj;
+        //}
     }
+
+
 }
 

@@ -12,10 +12,10 @@ namespace eadLab5
        
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["StudentAdminNo"] = "171058L";
+            
             FeedbackFormDAO tdDAO = new FeedbackFormDAO();
             List<FeedbackForm> tdList = new List<FeedbackForm>();
-            tdList = tdDAO.GetOwnFeedBack(Session["StudentAdminNo"].ToString());
+            tdList = tdDAO.GetOwnFeedBack(Session["AdminNo"].ToString());
             GridView_GetOwnFB.DataSource = tdList;
             GridView_GetOwnFB.DataBind();
         }
@@ -25,7 +25,7 @@ namespace eadLab5
             GridViewRow row = GridView_GetOwnFB.SelectedRow;
             // In this grid, the first cell (index 0) contains
             // the TD Account.
-            Session["FeedBackId"] = row.Cells[0].Text;
+            Session["FeedBackIdStudentUpdate"] = row.Cells[0].Text;
             Response.Redirect("UpdateFeedBackSubmitted.aspx");
         }
     }

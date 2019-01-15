@@ -23,19 +23,6 @@ namespace eadLab5
             }
         }
 
-        protected void FilterButton_Click(object sender, EventArgs e)
-        {
-            string countryBarChart = CountryDropDown.SelectedValue.ToString();
-            string type = TypeDropDown.SelectedValue.ToString();
-
-            string dateStart = flipDate(DateStartRange.Text);
-            string dateEnd = flipDate(DateEndRange.Text);
-
-            buildBarChart(countryBarChart, type, dateStart, dateEnd);
-        }
-
-      
-
        public string flipDate(string originalD)
         {
             string noinput = "";
@@ -165,23 +152,71 @@ namespace eadLab5
 
             DataSet ds = new DataSet();
 
-            String strSQL = "SELECT COUNT([adminno]) NoOfStudents, DATENAME(month, TripEnd) AS [Month]  FROM [Trip] o ";
-            strSQL += "INNER JOIN [Student] S ON o.[TripId] = s.[TripId] ";
+            SqlDataAdapter da;
+
+            DateTime now = DateTime.Now;
+
+
+            String strSQL = "SELECT COUNT([adminno]) NoOfStudents, DATENAME(month, TripEnd) AS [Month] FROM [Trip] o INNER JOIN [Student] S ON o.[TripId] = s.[TripId] ";
 
             if (!Diploma.Equals("All"))
             {
-                strSQL += "where diploma = @paraDiploma ";
-            }
+                strSQL += "WHERE Diploma = @paraDiploma ";
+                da = new SqlDataAdapter(strSQL.ToString(), myConn);
 
-            strSQL += "Group By TripEnd ";
+                if (!StudentYear.Equals("All"))
+                {
+                    if (now.Month > 4)
+                    {
+                        int studentyr = int.Parse(StudentYear);
+                        studentyr--;
+                        strSQL += "AND ((year(getdate()) - 2000) - convert(int, SUBSTRING(AdminNo, 1, 2))) = @paraStudentYear Group By [TripEnd] ";
+                        //check
+                        da = new SqlDataAdapter(strSQL.ToString(), myConn);
+                        da.SelectCommand.Parameters.AddWithValue("@paraStudentYear", studentyr);
+                    }
+                    else
+                    {
+                        strSQL += "AND ((year(getdate()) - 2000) - convert(int, SUBSTRING(AdminNo, 1, 2))) = @paraStudentYear Group By [TripEnd] ";
+                        //check
+                        da = new SqlDataAdapter(strSQL.ToString(), myConn);
+                        da.SelectCommand.Parameters.AddWithValue("@paraStudentYear", StudentYear);
+                    }
+                }
+                else
+                {
+                    strSQL += "Group By [TripEnd] ";
+                    da = new SqlDataAdapter(strSQL.ToString(), myConn);
 
-            SqlDataAdapter da = new SqlDataAdapter(strSQL.ToString(), myConn);
-
-            if (!Diploma.Equals("All"))
-            {
+                }
                 da.SelectCommand.Parameters.AddWithValue("@paraDiploma", Diploma);
             }
 
+            else if (!StudentYear.Equals("All"))
+            {
+                if (now.Month > 4)
+                {
+                    int studentyr = int.Parse(StudentYear);
+                    studentyr--;
+                    strSQL += "WHERE ((year(getdate()) - 2000) - convert(int, SUBSTRING(AdminNo, 1, 2))) = @paraStudentYear Group By [TripEnd] ";
+                    //check
+                    da = new SqlDataAdapter(strSQL.ToString(), myConn);
+                    da.SelectCommand.Parameters.AddWithValue("@paraStudentYear", studentyr);
+                }
+                else
+                {
+                    strSQL += "WHERE ((year(getdate()) - 2000) - convert(int, SUBSTRING(AdminNo, 1, 2))) = @paraStudentYear Group By [TripEnd] ";
+                    //check
+                    da = new SqlDataAdapter(strSQL.ToString(), myConn);
+                    da.SelectCommand.Parameters.AddWithValue("@paraStudentYear", StudentYear);
+                }
+            }
+
+            else
+            {
+                strSQL += "Group By [TripEnd] ";
+                da = new SqlDataAdapter(strSQL.ToString(), myConn);
+            }
             da.Fill(ds, "tripTable");
 
             Chart3.DataSource = ds;
@@ -196,14 +231,36 @@ namespace eadLab5
             DataSet ds = new DataSet();
 
             String strSQL = "SELECT Count(AdminNo) NoOfStudents,Location FROM [Trip] O Inner join [Student] S on O.[TripId] = S.[TripId] ";
-            strSQL += "Group By [Location] ";
 
-            SqlDataAdapter da = new SqlDataAdapter(strSQL.ToString(), myConn);
+            SqlDataAdapter da;
+
+            DateTime now = DateTime.Now;
 
             if (!StudentYear.Equals("All"))
             {
-                da.SelectCommand.Parameters.AddWithValue("@paraStudentYear", StudentYear);
+                if (now.Month > 4)
+                {
+                    int studentyr= int.Parse(StudentYear);
+                    studentyr--;
+                    strSQL += "WHERE ((year(getdate()) - 2000) - convert(int, SUBSTRING(AdminNo, 1, 2))) = @paraStudentYear Group By [Location] ";
+                    //check
+                    da = new SqlDataAdapter(strSQL.ToString(), myConn);
+                    da.SelectCommand.Parameters.AddWithValue("@paraStudentYear", studentyr);
+                }
+                else
+                {
+                    strSQL += "WHERE ((year(getdate()) - 2000) - convert(int, SUBSTRING(AdminNo, 1, 2))) = @paraStudentYear Group By [Location] ";
+                    //check
+                    da = new SqlDataAdapter(strSQL.ToString(), myConn);
+                    da.SelectCommand.Parameters.AddWithValue("@paraStudentYear", StudentYear);
+                }
             }
+            else
+            {
+                strSQL += "Group By [Location] ";
+                da = new SqlDataAdapter(strSQL.ToString(), myConn);
+            }
+
 
             da.Fill(ds, "tripTable");
 
@@ -213,8 +270,144 @@ namespace eadLab5
 
         protected void DropDownListCountryPieChart_SelectedIndexChanged(object sender, EventArgs e)
         {
+            buildHorizontalChart(DropDownYear.Text);
+
+            string countryBarChart = CountryDropDown.SelectedValue.ToString();
+            string type = TypeDropDown.SelectedValue.ToString();
+
+            string dateStart = flipDate(DateStartRange.Text);
+            string dateEnd = flipDate(DateEndRange.Text);
+
+            buildBarChart(countryBarChart, type, dateStart, dateEnd);
+
             string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
             buildPieChart(countryPieChart);
+
+            string DiplomaLine = DropDownDiplomaLine.SelectedValue.ToString();
+            string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
+            buildLineChart(DiplomaLine, StudentYearDD);
+        }
+
+        protected void CountryDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            buildHorizontalChart(DropDownYear.Text);
+
+            string countryBarChart = CountryDropDown.SelectedValue.ToString();
+            string type = TypeDropDown.SelectedValue.ToString();
+
+            string dateStart = flipDate(DateStartRange.Text);
+            string dateEnd = flipDate(DateEndRange.Text);
+
+            buildBarChart(countryBarChart, type, dateStart, dateEnd);
+
+            string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
+            buildPieChart(countryPieChart);
+
+            string DiplomaLine = DropDownDiplomaLine.SelectedValue.ToString();
+            string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
+            buildLineChart(DiplomaLine, StudentYearDD);
+        }
+
+        protected void TypeDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            buildHorizontalChart(DropDownYear.Text);
+
+            string countryBarChart = CountryDropDown.SelectedValue.ToString();
+            string type = TypeDropDown.SelectedValue.ToString();
+
+            string dateStart = flipDate(DateStartRange.Text);
+            string dateEnd = flipDate(DateEndRange.Text);
+
+            buildBarChart(countryBarChart, type, dateStart, dateEnd);
+
+            string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
+            buildPieChart(countryPieChart);
+
+            string DiplomaLine = DropDownDiplomaLine.SelectedValue.ToString();
+            string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
+            buildLineChart(DiplomaLine, StudentYearDD);
+        }
+
+       
+
+        protected void DateEndRange_TextChanged(object sender, EventArgs e)
+        {
+            buildHorizontalChart(DropDownYear.Text);
+
+            string countryBarChart = CountryDropDown.SelectedValue.ToString();
+            string type = TypeDropDown.SelectedValue.ToString();
+
+            string dateStart = flipDate(DateStartRange.Text);
+            string dateEnd = flipDate(DateEndRange.Text);
+
+            buildBarChart(countryBarChart, type, dateStart, dateEnd);
+
+            string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
+            buildPieChart(countryPieChart);
+
+            string DiplomaLine = DropDownDiplomaLine.SelectedValue.ToString();
+            string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
+            buildLineChart(DiplomaLine, StudentYearDD);
+        }
+
+        protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            buildHorizontalChart(DropDownYear.Text);
+
+            string countryBarChart = CountryDropDown.SelectedValue.ToString();
+            string type = TypeDropDown.SelectedValue.ToString();
+
+            string dateStart = flipDate(DateStartRange.Text);
+            string dateEnd = flipDate(DateEndRange.Text);
+
+            buildBarChart(countryBarChart, type, dateStart, dateEnd);
+
+            string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
+            buildPieChart(countryPieChart);
+
+            string DiplomaLine = DropDownDiplomaLine.SelectedValue.ToString();
+            string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
+            buildLineChart(DiplomaLine, StudentYearDD);
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            buildHorizontalChart(DropDownYear.Text);
+
+            string countryBarChart = CountryDropDown.SelectedValue.ToString();
+            string type = TypeDropDown.SelectedValue.ToString();
+
+            string dateStart = flipDate(DateStartRange.Text);
+            string dateEnd = flipDate(DateEndRange.Text);
+
+            buildBarChart(countryBarChart, type, dateStart, dateEnd);
+
+            string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
+            buildPieChart(countryPieChart);
+
+            string DiplomaLine = DropDownDiplomaLine.SelectedValue.ToString();
+            string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
+            buildLineChart(DiplomaLine, StudentYearDD);
+        }
+
+        protected void DropDownYearLine_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            buildHorizontalChart(DropDownYear.Text);
+
+            string countryBarChart = CountryDropDown.SelectedValue.ToString();
+            string type = TypeDropDown.SelectedValue.ToString();
+
+            string dateStart = flipDate(DateStartRange.Text);
+            string dateEnd = flipDate(DateEndRange.Text);
+
+            buildBarChart(countryBarChart, type, dateStart, dateEnd);
+
+            string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
+            buildPieChart(countryPieChart);
+
+            string DiplomaLine = DropDownDiplomaLine.SelectedValue.ToString();
+            string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
+            buildLineChart(DiplomaLine, StudentYearDD);
         }
     }
 }

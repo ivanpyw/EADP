@@ -23,6 +23,7 @@ namespace eadLab5.DAL
         public int FeedBackId { get; set; }
         public string DateStart { get; set; }
         public string DateEnd { get; set; }
+        public string FBid { get; set; }
 
     }
 

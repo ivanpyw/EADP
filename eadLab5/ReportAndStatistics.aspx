@@ -45,7 +45,7 @@
             <tr>
                 <td class="auto-style3">Country:</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="CountryDropDown" runat="server">
+                    <asp:DropDownList ID="CountryDropDown" runat="server" AutoPostBack="True" OnSelectedIndexChanged="CountryDropDown_SelectedIndexChanged">
                         <asp:ListItem>All</asp:ListItem>
                         <asp:ListItem>Beijing</asp:ListItem>
                         <asp:ListItem>Dubai</asp:ListItem>
@@ -56,7 +56,7 @@
             <tr>
                 <td class="auto-style8">Type:</td>
                 <td class="auto-style9">
-                    <asp:DropDownList ID="TypeDropDown" runat="server">
+                    <asp:DropDownList ID="TypeDropDown" runat="server" AutoPostBack="True" OnSelectedIndexChanged="TypeDropDown_SelectedIndexChanged">
                         <asp:ListItem>All</asp:ListItem>
                         <asp:ListItem>Immersion</asp:ListItem>
                         <asp:ListItem>Study</asp:ListItem>
@@ -67,21 +67,19 @@
             <tr>
                 <td class="auto-style8">Year Start:</td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="DateStartRange" runat="server" type="date"></asp:TextBox>
+                    <asp:TextBox ID="DateStartRange" runat="server" type="date" AutoPostBack="True"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style4">Year End:</td>
                 <td>
-                    <asp:TextBox ID="DateEndRange" runat="server" type="date"></asp:TextBox>
+                    <asp:TextBox ID="DateEndRange" runat="server" type="date" AutoPostBack="True" OnTextChanged="DateEndRange_TextChanged"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style4"></td>
                 <td>
-                    
-                    <asp:Button ID="FilterButton" runat="server" Text="Filter" OnClick="FilterButton_Click" />
-                    
+      
                 </td>
             </tr>
         </table>
@@ -155,7 +153,7 @@
                         <tr>
                             <td class="auto-style4">Diploma:</td>
                             <td>
-                                <asp:DropDownList ID="DropDownList1" runat="server">
+                                <asp:DropDownList ID="DropDownDiplomaLine" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                                     <asp:ListItem>All</asp:ListItem>
                                     <asp:ListItem>Diploma in insecurity</asp:ListItem>
                                     <asp:ListItem>Diploma in making ppl life hard</asp:ListItem>
@@ -165,11 +163,11 @@
                         <tr>
                             <td class="auto-style4">Year:</td>
                             <td>
-                                <asp:DropDownList ID="DropDownList2" runat="server">
+                                <asp:DropDownList ID="DropDownYearLine" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownYearLine_SelectedIndexChanged">
                                     <asp:ListItem>All</asp:ListItem>
-                                    <asp:ListItem>Year 1</asp:ListItem>
-                                    <asp:ListItem>Year 2</asp:ListItem>
-                                    <asp:ListItem>Year 3</asp:ListItem>
+                                    <asp:ListItem Value="1">Year 1</asp:ListItem>
+                                    <asp:ListItem Value="2">Year 2</asp:ListItem>
+                                    <asp:ListItem Value="3">Year 3</asp:ListItem>
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -183,7 +181,7 @@
                                     <tr>
                                         <td class="auto-style10">Year:</td>
                                         <td>
-                                            <asp:DropDownList ID="DropDownList3" runat="server">
+                                            <asp:DropDownList ID="DropDownYear" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged" >
                                                 <asp:ListItem>All</asp:ListItem>
                                                 <asp:ListItem>1</asp:ListItem>
                                                 <asp:ListItem>2</asp:ListItem>

@@ -35,16 +35,20 @@ namespace eadLab5
 
         public string flipDate(string originalD)
         {
-            string year = originalD.Substring(0, 4);
-            string month = originalD.Substring(5, 2);
-            string day = originalD.Substring(8, 2);
-            string newdate = day + "-" + month + "-" + year;
-            return newdate;
+            string nodate = " ";
+            if (!originalD.Equals("")) {
+                string year = originalD.Substring(0, 4);
+                string month = originalD.Substring(5, 2);
+                string day = originalD.Substring(8, 2);
+                string newdate = day + "-" + month + "-" + year;
+                return newdate;
+            }
+           
+            return nodate;
         }
         protected void FilterBtn_Click(object sender, EventArgs e)
         {
-            if (CountryFilterDropDown.SelectedIndex > 0 && AffordabilityFilterDropDown.SelectedIndex > 0)
-            {
+           
                 FeedbackFormDAO tdDAO = new FeedbackFormDAO();
                 List<FeedbackForm> tdList = new List<FeedbackForm>();
                 string startD = flipDate( txtDateCheckStart.Text);
@@ -52,33 +56,8 @@ namespace eadLab5
                 tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), startD, endD);
                 GridView_GetFB.DataSource = tdList;
                 GridView_GetFB.DataBind();
-            }
-            else if (CountryFilterDropDown.SelectedIndex < 0 && AffordabilityFilterDropDown.SelectedIndex > 0)
-            {
-                FeedbackFormDAO tdDAO = new FeedbackFormDAO();
-                List<FeedbackForm> tdList = new List<FeedbackForm>();
-                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), txtDateCheckStart.Text, txtDateCheckEnd.Text);
-                GridView_GetFB.DataSource = tdList;
-                GridView_GetFB.DataBind();
-            }
-            else if (CountryFilterDropDown.SelectedIndex > 0 && AffordabilityFilterDropDown.SelectedIndex < 0)
-            {
-                FeedbackFormDAO tdDAO = new FeedbackFormDAO();
-                List<FeedbackForm> tdList = new List<FeedbackForm>();
-                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), txtDateCheckStart.Text, txtDateCheckEnd.Text);
-                GridView_GetFB.DataSource = tdList;
-                GridView_GetFB.DataBind();
-            }
-            else
-            {
-                FeedbackFormDAO tdDAO = new FeedbackFormDAO();
-                List<FeedbackForm> tdList = new List<FeedbackForm>();
-                tdList = tdDAO.GetAllFeedBack();
-                GridView_GetFB.DataSource = tdList;
-                GridView_GetFB.DataBind();
-                LabelFilter.Visible = true;
-                LabelFilter.Text = "Please select a valid index in the dropdown above";
-            }
+            
+           
 
         }
 

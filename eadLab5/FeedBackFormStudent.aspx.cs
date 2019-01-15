@@ -23,9 +23,9 @@ namespace eadLab5
             String ReviewPros = HighlightTb.Text.ToString();
             String ReviewCons = DownsidesTb.Text.ToString();
             String ReviewImprovement = ImprovementTb.Text.ToString();
-            int TripId = 1;
+            int TripId = 2;
             String StudName = "Ivan";
-            String AdminNo = "171058L";
+            String AdminNo = Session["AdminNo"].ToString();
             String Country = "Beijing";
             String DateCreated = DateTime.Now.ToString("dd/MM/yyyy");
 

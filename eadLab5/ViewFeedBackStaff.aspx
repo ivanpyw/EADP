@@ -1,50 +1,85 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeBehind="ViewFeedBackStaff.aspx.cs" Inherits="eadLab5.ViewFeedBackStaff" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style1 {
+            width: 21%;
+        }
+        .auto-style2 {
+            width: 172px;
+        }
+        .auto-style3 {
+            width: 200px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <form runat="server">
         <br />
-        &nbsp;<asp:Label ID="CountryFilter" runat="server" Text="Country Filter"></asp:Label>
-        <br />
-        &nbsp;<asp:DropDownList ID="CountryFilterDropDown" runat="server">
-            <asp:ListItem>-Select-</asp:ListItem>
-            <asp:ListItem>Overall</asp:ListItem>
+        &nbsp;<br />
+        &nbsp;&nbsp;&nbsp;<br />
+        &nbsp;<br />
+        &nbsp;&nbsp;<br />
+        <table class="auto-style1">
+            <tr>
+                <td class="auto-style2"><asp:Label ID="CountryFilter0" runat="server" Text="Country Filter"></asp:Label>
+                    :</td>
+                <td class="auto-style3"><asp:DropDownList ID="CountryFilterDropDown" runat="server">
+            <asp:ListItem>All</asp:ListItem>
             <asp:ListItem>Australia</asp:ListItem>
             <asp:ListItem>Beijing</asp:ListItem>
         </asp:DropDownList>
-        &nbsp;&nbsp;<br />
-        &nbsp;<asp:Label ID="AffordableFilter" runat="server" Text="Affordability"></asp:Label>
-        <br />
-        &nbsp;<asp:DropDownList ID="AffordabilityFilterDropDown" runat="server">
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2"><asp:Label ID="AffordableFilter" runat="server" Text="Affordability"></asp:Label>
+                    :</td>
+                <td class="auto-style3"><asp:DropDownList ID="AffordabilityFilterDropDown" runat="server">
             <asp:ListItem>-Select-</asp:ListItem>
             <asp:ListItem>Yes</asp:ListItem>
             <asp:ListItem>No</asp:ListItem>
         </asp:DropDownList>
 
-        &nbsp;<br />
-        &nbsp;Freedom<br />
-        &nbsp;<asp:DropDownList ID="FreedomFilterDropDown" runat="server">
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2">
+                    <asp:Label ID="Label1" runat="server" Text="Freedom"></asp:Label>
+                    :</td>
+                <td class="auto-style3"><asp:DropDownList ID="FreedomFilterDropDown" runat="server">
             <asp:ListItem>-Select-</asp:ListItem>
             <asp:ListItem>Yes</asp:ListItem>
             <asp:ListItem>No</asp:ListItem>
         </asp:DropDownList>
-        <br />
-        &nbsp;Date Start<br />
-       
-        &nbsp;<asp:TextBox runat="server" ID="txtDateCheckStart" Format="dd/MMMM/yyyy" required="" placeholder="DD-MMMM-YYYY"  type="date"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2">
+                    <asp:Label ID="Label2" runat="server" Text="Date Start"></asp:Label>
+                    :</td>
+                <td class="auto-style3"><asp:TextBox runat="server" ID="txtDateCheckStart" Format="dd/MMMM/yyyy" placeholder="DD-MMMM-YYYY"  type="date"/>
 
-        <br />
-        &nbsp;Date End
-        <br />
-         &nbsp;<asp:TextBox runat="server" ID="txtDateCheckEnd" Format="dd/MMMM/yyyy" required="" placeholder="DD-MMMM-YYYY" type="date"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2">
+                    <asp:Label ID="Label3" runat="server" Text="Date End"></asp:Label>
+                    :</td>
+                <td class="auto-style3"><asp:TextBox runat="server" ID="txtDateCheckEnd" Format="dd/MMMM/yyyy" placeholder="DD-MMMM-YYYY" type="date" Width="190px"/>
 
-        <br />
-
-        <asp:Label ID="LabelFilter" runat="server" Text="[LabelFilter]" Visible="False"></asp:Label>
-
-        <br />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2">&nbsp;</td>
+                <td class="auto-style3">
         <asp:Button ID="FilterBtn" runat="server" OnClick="FilterBtn_Click" Text="Filter" />
+                </td>
+            </tr>
+        </table>
+
+        <br />
+
+        <br />
         <br />
         <br />
 

@@ -13,13 +13,13 @@ namespace eadLab5 {
     public partial class ViewFeedBackStaff {
         
         /// <summary>
-        /// CountryFilter control.
+        /// CountryFilter0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CountryFilter;
+        protected global::System.Web.UI.WebControls.Label CountryFilter0;
         
         /// <summary>
         /// CountryFilterDropDown control.
@@ -49,6 +49,15 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.DropDownList AffordabilityFilterDropDown;
         
         /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
         /// FreedomFilterDropDown control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace eadLab5 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList FreedomFilterDropDown;
+        
+        /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
         /// txtDateCheckStart control.
@@ -67,6 +85,15 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.TextBox txtDateCheckStart;
         
         /// <summary>
+        /// Label3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label3;
+        
+        /// <summary>
         /// txtDateCheckEnd control.
         /// </summary>
         /// <remarks>
@@ -74,15 +101,6 @@ namespace eadLab5 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDateCheckEnd;
-        
-        /// <summary>
-        /// LabelFilter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelFilter;
         
         /// <summary>
         /// FilterBtn control.

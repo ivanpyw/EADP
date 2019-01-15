@@ -17,7 +17,7 @@ namespace eadLab5
            
             FeedbackForm cusObj = new FeedbackForm();
             FeedbackFormDAO cusDao = new FeedbackFormDAO();
-            str = Convert.ToString("4");
+            str = Convert.ToString(Session["FeedBackId"].ToString());
             cusObj = cusDao.GetSpecificFeedBack(str);
             if (cusObj != null)
             {  
