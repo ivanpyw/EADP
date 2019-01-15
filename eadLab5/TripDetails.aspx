@@ -53,15 +53,33 @@
             }
         }
     </script>
+    <div class="container">
+        <button class="btn btn-secondary btn-lg add-trip-btn" type="button" data-toggle="modal" data-target="#addModal"><i class="fa fa-plus"></i></button>
+    </div>
     <div id="trips-tab">
         <nav class="nav nav-pills nav-justified">
-            <a class="nav-item nav-link active" href="#">Immersion trips</a>
-            <a class="nav-item nav-link" href="#">Study trips</a>
+            <% if (tripType == null)
+                { %>
+            <a class="nav-item nav-link active" href="#immerseTrip" data-toggle="pill" aria-controls="allTrip" aria-selected="true">All trips</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Immersion" aria-controls="immerseTrip" aria-selected="false">Immersion trips</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Study" aria-controls="studyTrip" aria-selected="false">Study trips</a>
+            <% }
+    else if (tripType == "Immersion")
+    { %>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?" aria-controls="studyTrip" aria-selected="false">All trips</a>
+            <a class="nav-item nav-link active" href="#immerseTrip" data-toggle="pill" aria-controls="immerseTrip" aria-selected="true">Immersion trips</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Study" aria-controls="studyTrip" aria-selected="false">Study trips</a>
+            <% }
+    else if (tripType == "Study")
+    { %>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?" aria-controls="studyTrip" aria-selected="false">All trips</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Immersion" aria-controls="immerseTrip" aria-selected="false">Immersion trips</a>
+            <a class="nav-item nav-link active" href="#studyTrip" data-toggle="pill" aria-controls="immerseTrip" aria-selected="true">Study trips</a>
+            <% } %>
         </nav>
     </div>
     <form runat="server">
         <div class="container">
-            <button class="btn btn-secondary btn-lg add-trip-btn" type="button" data-toggle="modal" data-target="#addModal"><i class="fa fa-plus"></i></button>
             <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModal" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -86,7 +104,7 @@
                                     <td>
                                         <%--<asp:TextBox ID="tbAddLocation" placeholder="Trip held at" runat="server" CssClass="form-control"></asp:TextBox></td>--%>
                                         <asp:DropDownList ID="ddlAddLocation" runat="server" CssClass="form-control"></asp:DropDownList>
-                                        </td>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Images:<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Image required" ControlToValidate="tripImageUpload" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
@@ -217,7 +235,10 @@
 
                                 </tbody>
                             </table>
+                            <% if (role == "Teacher   ")
+                                { %>
                             <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="btn btn-success">Edit details</a>
+                            <% } %>
                         </div>
                     </div>
                 </div>

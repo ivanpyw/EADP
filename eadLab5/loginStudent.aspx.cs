@@ -1,7 +1,6 @@
 ﻿using eadLab5.DAL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace eadLab5
 {
-    public partial class _login : System.Web.UI.Page
+    public partial class loginStudent : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,25 +38,11 @@ namespace eadLab5
                 }
                 else
                 {
+                    Session["AdminNo"] = stuObj.AdminNo;
+                    Session["role"] = stuObj.Year;
                     Response.Redirect("student.aspx");
                 }
             }
-                
-            
-                //using (SqlConnection sqlCon = new SqlConnection(@"Data Source = (local)\sqle2012;initial Catalog=TimeDeposit.mdf; Integrated Security =True;"))
-                //{
-                //    string query = "SELECT COUNT(1) FROM Staff WHERE email=@email and passowrd = @password";
-                //    SqlCommand sqlcmd = new SqlCommand(query, sqlCon);
-                //    sqlcmd.Parameters.AddWithValue("@email", txtLoginEmail.Text.Trim());
-                //    sqlcmd.Parameters.AddWithValue("@password", txtPassword.Text.Trim());
-                //    if (count == 1)
-                //    {
-                //        Session["email"] = txtLoginEmail.Text.Trim();
-                //        Response.Redirect("PEMMain.aspx");
-                //    }
-                //    else
-                //    { lblErrorMessage.Visible = true; }
-                //}
-            }
         }
-    }
+     }
+}

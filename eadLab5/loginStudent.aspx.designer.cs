@@ -10,7 +10,7 @@
 namespace eadLab5 {
     
     
-    public partial class _login {
+    public partial class loginStudent {
         
         /// <summary>
         /// form1 control.

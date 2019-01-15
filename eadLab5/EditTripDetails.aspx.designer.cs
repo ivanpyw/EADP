@@ -265,6 +265,15 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.Label Lbl;
         
         /// <summary>
+        /// tbReason control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbReason;
+        
+        /// <summary>
         /// DelTrip control.
         /// </summary>
         /// <remarks>

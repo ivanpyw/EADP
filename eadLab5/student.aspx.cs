@@ -7,16 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace eadLab5
 {
-    public partial class _student : System.Web.UI.Page
+    public partial class Student : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            Lbl_Address.Visible = true;
         }
     }
 }

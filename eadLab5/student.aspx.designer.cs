@@ -10,7 +10,7 @@
 namespace eadLab5 {
     
     
-    public partial class _student {
+    public partial class Student {
         
         /// <summary>
         /// PanelErrorResult control.

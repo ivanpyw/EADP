@@ -14,7 +14,6 @@ namespace eadLab5
         {
             lblErrorMessage.Visible = false;
         }
-
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             validateLogin.Visible = false;
@@ -38,7 +37,8 @@ namespace eadLab5
                 }
                 else
                 {
-                    //Session["PEMClass"] = logObj.PEMClass;
+                    Session["Staffid"] = logObj.Staffid;
+                    Session["role"] = logObj.Role;
                     Response.Redirect("PEMMain.aspx");
                 }
             }

@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JWT, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JWT.2.3.2\lib\net45\JWT.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -80,6 +84,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.1.1.2\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.1.2\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAzure.Storage.9.3.3\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
       <Private>True</Private>
@@ -92,6 +104,16 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="OpenTok, Version=3.1.6873.25151, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTok.3.1.0\lib\net452\OpenTok.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.1.2\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -109,6 +131,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Twilio, Version=5.25.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Twilio.5.25.1\lib\net451\Twilio.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Acknowledge.aspx" />
@@ -121,6 +147,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Interview.css" />
     <Content Include="Content\SarasaStyleSheet.css" />
     <Content Include="Corporate.aspx" />
     <Content Include="Default.aspx" />
@@ -131,6 +158,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Images\Capture.PNG" />
     <Content Include="Images\oops.png" />
+    <Content Include="Interview.aspx" />
+    <Content Include="loginStaff.aspx" />
+    <Content Include="loginStudent.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -143,6 +173,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="PEMMain.aspx" />
     <Content Include="ReportAndStatistics.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -160,6 +191,7 @@
     <Content Include="Scripts\jquery-2.2.4.js" />
     <Content Include="Scripts\jquery-2.2.4.min.js" />
     <Content Include="StaffViewSpecificFeedBack.aspx" />
+    <Content Include="Student.aspx" />
     <Content Include="TermDeposit.aspx" />
     <Content Include="TermDepositPlacement.aspx" />
     <Content Include="TermDepositUpdate.aspx" />
@@ -168,7 +200,9 @@
     <Content Include="ViewFeedBacksSubmitted.aspx" />
     <Content Include="ViewFeedBackStaff.aspx" />
     <Content Include="WaitingList.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Acknowledge.aspx.cs">
@@ -198,8 +232,12 @@
     <Compile Include="DAL\FeedbackFormDAO.cs" />
     <Compile Include="DAL\interestRte.cs" />
     <Compile Include="DAL\InterestRteDAO.cs" />
+    <Compile Include="DAL\StaffLogin.cs" />
+    <Compile Include="DAL\StaffLoginDAO.cs" />
     <Compile Include="DAL\Student.cs" />
     <Compile Include="DAL\StudentDAO.cs" />
+    <Compile Include="DAL\StudentLogin.cs" />
+    <Compile Include="DAL\StudentLoginDAO.cs" />
     <Compile Include="DAL\timeDeposit.cs" />
     <Compile Include="DAL\timeDepositDAO.cs" />
     <Compile Include="DAL\Trip.cs" />
@@ -241,9 +279,37 @@
     <Compile Include="FeedBackFormStudent.aspx.designer.cs">
       <DependentUpon>FeedBackFormStudent.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Interview.aspx.cs">
+      <DependentUpon>Interview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interview.aspx.designer.cs">
+      <DependentUpon>Interview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="loginStaff.aspx.cs">
+      <DependentUpon>loginStaff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="loginStaff.aspx.designer.cs">
+      <DependentUpon>loginStaff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="loginStudent.aspx.cs">
+      <DependentUpon>loginStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="loginStudent.aspx.designer.cs">
+      <DependentUpon>loginStudent.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MasterPage1.master.cs">
       <DependentUpon>MasterPage1.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PEMMain.aspx.cs">
+      <DependentUpon>PEMMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PEMMain.aspx.designer.cs">
+      <DependentUpon>PEMMain.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportAndStatistics.aspx.cs">
@@ -259,6 +325,13 @@
     </Compile>
     <Compile Include="StaffViewSpecificFeedBack.aspx.designer.cs">
       <DependentUpon>StaffViewSpecificFeedBack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student.aspx.cs">
+      <DependentUpon>Student.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student.aspx.designer.cs">
+      <DependentUpon>Student.aspx</DependentUpon>
     </Compile>
     <Compile Include="TermDeposit.aspx.cs">
       <DependentUpon>TermDeposit.aspx</DependentUpon>

@@ -6,6 +6,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net.Mail;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 
 namespace eadLab5
 {
@@ -95,9 +98,31 @@ namespace eadLab5
         protected void DelTrip_Click(object sender, EventArgs e)
         {
             TripDAO delTD = new DAL.TripDAO();
-            int id = 0;
-            int results = delTD.delTrip(id);
-            System.Diagnostics.Debug.WriteLine(id + "this is id");
+            int tripId = Convert.ToInt32(Request.QueryString["tripId"]);
+            //int results = delTD.delTrip(tripId);
+            SmtpClient client = new SmtpClient();
+            client.Port = 25;
+            client.Host = "smtp-mail.outlook.com";
+            client.EnableSsl = true;
+            client.Timeout = 10000;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential("sarasaeadp@outlook.com", "msJasmine1");
+            Trip tripObj = delTD.getTripById(tripId);
+            MailMessage mail = new MailMessage("sarasaeadp@outlook.com", "170313Q@mymail.nyp.edu.sg");
+            mail.Subject = "Trip cancelled";
+            mail.Body = "This is regarding the trip you sign up for: "+tripObj.tripTitle+"\nReason for cancel: "+tbReason.Text;
+            client.Send(mail);
+
+            const string accountSid = "AC90e3e868134c6a071114c494857cea63";
+            const string authToken = "25c2aa080ca442ffb5701fe61b6a7af7";
+            TwilioClient.Init(accountSid, authToken);
+
+            var message = MessageResource.Create(
+                body: "This is regarding the trip "+tripObj.tripTitle+" you had signed up for. The trip has been cancelled due to : "+tbReason.Text,
+                from: "(717) 429-0744",
+                to: "+65 91783904"
+                );
+
             Response.Redirect("TripDetails.aspx");
         }
     }

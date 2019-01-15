@@ -10,12 +10,10 @@ namespace eadLab5
 {
     public partial class PEMMain : System.Web.UI.Page
     {
-       
         protected void Page_Load(object sender, EventArgs e)
         {
             StudentLogin stuObj = new StudentLogin();
             StudentLoginDAO stuDao = new StudentLoginDAO();
-            //stuObj = stuDao.getStudentByPEM(Session["PEMClass"].ToString());
         }
     }
 }

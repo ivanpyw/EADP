@@ -13,7 +13,7 @@ namespace eadLab5.DAL
     {
         public int count = 0;
         string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
-        public List<Trip> getTrip()
+        public List<Trip> getTrip(string tripType)
         {
             List<Trip> tdList = new List<Trip>();
 
@@ -23,6 +23,10 @@ namespace eadLab5.DAL
             StringBuilder tripCommand = new StringBuilder();
             tripCommand.AppendLine("Select * from Trip t");
             tripCommand.AppendLine("INNER JOIN Staff s on s.StaffId = t.StaffId ");
+            if(tripType == null)
+                tripCommand.AppendLine("WHERE TripType = '' OR 1=1 AND Status <> 'Cancelled'");
+            else
+                tripCommand.AppendLine("WHERE TripType = '" + tripType + "' AND Status <> 'Cancelled'");
             Trip obj = new Trip();
 
             SqlConnection myConn = new SqlConnection(DBConnect);

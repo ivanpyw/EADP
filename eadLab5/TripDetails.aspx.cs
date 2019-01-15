@@ -11,17 +11,32 @@ namespace eadLab5
 {
     public partial class TripDetails : System.Web.UI.Page
     {
-
+        protected string role = null;
         protected int count = 0;
         protected List<Trip> tripObj = null;
+        protected string tripType = null;
         TripDAO tripDao = new TripDAO();
         protected void Page_Load(object sender, EventArgs e)
         {
-            tripObj = tripDao.getTrip();
+            if(Session["role"] != null)
+                role = Session["role"].ToString();
+            tripType = Request.QueryString["tripType"];
+            tripObj = tripDao.getTrip(tripType);
             count = tripDao.count;
             List<String> countryList = tripDao.getCountry();
             ddlAddLocation.DataSource = countryList;
             ddlAddLocation.DataBind();
+            if(role == "")
+            {
+                System.Diagnostics.Debug.WriteLine("its empty");
+            }else if(role == null)
+            {
+                System.Diagnostics.Debug.WriteLine("its null");
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine(role);
+            }
         }
 
 
