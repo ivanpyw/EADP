@@ -125,6 +125,29 @@ namespace eadLab5.DAL
             return result;
         }
 
+        public int assignStudentToTrip(int tripId, string AdminNo)
+        {
+            StringBuilder sqlStr = new StringBuilder();
+            int result = 0;
+            SqlCommand sqlCmd = new SqlCommand();
+
+            sqlStr.AppendLine("INSERT INTO REGISTER(TripId, AdminNo)");
+            sqlStr.AppendLine("VALUES (@pTripId,@pAdminNo)");
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+
+            sqlCmd.Parameters.AddWithValue("@pTripId",tripId);
+            sqlCmd.Parameters.AddWithValue("@pAdminNo", AdminNo);
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+
+            myConn.Close();
+            return result;
+        }
+
         public List<String> getCountry()
         {
             List<String> country = new List<string>();

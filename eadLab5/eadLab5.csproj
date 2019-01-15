@@ -279,6 +279,8 @@
     <Compile Include="FeedBackFormStudent.aspx.designer.cs">
       <DependentUpon>FeedBackFormStudent.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FromBodyAttribute.cs" />
+    <Compile Include="HttpPostAttribute.cs" />
     <Compile Include="Interview.aspx.cs">
       <DependentUpon>Interview.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
