@@ -15,6 +15,7 @@
                 <td class="auto-style1">Customer NRIC: :</td>
                 <td>
                     <asp:Label ID="LblCustId" runat="server"></asp:Label>
+                   
                 </td>
             </tr>
             <tr>

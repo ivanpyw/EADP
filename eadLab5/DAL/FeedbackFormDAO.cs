@@ -21,7 +21,6 @@ namespace eadLab5.DAL
             int result = 0;    // Execute NonQuery return an integer value
             SqlCommand sqlCmd = new SqlCommand();
             // Step1 : Create SQL insert command to add record to TDMaster using     
-
             //         parameterised query in values clause
             //
             sqlStr.AppendLine("INSERT INTO FeedBack(Affordability,Enjoyment,Freedom,ReviewPros,ReviewCons,ReviewImprovement, StudentName, Country, AdminNo, TripId, DateCreated) ");
@@ -221,13 +220,13 @@ namespace eadLab5.DAL
             //         for this particular customer 
 
             int rec_cnt = ds.Tables["TableTD"].Rows.Count;
-            FeedbackForm myTD = new FeedbackForm();
             if (rec_cnt > 0)
             {
                 foreach (DataRow row in ds.Tables["TableTD"].Rows)
                 {
-                    // Step 8 Set attribute of timeDeposit instance for the record in TableTD
-                    // DataRow is set to Rows[0] because only one row is returned
+                    FeedbackForm myTD = new FeedbackForm();
+
+                    // Step 8 Set attribute of timeDeposit instance for each row of record in TableTD
 
                     myTD.Affordability = row["Affordability"].ToString();
                     myTD.Enjoyment = row["Enjoyment"].ToString();
@@ -239,15 +238,17 @@ namespace eadLab5.DAL
                     myTD.TripId = Convert.ToInt32(row["TripId"]);
                     myTD.Country = row["Country"].ToString();
                     myTD.StudentName = row["StudentName"].ToString();
+                    myTD.FeedBackId = Convert.ToInt16(row["FeedBackId"]);
+
+                    //  Step 9: Add each timeDeposit instance to array list
                     tdList.Add(myTD);
                 }
-
             }
-
             else
             {
-                myTD = null;
+                tdList = null;
             }
+
             return tdList;
         }
 

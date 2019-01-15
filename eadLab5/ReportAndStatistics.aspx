@@ -28,6 +28,12 @@
         .auto-style9 {
             height: 29px;
         }
+        .auto-style10 {
+            width: 38px;
+        }
+        .auto-style11 {
+            width: 109%;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -48,8 +54,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style4">Type:</td>
-                <td>
+                <td class="auto-style8">Type:</td>
+                <td class="auto-style9">
                     <asp:DropDownList ID="TypeDropDown" runat="server">
                         <asp:ListItem>All</asp:ListItem>
                         <asp:ListItem>Immersion</asp:ListItem>
@@ -80,11 +86,44 @@
             </tr>
         </table>
                 </td>
-                <td class="auto-style7">&nbsp;</td>
+                <td class="auto-style7">
+                    <table class="auto-style5">
+                        <tr>
+                            <td class="auto-style4">Country:</td>
+                            <td>
+                                <asp:DropDownList ID="DropDownListCountryPieChart" runat="server" OnSelectedIndexChanged="DropDownListCountryPieChart_SelectedIndexChanged" AutoPostBack="True">
+                                    <asp:ListItem>All</asp:ListItem>
+                                    <asp:ListItem>Dubai</asp:ListItem>
+                                    <asp:ListItem>China</asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style4">&nbsp;</td>
+                            <td>
+                    
+                                
+                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style4">&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style4">&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style4">&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style6">
-        <asp:Chart ID="Chart2" runat="server" Width="598px">
+        <asp:Chart ID="Chart2" runat="server" Width="598px" BackGradientStyle="VerticalCenter" Palette="Berry">
             <series>
                 <asp:Series Name="Series1" XValueMember="Location" YValueMembers="Cost">
                 </asp:Series>
@@ -97,9 +136,9 @@
        
                 </td>
                 <td class="auto-style7">
-        <asp:Chart ID="Chart1" runat="server" DataSourceID="AZURE" Width="600px">
+        <asp:Chart ID="Chart1" runat="server" Width="600px" Palette="Pastel">
             <series>
-                <asp:Series ChartType="Pie" Name="Series1" XValueMember="TripId" YValueMembers="Cost">
+                <asp:Series ChartType="Pie" Name="Series1" XValueMember="Diploma" YValueMembers="NoOfStudents">
                 </asp:Series>
             </series>
             <chartareas>
@@ -111,15 +150,86 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style6">&nbsp;</td>
-                <td class="auto-style7">&nbsp;</td>
+                <td class="auto-style6">
+                    <table class="auto-style5">
+                        <tr>
+                            <td class="auto-style4">Diploma:</td>
+                            <td>
+                                <asp:DropDownList ID="DropDownList1" runat="server">
+                                    <asp:ListItem>All</asp:ListItem>
+                                    <asp:ListItem>Diploma in insecurity</asp:ListItem>
+                                    <asp:ListItem>Diploma in making ppl life hard</asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style4">Year:</td>
+                            <td>
+                                <asp:DropDownList ID="DropDownList2" runat="server">
+                                    <asp:ListItem>All</asp:ListItem>
+                                    <asp:ListItem>Year 1</asp:ListItem>
+                                    <asp:ListItem>Year 2</asp:ListItem>
+                                    <asp:ListItem>Year 3</asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="auto-style7">
+                    <table class="auto-style11">
+                        <tr>
+                            <td>
+                                <table class="auto-style5">
+                                    <tr>
+                                        <td class="auto-style10">Year:</td>
+                                        <td>
+                                            <asp:DropDownList ID="DropDownList3" runat="server">
+                                                <asp:ListItem>All</asp:ListItem>
+                                                <asp:ListItem>1</asp:ListItem>
+                                                <asp:ListItem>2</asp:ListItem>
+                                                <asp:ListItem>3</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="auto-style10">&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </td>
             </tr>
             <tr>
-                <td class="auto-style6">&nbsp;</td>
-                <td class="auto-style7">&nbsp;</td>
+                <td class="auto-style6">
+                    <asp:Chart ID="Chart3" runat="server" Width="598px" Palette="Chocolate">
+                        <Series>
+                            <asp:Series ChartType="Line" Name="Series1" XValueMember="Month" YValueMembers="NoOfStudents">
+                            </asp:Series>
+                        </Series>
+                        <ChartAreas>
+                            <asp:ChartArea Name="ChartArea1">
+                            </asp:ChartArea>
+                        </ChartAreas>
+                    </asp:Chart>
+                </td>
+                <td class="auto-style7">
+                    <asp:Chart ID="Chart4" runat="server" Palette="Excel" Width="600px">
+                        <Series>
+                            <asp:Series Name="Series1" XValueMember="Location" YValueMembers="NoOfStudents">
+                            </asp:Series>
+                        </Series>
+                        <ChartAreas>
+                            <asp:ChartArea Name="ChartArea1">
+                            </asp:ChartArea>
+                        </ChartAreas>
+                    </asp:Chart>
+                </td>
             </tr>
         </table>
        
-        <asp:SqlDataSource ID="AZURE" runat="server" ConnectionString="<%$ ConnectionStrings:EADPConnectionString %>" SelectCommand="SELECT [Cost], [TripId] FROM [Trip]"></asp:SqlDataSource>
+        
     </form>
 </asp:Content>
