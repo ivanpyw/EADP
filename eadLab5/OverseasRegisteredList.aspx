@@ -3,13 +3,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
-        <asp:GridView ID="GridViewRegistered" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+        <asp:GridView ID="GridViewRegistered" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped" OnSelectedIndexChanged="GridViewRegistered_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="RegisterId" HeaderText="ID" />
-                <asp:BoundField AccessibleHeaderText="AdminNo" DataField="AdminNo" HeaderText="AdminNo" />
-                <asp:BoundField AccessibleHeaderText="Gender" DataField="Gender" HeaderText="Gender" />
-                <asp:BoundField AccessibleHeaderText="StaffID" DataField="StaffId" HeaderText="StaffID" />
+                <asp:BoundField AccessibleHeaderText="AdminNo" DataField="AdminNo" HeaderText="Admin number" />
+                <asp:BoundField AccessibleHeaderText="Gender" DataField="GenderType" HeaderText="Gender" />
+                <asp:BoundField AccessibleHeaderText="StaffID" DataField="staffName" HeaderText="Staff Name" />
                 <asp:CommandField SelectText="Shortlist" ShowSelectButton="True" />
                 <asp:CommandField SelectText="Norminate" ShowSelectButton="True" />
                 <asp:CommandField SelectText="WaitingList" ShowSelectButton="True" />

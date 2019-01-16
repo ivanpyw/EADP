@@ -269,7 +269,8 @@ namespace eadLab5.DAL
             //          where TD is not matured yet
 
             StringBuilder sqlStr = new StringBuilder();
-            sqlStr.AppendLine("SELECT r.TripId From Register r INNER JOIN STUDENT s on s.AdminNo = r.AdminNo ");
+            sqlStr.AppendLine("SELECT * From Register r INNER JOIN STUDENT s on s.AdminNo = r.AdminNo ");
+            sqlStr.AppendLine("INNER JOIN STAFF st on st.StaffId = r.StaffId");
             sqlStr.AppendLine("where r.TripId = @paraTripId");
 
             // Step 4 :Instantiate SqlConnection instance and SqlDataAdapter instance
@@ -298,7 +299,7 @@ namespace eadLab5.DAL
 
                     myTD.RegisterId = Convert.ToInt32(row["RegisterId"]);
                     myTD.AdminNo = row["AdminNo"].ToString();
-                    myTD.StaffId = Convert.ToInt32(row["StaffId"]);
+                    myTD.staffName = row["Name"].ToString();
                     myTD.GenderType = row["Gender"].ToString();
                    
 
