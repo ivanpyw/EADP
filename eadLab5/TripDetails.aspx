@@ -255,7 +255,7 @@
                             <% if (role == "Teacher   ")
                                 { %>
                             <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="btn btn-success">Edit details</a>
-                            <a href="RegisteredStudents.aspx?tripId=<%=trip.tripId %>" class="btn btn-info">View Student details</a>
+                            <a href="OverseasRegisteredList.aspx?tripId=<%=trip.tripId %>" class="btn btn-info">View Student details</a>
                             <% }
     else if (listId.Contains(trip.tripId))
     { %>

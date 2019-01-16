@@ -24,7 +24,8 @@ namespace eadLab5
             if (Session["role"] != null)
             {
                 role = Session["role"].ToString();
-                adminNo = Session["AdminNo"].ToString();
+                if (role == "1" || role == "2" || role == "3")
+                    adminNo = Session["AdminNo"].ToString();
             }
             tripType = Request.QueryString["tripType"];
             tripObj = tripDao.getTrip(tripType);

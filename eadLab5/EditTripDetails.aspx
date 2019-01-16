@@ -131,10 +131,11 @@
                                 Warning <i class="fas fa-exclamation-triangle"></i>
                                 <p>Cancelling this trip will notify all students who have signed up for the trip</p>
                             </div>
-                            <p>Reasons: </p><asp:TextBox ID="tbReason" runat="server" CssClass="form-control"></asp:TextBox>
+                            <p>Reasons: <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Reason for cancellation required" ValidationGroup="2" Text="*" ControlToValidate="tbReason"></asp:RequiredFieldValidator></p><asp:TextBox ID="tbReason" runat="server" CssClass="form-control" ValidationGroup="2"></asp:TextBox>
                         </div>
                         <div class="modal-footer">
-                            <asp:Button ID="DelTrip" runat="server" Text="Cancel trip and notify" CausesValidation="False" OnClick="DelTrip_Click" CssClass="btn btn-danger"/>
+                            <asp:ValidationSummary ID="ValidationSummary2" runat="server" ValidationGroup="2" />
+                            <asp:Button ID="DelTrip" runat="server" Text="Cancel trip and notify" CausesValidation="True" OnClick="DelTrip_Click" CssClass="btn btn-danger" ValidationGroup="2" />
                         </div>
                     </div>
                 </div>
