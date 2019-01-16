@@ -271,13 +271,16 @@
                                 { %>
                             <button type="button" class="form-control btn btn-secondary" disabled>Signed up</button>
                             <% }
-                            else if (role == "1" || role == "2" || role=="3")
+                                else if (role == "1" || role == "2" || role == "3")
+                                {
+                                    if (role != "3" && trip.tripType == "Internship")
+                                    {%>
+                            <button type="button" class="form-control btn btn-secondary" disabled>Only for year 3</button>
+                            <%}
+                            else
                             {%>
                             <button type="button" onclick="sendTripId(<%= trip.tripId %>)" class="form-control btn btn-primary">Sign up</button>
-                            <% }
-                                if (role != "3" && trip.tripType == "internship")
-                                { %>
-                                <button type="button" class="form-control btn btn-secondary" disabled>Only for year 3</button>
+                            <%} %>
                             <%} %>
                         </div>
                     </div>
