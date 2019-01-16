@@ -170,6 +170,7 @@
                                             <asp:ListItem Selected="True" Value="-1">--Selected--</asp:ListItem>
                                             <asp:ListItem Value="1">Study</asp:ListItem>
                                             <asp:ListItem Value="2">Immersion</asp:ListItem>
+                                            <asp:ListItem Value="3">Internship</asp:ListItem>
                                         </asp:DropDownList></td>
 
                                 </tr>
