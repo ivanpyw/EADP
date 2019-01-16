@@ -11,7 +11,8 @@ namespace eadLab5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            int tripId = Convert.ToInt32(Request.QueryString["tripId"]);
+            System.Diagnostics.Debug.WriteLine(tripId + " this is trip id from registeredStudent");
         }
     }
 }

@@ -62,7 +62,7 @@
                 dataType: "json",
                 contentType: "application/json",
                 success: function(response){
-                    console.log("this is response", response)
+                    window.location.reload()
                 },
                 error: function () {
                     console.log("error")
@@ -254,7 +254,8 @@
                             </table>
                             <% if (role == "Teacher   ")
                                 { %>
-                            <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="form-control btn btn-success">Edit details</a>
+                            <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="btn btn-success">Edit details</a>
+                            <a href="RegisteredStudents.aspx?tripId=<%=trip.tripId %>" class="btn btn-info">View Student details</a>
                             <% }
     else if (listId.Contains(trip.tripId))
     { %>

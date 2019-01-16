@@ -54,6 +54,7 @@ namespace eadLab5
             TripDAO addStudDao = new TripDAO();
             addStudDao.assignStudentToTrip(Convert.ToInt32(tripId), adminNo);
             System.Diagnostics.Debug.WriteLine("its in");
+            
             return tripId;
         }
         
