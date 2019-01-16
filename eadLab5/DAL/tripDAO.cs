@@ -95,6 +95,37 @@ namespace eadLab5.DAL
             return result;
         }
 
+        public List<int> getSignedUpTrip(string AdminNo)
+        {
+            List<int> listId = new List<int>();
+            listId.Add(0);
+            if(AdminNo == null)
+            {
+                return listId;
+            }else
+            {
+                SqlConnection myConn = new SqlConnection(DBConnect);
+                StringBuilder sqlCommand = new StringBuilder();
+                sqlCommand.AppendLine("SELECT TripId from Register");
+                sqlCommand.AppendLine("WHERE adminNo = @pAdminNo ");
+                SqlDataAdapter da = new SqlDataAdapter(sqlCommand.ToString(), myConn);
+                da.SelectCommand.Parameters.AddWithValue("@pAdminNo", AdminNo);
+                DataSet ds = new DataSet();
+                da.Fill(ds, "Trip");
+                int tripRow = ds.Tables["Trip"].Rows.Count;
+                for (int i = 0; i < tripRow; i++)
+                {
+                    DataRow row3 = ds.Tables["Trip"].Rows[i];
+                    foreach (DataColumn column in ds.Tables["Trip"].Columns)
+                    {
+                        listId.Add(Convert.ToInt32(row3[column]));
+
+                    }
+                }
+                return listId;
+            }
+        }
+
         public int insertTrip(string location, string tripImage, string title, DateTime start, DateTime end, DateTime openingDay, string activities, double cost, string triptype)
         {
             StringBuilder sqlStr = new StringBuilder();
@@ -117,6 +148,29 @@ namespace eadLab5.DAL
             sqlCmd.Parameters.AddWithValue("@pLocation", location);
             sqlCmd.Parameters.AddWithValue("@pType", triptype);
             sqlCmd.Parameters.AddWithValue("@pImage", tripImage);
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+
+            myConn.Close();
+            return result;
+        }
+
+        public int assignStudentToTrip(int tripId, string AdminNo)
+        {
+            StringBuilder sqlStr = new StringBuilder();
+            int result = 0;
+            SqlCommand sqlCmd = new SqlCommand();
+
+            sqlStr.AppendLine("INSERT INTO REGISTER(TripId, AdminNo)");
+            sqlStr.AppendLine("VALUES (@pTripId,@pAdminNo)");
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+
+            sqlCmd.Parameters.AddWithValue("@pTripId",tripId);
+            sqlCmd.Parameters.AddWithValue("@pAdminNo", AdminNo);
 
             myConn.Open();
             result = sqlCmd.ExecuteNonQuery();

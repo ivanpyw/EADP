@@ -175,6 +175,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="PEMMain.aspx" />
+    <Content Include="RegisteredStudents.aspx" />
     <Content Include="ReportAndStatistics.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -233,6 +234,8 @@
     <Compile Include="DAL\FeedbackFormDAO.cs" />
     <Compile Include="DAL\interestRte.cs" />
     <Compile Include="DAL\InterestRteDAO.cs" />
+    <Compile Include="DAL\RegStudent.cs" />
+    <Compile Include="DAL\RegStudentDAO.cs" />
     <Compile Include="DAL\StaffLogin.cs" />
     <Compile Include="DAL\StaffLoginDAO.cs" />
     <Compile Include="DAL\Student.cs" />
@@ -280,6 +283,8 @@
     <Compile Include="FeedBackFormStudent.aspx.designer.cs">
       <DependentUpon>FeedBackFormStudent.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FromBodyAttribute.cs" />
+    <Compile Include="HttpPostAttribute.cs" />
     <Compile Include="Interview.aspx.cs">
       <DependentUpon>Interview.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -320,6 +325,13 @@
       <DependentUpon>PEMMain.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisteredStudents.aspx.cs">
+      <DependentUpon>RegisteredStudents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegisteredStudents.aspx.designer.cs">
+      <DependentUpon>RegisteredStudents.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ReportAndStatistics.aspx.cs">
       <DependentUpon>ReportAndStatistics.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

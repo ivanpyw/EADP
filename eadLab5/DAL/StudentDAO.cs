@@ -13,7 +13,7 @@ namespace eadLab5.DAL
         public Student getStudentById(String AdminNo)
         {
             string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
-
+            System.Diagnostics.Debug.WriteLine("fuck you junpoh");
             SqlDataAdapter da;
             DataSet ds = new DataSet();
 
@@ -41,10 +41,13 @@ namespace eadLab5.DAL
                 obj.Achievement = row["Achievement"].ToString();
                 obj.Email = row["Email"].ToString();
                 obj.PEMClass = row["PEMClass"].ToString();
+                obj.Year = Convert.ToInt32(row["Year"]);
+                System.Diagnostics.Debug.WriteLine(obj.Year +"this is from studentDAO");
             }
             else
             {
                 obj = null;
+                System.Diagnostics.Debug.WriteLine(obj + "this is from studentDAO part 2");
             }
 
             return obj;

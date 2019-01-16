@@ -31,7 +31,6 @@ namespace eadLab5
                 StudentLogin stuObj = new StudentLogin();
                 StudentLoginDAO stuDao = new StudentLoginDAO();
                 stuObj = stuDao.getStudentById(tbLogin.Text, tbPassword.Text);
-
                 if (stuObj == null)
                 {
                     lblErrorMessage.Visible = true;

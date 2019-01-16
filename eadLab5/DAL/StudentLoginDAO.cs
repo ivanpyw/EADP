@@ -16,7 +16,6 @@ namespace eadLab5.DAL
 
             //Get connection string from web.config
             string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
-
             SqlDataAdapter da;
             DataSet ds = new DataSet();
 
@@ -45,7 +44,7 @@ namespace eadLab5.DAL
                 DataRow row = ds.Tables["custTable"].Rows[0];  // Sql command returns only one record
                 obj.AdminNo = row["AdminNo"].ToString();
                 obj.Password = row["Password"].ToString();
-                
+                obj.Year = row["Year"].ToString();
             }
             else
             {

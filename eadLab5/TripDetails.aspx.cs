@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -15,15 +16,22 @@ namespace eadLab5
         protected int count = 0;
         protected List<Trip> tripObj = null;
         protected string tripType = null;
+        public static string adminNo = null;
+        protected List<int> listId = null;
         TripDAO tripDao = new TripDAO();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["role"] != null)
+            if (Session["role"] != null)
+            {
                 role = Session["role"].ToString();
+                if (role == "1" || role == "2" || role == "3")
+                    adminNo = Session["AdminNo"].ToString();
+            }
             tripType = Request.QueryString["tripType"];
             tripObj = tripDao.getTrip(tripType);
             count = tripDao.count;
-            List<String> countryList = tripDao.getCountry();
+            listId = tripDao.getSignedUpTrip(adminNo);
+            List <String> countryList = tripDao.getCountry();
             ddlAddLocation.DataSource = countryList;
             ddlAddLocation.DataBind();
             if(role == "")
@@ -39,6 +47,18 @@ namespace eadLab5
             }
         }
 
+        [WebMethod]
+        public static string assignStudent(string tripId)
+        {
+            System.Diagnostics.Debug.WriteLine(tripId+" this is tripId@@@ ");
+            System.Diagnostics.Debug.WriteLine(adminNo + " this is adminNo@@@ ");
+            TripDAO addStudDao = new TripDAO();
+            addStudDao.assignStudentToTrip(Convert.ToInt32(tripId), adminNo);
+            System.Diagnostics.Debug.WriteLine("its in");
+            
+            return tripId;
+        }
+        
 
         string SaveFile(HttpPostedFile file)
         {

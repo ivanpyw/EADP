@@ -52,6 +52,23 @@
                 }
             }
         }
+
+        function sendTripId(tripId) {
+            var data = { "tripId": tripId }
+            $.ajax({
+                url: "http://localhost:3355/TripDetails.aspx/assignStudent",
+                type: 'POST',
+                data: JSON.stringify(data),
+                dataType: "json",
+                contentType: "application/json",
+                success: function(response){
+                    window.location.reload()
+                },
+                error: function () {
+                    console.log("error")
+                }
+            })
+        }
     </script>
     <div class="container">
         <button class="btn btn-secondary btn-lg add-trip-btn" type="button" data-toggle="modal" data-target="#addModal"><i class="fa fa-plus"></i></button>
@@ -64,14 +81,14 @@
             <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Immersion" aria-controls="immerseTrip" aria-selected="false">Immersion trips</a>
             <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Study" aria-controls="studyTrip" aria-selected="false">Study trips</a>
             <% }
-    else if (tripType == "Immersion")
-    { %>
+                else if (tripType == "Immersion")
+                { %>
             <a class="nav-item nav-link" href="/TripDetails.aspx?" aria-controls="studyTrip" aria-selected="false">All trips</a>
             <a class="nav-item nav-link active" href="#immerseTrip" data-toggle="pill" aria-controls="immerseTrip" aria-selected="true">Immersion trips</a>
             <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Study" aria-controls="studyTrip" aria-selected="false">Study trips</a>
             <% }
-    else if (tripType == "Study")
-    { %>
+                else if (tripType == "Study")
+                { %>
             <a class="nav-item nav-link" href="/TripDetails.aspx?" aria-controls="studyTrip" aria-selected="false">All trips</a>
             <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Immersion" aria-controls="immerseTrip" aria-selected="false">Immersion trips</a>
             <a class="nav-item nav-link active" href="#studyTrip" data-toggle="pill" aria-controls="immerseTrip" aria-selected="true">Study trips</a>
@@ -238,6 +255,15 @@
                             <% if (role == "Teacher   ")
                                 { %>
                             <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="btn btn-success">Edit details</a>
+                            <a href="OverseasRegisteredList.aspx?tripId=<%=trip.tripId %>" class="btn btn-info">View Student details</a>
+                            <% }
+    else if (listId.Contains(trip.tripId))
+    { %>
+                                <button type="button" class="form-control btn btn-secondary" disabled>Signed up</button>
+                            <% }
+    else if (role == "1" || role == "2")
+    {%>
+                                <button type="button" onclick="sendTripId(<%= trip.tripId %>)" class="form-control btn btn-primary">Sign up</button>
                             <% } %>
                         </div>
                     </div>

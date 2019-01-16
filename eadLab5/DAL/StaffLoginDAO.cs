@@ -14,7 +14,7 @@ namespace eadLab5.DAL
         
         public StaffLogin getStaffById(string Email, string password)
         {
-
+            System.Diagnostics.Debug.WriteLine("this is from staffDAO");
             //Get connection string from web.config
             string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
 
