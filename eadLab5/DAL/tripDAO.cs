@@ -270,7 +270,7 @@ namespace eadLab5.DAL
 
             StringBuilder sqlStr = new StringBuilder();
             sqlStr.AppendLine("SELECT r.TripId From Register r INNER JOIN STUDENT s on s.AdminNo = r.AdminNo");
-            sqlStr.AppendLine("where TripId = @paraTripId");
+            sqlStr.AppendLine("where r.TripId = @paraTripId");
 
             // Step 4 :Instantiate SqlConnection instance and SqlDataAdapter instance
 
