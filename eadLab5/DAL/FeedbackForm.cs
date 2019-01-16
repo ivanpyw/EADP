@@ -21,8 +21,8 @@ namespace eadLab5.DAL
         public string AdminNo { get; set; }
         public string Country { get; set; }
         public int FeedBackId { get; set; }
-        public string DateStart { get; set; }
-        public string DateEnd { get; set; }
+        public DateTime DateStart { get; set; }
+        public DateTime DateEnd { get; set; }
         public string FBid { get; set; }
 
     }

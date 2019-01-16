@@ -103,15 +103,6 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.TextBox txtDateCheckEnd;
         
         /// <summary>
-        /// FilterBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button FilterBtn;
-        
-        /// <summary>
         /// GridView_GetFB control.
         /// </summary>
         /// <remarks>

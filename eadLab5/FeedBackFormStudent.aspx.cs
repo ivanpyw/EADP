@@ -27,7 +27,7 @@ namespace eadLab5
             String StudName = "Ivan";
             String AdminNo = Session["AdminNo"].ToString();
             String Country = "Beijing";
-            String DateCreated = DateTime.Now.ToString("dd/MM/yyyy");
+            DateTime DateCreated = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
 
             try
             {

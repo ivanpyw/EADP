@@ -16,7 +16,7 @@ namespace eadLab5
         {
             if (!IsPostBack)
             {
-                buildBarChart("All", "All", "", "");
+                buildBarChart("All", "All", DateTime.Parse("1-1-1753"), DateTime.Parse("1-1-9999"));
                 buildPieChart("All");
                 buildHorizontalChart("All");
                 buildLineChart("All", "All");
@@ -40,7 +40,7 @@ namespace eadLab5
 
        }
 
-        private void buildBarChart(string country, string type, string dateStart, string dateEnd)
+        private void buildBarChart(string country, string type, DateTime dateStart, DateTime dateEnd)
         {
             String myConnect = ConfigurationManager.ConnectionStrings["EADPConnectionString2"].ToString();
             SqlConnection myConn = new SqlConnection(myConnect);
@@ -278,7 +278,7 @@ namespace eadLab5
             string dateStart = flipDate(DateStartRange.Text);
             string dateEnd = flipDate(DateEndRange.Text);
 
-            buildBarChart(countryBarChart, type, dateStart, dateEnd);
+            buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
 
             string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
             buildPieChart(countryPieChart);
@@ -298,7 +298,7 @@ namespace eadLab5
             string dateStart = flipDate(DateStartRange.Text);
             string dateEnd = flipDate(DateEndRange.Text);
 
-            buildBarChart(countryBarChart, type, dateStart, dateEnd);
+            buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
 
             string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
             buildPieChart(countryPieChart);
@@ -318,7 +318,7 @@ namespace eadLab5
             string dateStart = flipDate(DateStartRange.Text);
             string dateEnd = flipDate(DateEndRange.Text);
 
-            buildBarChart(countryBarChart, type, dateStart, dateEnd);
+            buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
 
             string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
             buildPieChart(countryPieChart);
@@ -340,7 +340,7 @@ namespace eadLab5
             string dateStart = flipDate(DateStartRange.Text);
             string dateEnd = flipDate(DateEndRange.Text);
 
-            buildBarChart(countryBarChart, type, dateStart, dateEnd);
+            buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
 
             string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
             buildPieChart(countryPieChart);
@@ -360,7 +360,7 @@ namespace eadLab5
             string dateStart = flipDate(DateStartRange.Text);
             string dateEnd = flipDate(DateEndRange.Text);
 
-            buildBarChart(countryBarChart, type, dateStart, dateEnd);
+            buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
 
             string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
             buildPieChart(countryPieChart);
@@ -380,7 +380,7 @@ namespace eadLab5
             string dateStart = flipDate(DateStartRange.Text);
             string dateEnd = flipDate(DateEndRange.Text);
 
-            buildBarChart(countryBarChart, type, dateStart, dateEnd);
+            buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
 
             string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
             buildPieChart(countryPieChart);
@@ -400,7 +400,7 @@ namespace eadLab5
             string dateStart = flipDate(DateStartRange.Text);
             string dateEnd = flipDate(DateEndRange.Text);
 
-            buildBarChart(countryBarChart, type, dateStart, dateEnd);
+            buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
 
             string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
             buildPieChart(countryPieChart);

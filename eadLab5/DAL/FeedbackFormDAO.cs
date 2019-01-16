@@ -14,7 +14,7 @@ namespace eadLab5.DAL
     {
         // Place the DBConnect to class variable to be shared by all the methodsin this class
         string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
-        public int InsertTD(string Affordability, string Enjoyment, string Freedom, string ReviewPros, string ReviewCons, string ReviewImprovement, string StudentName, string Country, string AdminNo, int TripId, string DateCreated)
+        public int InsertTD(string Affordability, string Enjoyment, string Freedom, string ReviewPros, string ReviewCons, string ReviewImprovement, string StudentName, string Country, string AdminNo, int TripId, DateTime DateCreated)
         {
 
             StringBuilder sqlStr = new StringBuilder();
@@ -185,7 +185,7 @@ namespace eadLab5.DAL
         }
 
 
-        public List<FeedbackForm> GetFilteredFeedBacks(string Country, string Affordability, string Freedom, string DateStart, string DateEnd)
+        public List<FeedbackForm> GetFilteredFeedBacks(string Country, string Affordability, string Freedom, DateTime DateStart, DateTime DateEnd)
         {
             // Step 2 : declare a list to hold collection of customer's timeDeposit
             //           DataSet instance and dataTable instance 

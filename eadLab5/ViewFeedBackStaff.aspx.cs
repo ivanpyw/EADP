@@ -16,11 +16,15 @@ namespace eadLab5
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            FeedbackFormDAO tdDAO = new FeedbackFormDAO();
-            List<FeedbackForm> tdList = new List<FeedbackForm>();
-            tdList = tdDAO.GetAllFeedBack();
-            GridView_GetFB.DataSource = tdList;
-            GridView_GetFB.DataBind();
+            if (!IsPostBack)
+            {
+                FeedbackFormDAO tdDAO = new FeedbackFormDAO();
+                List<FeedbackForm> tdList = new List<FeedbackForm>();
+                tdList = tdDAO.GetAllFeedBack();
+                GridView_GetFB.DataSource = tdList;
+                GridView_GetFB.DataBind();
+            }
+
         }
 
         protected void GridView_GetFB_SelectedIndexChanged(object sender, EventArgs e)
@@ -33,34 +37,49 @@ namespace eadLab5
             Response.Redirect("StaffViewSpecificFeedBack.aspx");
         }
 
-        public string flipDate(string originalD)
+        protected void CountryFilterDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string nodate = " ";
-            if (!originalD.Equals("")) {
-                string year = originalD.Substring(0, 4);
-                string month = originalD.Substring(5, 2);
-                string day = originalD.Substring(8, 2);
-                string newdate = day + "-" + month + "-" + year;
-                return newdate;
-            }
-           
-            return nodate;
-        }
-        protected void FilterBtn_Click(object sender, EventArgs e)
-        {
-           
-                FeedbackFormDAO tdDAO = new FeedbackFormDAO();
-                List<FeedbackForm> tdList = new List<FeedbackForm>();
-                string startD = flipDate( txtDateCheckStart.Text);
-                string endD = flipDate(txtDateCheckEnd.Text);                
-                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), startD, endD);
-                GridView_GetFB.DataSource = tdList;
-                GridView_GetFB.DataBind();
-            
-           
-
+            FeedbackFormDAO tdDAO = new FeedbackFormDAO();
+            List<FeedbackForm> tdList = new List<FeedbackForm>();
+            DateTime startD = DateTime.Parse(txtDateCheckStart.Text);
+            DateTime endD = DateTime.Parse(txtDateCheckEnd.Text);
+            tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), startD, endD);
+            GridView_GetFB.DataSource = tdList;
+            GridView_GetFB.DataBind();
         }
 
-       
+        protected void AffordabilityFilterDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FeedbackFormDAO tdDAO = new FeedbackFormDAO();
+            List<FeedbackForm> tdList = new List<FeedbackForm>();
+            DateTime startD = DateTime.Parse(txtDateCheckStart.Text);
+            DateTime endD = DateTime.Parse(txtDateCheckEnd.Text);
+            tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), startD, endD);
+            GridView_GetFB.DataSource = tdList;
+            GridView_GetFB.DataBind();
+        }
+
+        protected void FreedomFilterDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FeedbackFormDAO tdDAO = new FeedbackFormDAO();
+            List<FeedbackForm> tdList = new List<FeedbackForm>();
+            DateTime startD = DateTime.Parse(txtDateCheckStart.Text);
+            DateTime endD = DateTime.Parse(txtDateCheckEnd.Text);
+            tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), startD, endD);
+            GridView_GetFB.DataSource = tdList;
+            GridView_GetFB.DataBind();
+        }
+        
+
+        protected void txtDateCheckEnd_TextChanged(object sender, EventArgs e)
+        {
+            FeedbackFormDAO tdDAO = new FeedbackFormDAO();
+            List<FeedbackForm> tdList = new List<FeedbackForm>();
+            DateTime startD = DateTime.Parse(txtDateCheckStart.Text);
+            DateTime endD = DateTime.Parse(txtDateCheckEnd.Text);
+            tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), startD, endD);
+            GridView_GetFB.DataSource = tdList;
+            GridView_GetFB.DataBind();
+        }
     }
 }
