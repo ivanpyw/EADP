@@ -52,6 +52,7 @@
                 }
             }
         }
+
         function sendTripId(tripId) {
             var data = { "tripId": tripId }
             $.ajax({
@@ -255,8 +256,12 @@
                                 { %>
                             <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="form-control btn btn-success">Edit details</a>
                             <% }
-                            else if (role == "1" || role == "2")
-                            {%>
+    else if (listId.Contains(trip.tripId))
+    { %>
+                                <button type="button" class="form-control btn btn-secondary" disabled>Signed up</button>
+                            <% }
+    else if (role == "1" || role == "2")
+    {%>
                                 <button type="button" onclick="sendTripId(<%= trip.tripId %>)" class="form-control btn btn-primary">Sign up</button>
                             <% } %>
                         </div>

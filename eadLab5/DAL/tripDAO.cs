@@ -95,6 +95,37 @@ namespace eadLab5.DAL
             return result;
         }
 
+        public List<int> getSignedUpTrip(string AdminNo)
+        {
+            List<int> listId = new List<int>();
+            listId.Add(0);
+            if(AdminNo == null)
+            {
+                return listId;
+            }else
+            {
+                SqlConnection myConn = new SqlConnection(DBConnect);
+                StringBuilder sqlCommand = new StringBuilder();
+                sqlCommand.AppendLine("SELECT TripId from Register");
+                sqlCommand.AppendLine("WHERE adminNo = @pAdminNo ");
+                SqlDataAdapter da = new SqlDataAdapter(sqlCommand.ToString(), myConn);
+                da.SelectCommand.Parameters.AddWithValue("@pAdminNo", AdminNo);
+                DataSet ds = new DataSet();
+                da.Fill(ds, "Trip");
+                int tripRow = ds.Tables["Trip"].Rows.Count;
+                for (int i = 0; i < tripRow; i++)
+                {
+                    DataRow row3 = ds.Tables["Trip"].Rows[i];
+                    foreach (DataColumn column in ds.Tables["Trip"].Columns)
+                    {
+                        listId.Add(Convert.ToInt32(row3[column]));
+
+                    }
+                }
+                return listId;
+            }
+        }
+
         public int insertTrip(string location, string tripImage, string title, DateTime start, DateTime end, DateTime openingDay, string activities, double cost, string triptype)
         {
             StringBuilder sqlStr = new StringBuilder();

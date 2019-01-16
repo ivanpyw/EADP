@@ -17,6 +17,7 @@ namespace eadLab5
         protected List<Trip> tripObj = null;
         protected string tripType = null;
         public static string adminNo = null;
+        protected List<int> listId = null;
         TripDAO tripDao = new TripDAO();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,7 +29,8 @@ namespace eadLab5
             tripType = Request.QueryString["tripType"];
             tripObj = tripDao.getTrip(tripType);
             count = tripDao.count;
-            List<String> countryList = tripDao.getCountry();
+            listId = tripDao.getSignedUpTrip(adminNo);
+            List <String> countryList = tripDao.getCountry();
             ddlAddLocation.DataSource = countryList;
             ddlAddLocation.DataBind();
             if(role == "")
