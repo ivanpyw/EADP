@@ -61,7 +61,7 @@
                 data: JSON.stringify(data),
                 dataType: "json",
                 contentType: "application/json",
-                success: function(response){
+                success: function (response) {
                     window.location.reload()
                 },
                 error: function () {
@@ -78,20 +78,30 @@
             <% if (tripType == null)
                 { %>
             <a class="nav-item nav-link active" href="#immerseTrip" data-toggle="pill" aria-controls="allTrip" aria-selected="true">All trips</a>
-            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Immersion" aria-controls="immerseTrip" aria-selected="false">Immersion trips</a>
-            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Study" aria-controls="studyTrip" aria-selected="false">Study trips</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Immersion" aria-controls="immerseTrip" aria-selected="false">Immersion</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Study" aria-controls="studyTrip" aria-selected="false">Study</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Internship" aria-controls="studyTrip" aria-selected="false">Internship</a>
             <% }
-                else if (tripType == "Immersion")
+                else if (tripType.ToLower() == "immersion")
                 { %>
             <a class="nav-item nav-link" href="/TripDetails.aspx?" aria-controls="studyTrip" aria-selected="false">All trips</a>
-            <a class="nav-item nav-link active" href="#immerseTrip" data-toggle="pill" aria-controls="immerseTrip" aria-selected="true">Immersion trips</a>
-            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Study" aria-controls="studyTrip" aria-selected="false">Study trips</a>
+            <a class="nav-item nav-link active" href="#immerseTrip" data-toggle="pill" aria-controls="immerseTrip" aria-selected="true">Immersion</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Study" aria-controls="studyTrip" aria-selected="false">Study</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Internship" aria-controls="studyTrip" aria-selected="false">Internship</a>
             <% }
-                else if (tripType == "Study")
+                else if (tripType.ToLower() == "study")
                 { %>
             <a class="nav-item nav-link" href="/TripDetails.aspx?" aria-controls="studyTrip" aria-selected="false">All trips</a>
-            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Immersion" aria-controls="immerseTrip" aria-selected="false">Immersion trips</a>
-            <a class="nav-item nav-link active" href="#studyTrip" data-toggle="pill" aria-controls="immerseTrip" aria-selected="true">Study trips</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Immersion" aria-controls="immerseTrip" aria-selected="false">Immersion</a>
+            <a class="nav-item nav-link active" href="#studyTrip" data-toggle="pill" aria-controls="immerseTrip" aria-selected="true">Study</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Internship" aria-controls="studyTrip" aria-selected="false">Internship</a>
+            <% }
+                else if (tripType.ToLower() == "internship")
+                { %>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?" aria-controls="studyTrip" aria-selected="false">All trips</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Immersion" aria-controls="immerseTrip" aria-selected="false">Immersion</a>
+            <a class="nav-item nav-link" href="/TripDetails.aspx?tripType=Study" aria-controls="immerseTrip" aria-selected="false">Study</a>
+            <a class="nav-item nav-link active" href="#studyTrip" data-toggle="pill" aria-controls="immerseTrip" aria-selected="true">Internship</a>
             <% } %>
         </nav>
     </div>
@@ -257,14 +267,18 @@
                             <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="btn btn-success">Edit details</a>
                             <a href="OverseasRegisteredList.aspx?tripId=<%=trip.tripId %>" class="btn btn-info">View Student details</a>
                             <% }
-    else if (listId.Contains(trip.tripId))
-    { %>
-                                <button type="button" class="form-control btn btn-secondary" disabled>Signed up</button>
+                                else if (listId.Contains(trip.tripId))
+                                { %>
+                            <button type="button" class="form-control btn btn-secondary" disabled>Signed up</button>
                             <% }
-    else if (role == "1" || role == "2")
-    {%>
-                                <button type="button" onclick="sendTripId(<%= trip.tripId %>)" class="form-control btn btn-primary">Sign up</button>
-                            <% } %>
+                            else if (role == "1" || role == "2" || role=="3")
+                            {%>
+                            <button type="button" onclick="sendTripId(<%= trip.tripId %>)" class="form-control btn btn-primary">Sign up</button>
+                            <% }
+                                if (role != "3" && trip.tripType == "internship")
+                                { %>
+                                <button type="button" class="form-control btn btn-secondary" disabled>Only for year 3</button>
+                            <%} %>
                         </div>
                     </div>
                 </div>
