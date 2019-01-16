@@ -201,5 +201,68 @@ namespace eadLab5.DAL
             }
             return tripDetails;
         }
+
+        public List<Trip> GetRegisteredList(int TripId)
+        {
+            // Step 2 : declare a list to hold collection of customer's timeDeposit
+            //           DataSet instance and dataTable instance 
+
+            List<Trip> tdList = new List<Trip>();
+            DataSet ds = new DataSet();
+            DataTable tdData = new DataTable();
+            //
+            // Step 3 :Create SQLcommand to select all columns from TDMaster by parameterised customer id
+            //          where TD is not matured yet
+
+            StringBuilder sqlStr = new StringBuilder();
+            sqlStr.AppendLine("SELECT * From Register");
+            sqlStr.AppendLine("where TripId = @paraTripId");
+
+
+
+            // Step 4 :Instantiate SqlConnection instance and SqlDataAdapter instance
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            SqlDataAdapter da = new SqlDataAdapter(sqlStr.ToString(), myConn);
+
+            // Step 5 :add value to parameter 
+
+            da.SelectCommand.Parameters.AddWithValue("paraTripId", TripId);
+
+            // Step 6: fill dataset
+            da.Fill(ds, "TableTD");
+
+            // Step 7: Iterate the rows from TableTD above to create a collection of TD
+            //         for this particular customer 
+
+            int rec_cnt = ds.Tables["TableTD"].Rows.Count;
+            if (rec_cnt > 0)
+            {
+                foreach (DataRow row in ds.Tables["TableTD"].Rows)
+                {
+                    Trip myTD = new Trip();
+
+                    // Step 8 Set attribute of timeDeposit instance for each row of record in TableTD
+
+                    myTD.RegisterId = Convert.ToInt32(row["RegisterId"]);
+                    myTD.TripId = Convert.ToInt32(row["TripId"]);
+                    myTD.AdminNo = row["AdminNo"].ToString();
+                    myTD.Reasons = row["Reasons"].ToString();
+                    myTD.StaffId = Convert.ToInt32(row["StaffId"]);
+                   
+
+                    //  Step 9: Add each timeDeposit instance to array list
+                    tdList.Add(myTD);
+                }
+            }
+            else
+            {
+                tdList = null;
+            }
+
+            return tdList;
+        }
     }
+
+
 }

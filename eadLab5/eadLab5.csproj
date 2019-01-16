@@ -161,6 +161,7 @@
     <Content Include="Interview.aspx" />
     <Content Include="loginStaff.aspx" />
     <Content Include="loginStudent.aspx" />
+    <Content Include="OverseasRegisteredList.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -303,6 +304,13 @@
     <Compile Include="MasterPage1.master.cs">
       <DependentUpon>MasterPage1.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OverseasRegisteredList.aspx.cs">
+      <DependentUpon>OverseasRegisteredList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OverseasRegisteredList.aspx.designer.cs">
+      <DependentUpon>OverseasRegisteredList.aspx</DependentUpon>
     </Compile>
     <Compile Include="PEMMain.aspx.cs">
       <DependentUpon>PEMMain.aspx</DependentUpon>
