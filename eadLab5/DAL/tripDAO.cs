@@ -269,10 +269,8 @@ namespace eadLab5.DAL
             //          where TD is not matured yet
 
             StringBuilder sqlStr = new StringBuilder();
-            sqlStr.AppendLine("SELECT * From Register");
+            sqlStr.AppendLine("SELECT r.TripId From Register r INNER JOIN STUDENT s on s.AdminNo = r.AdminNo");
             sqlStr.AppendLine("where TripId = @paraTripId");
-
-
 
             // Step 4 :Instantiate SqlConnection instance and SqlDataAdapter instance
 
@@ -299,10 +297,9 @@ namespace eadLab5.DAL
                     // Step 8 Set attribute of timeDeposit instance for each row of record in TableTD
 
                     myTD.RegisterId = Convert.ToInt32(row["RegisterId"]);
-                    myTD.TripId = Convert.ToInt32(row["TripId"]);
                     myTD.AdminNo = row["AdminNo"].ToString();
-                    myTD.Reasons = row["Reasons"].ToString();
                     myTD.StaffId = Convert.ToInt32(row["StaffId"]);
+                    myTD.GenderType = row["Gender"].ToString();
                    
 
                     //  Step 9: Add each timeDeposit instance to array list

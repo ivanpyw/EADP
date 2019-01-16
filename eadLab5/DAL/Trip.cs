@@ -30,5 +30,6 @@ namespace eadLab5.DAL
         public string AdminNo { get; set; }
         public string Reasons { get; set; }
         public int StaffId { get; set; }
+        public string GenderType { get; set; }
     }
 }

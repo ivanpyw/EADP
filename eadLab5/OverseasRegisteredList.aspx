@@ -7,11 +7,12 @@
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="RegisterId" HeaderText="ID" />
-                <asp:BoundField DataField="TripId" HeaderText="TripId" />
                 <asp:BoundField AccessibleHeaderText="AdminNo" DataField="AdminNo" HeaderText="AdminNo" />
-                <asp:BoundField AccessibleHeaderText="Reasons" DataField="Reasons" HeaderText="Reasons" />
+                <asp:BoundField AccessibleHeaderText="Gender" DataField="Gender" HeaderText="Gender" />
                 <asp:BoundField AccessibleHeaderText="StaffID" DataField="StaffId" HeaderText="StaffID" />
-                <asp:CommandField />
+                <asp:CommandField SelectText="Shortlist" ShowSelectButton="True" />
+                <asp:CommandField SelectText="Norminate" ShowSelectButton="True" />
+                <asp:CommandField SelectText="WaitingList" ShowSelectButton="True" />
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
