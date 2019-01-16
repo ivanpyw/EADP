@@ -16,6 +16,7 @@
                         <asp:ListItem>Enjoyed it</asp:ListItem>
                         <asp:ListItem>Definitely Enjoyed it</asp:ListItem>
                      </asp:DropDownList>
+                     <asp:CompareValidator ID="CompareValidatorEnjoyment" runat="server" ControlToValidate="EnjoymentDropDownUpdate" ErrorMessage="Enjoyment Required" Operator="NotEqual" ValueToCompare="-Select-">*</asp:CompareValidator>
                 </td>
             </tr>
             <tr>
@@ -27,7 +28,7 @@
                         <asp:ListItem>Yes</asp:ListItem>
                     </asp:DropDownList>
 
-                    &nbsp;<asp:Label ID="LblErr" Text="" ForeColor="Red" runat="server"></asp:Label>
+                    &nbsp;<asp:CompareValidator ID="CompareValidatorEnjoyment0" runat="server" ControlToValidate="AffordabilityDropDownUpdate" ErrorMessage="Enjoyment Required" Operator="NotEqual" ValueToCompare="-Select-">*</asp:CompareValidator>
 
                 </td>
             </tr>
@@ -39,12 +40,14 @@
                     <asp:ListItem>No</asp:ListItem>
                     <asp:ListItem>Yes</asp:ListItem>
                     </asp:DropDownList>
+                    <asp:CompareValidator ID="CompareValidatorEnjoyment1" runat="server" ControlToValidate="FreedomDropBoxUpdate" ErrorMessage="Enjoyment Required" Operator="NotEqual" ValueToCompare="-Select-">*</asp:CompareValidator>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style1"> What is your highlight of the trip? : </td>
                 <td>
                     <asp:TextBox ID="HighlightTbUpdate" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorHighlight" runat="server" ControlToValidate="HighlightTbUpdate" ErrorMessage="Highlights Required">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
 
@@ -52,16 +55,20 @@
                 <td class="auto-style1"> What are the downsides of the trip? :</td>
                 <td>
                    <asp:TextBox ID="DownsidesTbUpdate" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorHighlight0" runat="server" ControlToValidate="DownsidesTbUpdate" ErrorMessage="Highlights Required">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style1"> What can be improved? :</td>
                 <td>
                     <asp:TextBox ID="ImprovementTbUpdate" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorHighlight1" runat="server" ControlToValidate="ImprovementTbUpdate" ErrorMessage="Highlights Required">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style1">
+                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+                </td>
                 <td>
                     <asp:Button ID="BtnUpdate" runat="server" Text="Update" OnClick="BtnUpdate_Click"  />&nbsp;&nbsp;
                    <asp:Button ID="BtnBack" runat="server" OnClick="BtnBack_Click" Text="Back" />

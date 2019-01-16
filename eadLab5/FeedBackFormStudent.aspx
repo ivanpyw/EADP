@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeBehind="FeedBackFormStudent.aspx.cs" Inherits="eadLab5.FeedBackFormStudent" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+    .auto-style1 {
+        width: 1007px;
+    }
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form runat="server">
@@ -16,6 +21,7 @@
                         <asp:ListItem>Enjoyed it</asp:ListItem>
                         <asp:ListItem>Definitely Enjoyed it</asp:ListItem>
                      </asp:DropDownList>
+                     <asp:CompareValidator ID="CompareValidatorEnjoyment" runat="server" ControlToValidate="EnjoymentDropDown" ErrorMessage="Enjoyment Required" Operator="NotEqual" ValueToCompare="-Select-">*</asp:CompareValidator>
                 </td>
             </tr>
             <tr>
@@ -27,7 +33,7 @@
                         <asp:ListItem>Yes</asp:ListItem>
                     </asp:DropDownList>
 
-                    &nbsp;<asp:Label ID="LblErr" Text="" ForeColor="Red" runat="server"></asp:Label>
+                    &nbsp;<asp:CompareValidator ID="CompareValidatorAffordability" runat="server" ControlToValidate="AffordabilityDropDown" ErrorMessage="Affordability Required" Operator="NotEqual" ValueToCompare="-Select-">*</asp:CompareValidator>
 
                 </td>
             </tr>
@@ -39,12 +45,14 @@
                     <asp:ListItem>No</asp:ListItem>
                     <asp:ListItem>Yes</asp:ListItem>
                     </asp:DropDownList>
+                    <asp:CompareValidator ID="CompareValidatorFreedom" runat="server" ControlToValidate="FreedomDropBox" ErrorMessage="Freedom Required" Operator="NotEqual" ValueToCompare="-Select-">*</asp:CompareValidator>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style1"> What is your highlight of the trip? : </td>
                 <td>
                     <asp:TextBox ID="HighlightTb" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorHighlight" runat="server" ControlToValidate="HighlightTb" ErrorMessage="Highlights Required">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
 
@@ -52,16 +60,20 @@
                 <td class="auto-style1"> What are the downsides of the trip? :</td>
                 <td>
                    <asp:TextBox ID="DownsidesTb" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorDownsides" runat="server" ControlToValidate="DownsidesTb" ErrorMessage="Downsides Required">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style1"> What can be improved? :</td>
                 <td>
                     <asp:TextBox ID="ImprovementTb" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorHighlightImprovement" runat="server" ErrorMessage="Improvements Required">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style1">
+                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+                </td>
                 <td>
                     <asp:Button ID="BtnConfirm" runat="server" Text="Confirm" OnClick="BtnConfirm_Click" />&nbsp;&nbsp;
                  <asp:Button ID="BtnBack" runat="server" Text="Back" />

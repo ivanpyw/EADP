@@ -37,10 +37,14 @@
                             <a class="nav-link" href="TripDetails.aspx">Trip Details</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Corporate.aspx">Corporate Banking</a>
+                            <a class="nav-link" href="ReportAndStatistics.aspx">GraphStats</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="ViewFeedBackStaff.aspx">StaffFeedBack
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Enquiry.aspx">Enquiry</a>
+                            <a class="nav-link" href="  viewFeedBacksSubmitted.aspx">FBSubmitted</a>
                         </li>
 
                         <li class="nav-item">
@@ -50,6 +54,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="loginStaff.aspx">Staff login</a>
                         </li>
+
+                        viewFeedBacksSubmitted.aspx
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />

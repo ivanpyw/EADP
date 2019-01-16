@@ -314,6 +314,295 @@ namespace eadLab5.DAL
 
             return tdList;
         }
+
+        public List<Trip> GetWaitingList(int TripId)
+        {
+            // Step 2 : declare a list to hold collection of customer's timeDeposit
+            //           DataSet instance and dataTable instance 
+
+            List<Trip> tdList = new List<Trip>();
+            DataSet ds = new DataSet();
+            DataTable tdData = new DataTable();
+            //
+            // Step 3 :Create SQLcommand to select all columns from TDMaster by parameterised customer id
+            //          where TD is not matured yet
+
+            StringBuilder sqlStr = new StringBuilder();
+            sqlStr.AppendLine("SELECT * From Register r INNER JOIN STUDENT s on s.AdminNo = r.AdminNo ");
+            sqlStr.AppendLine("INNER JOIN STAFF st on st.StaffId = r.StaffId ");
+            sqlStr.AppendLine("where r.TripId = @paraTripId and RegisteredStatus ='WaitingList' ");
+
+            // Step 4 :Instantiate SqlConnection instance and SqlDataAdapter instance
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            SqlDataAdapter da = new SqlDataAdapter(sqlStr.ToString(), myConn);
+
+            // Step 5 :add value to parameter 
+
+            da.SelectCommand.Parameters.AddWithValue("paraTripId", TripId);
+
+            // Step 6: fill dataset
+            da.Fill(ds, "TableTD");
+
+            // Step 7: Iterate the rows from TableTD above to create a collection of TD
+            //         for this particular customer 
+
+            int rec_cnt = ds.Tables["TableTD"].Rows.Count;
+            if (rec_cnt > 0)
+            {
+                foreach (DataRow row in ds.Tables["TableTD"].Rows)
+                {
+                    Trip myTD = new Trip();
+
+                    // Step 8 Set attribute of timeDeposit instance for each row of record in TableTD
+
+                    myTD.RegisterId = Convert.ToInt32(row["RegisterId"]);
+                    myTD.AdminNo = row["AdminNo"].ToString();
+                    myTD.staffName = row["Name"].ToString();
+                    myTD.GenderType = row["Gender"].ToString();
+
+
+                    //  Step 9: Add each timeDeposit instance to array list
+                    tdList.Add(myTD);
+                }
+            }
+            else
+            {
+                tdList = null;
+            }
+
+            return tdList;
+        }
+
+        public List<Trip> GetShortlisted(int TripId)
+        {
+            // Step 2 : declare a list to hold collection of customer's timeDeposit
+            //           DataSet instance and dataTable instance 
+
+            List<Trip> tdList = new List<Trip>();
+            DataSet ds = new DataSet();
+            DataTable tdData = new DataTable();
+            //
+            // Step 3 :Create SQLcommand to select all columns from TDMaster by parameterised customer id
+            //          where TD is not matured yet
+
+            StringBuilder sqlStr = new StringBuilder();
+            sqlStr.AppendLine("SELECT * From Register r INNER JOIN STUDENT s on s.AdminNo = r.AdminNo ");
+            sqlStr.AppendLine("INNER JOIN STAFF st on st.StaffId = r.StaffId ");
+            sqlStr.AppendLine("where r.TripId = @paraTripId and RegisteredStatus ='Shortlisted' ");
+
+            // Step 4 :Instantiate SqlConnection instance and SqlDataAdapter instance
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            SqlDataAdapter da = new SqlDataAdapter(sqlStr.ToString(), myConn);
+
+            // Step 5 :add value to parameter 
+
+            da.SelectCommand.Parameters.AddWithValue("paraTripId", TripId);
+
+            // Step 6: fill dataset
+            da.Fill(ds, "TableTD");
+
+            // Step 7: Iterate the rows from TableTD above to create a collection of TD
+            //         for this particular customer 
+
+            int rec_cnt = ds.Tables["TableTD"].Rows.Count;
+            if (rec_cnt > 0)
+            {
+                foreach (DataRow row in ds.Tables["TableTD"].Rows)
+                {
+                    Trip myTD = new Trip();
+
+                    // Step 8 Set attribute of timeDeposit instance for each row of record in TableTD
+
+                    myTD.RegisterId = Convert.ToInt32(row["RegisterId"]);
+                    myTD.AdminNo = row["AdminNo"].ToString();
+                    myTD.staffName = row["Name"].ToString();
+                    myTD.GenderType = row["Gender"].ToString();
+
+
+                    //  Step 9: Add each timeDeposit instance to array list
+                    tdList.Add(myTD);
+                }
+            }
+            else
+            {
+                tdList = null;
+            }
+
+            return tdList;
+        }
+
+        public List<Trip> GetNorminated(int TripId)
+        {
+            // Step 2 : declare a list to hold collection of customer's timeDeposit
+            //           DataSet instance and dataTable instance 
+
+            List<Trip> tdList = new List<Trip>();
+            DataSet ds = new DataSet();
+            DataTable tdData = new DataTable();
+            //
+            // Step 3 :Create SQLcommand to select all columns from TDMaster by parameterised customer id
+            //          where TD is not matured yet
+
+            StringBuilder sqlStr = new StringBuilder();
+            sqlStr.AppendLine("SELECT * From Register r INNER JOIN STUDENT s on s.AdminNo = r.AdminNo ");
+            sqlStr.AppendLine("INNER JOIN STAFF st on st.StaffId = r.StaffId ");
+            sqlStr.AppendLine("where r.TripId = @paraTripId and RegisteredStatus ='Norminated' ");
+
+            // Step 4 :Instantiate SqlConnection instance and SqlDataAdapter instance
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            SqlDataAdapter da = new SqlDataAdapter(sqlStr.ToString(), myConn);
+
+            // Step 5 :add value to parameter 
+
+            da.SelectCommand.Parameters.AddWithValue("paraTripId", TripId);
+
+            // Step 6: fill dataset
+            da.Fill(ds, "TableTD");
+
+            // Step 7: Iterate the rows from TableTD above to create a collection of TD
+            //         for this particular customer 
+
+            int rec_cnt = ds.Tables["TableTD"].Rows.Count;
+            if (rec_cnt > 0)
+            {
+                foreach (DataRow row in ds.Tables["TableTD"].Rows)
+                {
+                    Trip myTD = new Trip();
+
+                    // Step 8 Set attribute of timeDeposit instance for each row of record in TableTD
+
+                    myTD.RegisterId = Convert.ToInt32(row["RegisterId"]);
+                    myTD.AdminNo = row["AdminNo"].ToString();
+                    myTD.staffName = row["Name"].ToString();
+                    myTD.GenderType = row["Gender"].ToString();
+
+
+                    //  Step 9: Add each timeDeposit instance to array list
+                    tdList.Add(myTD);
+                }
+            }
+            else
+            {
+                tdList = null;
+            }
+
+            return tdList;
+        }
+
+
+        public int updateNorminate(string ID, int TripId)
+        {
+
+            StringBuilder sqlStr = new StringBuilder();
+            int result = 0;    // Execute NonQuery return an integer value
+            SqlCommand sqlCmd = new SqlCommand();
+            // Step1 : Create SQL insert command to add record to TDMaster using     
+
+            //         parameterised query in values clause
+            //
+            sqlStr.AppendLine("UPDATE register ");
+            sqlStr.AppendLine("SET RegisteredStatus = 'Norminated' ");
+            sqlStr.AppendLine("WHERE RegisterId = @paraRegisterId AND TripId=@paraTripId");
+            
+            // Step 2 :Instantiate SqlConnection instance and SqlCommand instance
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+
+            // Step 3 : Add each parameterised query variable with value
+            //          complete to add all parameterised queries
+            sqlCmd.Parameters.AddWithValue("@paraRegisterId", ID);
+            sqlCmd.Parameters.AddWithValue("@paraTripId", TripId);
+
+            // Step 4 Open connection the execute NonQuery of sql command   
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+
+            // Step 5 :Close connection
+            myConn.Close();
+
+            return result;
+
+        }
+
+        public int updateShortlisted(string ID, int TripId)
+        {
+
+            StringBuilder sqlStr = new StringBuilder();
+            int result = 0;    // Execute NonQuery return an integer value
+            SqlCommand sqlCmd = new SqlCommand();
+            // Step1 : Create SQL insert command to add record to TDMaster using     
+
+            //         parameterised query in values clause
+            //
+            sqlStr.AppendLine("UPDATE register ");
+            sqlStr.AppendLine("SET RegisteredStatus = 'Shortlisted' ");
+            sqlStr.AppendLine("WHERE RegisterId = @paraRegisterId AND TripId=@paraTripId");
+
+            // Step 2 :Instantiate SqlConnection instance and SqlCommand instance
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+
+            // Step 3 : Add each parameterised query variable with value
+            //          complete to add all parameterised queries
+            sqlCmd.Parameters.AddWithValue("@paraRegisterId", ID);
+            sqlCmd.Parameters.AddWithValue("@paraTripId", TripId);
+
+            // Step 4 Open connection the execute NonQuery of sql command   
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+
+            // Step 5 :Close connection
+            myConn.Close();
+
+            return result;
+
+        }
+
+        public int updateWaitingList(string ID, int TripId)
+        {
+
+            StringBuilder sqlStr = new StringBuilder();
+            int result = 0;    // Execute NonQuery return an integer value
+            SqlCommand sqlCmd = new SqlCommand();
+            // Step1 : Create SQL insert command to add record to TDMaster using     
+
+            //         parameterised query in values clause
+            //
+            sqlStr.AppendLine("UPDATE register ");
+            sqlStr.AppendLine("SET RegisteredStatus = 'WaitingList' ");
+            sqlStr.AppendLine("WHERE RegisterId = @paraRegisterId AND TripId=@paraTripId");
+
+            // Step 2 :Instantiate SqlConnection instance and SqlCommand instance
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+
+            // Step 3 : Add each parameterised query variable with value
+            //          complete to add all parameterised queries
+            sqlCmd.Parameters.AddWithValue("@paraRegisterId", ID);
+            sqlCmd.Parameters.AddWithValue("@paraTripId", TripId);
+
+            // Step 4 Open connection the execute NonQuery of sql command   
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+
+            // Step 5 :Close connection
+            myConn.Close();
+
+            return result;
+
+        }
     }
 
 

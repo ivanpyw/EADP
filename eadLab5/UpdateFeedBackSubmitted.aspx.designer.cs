@@ -31,6 +31,15 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.DropDownList EnjoymentDropDownUpdate;
         
         /// <summary>
+        /// CompareValidatorEnjoyment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidatorEnjoyment;
+        
+        /// <summary>
         /// AffordabilityDropDownUpdate control.
         /// </summary>
         /// <remarks>
@@ -40,13 +49,13 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.DropDownList AffordabilityDropDownUpdate;
         
         /// <summary>
-        /// LblErr control.
+        /// CompareValidatorEnjoyment0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblErr;
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidatorEnjoyment0;
         
         /// <summary>
         /// FreedomDropBoxUpdate control.
@@ -58,6 +67,15 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.DropDownList FreedomDropBoxUpdate;
         
         /// <summary>
+        /// CompareValidatorEnjoyment1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidatorEnjoyment1;
+        
+        /// <summary>
         /// HighlightTbUpdate control.
         /// </summary>
         /// <remarks>
@@ -65,6 +83,15 @@ namespace eadLab5 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox HighlightTbUpdate;
+        
+        /// <summary>
+        /// RequiredFieldValidatorHighlight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorHighlight;
         
         /// <summary>
         /// DownsidesTbUpdate control.
@@ -76,6 +103,15 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.TextBox DownsidesTbUpdate;
         
         /// <summary>
+        /// RequiredFieldValidatorHighlight0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorHighlight0;
+        
+        /// <summary>
         /// ImprovementTbUpdate control.
         /// </summary>
         /// <remarks>
@@ -83,6 +119,24 @@ namespace eadLab5 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ImprovementTbUpdate;
+        
+        /// <summary>
+        /// RequiredFieldValidatorHighlight1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorHighlight1;
+        
+        /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
         /// BtnUpdate control.

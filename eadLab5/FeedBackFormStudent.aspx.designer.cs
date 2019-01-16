@@ -31,6 +31,15 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.DropDownList EnjoymentDropDown;
         
         /// <summary>
+        /// CompareValidatorEnjoyment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidatorEnjoyment;
+        
+        /// <summary>
         /// AffordabilityDropDown control.
         /// </summary>
         /// <remarks>
@@ -40,13 +49,13 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.DropDownList AffordabilityDropDown;
         
         /// <summary>
-        /// LblErr control.
+        /// CompareValidatorAffordability control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblErr;
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidatorAffordability;
         
         /// <summary>
         /// FreedomDropBox control.
@@ -58,6 +67,15 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.DropDownList FreedomDropBox;
         
         /// <summary>
+        /// CompareValidatorFreedom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidatorFreedom;
+        
+        /// <summary>
         /// HighlightTb control.
         /// </summary>
         /// <remarks>
@@ -65,6 +83,15 @@ namespace eadLab5 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox HighlightTb;
+        
+        /// <summary>
+        /// RequiredFieldValidatorHighlight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorHighlight;
         
         /// <summary>
         /// DownsidesTb control.
@@ -76,6 +103,15 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.TextBox DownsidesTb;
         
         /// <summary>
+        /// RequiredFieldValidatorDownsides control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorDownsides;
+        
+        /// <summary>
         /// ImprovementTb control.
         /// </summary>
         /// <remarks>
@@ -83,6 +119,24 @@ namespace eadLab5 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ImprovementTb;
+        
+        /// <summary>
+        /// RequiredFieldValidatorHighlightImprovement control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorHighlightImprovement;
+        
+        /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
         /// BtnConfirm control.
