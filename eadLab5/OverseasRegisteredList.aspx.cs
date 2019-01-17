@@ -41,23 +41,24 @@ namespace eadLab5
         {
             int tripId = Convert.ToInt32(Request.QueryString["tripId"]);
             GridViewRow row = GridViewRegistered.SelectedRow;
-            string IDOFPAGE = row.Cells[0].Text;
+            //string IDOFPAGE = row.Cells[0].Text;
+            System.Diagnostics.Debug.WriteLine((row == null)+" this checks null");
             if (e.CommandName == "Shortlist")
             {
                 TripDAO TripDAO = new TripDAO();
                 Trip TripList = new Trip();
                 int TRIPPYLIST;
-                TRIPPYLIST = TripDAO.updateShortlisted(IDOFPAGE, tripId);
-                
+                //TRIPPYLIST = TripDAO.updateShortlisted(IDOFPAGE, tripId);
+                System.Diagnostics.Debug.WriteLine("Shortlist");
 
             }
             else if (e.CommandName == "Norminate")
             {
-
+                System.Diagnostics.Debug.WriteLine("norminate");
             }
             else if (e.CommandName == "WaitingList")
             {
-
+                System.Diagnostics.Debug.WriteLine("waitinglist");
             }
         }
 
