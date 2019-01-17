@@ -8,7 +8,7 @@
                 Upcoming interviews
             </div>
             <div class="card-body">
-                <a href="#"><h5 class="card-title">Interview for Vietnam immersion program</h5></a>
+                <a href="Interview.aspx/?sessionId=<%=sessionId %>&token=<%=token%>"><h5 class="card-title">Interview for Vietnam immersion program</h5></a>
                 <p class="card-text">Time: Friday 1500 - 1520</p>
                 <p class="card-text">Note: Rememeber to be on time</p>
                 <p class="card-text">You will be interviewed by Mr Lim Wee Teck, Mr Albert chua and Ms Cynthia</p>
