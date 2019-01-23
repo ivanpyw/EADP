@@ -36,14 +36,14 @@ namespace eadLab5
         {
             Trip tripClass = new Trip();
             TripDAO tripObj = new TripDAO();
-            tripObj.chooseOffer("Accept",Session["AdminNo"].ToString());
+            tripObj.chooseOffer("Accepted",Session["AdminNo"].ToString());
         }
 
         protected void Unnamed2_Click(object sender, EventArgs e)
         {
             Trip tripClass = new Trip();
             TripDAO tripObj = new TripDAO();
-            tripObj.chooseOffer("Reject", Session["AdminNo"].ToString());
+            tripObj.chooseOffer("Rejected", Session["AdminNo"].ToString());
         }
     }
 }
