@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Content/SarasaStyleSheet.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script>
@@ -70,9 +71,12 @@
             })
         }
     </script>
+    <% if (role == "Teacher   ")
+        { %>
     <div class="container">
         <button class="btn btn-secondary btn-lg add-trip-btn" type="button" data-toggle="modal" data-target="#addModal"><i class="fa fa-plus"></i></button>
     </div>
+    <% } %>
     <div id="trips-tab">
         <nav class="nav nav-pills nav-justified">
             <% if (tripType == null)
@@ -136,7 +140,7 @@
                                 <tr>
                                     <td>Images:<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Image required" ControlToValidate="tripImageUpload" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
                                     <td>
-                                        <asp:FileUpload ID="tripImageUpload" runat="server" CssClass="form-control-file" /></td>
+                                        <asp:FileUpload ID="tripImageUpload" runat="server" CssClass="form-control-file" AllowMultiple="true" OnClick=""/></td>
                                 </tr>
                                 <tr>
                                     <td>From:<asp:CustomValidator ID="CustomValidator5" runat="server" ErrorMessage="Trip start date cannot be in the past" ClientValidationFunction="addTripCompareNowStart" Text="*" ValidationGroup="1"></asp:CustomValidator><asp:CustomValidator ID="CustomValidator3" runat="server" ErrorMessage="Trip start date must be before trip end date" ClientValidationFunction="addTripValidation" ValidationGroup="1" Text="*"></asp:CustomValidator><asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Start date required" ControlToValidate="tbAddStart" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>

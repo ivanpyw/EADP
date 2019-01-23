@@ -162,8 +162,8 @@ namespace eadLab5.DAL
             int result = 0;
             SqlCommand sqlCmd = new SqlCommand();
 
-            sqlStr.AppendLine("INSERT INTO REGISTER(TripId, AdminNo, StaffId)");
-            sqlStr.AppendLine("VALUES (@pTripId,@pAdminNo,0)");
+            sqlStr.AppendLine("INSERT INTO REGISTER(TripId, AdminNo, StaffId,RegisteredStatus)");
+            sqlStr.AppendLine("VALUES (@pTripId,@pAdminNo,0,'Registered')");
 
             SqlConnection myConn = new SqlConnection(DBConnect);
 
@@ -602,6 +602,52 @@ namespace eadLab5.DAL
 
             return result;
 
+        }
+
+        public List<Trip> getAllTrip()
+        {
+            List<Trip> tdList = new List<Trip>();
+
+            SqlDataAdapter da;
+            DataSet ds = new DataSet();
+
+            StringBuilder tripCommand = new StringBuilder();
+            tripCommand.AppendLine("Select * from Trip ");
+            Trip obj = new Trip();
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            da = new SqlDataAdapter(tripCommand.ToString(), myConn);
+            da.Fill(ds, "tripTable");
+
+            int rec_cnt = ds.Tables["tripTable"].Rows.Count;
+            count = rec_cnt;
+            if (rec_cnt > 0)
+            {
+                foreach (DataRow row in ds.Tables["tripTable"].Rows)
+                {
+                    Trip myTd = new Trip();
+
+                    myTd.tripId = Convert.ToInt32(row["TripId"]);
+                    myTd.tripTitle = row["TripTitle"].ToString();
+                    myTd.tripLocation = row["Location"].ToString();
+                    myTd.tripActivities = row["Activities"].ToString();
+                    myTd.tripDays = Convert.ToInt32((Convert.ToDateTime(row["TripEnd"]).Subtract(Convert.ToDateTime(row["TripStart"])).TotalDays));
+                    myTd.tripCost = Convert.ToInt16(row["Cost"]);
+                    myTd.tripImg = row["Image"].ToString();
+                    myTd.tripType = row["TripType"].ToString();
+                    myTd.tripStart = Convert.ToDateTime(row["TripStart"]);
+                    myTd.tripEnd = Convert.ToDateTime(row["TripEnd"]);
+                    myTd.tripStatus = row["Status"].ToString();
+                    myTd.tripOpen = Convert.ToDateTime(row["OpeningDay"]);
+                    tdList.Add(myTd);
+                }
+            }
+            else
+            {
+                tdList = null;
+            }
+
+            return tdList;
         }
     }
 

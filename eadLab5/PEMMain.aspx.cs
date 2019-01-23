@@ -12,8 +12,13 @@ namespace eadLab5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            StudentLogin stuObj = new StudentLogin();
-            StudentLoginDAO stuDao = new StudentLoginDAO();
+            StudentDAO stuObj = new StudentDAO();
+            TripDAO Trip1 = new TripDAO();
+            StudentRepeater.DataSource = stuObj.getAllstudent();
+            StudentRepeater.DataBind();
+            TripRepeater.DataSource = Trip1.getAllTrip();
+            TripRepeater.DataBind();
+
         }
     }
 }

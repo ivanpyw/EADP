@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 using System.Text;
+using System.Collections.Generic;
 
 namespace eadLab5.DAL
 {
@@ -93,6 +94,46 @@ namespace eadLab5.DAL
 
             return result;
 
+        }
+
+        public List<Student> getAllstudent()
+        {
+            List<Student> studList = new List<Student>();
+            string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
+            SqlDataAdapter da;
+            DataSet ds = new DataSet();
+
+            StringBuilder StudentCommand = new StringBuilder();
+            StudentCommand.AppendLine("Select * from Student");
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            da = new SqlDataAdapter(StudentCommand.ToString(), myConn);
+            // fill dataset
+            da.Fill(ds, "StudentTable");
+            int rec_cnt = ds.Tables["StudentTable"].Rows.Count;
+            if (rec_cnt > 0)
+            {
+                foreach (DataRow row in ds.Tables["StudentTable"].Rows)
+                {
+                    Student obj = new Student();
+
+                    obj.AdminNo = row["AdminNo"].ToString();
+                    obj.StudentName = row["StudentName"].ToString();
+                    obj.MedicalCondition = row["MedicalCondition"].ToString();
+                    obj.MedicalHistory = row["MedicalHistory"].ToString();
+                    obj.Gender = row["Gender"].ToString();
+                    obj.Diploma = row["Diploma"].ToString();
+                    obj.Summary = row["Summary"].ToString();
+                    obj.Achievement = row["Achievement"].ToString();
+                    obj.Email = row["Email"].ToString();
+                    obj.PEMClass = row["PEMClass"].ToString();
+                    obj.Year = Convert.ToInt32(row["Year"]);
+                    studList.Add(obj);
+
+                }
+
+            }
+            return studList;
         }
 
     }

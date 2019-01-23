@@ -23,16 +23,21 @@
 
 
                         <div class="panel-heading">
-                            <h3 class="panel-title text-absolute">Student &emsp; &ensp; &ensp; &emsp;  
-                                 <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Search for student"></asp:TextBox>
+                            <h3 class="panel-title text-absolute">Upcoming trips &emsp; &ensp; &ensp; &emsp;  
+                                 <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Search for trips"></asp:TextBox>
                             </h3>
 
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
 
-                                <asp:GridView ID="GridView1" runat="server">
-                                </asp:GridView>
+                                <asp:Repeater ID="TripRepeater" runat="server">
+                                    <ItemTemplate>
+                                        <div style="1px solid red">
+                                            <%# Eval("TripTitle") %>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
 
                             </div>
 
@@ -75,15 +80,11 @@
                         </div>
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Upcoming trips &ensp;
-                             <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" placeholder="Search upcoming trips">
-                            </asp:TextBox>
-                            </h3>
+                            
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
                             </div>
-
 
                         </div>
                     </div>

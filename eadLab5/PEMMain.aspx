@@ -18,11 +18,11 @@
                     <div>
                         &nbsp;
                     
-                    <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" Style="float: right;">
-                        <asp:ListItem Selected="True">Overseas</asp:ListItem>
-                        <asp:ListItem>All</asp:ListItem>
-
-                    </asp:RadioButtonList>
+                    <!--<asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" Style="float: right;">
+                        <asp:ListItem Selected="True">All</asp:ListItem>
+                        <asp:ListItem>Overseas</asp:ListItem>
+                        
+                    </asp:RadioButtonList>-->
                         </div>
                     <div class="panel panel-info">
 
@@ -34,12 +34,15 @@
 
                         </div>
                         <div class="panel-body">
-                            <div class="form-group">
 
-                                <asp:GridView ID="GridView1" runat="server">
-                                </asp:GridView>
+                                <asp:Repeater ID="StudentRepeater" runat="server">
+                                <ItemTemplate>
+                                        <div style="1px solid red">
+                                            <%# Eval("StudentName") %>
+                                        </div>
+                                    </ItemTemplate>
+                            </asp:Repeater>
 
-                            </div>
 
                         </div>
                     </div>
@@ -77,11 +80,11 @@
                     <div>
                         &nbsp;
                     
-                    <asp:RadioButtonList ID="RadioButtonList2" runat="server" RepeatDirection="Horizontal" Style="float: right;">
-                        <asp:ListItem Selected="True">Upcoming</asp:ListItem>
-                        <asp:ListItem>All</asp:ListItem>
+                   <!-- <asp:RadioButtonList ID="RadioButtonList2" runat="server" RepeatDirection="Horizontal" Style="float: right;">
+                        <asp:ListItem Selected="True">All</asp:ListItem>
+                        <asp:ListItem>Upcoming</asp:ListItem>
 
-                    </asp:RadioButtonList>
+                    </asp:RadioButtonList>-->
                         </div>
                     <div class="panel panel-info">
                         <div class="panel-heading">
@@ -91,8 +94,14 @@
                             </h3>
                         </div>
                         <div class="panel-body">
-                            <div class="form-group">
-                            </div>
+
+                            <asp:Repeater ID="TripRepeater" runat="server">
+                                <ItemTemplate>
+                                        <div style="1px solid red">
+                                            <%# Eval("TripTitle") %>
+                                        </div>
+                                    </ItemTemplate>
+                            </asp:Repeater>
 
 
                         </div>
