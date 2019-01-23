@@ -143,6 +143,7 @@
       <DependentUpon>TimeDeposit.mdf</DependentUpon>
     </Content>
     <Content Include="ChooseInterview.aspx" />
+    <Content Include="ChooseOffer.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -221,6 +222,13 @@
     <Compile Include="ChooseInterview.aspx.designer.cs">
       <DependentUpon>ChooseInterview.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ChooseOffer.aspx.cs">
+      <DependentUpon>ChooseOffer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChooseOffer.aspx.designer.cs">
+      <DependentUpon>ChooseOffer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Corporate.aspx.cs">
       <DependentUpon>Corporate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -228,6 +236,7 @@
     <Compile Include="Corporate.aspx.designer.cs">
       <DependentUpon>Corporate.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Choice.cs" />
     <Compile Include="DAL\customer.cs" />
     <Compile Include="DAL\customerDAO.cs" />
     <Compile Include="DAL\FeedbackForm.cs" />

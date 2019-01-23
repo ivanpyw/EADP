@@ -690,6 +690,66 @@ namespace eadLab5.DAL
 
             return tdList;
         }
+
+        public Choice checkOffer(string adminNo)
+        {
+            Choice choice = new Choice();
+            DataSet ds = new DataSet();
+            DataTable tdData = new DataTable();
+
+            StringBuilder sqlStr = new StringBuilder();
+            sqlStr.AppendLine("SELECT * FROM Interview i");
+            sqlStr.AppendLine("INNER JOIN Trip t on t.tripId = i.tripId");
+            sqlStr.AppendLine("where AdminNo = @pAdminNo");
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            SqlDataAdapter da = new SqlDataAdapter(sqlStr.ToString(), myConn);
+
+            da.SelectCommand.Parameters.AddWithValue("pAdminNo", adminNo);
+            da.Fill(ds, "TripTable");
+
+            int rec_cnt = ds.Tables["TripTable"].Rows.Count;
+            if (rec_cnt > 0)
+            {
+                DataRow row = ds.Tables["TripTable"].Rows[0];
+                //tripDetails.tripTitle = row["TripTitle"].ToString();
+                choice.tripName = row["tripTitle"].ToString();
+                choice.choice = row["StudentChoice"].ToString();
+                return choice;
+            }
+            return choice;
+        }
+
+        public int chooseOffer(string choice,string adminNo)
+        {
+            StringBuilder sqlStr = new StringBuilder();
+            SqlCommand sqlCmd = new SqlCommand();
+            int result = 0;
+            sqlStr.AppendLine("UPDATE Interview ");
+            sqlStr.AppendLine("SET StudentChoice = @pChoice ");
+            sqlStr.AppendLine("WHERE adminNo = @pAdminNo");
+
+            // Step 2 :Instantiate SqlConnection instance and SqlCommand instance
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+
+            // Step 3 : Add each parameterised query variable with value
+            //          complete to add all parameterised queries
+            sqlCmd.Parameters.AddWithValue("@pChoice", choice);
+            sqlCmd.Parameters.AddWithValue("@pAdminNo", adminNo);
+
+            // Step 4 Open connection the execute NonQuery of sql command   
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+
+            // Step 5 :Close connection
+            myConn.Close();
+
+            return result;
+        }
     }
 
 
