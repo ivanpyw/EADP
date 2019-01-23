@@ -162,8 +162,8 @@ namespace eadLab5.DAL
             int result = 0;
             SqlCommand sqlCmd = new SqlCommand();
 
-            sqlStr.AppendLine("INSERT INTO REGISTER(TripId, AdminNo, StaffId)");
-            sqlStr.AppendLine("VALUES (@pTripId,@pAdminNo,0)");
+            sqlStr.AppendLine("INSERT INTO REGISTER(TripId, AdminNo, StaffId,RegisteredStatus)");
+            sqlStr.AppendLine("VALUES (@pTripId,@pAdminNo,0,'Registered')");
 
             SqlConnection myConn = new SqlConnection(DBConnect);
 

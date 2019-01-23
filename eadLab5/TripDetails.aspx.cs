@@ -78,8 +78,8 @@ namespace eadLab5
                 TripDAO addTD = new DAL.TripDAO();
                 if (tripImageUpload.HasFile)
                 {
-
-                    int results = addTD.insertTrip(ddlAddLocation.SelectedValue, SaveFile(tripImageUpload.PostedFile).ToString(), tbAddTitle.Text, Convert.ToDateTime(tbAddStart.Text), Convert.ToDateTime(tbAddEnd.Text), Convert.ToDateTime(tbOpenDay.Text), tbAddActivities.Text, Convert.ToInt16(tbAddCost.Text), DdlAddTripType.SelectedItem.Text);
+                    string addLocation = ddlAddLocation.SelectedValue;
+                    int results = addTD.insertTrip(addLocation, SaveFile(tripImageUpload.PostedFile).ToString(), tbAddTitle.Text, Convert.ToDateTime(tbAddStart.Text), Convert.ToDateTime(tbAddEnd.Text), Convert.ToDateTime(tbOpenDay.Text), tbAddActivities.Text, Convert.ToInt16(tbAddCost.Text), DdlAddTripType.SelectedItem.Text);
 
                     Response.Redirect("TripDetails.aspx");
                 }
