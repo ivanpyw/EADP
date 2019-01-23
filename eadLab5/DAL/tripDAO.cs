@@ -55,6 +55,8 @@ namespace eadLab5.DAL
                     myTd.staffName = row["Name"].ToString();
                     myTd.staffHonorifics = row["Honorifics"].ToString();
                     myTd.tripOpen = Convert.ToDateTime(row["OpeningDay"]);
+                    myTd.tripImg2 = row["image2"].ToString();
+                    myTd.tripImg3 = row["image3"].ToString();
                     tdList.Add(myTd);
                 }
             }
@@ -126,14 +128,14 @@ namespace eadLab5.DAL
             }
         }
 
-        public int insertTrip(string location, string tripImage, string title, DateTime start, DateTime end, DateTime openingDay, string activities, double cost, string triptype)
+        public int insertTrip(string location, string tripImage1, string title, DateTime start, DateTime end, DateTime openingDay, string activities, double cost, string triptype, string tripImage2, string tripImage3)
         {
             StringBuilder sqlStr = new StringBuilder();
             int result = 0;
             SqlCommand sqlCmd = new SqlCommand();
 
-            sqlStr.AppendLine("INSERT INTO Trip(Location,Image,TripTitle,OpeningDay,TripStart,TripEnd,Activities,cost,TripType,status,staffId)");
-            sqlStr.AppendLine("VALUES (@pLocation,@pImage,@pTitle,@pOpeningDay,@pStart,@pEnd,@pActivities,@pCost,@pType,'pending',1)");
+            sqlStr.AppendLine("INSERT INTO Trip(Location,Image,TripTitle,OpeningDay,TripStart,TripEnd,Activities,cost,TripType,status,staffId,image2,image3)");
+            sqlStr.AppendLine("VALUES (@pLocation,@pImage,@pTitle,@pOpeningDay,@pStart,@pEnd,@pActivities,@pCost,@pType,'pending',1,@pImage2,@pImage3)");
 
             SqlConnection myConn = new SqlConnection(DBConnect);
 
@@ -147,7 +149,9 @@ namespace eadLab5.DAL
             sqlCmd.Parameters.AddWithValue("@pCost", cost);
             sqlCmd.Parameters.AddWithValue("@pLocation", location);
             sqlCmd.Parameters.AddWithValue("@pType", triptype);
-            sqlCmd.Parameters.AddWithValue("@pImage", tripImage);
+            sqlCmd.Parameters.AddWithValue("@pImage", tripImage1);
+            sqlCmd.Parameters.AddWithValue("@pImage2", tripImage2);
+            sqlCmd.Parameters.AddWithValue("@pImage3", tripImage3);
 
             myConn.Open();
             result = sqlCmd.ExecuteNonQuery();

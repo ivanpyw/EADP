@@ -31,5 +31,7 @@ namespace eadLab5.DAL
         public string Reasons { get; set; }
         public int StaffId { get; set; }
         public string GenderType { get; set; }
+        public string tripImg2 { get; set; }
+        public string tripImg3 { get; set; }
     }
 }

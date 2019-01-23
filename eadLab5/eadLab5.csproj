@@ -156,7 +156,6 @@
     <Content Include="ErrorPages\Oops.aspx" />
     <Content Include="FeedBackFormStudent.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Images\Capture.PNG" />
     <Content Include="Images\oops.png" />
     <Content Include="Interview.aspx" />
     <Content Include="loginStaff.aspx" />

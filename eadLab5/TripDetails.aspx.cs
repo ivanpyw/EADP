@@ -79,7 +79,23 @@ namespace eadLab5
                 if (tripImageUpload.HasFile)
                 {
                     string addLocation = ddlAddLocation.SelectedValue;
-                    int results = addTD.insertTrip(addLocation, SaveFile(tripImageUpload.PostedFile).ToString(), tbAddTitle.Text, Convert.ToDateTime(tbAddStart.Text), Convert.ToDateTime(tbAddEnd.Text), Convert.ToDateTime(tbOpenDay.Text), tbAddActivities.Text, Convert.ToInt16(tbAddCost.Text), DdlAddTripType.SelectedItem.Text);
+                    string addTitle = tbAddTitle.Text;
+                    DateTime addStart = Convert.ToDateTime(tbAddStart.Text);
+                    DateTime addEnd = Convert.ToDateTime(tbAddEnd.Text);
+                    DateTime addOpen = Convert.ToDateTime(tbOpenDay.Text);
+                    string addActivities = tbAddActivities.Text;
+                    double cost = Convert.ToInt16(tbAddCost.Text);
+                    string addType = DdlAddTripType.SelectedItem.Text;
+                    HttpFileCollection uploadedFiles = Request.Files;
+                    string[] images = new string[3];
+                    for(int i = 0; i < uploadedFiles.Count; i++)
+                    {
+                        HttpPostedFile userPostedFile = uploadedFiles[i];
+                        images[i] = SaveFile(userPostedFile);
+                        System.Diagnostics.Debug.WriteLine(images[i]);
+                    }
+
+                    int results = addTD.insertTrip(addLocation, images[0], addTitle, addStart, addEnd, addOpen , addActivities, cost, addType,images[1],images[2]);
 
                     Response.Redirect("TripDetails.aspx");
                 }

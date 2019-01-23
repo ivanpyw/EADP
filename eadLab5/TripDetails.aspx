@@ -138,7 +138,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Images:<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Image required" ControlToValidate="tripImageUpload" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
+                                    <td>Images:(Three)<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Image required" ControlToValidate="tripImageUpload" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
                                     <td>
                                         <asp:FileUpload ID="tripImageUpload" runat="server" CssClass="form-control-file" AllowMultiple="true" OnClick=""/></td>
                                 </tr>
@@ -226,12 +226,18 @@
                                     <div class="carousel-item active">
                                         <img class="img-fluid" src="<%=trip.tripImg %>" alt="First slide" />
                                     </div>
+                                    <% if (trip.tripImg2 != null)
+                                        { %>
                                     <div class="carousel-item">
-                                        <img class="img-fluid" src="https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1440,w_2560,x_0,y_0/dpr_2.0/c_limit,w_740/fl_lossy,q_auto/v1531451526/180712-Weill--The-Creator-of-Pepe-hero_uionjj" alt="Second slide" />
+                                        <img class="img-fluid" src="<%=trip.tripImg2 %>" alt="Second slide" />
                                     </div>
+                                    <% } %>
+                                    <% if (trip.tripImg3 != null)
+                                        {%>
                                     <div class="carousel-item">
-                                        <img class="img-fluid" src="https://i.redd.it/pd2h9flg9fmy.png" alt="Third slide" />
+                                        <img class="img-fluid" src="<%=trip.tripImg3 %>" alt="Third slide" />
                                     </div>
+                                    <%} %>
                                 </div>
                                 <a class="carousel-control-prev" href="#carouselTrip<%=trip.tripId %>" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
