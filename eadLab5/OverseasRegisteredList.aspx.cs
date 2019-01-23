@@ -37,29 +37,68 @@ namespace eadLab5
            
         }
 
+        //protected void GridActionRegistered(object sender, GridViewCommandEventArgs e)
+        //{
+        //    int tripId = Convert.ToInt32(Request.QueryString["tripId"]);
+        //    GridViewRow row = GridViewRegistered.SelectedRow;
+        //    string IDOFPAGE = row.Cells[0].Text;
+        //    if (e.CommandName == "Shortlist")
+        //    {
+        //        TripDAO TripDAO = new TripDAO();
+        //        Trip TripList = new Trip();
+        //        int TRIPPYLIST;
+        //        TRIPPYLIST = TripDAO.updateShortlisted(IDOFPAGE, tripId);
+                
+
+        //    }
+        //    else if (e.CommandName == "Norminate")
+        //    {
+
+        //    }
+        //    else if (e.CommandName == "WaitingList")
+        //    {
+
+        //    }
+        //}
+
         protected void GridActionRegistered(object sender, GridViewCommandEventArgs e)
         {
             int tripId = Convert.ToInt32(Request.QueryString["tripId"]);
             GridViewRow row = GridViewRegistered.SelectedRow;
-            string IDOFPAGE = row.Cells[0].Text;
+            string RegisterID = e.CommandArgument.ToString();
+
+
             if (e.CommandName == "Shortlist")
             {
                 TripDAO TripDAO = new TripDAO();
                 Trip TripList = new Trip();
                 int TRIPPYLIST;
-                TRIPPYLIST = TripDAO.updateShortlisted(IDOFPAGE, tripId);
-                
+                TRIPPYLIST = TripDAO.updateShortlisted(RegisterID, tripId);
 
+                
             }
             else if (e.CommandName == "Norminate")
             {
-
+                TripDAO TripDAO = new TripDAO();
+                Trip TripList = new Trip();
+                int TRIPPYLIST;
+                TRIPPYLIST = TripDAO.updateNorminate(RegisterID, tripId);
             }
-            else if (e.CommandName == "WaitingList")
+            else if (e.CommandName == "Move to waiting list")
             {
-
+                TripDAO TripDAO = new TripDAO();
+                Trip TripList = new Trip();
+                int TRIPPYLIST;
+                TRIPPYLIST = TripDAO.updateWaitingList(RegisterID, tripId);
+            }
+            else
+            {
+                return;
             }
         }
+
+
+
 
         protected void GridActionNorminate(object sender, GridViewCommandEventArgs e)
         {

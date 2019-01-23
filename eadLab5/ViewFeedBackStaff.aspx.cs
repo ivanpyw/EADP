@@ -41,9 +41,29 @@ namespace eadLab5
         {
             FeedbackFormDAO tdDAO = new FeedbackFormDAO();
             List<FeedbackForm> tdList = new List<FeedbackForm>();
-            DateTime startD = DateTime.Parse(txtDateCheckStart.Text);
-            DateTime endD = DateTime.Parse(txtDateCheckEnd.Text);
-            tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), startD, endD);
+            DateTime startD = DateTime.Parse("1-1-1753");
+            DateTime endD = DateTime.Parse("1-1-9999");
+
+            try
+            {
+                 startD = DateTime.Parse(txtDateCheckStart.Text);
+                 endD = DateTime.Parse(txtDateCheckEnd.Text);
+            }
+            catch (Exception)
+            {
+                 startD = DateTime.Parse("1-1-1753");
+                 endD = DateTime.Parse("1-1-9999");
+            }
+            
+            try
+            {
+                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), startD, endD);
+            }
+            catch (Exception)
+            {
+                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), DateTime.Parse("1-1-1753"), DateTime.Parse("1-1-9999"));
+            }
+           
             GridView_GetFB.DataSource = tdList;
             GridView_GetFB.DataBind();
         }
@@ -52,9 +72,29 @@ namespace eadLab5
         {
             FeedbackFormDAO tdDAO = new FeedbackFormDAO();
             List<FeedbackForm> tdList = new List<FeedbackForm>();
-            DateTime startD = DateTime.Parse(txtDateCheckStart.Text);
-            DateTime endD = DateTime.Parse(txtDateCheckEnd.Text);
-            tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), startD, endD);
+            DateTime startD = DateTime.Parse("1-1-1753");
+            DateTime endD = DateTime.Parse("1-1-9999");
+
+            try
+            {
+                startD = DateTime.Parse(txtDateCheckStart.Text);
+                endD = DateTime.Parse(txtDateCheckEnd.Text);
+            }
+            catch (Exception)
+            {
+                startD = DateTime.Parse("1-1-1753");
+                endD = DateTime.Parse("1-1-9999");
+            }
+
+            try
+            {
+                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), startD, endD);
+            }
+            catch (Exception)
+            {
+                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), DateTime.Parse("1-1-1753"), DateTime.Parse("1-1-9999"));
+            }
+
             GridView_GetFB.DataSource = tdList;
             GridView_GetFB.DataBind();
         }
@@ -63,9 +103,29 @@ namespace eadLab5
         {
             FeedbackFormDAO tdDAO = new FeedbackFormDAO();
             List<FeedbackForm> tdList = new List<FeedbackForm>();
-            DateTime startD = DateTime.Parse(txtDateCheckStart.Text);
-            DateTime endD = DateTime.Parse(txtDateCheckEnd.Text);
-            tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), startD, endD);
+            DateTime startD = DateTime.Parse("1-1-1753");
+            DateTime endD = DateTime.Parse("1-1-9999");
+
+            try
+            {
+                startD = DateTime.Parse(txtDateCheckStart.Text);
+                endD = DateTime.Parse(txtDateCheckEnd.Text);
+            }
+            catch (Exception)
+            {
+                startD = DateTime.Parse("1-1-1753");
+                endD = DateTime.Parse("1-1-9999");
+            }
+
+            try
+            {
+                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), startD, endD);
+            }
+            catch (Exception)
+            {
+                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), DateTime.Parse("1-1-1753"), DateTime.Parse("1-1-9999"));
+            }
+
             GridView_GetFB.DataSource = tdList;
             GridView_GetFB.DataBind();
         }
@@ -75,9 +135,29 @@ namespace eadLab5
         {
             FeedbackFormDAO tdDAO = new FeedbackFormDAO();
             List<FeedbackForm> tdList = new List<FeedbackForm>();
-            DateTime startD = DateTime.Parse(txtDateCheckStart.Text);
-            DateTime endD = DateTime.Parse(txtDateCheckEnd.Text);
-            tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), startD, endD);
+            DateTime startD = DateTime.Parse("1-1-1753");
+            DateTime endD = DateTime.Parse("1-1-9999");
+
+            try
+            {
+                 startD = DateTime.Parse(txtDateCheckStart.Text);
+                 endD = DateTime.Parse(txtDateCheckEnd.Text);
+            }
+            catch (Exception)
+            {
+                 startD = DateTime.Parse("1-1-1753");
+                 endD = DateTime.Parse("1-1-9999");
+            }
+            
+            try
+            {
+                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), startD, endD);
+            }
+            catch (Exception)
+            {
+                tdList = tdDAO.GetFilteredFeedBacks(CountryFilterDropDown.SelectedValue.ToString(), AffordabilityFilterDropDown.SelectedValue.ToString(), FreedomFilterDropDown.SelectedValue.ToString(), DateTime.Parse("1-1-1753"), DateTime.Parse("1-1-9999"));
+            }
+           
             GridView_GetFB.DataSource = tdList;
             GridView_GetFB.DataBind();
         }

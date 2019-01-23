@@ -181,6 +181,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.4.min.map" />
     <Content Include="MasterPage1.master" />
+    <None Include="Properties\PublishProfiles\eadLab520190123024847 - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -270,8 +270,8 @@ namespace eadLab5.DAL
 
             StringBuilder sqlStr = new StringBuilder();
             sqlStr.AppendLine("SELECT * From Register r INNER JOIN STUDENT s on s.AdminNo = r.AdminNo ");
-            sqlStr.AppendLine("INNER JOIN STAFF st on st.StaffId = r.StaffId");
-            sqlStr.AppendLine("where r.TripId = @paraTripId");
+            sqlStr.AppendLine("INNER JOIN STAFF st on st.StaffId = r.StaffId ");
+            sqlStr.AppendLine("where r.TripId = @paraTripId and r.REGISTEREDSTATUS IS NULL ");
 
             // Step 4 :Instantiate SqlConnection instance and SqlDataAdapter instance
 
@@ -505,7 +505,7 @@ namespace eadLab5.DAL
             //
             sqlStr.AppendLine("UPDATE register ");
             sqlStr.AppendLine("SET RegisteredStatus = 'Norminated' ");
-            sqlStr.AppendLine("WHERE RegisterId = @paraRegisterId AND TripId=@paraTripId");
+            sqlStr.AppendLine("WHERE Admin = @paraRegisterId AND TripId=@paraTripId");
             
             // Step 2 :Instantiate SqlConnection instance and SqlCommand instance
 

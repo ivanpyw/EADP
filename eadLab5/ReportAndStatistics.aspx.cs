@@ -14,6 +14,7 @@ namespace eadLab5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+           
             if (!IsPostBack)
             {
                 buildBarChart("All", "All", DateTime.Parse("1-1-1753"), DateTime.Parse("1-1-9999"));
@@ -277,8 +278,15 @@ namespace eadLab5
 
             string dateStart = flipDate(DateStartRange.Text);
             string dateEnd = flipDate(DateEndRange.Text);
-
-            buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
+            try
+            {
+                buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
+            }
+            catch(Exception)
+            {
+                buildBarChart(countryBarChart, type, DateTime.Parse("1-1-1753"), DateTime.Parse("1-1-9999"));
+            }
+            
 
             string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
             buildPieChart(countryPieChart);
@@ -297,8 +305,15 @@ namespace eadLab5
 
             string dateStart = flipDate(DateStartRange.Text);
             string dateEnd = flipDate(DateEndRange.Text);
+            try
+            {
+                buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
+            }
+            catch (Exception)
+            {
+                buildBarChart(countryBarChart, type, DateTime.Parse("1-1-1753"), DateTime.Parse("1-1-9999"));
+            }
 
-            buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
 
             string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
             buildPieChart(countryPieChart);
@@ -317,8 +332,15 @@ namespace eadLab5
 
             string dateStart = flipDate(DateStartRange.Text);
             string dateEnd = flipDate(DateEndRange.Text);
+            try
+            {
+                buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
+            }
+            catch (Exception)
+            {
+                buildBarChart(countryBarChart, type, DateTime.Parse("1-1-1753"), DateTime.Parse("1-1-9999"));
+            }
 
-            buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
 
             string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
             buildPieChart(countryPieChart);
@@ -339,8 +361,15 @@ namespace eadLab5
 
             string dateStart = flipDate(DateStartRange.Text);
             string dateEnd = flipDate(DateEndRange.Text);
+            try
+            {
+                buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
+            }
+            catch (Exception)
+            {
+                buildBarChart(countryBarChart, type, DateTime.Parse("1-1-1753"), DateTime.Parse("1-1-9999"));
+            }
 
-            buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
 
             string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
             buildPieChart(countryPieChart);
@@ -359,8 +388,15 @@ namespace eadLab5
 
             string dateStart = flipDate(DateStartRange.Text);
             string dateEnd = flipDate(DateEndRange.Text);
+            try
+            {
+                buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
+            }
+            catch (Exception)
+            {
+                buildBarChart(countryBarChart, type, DateTime.Parse("1-1-1753"), DateTime.Parse("1-1-9999"));
+            }
 
-            buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
 
             string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
             buildPieChart(countryPieChart);
@@ -379,8 +415,15 @@ namespace eadLab5
 
             string dateStart = flipDate(DateStartRange.Text);
             string dateEnd = flipDate(DateEndRange.Text);
+            try
+            {
+                buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
+            }
+            catch (Exception)
+            {
+                buildBarChart(countryBarChart, type, DateTime.Parse("1-1-1753"), DateTime.Parse("1-1-9999"));
+            }
 
-            buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
 
             string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
             buildPieChart(countryPieChart);
@@ -399,8 +442,15 @@ namespace eadLab5
 
             string dateStart = flipDate(DateStartRange.Text);
             string dateEnd = flipDate(DateEndRange.Text);
+            try
+            {
+                buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
+            }
+            catch (Exception)
+            {
+                buildBarChart(countryBarChart, type, DateTime.Parse("1-1-1753"), DateTime.Parse("1-1-9999"));
+            }
 
-            buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
 
             string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
             buildPieChart(countryPieChart);

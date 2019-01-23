@@ -121,7 +121,7 @@
             </tr>
             <tr>
                 <td class="auto-style6">
-        <asp:Chart ID="Chart2" runat="server" Width="598px" BackGradientStyle="VerticalCenter" Palette="Berry">
+        <asp:Chart ID="Chart2" runat="server" Width="598px" BackGradientStyle="VerticalCenter">
             <series>
                 <asp:Series Name="Series1" XValueMember="Location" YValueMembers="Cost">
                 </asp:Series>
@@ -134,7 +134,7 @@
        
                 </td>
                 <td class="auto-style7">
-        <asp:Chart ID="Chart1" runat="server" Width="600px" Palette="Pastel">
+        <asp:Chart ID="Chart1" runat="server" Width="600px" Palette="Fire">
             <series>
                 <asp:Series ChartType="Pie" Name="Series1" XValueMember="Diploma" YValueMembers="NoOfStudents">
                 </asp:Series>
@@ -202,7 +202,7 @@
             </tr>
             <tr>
                 <td class="auto-style6">
-                    <asp:Chart ID="Chart3" runat="server" Width="598px" Palette="Chocolate">
+                    <asp:Chart ID="Chart3" runat="server" Width="598px">
                         <Series>
                             <asp:Series ChartType="Line" Name="Series1" XValueMember="Month" YValueMembers="NoOfStudents">
                             </asp:Series>
@@ -214,7 +214,7 @@
                     </asp:Chart>
                 </td>
                 <td class="auto-style7">
-                    <asp:Chart ID="Chart4" runat="server" Palette="Excel" Width="600px">
+                    <asp:Chart ID="Chart4" runat="server" Palette="Berry" Width="600px">
                         <Series>
                             <asp:Series Name="Series1" XValueMember="Location" YValueMembers="NoOfStudents">
                             </asp:Series>

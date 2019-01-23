@@ -6,13 +6,27 @@
         <asp:GridView ID="GridViewRegistered" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped" Height="284px" OnRowCommand="GridActionRegistered">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                <asp:BoundField DataField="RegisterId" HeaderText="ID" />
+                <asp:BoundField DataField="RegisterId" HeaderText="ID" AccessibleHeaderText="RegisterID" />
                 <asp:BoundField AccessibleHeaderText="AdminNo" DataField="AdminNo" HeaderText="Admin number" />
                 <asp:BoundField AccessibleHeaderText="Gender" DataField="GenderType" HeaderText="Gender" />
                 <asp:BoundField AccessibleHeaderText="StaffID" DataField="staffName" HeaderText="Staff Name" />
-                <asp:ButtonField CommandName="Shortlist" Text="Shortlist" />
-                <asp:ButtonField CommandName="Norminate" Text="Norminate" />
-                <asp:ButtonField CommandName="Move to waiting list" Text="Move to waiting list" />
+                
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnShortlist" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="Shortlist" Text="Shortlist" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnNorminate" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="Norminate" Text="Norminate" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                 <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnMove" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="Move to waiting list" Text="Move to waiting list" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+               
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
