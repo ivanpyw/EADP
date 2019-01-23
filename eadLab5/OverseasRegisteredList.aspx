@@ -3,6 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="form1" runat="server">
+        <asp:Label ID="Label1" runat="server" Text="Registered List"></asp:Label>
         <asp:GridView ID="GridViewRegistered" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped" Height="284px" OnRowCommand="GridActionRegistered">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
@@ -40,6 +41,7 @@
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
         <br />
+        <asp:Label ID="Label2" runat="server" Text="Norminated List"></asp:Label>
         <asp:GridView ID="GridViewNorminated" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped"  Height="284px" OnRowCommand="GridActionNorminate">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
@@ -47,8 +49,16 @@
                 <asp:BoundField AccessibleHeaderText="AdminNo" DataField="AdminNo" HeaderText="Admin number" />
                 <asp:BoundField AccessibleHeaderText="Gender" DataField="GenderType" HeaderText="Gender" />
                 <asp:BoundField AccessibleHeaderText="StaffID" DataField="staffName" HeaderText="Staff Name" />
-                <asp:ButtonField CommandName="UnNorminate" Text="UnNorminate" />
-                <asp:ButtonField CommandName="Shortlist" Text="Shortlist" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnShortlist" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="Shortlist" Text="Shortlist" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnNorminate" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="UnNorminate" Text="UnNorminate" />
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -62,6 +72,7 @@
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
         <br />
+        <asp:Label ID="Label3" runat="server" Text="Shortlisted List"></asp:Label>
         <asp:GridView ID="GridViewShortlisted" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped"  Height="284px" OnRowCommand="GridActionShortlist">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
@@ -69,8 +80,18 @@
                 <asp:BoundField AccessibleHeaderText="AdminNo" DataField="AdminNo" HeaderText="Admin number" />
                 <asp:BoundField AccessibleHeaderText="Gender" DataField="GenderType" HeaderText="Gender" />
                 <asp:BoundField AccessibleHeaderText="StaffID" DataField="staffName" HeaderText="Staff Name" />
-                <asp:ButtonField CommandName="Move to waiting list" Text="Move to waiting list" />
-                <asp:ButtonField CommandName="Move to pending"  Text="Move to pending" />
+
+                 <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnShortlist" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="Move to waiting list" Text="Move to waiting list" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnNorminate" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="Move to pending" Text="Move to pending" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -84,6 +105,7 @@
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
         <br />
+        <asp:Label ID="Label4" runat="server" Text="Waiting List"></asp:Label>
         <asp:GridView ID="GridViewWaitingList" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped"  Height="284px" OnRowCommand="GridActionWaitingList">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
@@ -91,8 +113,17 @@
                 <asp:BoundField AccessibleHeaderText="AdminNo" DataField="AdminNo" HeaderText="Admin number" />
                 <asp:BoundField AccessibleHeaderText="Gender" DataField="GenderType" HeaderText="Gender" />
                 <asp:BoundField AccessibleHeaderText="StaffID" DataField="staffName" HeaderText="Staff Name" />
-                <asp:ButtonField CommandName="Shortlist" Text="Shortlist" />
-                <asp:ButtonField CommandName="Move to pending"  Text="Move to pending" />
+                 <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnShortlist" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="Shortlist" Text="Shortlist" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnNorminate" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="Move to pending" Text="Move to pending" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

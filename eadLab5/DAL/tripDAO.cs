@@ -505,8 +505,8 @@ namespace eadLab5.DAL
             //
             sqlStr.AppendLine("UPDATE register ");
             sqlStr.AppendLine("SET RegisteredStatus = 'Norminated' ");
-            sqlStr.AppendLine("WHERE Admin = @paraRegisterId AND TripId=@paraTripId");
-            
+            sqlStr.AppendLine("WHERE RegisterId = @paraRegisterId AND TripId=@paraTripId");
+
             // Step 2 :Instantiate SqlConnection instance and SqlCommand instance
 
             SqlConnection myConn = new SqlConnection(DBConnect);
@@ -579,6 +579,43 @@ namespace eadLab5.DAL
             //
             sqlStr.AppendLine("UPDATE register ");
             sqlStr.AppendLine("SET RegisteredStatus = 'WaitingList' ");
+            sqlStr.AppendLine("WHERE RegisterId = @paraRegisterId AND TripId=@paraTripId");
+
+            // Step 2 :Instantiate SqlConnection instance and SqlCommand instance
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+
+            // Step 3 : Add each parameterised query variable with value
+            //          complete to add all parameterised queries
+            sqlCmd.Parameters.AddWithValue("@paraRegisterId", ID);
+            sqlCmd.Parameters.AddWithValue("@paraTripId", TripId);
+
+            // Step 4 Open connection the execute NonQuery of sql command   
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+
+            // Step 5 :Close connection
+            myConn.Close();
+
+            return result;
+
+        }
+
+        public int updateRegistered(string ID, int TripId)
+        {
+
+            StringBuilder sqlStr = new StringBuilder();
+            int result = 0;    // Execute NonQuery return an integer value
+            SqlCommand sqlCmd = new SqlCommand();
+            // Step1 : Create SQL insert command to add record to TDMaster using     
+
+            //         parameterised query in values clause
+            //
+            sqlStr.AppendLine("UPDATE register ");
+            sqlStr.AppendLine("SET RegisteredStatus = 'Registered' ");
             sqlStr.AppendLine("WHERE RegisterId = @paraRegisterId AND TripId=@paraTripId");
 
             // Step 2 :Instantiate SqlConnection instance and SqlCommand instance
