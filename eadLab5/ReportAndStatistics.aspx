@@ -16,7 +16,7 @@
             width: 100%;
         }
         .auto-style6 {
-            width: 600px;
+            width: 601px;
         }
         .auto-style7 {
             width: 770px;
@@ -121,6 +121,7 @@
             </tr>
             <tr>
                 <td class="auto-style6">
+                    <asp:Label ID="Label3" runat="server" Text="Average Cost Spent in each country"></asp:Label>
         <asp:Chart ID="Chart2" runat="server" Width="598px" BackGradientStyle="VerticalCenter">
             <series>
                 <asp:Series Name="Series1" XValueMember="Location" YValueMembers="Cost">
@@ -134,6 +135,7 @@
        
                 </td>
                 <td class="auto-style7">
+                    <asp:Label ID="Label4" runat="server" Text="Diploma Percentage In Country"></asp:Label>
         <asp:Chart ID="Chart1" runat="server" Width="600px" Palette="Fire">
             <series>
                 <asp:Series ChartType="Pie" Name="Series1" XValueMember="Diploma" YValueMembers="NoOfStudents">
@@ -202,6 +204,7 @@
             </tr>
             <tr>
                 <td class="auto-style6">
+                    <asp:Label ID="Label2" runat="server" Text="Student Oversea Per Month"></asp:Label>
                     <asp:Chart ID="Chart3" runat="server" Width="598px">
                         <Series>
                             <asp:Series ChartType="Line" Name="Series1" XValueMember="Month" YValueMembers="NoOfStudents">
@@ -214,6 +217,7 @@
                     </asp:Chart>
                 </td>
                 <td class="auto-style7">
+                    <asp:Label ID="Label1" runat="server" Text="People Per Country"></asp:Label>
                     <asp:Chart ID="Chart4" runat="server" Palette="Berry" Width="600px">
                         <Series>
                             <asp:Series Name="Series1" XValueMember="Location" YValueMembers="NoOfStudents">
