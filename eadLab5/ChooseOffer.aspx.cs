@@ -12,8 +12,11 @@ namespace eadLab5
     public partial class ChooseOffer : System.Web.UI.Page
     {
         protected string tripName = null;
+        protected string tripStart = null;
+        protected string tripEnd = null;
         protected void Page_Load(object sender, EventArgs e)
         {
+            int tripId = Convert.ToInt32(Request.QueryString["tripId"]);
             Trip tripClass = new Trip();
             TripDAO tripObj = new TripDAO();
             if (Session["AdminNo"] == null)
@@ -21,13 +24,14 @@ namespace eadLab5
                 Response.Redirect("loginStudent.aspx");
             }else
             {
-                Choice choice = tripObj.checkOffer(Session["AdminNo"].ToString());
-                System.Diagnostics.Debug.WriteLine(choice.choice != null,"this is from chooseOffer");
+                Choice choice = tripObj.checkOffer(Session["AdminNo"].ToString(),tripId);
                 if(choice == null || choice.choice == "Accepted" || choice.choice =="rejected")
                 {
-                    Response.Redirect("~Oops.aspx");
+                    Response.Redirect("./ErrorPages/Oops.aspx");
                 }
                 tripName = choice.tripName;
+                tripStart = choice.tripStart.ToString("dd/MM/yyyy");
+                tripEnd = choice.tripEnd.ToString("dd/MM/yyyy");
             }
 
         }
