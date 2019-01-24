@@ -3,6 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form runat="server">
+        <asp:Label ID="Label1" runat="server" style="text-align:center;" Text="Feedbacks you submitted"></asp:Label>
      <asp:GridView ID="GridView_GetOwnFB" runat="server" AutoGenerateColumns="False" CssClass="table table-striped" Height="74px" OnSelectedIndexChanged="GridView_GetOwnFB_SelectedIndexChanged" Width="348px" CellPadding="4" ForeColor="#333333" GridLines="None" style="margin: 0 auto; text-align:left;">
          <AlternatingRowStyle BackColor="White" />
         <Columns >
@@ -14,7 +15,7 @@
             <asp:BoundField AccessibleHeaderText="Affordable" DataField="Affordability" HeaderText="Affordable" />
             <asp:BoundField AccessibleHeaderText="Enjoyable" DataField="Enjoyment" HeaderText="Enjoyable" />
             <asp:BoundField AccessibleHeaderText="Freedom" DataField="Freedom" HeaderText="Freedom" />
-            <asp:CommandField HeaderText="View Feedback" ShowSelectButton="True" />
+            <asp:CommandField HeaderText="Update Feedback" ShowSelectButton="True" SelectText="Update" />
         </Columns>
          <EditRowStyle BackColor="#2461BF" />
          <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

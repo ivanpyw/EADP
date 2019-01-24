@@ -21,40 +21,46 @@
 
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+             <% if (Session["role"]== null)
+                        { %>
             <a class="navbar-brand" href="Default.aspx">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="Default.aspx">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <% if (Session["role"] == null)
-                        { %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="loginStudent.aspx">Student login</a>
-                    </li>
+                <ul class="navbar-nav mr-auto"></ul>
+                     <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="loginStudent.aspx">Student login</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="loginStaff.aspx">Staff login</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="loginStaff.aspx">Staff login</a>
+                        </li>
+                    </ul>
                     <% }
                         else if ((Session["role"].ToString() == "1") || (Session["role"].ToString() == "2") || (Session["role"].ToString() == "3"))
-                        {
-                           string test = Session["role"].ToString();
-                           string test1 = Session["role"].ToString(); %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="viewFeedBacksSubmitted.aspx">FBSubmitted</a>
+                        { %>
+                <a class="navbar-brand" href="Default.aspx">Navbar</a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                          <li class="nav-item">
+                        <a class="nav-link" href="viewFeedBacksSubmitted.aspx">FeedBack Submitted</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="TripDetails.aspx">Trip Details</a>
                     </li>
+                         <li class="nav-item">
+                        <a class="nav-link" href="Feedbacks.aspx">Feedbacks</a>
+                    </li>
+                    </ul>
+                  
                     <%}
                         else if ((Session["role"].ToString() == "Teacher") || (Session["role"].ToString() == "Incharge" ))
                     { %>
-                         <li class="nav-item">
+
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                     <li class="nav-item">
                         <a class="nav-link" href="ReportAndStatistics.aspx">GraphStats</a>
                     </li>
                     <li class="nav-item">
@@ -64,13 +70,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="TripDetails.aspx">Trip Details</a>
                     </li>
+                </ul>
+                        
                     <%}%>
-     
-                   
-                </ul>
-
-                <ul class="navbar-nav mr-auto">
-                </ul>
             </div>
         </nav>
     </div>
