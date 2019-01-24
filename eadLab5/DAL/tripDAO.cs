@@ -691,7 +691,7 @@ namespace eadLab5.DAL
             return tdList;
         }
 
-        public Choice checkOffer(string adminNo)
+        public Choice checkOffer(string adminNo,int tripId)
         {
             Choice choice = new Choice();
             DataSet ds = new DataSet();
@@ -700,12 +700,13 @@ namespace eadLab5.DAL
             StringBuilder sqlStr = new StringBuilder();
             sqlStr.AppendLine("SELECT * FROM Interview i");
             sqlStr.AppendLine("INNER JOIN Trip t on t.tripId = i.tripId");
-            sqlStr.AppendLine("where AdminNo = @pAdminNo");
+            sqlStr.AppendLine("where AdminNo = @pAdminNo AND t.tripId = @pTripId");
 
             SqlConnection myConn = new SqlConnection(DBConnect);
             SqlDataAdapter da = new SqlDataAdapter(sqlStr.ToString(), myConn);
 
             da.SelectCommand.Parameters.AddWithValue("pAdminNo", adminNo);
+            da.SelectCommand.Parameters.AddWithValue("pTripId", tripId);
             da.Fill(ds, "TripTable");
 
             int rec_cnt = ds.Tables["TripTable"].Rows.Count;
@@ -715,9 +716,11 @@ namespace eadLab5.DAL
                 //tripDetails.tripTitle = row["TripTitle"].ToString();
                 choice.tripName = row["tripTitle"].ToString();
                 choice.choice = row["StudentChoice"].ToString();
+                choice.tripStart = Convert.ToDateTime(row["TripStart"]);
+                choice.tripEnd = Convert.ToDateTime(row["TripEnd"]);
                 return choice;
             }
-            return choice;
+            return null;
         }
 
         public int chooseOffer(string choice,string adminNo)

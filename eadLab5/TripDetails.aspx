@@ -226,19 +226,21 @@
                                     <div class="carousel-item active">
                                         <img class="img-fluid" src="<%=trip.tripImg %>" alt="First slide" />
                                     </div>
-                                    <% if (trip.tripImg2 != null)
+                                    <% if (trip.tripImg2 != "")
                                         { %>
                                     <div class="carousel-item">
                                         <img class="img-fluid" src="<%=trip.tripImg2 %>" alt="Second slide" />
                                     </div>
                                     <% } %>
-                                    <% if (trip.tripImg3 != null)
+                                    <% if (trip.tripImg3 != "")
                                         {%>
                                     <div class="carousel-item">
                                         <img class="img-fluid" src="<%=trip.tripImg3 %>" alt="Third slide" />
                                     </div>
                                     <%} %>
                                 </div>
+                                <% if (trip.tripImg2 != "" && trip.tripImg3 != "")
+                                    { %>
                                 <a class="carousel-control-prev" href="#carouselTrip<%=trip.tripId %>" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Previous</span>
@@ -247,6 +249,7 @@
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span>
                                 </a>
+                                <%} %>
                             </div>
                             <table class="table table-hover">
                                 <tbody>
