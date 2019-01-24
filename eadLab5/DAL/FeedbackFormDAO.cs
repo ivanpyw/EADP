@@ -466,7 +466,7 @@ namespace eadLab5.DAL
             StringBuilder sqlStr = new StringBuilder();
             sqlStr.AppendLine("select r.tripid, triptitle, location, CONVERT(VARCHAR(10), tripstart, 103) + '-' + CONVERT(VARCHAR(10), tripend, 103) AS [TIMERANGE]  from trip r ");
             sqlStr.AppendLine("inner join interview i on r.tripid = i.tripid ");
-            sqlStr.AppendLine("where tripend < GETDATE() and studentchoice = 'Accept' and AdminNo = @paraAdminNo");
+            sqlStr.AppendLine("where tripend < GETDATE() and studentchoice = 'Accept' and AdminNo = @paraAdminNo and FeedbackDone ='' or FeedbackDone IS NULL ");
 
             // Step 4 :Instantiate SqlConnection instance and SqlDataAdapter instance
 
@@ -563,6 +563,43 @@ namespace eadLab5.DAL
                 myTD = null;
             }
             return myTD;
+        }
+
+        public int updateFeedBackDone(string AdminNo, int TripId)
+        {
+
+            StringBuilder sqlStr = new StringBuilder();
+            int result = 0;    // Execute NonQuery return an integer value
+            SqlCommand sqlCmd = new SqlCommand();
+            // Step1 : Create SQL insert command to add record to TDMaster using     
+
+            //         parameterised query in values clause
+            //
+            sqlStr.AppendLine("UPDATE interview ");
+            sqlStr.AppendLine("SET FeedbackDone = 'Done'");
+            sqlStr.AppendLine("WHERE AdminNo = @paraAdminNo AND TripId=@paraTripId");
+
+            // Step 2 :Instantiate SqlConnection instance and SqlCommand instance
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+
+            // Step 3 : Add each parameterised query variable with value
+            //          complete to add all parameterised queries
+            sqlCmd.Parameters.AddWithValue("@paraAdminNo", AdminNo);
+            sqlCmd.Parameters.AddWithValue("@paraTripId", TripId);
+
+            // Step 4 Open connection the execute NonQuery of sql command   
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+
+            // Step 5 :Close connection
+            myConn.Close();
+
+            return result;
+
         }
     }
 

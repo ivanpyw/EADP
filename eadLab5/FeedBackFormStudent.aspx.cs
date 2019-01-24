@@ -57,7 +57,9 @@ namespace eadLab5
         int insCnt = FBF.InsertTD(Affordability, Enjoyment, Freedom, ReviewPros, ReviewCons, ReviewCons, StudName, Country, AdminNo, TripId, DateCreated);
                 if (insCnt == 1)
                 {
-                    LblResult.Text = "Feedback Submitted! Thank you!";
+                    LblResult.Text = "Feedback Submitted! Thank you! You will be redirected in 5 seconds to the homepage!";
+                    int UpdCnt = FBF.updateFeedBackDone(AdminNo, TripId);
+                    Response.AddHeader("REFRESH", "5;URL=http://localhost:3355");
                 }
                 else
                 {
