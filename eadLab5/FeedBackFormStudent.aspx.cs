@@ -1,32 +1,53 @@
-﻿using System;
+﻿using eadLab5.DAL;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using eadLab5.DAL;
 
 namespace eadLab5
 {
     public partial class FeedBackFormStudent : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            FeedbackForm cusObj = new FeedbackForm();
+            FeedbackFormDAO cusDao = new FeedbackFormDAO();
+            string str = Convert.ToString(Session["FeedBackActive"].ToString());
+            string AdminNumber = Convert.ToString(Session["AdminNo"].ToString());
+            cusObj = cusDao.GetFeedbackSelected(str, AdminNumber);
+            if (cusObj != null)
+            {
+                CountryLabel.Text = cusObj.location;   
+            }
+
         }
 
         protected void BtnConfirm_Click(object sender, EventArgs e)
         {
+
+            FeedbackForm cusObj = new FeedbackForm();
+            FeedbackFormDAO cusDao = new FeedbackFormDAO();
+            string str = Session["FeedBackActive"].ToString();
+            string AdminNumber = Session["AdminNo"].ToString();
+            cusObj = cusDao.GetFeedbackSelected(str, AdminNumber);
+           
+
             String Affordability = AffordabilityDropDown.SelectedValue.ToString();
             String Enjoyment = EnjoymentDropDown.SelectedValue.ToString();
             String Freedom = FreedomDropBox.SelectedValue.ToString();
             String ReviewPros = HighlightTb.Text.ToString();
             String ReviewCons = DownsidesTb.Text.ToString();
             String ReviewImprovement = ImprovementTb.Text.ToString();
-            int TripId = 2;
-            String StudName = "Ivan";
+            int TripId = int.Parse(Session["FeedBackActive"].ToString());
+            String StudName = cusObj.StudentName;
             String AdminNo = Session["AdminNo"].ToString();
-            String Country = "Beijing";
+            String Country = cusObj.location;
             DateTime DateCreated = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
 
             try

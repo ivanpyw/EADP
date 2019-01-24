@@ -451,47 +451,119 @@ namespace eadLab5.DAL
 
         }
 
-        //public customer getSpecificFeedBackDetails(string FBid)
-        //{
-        //    //Get connection string from web.config
-        //    string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
+        public List<FeedbackForm> GetAllFeedBackAvailable(string AdminNo)
+        {
+            // Step 2 : declare a list to hold collection of customer's timeDeposit
+            //           DataSet instance and dataTable instance 
 
-        //    SqlDataAdapter da;
-        //    DataSet ds = new DataSet();
+            List<FeedbackForm> tdList = new List<FeedbackForm>();
+            DataSet ds = new DataSet();
+            DataTable tdData = new DataTable();
+            //
+            // Step 3 :Create SQLcommand to select all columns from TDMaster by parameterised customer id
+            //          where TD is not matured yet
 
-        //    //Create Adapter
-        //    //WRITE SQL Statement to retrieve all columns from Customer by customer Id using query parameter
-        //    StringBuilder sqlCommand = new StringBuilder();
-        //    sqlCommand.AppendLine("Select * from Customer where");
-        //    sqlCommand.AppendLine("custId = @paraCustId");
-        //    //***TO Simulate system error  *****
-        //    // change custId in where clause to custId1 or 
-        //    // change connection string in web config to a wrong file name  
+            StringBuilder sqlStr = new StringBuilder();
+            sqlStr.AppendLine("select r.tripid, triptitle, location, CONVERT(VARCHAR(10), tripstart, 103) + '-' + CONVERT(VARCHAR(10), tripend, 103) AS [TIMERANGE]  from trip r ");
+            sqlStr.AppendLine("inner join interview i on r.tripid = i.tripid ");
+            sqlStr.AppendLine("where tripend < GETDATE() and studentchoice = 'Accept' and AdminNo = @paraAdminNo");
 
-        //    customer obj = new customer();   // create a customer instance
+            // Step 4 :Instantiate SqlConnection instance and SqlDataAdapter instance
 
-        //    SqlConnection myConn = new SqlConnection(DBConnect);
-        //    da = new SqlDataAdapter(sqlCommand.ToString(), myConn);
-        //    da.SelectCommand.Parameters.AddWithValue("paraCustId", custId);
-        //    // fill dataset
-        //    da.Fill(ds, "custTable");
-        //    int rec_cnt = ds.Tables["custTable"].Rows.Count;
-        //    if (rec_cnt > 0)
-        //    {
-        //        DataRow row = ds.Tables["custTable"].Rows[0];  // Sql command returns only one record
-        //        obj.customerId = row["custId"].ToString();
-        //        obj.customerName = row["custName"].ToString();
-        //        obj.customerAddress = row["custAddress"].ToString() + " Singapore " + row["custPostal"].ToString();
-        //        obj.customerMobile = row["custMobile"].ToString();
-        //        obj.customerHomePhone = row["custHomePhone"].ToString();
-        //    }
-        //    else
-        //    {
-        //        obj = null;
-        //    }
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            SqlDataAdapter da = new SqlDataAdapter(sqlStr.ToString(), myConn);
 
-        //    return obj;
-        //}
+            da.SelectCommand.Parameters.AddWithValue("paraAdminNo", AdminNo);
+
+            // Step 5 :add value to parameter 
+            // Step 6: fill dataset
+            da.Fill(ds, "TableTD");
+
+            // Step 7: Iterate the rows from TableTD above to create a collection of TD
+            //         for this particular customer 
+
+            int rec_cnt = ds.Tables["TableTD"].Rows.Count;
+            if (rec_cnt > 0)
+            {
+                foreach (DataRow row in ds.Tables["TableTD"].Rows)
+                {
+                    FeedbackForm myTD = new FeedbackForm();
+
+                    // Step 8 Set attribute of timeDeposit instance for each row of record in TableTD
+
+                    myTD.TripId = Convert.ToInt32(row["TripId"]);
+                    myTD.location = row["location"].ToString();
+                    myTD.TimeRange = row["TIMERANGE"].ToString();
+                    myTD.TripTitle = row["triptitle"].ToString();
+
+                    //  Step 9: Add each timeDeposit instance to array list
+                    tdList.Add(myTD);
+                }
+            }
+            else
+            {
+                tdList = null;
+            }
+
+            return tdList;
+        }
+
+        public FeedbackForm GetFeedbackSelected(string TripId, string AdminNo)
+        {
+            // Step 2 : declare a list to hold collection of customer's timeDeposit
+            //           DataSet instance and dataTable instance 
+
+            FeedbackForm td = new FeedbackForm();
+            DataSet ds = new DataSet();
+            DataTable tdData = new DataTable();
+            //
+            // Step 3 :Create SQLcommand to select all columns from TDMaster by parameterised customer id
+            //          where TD is not matured yet
+
+            StringBuilder sqlStr = new StringBuilder();
+            sqlStr.AppendLine("select location, StudentName from trip t ");
+            sqlStr.AppendLine("inner join Student S on t.tripid = s.tripid");
+            sqlStr.AppendLine("where t.tripid = @paraTripId and AdminNo = @paraAdminNo");
+           
+
+            // Step 4 :Instantiate SqlConnection instance and SqlDataAdapter instance
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            SqlDataAdapter da = new SqlDataAdapter(sqlStr.ToString(), myConn);
+
+            // Step 5 :add value to parameter 
+
+            da.SelectCommand.Parameters.AddWithValue("paraTripId", TripId);
+            da.SelectCommand.Parameters.AddWithValue("paraAdminNo", AdminNo);
+
+            // Step 6: fill dataset
+            da.Fill(ds, "TableTD");
+
+            // Step 7: Iterate the rows from TableTD above to create a collection of TD
+            //         for this particular customer 
+
+
+
+            int rec_cnt = ds.Tables["TableTD"].Rows.Count;
+            FeedbackForm myTD = new FeedbackForm();
+            if (rec_cnt > 0)
+            {
+
+                // Step 8 Set attribute of timeDeposit instance for the record in TableTD
+                // DataRow is set to Rows[0] because only one row is returned
+                //
+                DataRow row = ds.Tables["TableTD"].Rows[0];
+                myTD.location = row["location"].ToString();
+                myTD.StudentName = row["StudentName"].ToString();
+
+            }
+
+            else
+            {
+                myTD = null;
+            }
+            return myTD;
+        }
     }
 
 

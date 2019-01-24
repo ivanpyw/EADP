@@ -10,7 +10,7 @@
     <form runat="server">
     <table class="table">
                 <td class="auto-style1">Did you enjoy your trip in
-        <asp:Label ID="CountryLabel" runat="server" Text="[Country]" Visible="False"></asp:Label>
+        <asp:Label ID="CountryLabel" runat="server" Text="[Country]"></asp:Label>
         ? :</td>
                 <td>
                      <asp:DropDownList ID="EnjoymentDropDown" runat="server">
@@ -67,7 +67,7 @@
                 <td class="auto-style1"> What can be improved? :</td>
                 <td>
                     <asp:TextBox ID="ImprovementTb" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorHighlightImprovement" runat="server" ErrorMessage="Improvements Required">*</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorHighlightImprovement" runat="server" ErrorMessage="Improvements Required" ControlToValidate="ImprovementTb">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>

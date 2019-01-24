@@ -24,6 +24,9 @@ namespace eadLab5.DAL
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
         public string FBid { get; set; }
+        public string TripTitle { get; set; }
+        public string TimeRange { get; set; }
+        public string location { get; set; }
 
     }
 
