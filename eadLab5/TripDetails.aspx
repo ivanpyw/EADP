@@ -200,7 +200,7 @@
                     <h4><%= trip.tripTitle %></h4>
                     <img src="<%=trip.tripImg %>" class="trip-image" />
                     <div class="trip-text">
-                        <p>Program period: <%=trip.tripStart.ToString("MM/dd/yy") %> to <%= trip.tripEnd.ToString("MM/dd/yy") %></p>
+                        <p>Program period: <%=trip.tripStart.ToString("dd/MM/yy") %> to <%= trip.tripEnd.ToString("dd/MM/yy") %></p>
                         <p>Program duration: <%= trip.tripDays %></p>
                         <p>Expected cost: <%= trip.tripCost.ToString("c") %></p>
                         <p>Location: <b><%= trip.tripLocation %></b></p>
@@ -255,7 +255,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Frequency and duration:</td>
-                                        <td><%= trip.tripStart.ToString("MM/dd/yy") %> to <%=trip.tripEnd.ToString("MM/dd/yy") %></td>
+                                        <td><%= trip.tripStart.ToString("dd/MM/yy") %> to <%=trip.tripEnd.ToString("dd/MM/yy") %></td>
                                     </tr>
                                     <tr>
                                         <td>Duration: </td>
@@ -281,13 +281,13 @@
                             <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="btn btn-success">Edit details</a>
                             <a href="OverseasRegisteredList.aspx?tripId=<%=trip.tripId %>" class="btn btn-info">View Student details</a>
                             <% }
-                                else if (listId.Contains(trip.tripId))
+                                else if (listId.Contains(trip.tripId) && Session[adminNo] != null)
                                 { %>
                             <button type="button" class="form-control btn btn-secondary" disabled>Signed up</button>
                             <% }
                                 else if (role == "1" || role == "2" || role == "3")
                                 {
-                                    if (role != "3" && trip.tripType == "Internship")
+                                    if (role != "3" && trip.tripType == "Internship" || role == "2" && DateTime.Now.Month > 0)
                                     {%>
                             <button type="button" class="form-control btn btn-secondary" disabled>Only for year 3</button>
                             <%}

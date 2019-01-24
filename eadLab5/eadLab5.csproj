@@ -162,6 +162,7 @@
     <Content Include="Interview.aspx" />
     <Content Include="loginStaff.aspx" />
     <Content Include="loginStudent.aspx" />
+    <Content Include="ManageInterviews.aspx" />
     <Content Include="OverseasRegisteredList.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -322,6 +323,13 @@
     </Compile>
     <Compile Include="loginStudent.aspx.designer.cs">
       <DependentUpon>loginStudent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageInterviews.aspx.cs">
+      <DependentUpon>ManageInterviews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageInterviews.aspx.designer.cs">
+      <DependentUpon>ManageInterviews.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage1.master.cs">
       <DependentUpon>MasterPage1.master</DependentUpon>

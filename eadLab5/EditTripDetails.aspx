@@ -119,9 +119,7 @@
                 <asp:Button ID="EnableBtn" runat="server" Text="Enable edit" OnClick="AllowEdit" CausesValidation="False" CssClass="btn btn-secondary" />
                 <asp:Button ID="UpdateBtn" runat="server" Text="Update" Enabled="False" OnClick="UpdateTrip" CssClass="btn btn-success" ValidationGroup="1" AutoPostBack="True" />
                 <%--<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteWarning">Delete</button>--%>
-                <asp:Button ID="CancelBtn" runat="server" Text="Cancel trip" CssClass="btn btn-danger" data-toggle="modal" data-target="#deleteWarning" CausesValidation="False" UseSubmitBehavior="False" OnClientClick="return false;" Enabled="False" />
-            <asp:Label ID="Lbl" runat="server" Text="Label"></asp:Label>
-
+                <asp:Button ID="CancelBtn" runat="server" Text="Delete trip" CssClass="btn btn-danger" data-toggle="modal" data-target="#deleteWarning" CausesValidation="False" UseSubmitBehavior="False" OnClientClick="return false;" Enabled="False" />
         </div>
         <div class="modal fade" id="deleteWarning" tabindex="-1" role="dialog" aria-labelledby="deleteWarningLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
