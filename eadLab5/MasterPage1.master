@@ -41,7 +41,7 @@
                         <a class="nav-link" href="loginStaff.aspx">Staff login</a>
                     </li>
                     <% }
-                        else if ((Session["role"] == "1") || (Session["role"] == "2") || (Session["role"] == "3"))
+                        else if ((Session["role"].ToString() == "1") || (Session["role"].ToString() == "2") || (Session["role"].ToString() == "3"))
                         {
                            string test = Session["role"].ToString();
                            string test1 = Session["role"].ToString(); %>
@@ -52,7 +52,7 @@
                         <a class="nav-link" href="TripDetails.aspx">Trip Details</a>
                     </li>
                     <%}
-                        else if ((Session["role"] == "teacher") || (Session["role"] == "Incharge" ))
+                        else if ((Session["role"].ToString() == "Teacher") || (Session["role"].ToString() == "Incharge" ))
                     { %>
                          <li class="nav-item">
                         <a class="nav-link" href="ReportAndStatistics.aspx">GraphStats</a>

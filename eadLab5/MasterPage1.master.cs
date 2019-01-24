@@ -11,9 +11,9 @@ namespace eadLab5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if ((!(Session["role"]).Equals(null)) && (!(Session["role"]).Equals(""))){ 
-            string roleformasterpage = Session["role"].ToString();
-         }
+            //if ((!(Session["role"]).Equals(null)) && (!(Session["role"]).Equals(""))){ 
+            //string roleformasterpage = Session["role"].ToString();
+         //}
         }
     }
 }
