@@ -40,6 +40,7 @@ namespace eadLab5
                     Session["AdminNo"] = stuObj.AdminNo;
                     Session["role"] = stuObj.Year;
                     Response.Redirect("student.aspx");
+                    string roleformasterpage = Session["role"].ToString();
                 }
             }
         }

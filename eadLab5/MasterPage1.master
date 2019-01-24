@@ -31,19 +31,8 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="Default.aspx">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="TripDetails.aspx">Trip Details</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ReportAndStatistics.aspx">GraphStats</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ViewFeedBackStaff.aspx">StaffFeedBack
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="viewFeedBacksSubmitted.aspx">FBSubmitted</a>
-                    </li>
+                    <% if (Session["role"] == null)
+                        { %>
                     <li class="nav-item">
                         <a class="nav-link" href="loginStudent.aspx">Student login</a>
                     </li>
@@ -51,6 +40,33 @@
                     <li class="nav-item">
                         <a class="nav-link" href="loginStaff.aspx">Staff login</a>
                     </li>
+                    <% }
+                        else if ((Session["role"] == "1") || (Session["role"] == "2") || (Session["role"] == "3"))
+                        {
+                           string test = Session["role"].ToString();
+                           string test1 = Session["role"].ToString(); %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="viewFeedBacksSubmitted.aspx">FBSubmitted</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="TripDetails.aspx">Trip Details</a>
+                    </li>
+                    <%}
+                        else if ((Session["role"] == "teacher") || (Session["role"] == "Incharge" ))
+                    { %>
+                         <li class="nav-item">
+                        <a class="nav-link" href="ReportAndStatistics.aspx">GraphStats</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ViewFeedBackStaff.aspx">StaffFeedBack
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="TripDetails.aspx">Trip Details</a>
+                    </li>
+                    <%}%>
+     
+                   
                 </ul>
 
                 <ul class="navbar-nav mr-auto">
