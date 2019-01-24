@@ -53,6 +53,7 @@
     </script>
     <form runat="server">
         <div class="container">
+            <h2 class="text-center">Edit trip details</h2>
             <table class="table table-bordered">
                 <tr>
                     <td>Trip title:<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="Trip title is required" ControlToValidate="tbUpdateTitle" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator>
