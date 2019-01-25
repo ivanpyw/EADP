@@ -31,6 +31,10 @@ namespace eadLab5
             tripObj = tripDao.getTrip(tripType);
             count = tripDao.count;
             listId = tripDao.getSignedUpTrip(adminNo);
+            foreach(var i in listId)
+            {
+                System.Diagnostics.Debug.Write(i+"_");
+            }
             List <String> countryList = tripDao.getCountry();
             ddlAddLocation.DataSource = countryList;
             ddlAddLocation.DataBind();
@@ -88,6 +92,7 @@ namespace eadLab5
                     string addType = DdlAddTripType.SelectedItem.Text;
                     HttpFileCollection uploadedFiles = Request.Files;
                     string[] images = new string[3];
+                    int staffId = Convert.ToInt32(Session["StaffId"]);
                     for(int i = 0; i < uploadedFiles.Count; i++)
                     {
                         HttpPostedFile userPostedFile = uploadedFiles[i];
@@ -95,7 +100,7 @@ namespace eadLab5
                         System.Diagnostics.Debug.WriteLine(images[i]);
                     }
 
-                    int results = addTD.insertTrip(addLocation, images[0], addTitle, addStart, addEnd, addOpen , addActivities, cost, addType,images[1],images[2]);
+                    int results = addTD.insertTrip(addLocation, images[0], addTitle, addStart, addEnd, addOpen , addActivities, cost, addType,images[1],images[2],staffId);
 
                     Response.Redirect("TripDetails.aspx");
                 }

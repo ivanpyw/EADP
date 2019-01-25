@@ -66,7 +66,7 @@ namespace eadLab5
             int tripId = Convert.ToInt32(Request.QueryString["tripId"]);
             GridViewRow row = GridViewRegistered.SelectedRow;
             string RegisterID = e.CommandArgument.ToString();
-
+            int staffId = Convert.ToInt32(Session["StaffId"]);
 
             if (e.CommandName == "Shortlist")
             {
@@ -74,6 +74,9 @@ namespace eadLab5
                 Trip TripList = new Trip();
                 int TRIPPYLIST;
                 TRIPPYLIST = TripDAO.updateShortlisted(RegisterID, tripId);
+                InterviewDAO intDao = new InterviewDAO();
+                string adminNo = intDao.exchangeRegIdForAdminNo(RegisterID);
+                int updateStuds = intDao.selectForInterview(adminNo, staffId, tripId );
                 Response.Redirect(Request.RawUrl);
 
             }

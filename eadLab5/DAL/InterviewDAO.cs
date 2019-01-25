@@ -48,5 +48,41 @@ namespace eadLab5.DAL
             }
             return interviews;
         }
+
+        public int selectForInterview(string adminNo,int staffId,int tripId)
+        {
+            StringBuilder sqlStr = new StringBuilder();
+            int result = 0;    // Execute NonQuery return an integer value
+            SqlCommand sqlCmd = new SqlCommand();
+
+            sqlStr.AppendLine("INSERT INTO Interview(StaffId,AdminNo,TripId,StudentStatus)");
+            sqlStr.AppendLine("VALUES (@pStaffId,@pAdminNo,@pTripId,'Pending')");
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+            sqlCmd.Parameters.AddWithValue("@pAdminNo", adminNo);
+            sqlCmd.Parameters.AddWithValue("@pStaffId", staffId);
+            sqlCmd.Parameters.AddWithValue("@pTripId", tripId);
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+            myConn.Close();
+            return result;
+        }
+
+        public string exchangeRegIdForAdminNo(string RegId)
+        {
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            StringBuilder tripCommand = new StringBuilder();
+            tripCommand.AppendLine("Select AdminNo from Register");
+            tripCommand.AppendLine("WHERE RegisterId = @pRegisterId");
+
+            SqlDataAdapter da = new SqlDataAdapter(tripCommand.ToString(), myConn);
+            da.SelectCommand.Parameters.AddWithValue("@pRegisterId", RegId);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "Trip");
+            string adminNo = ds.Tables["Trip"].Rows[0][0].ToString();
+            return adminNo;
+        }
     }
 }

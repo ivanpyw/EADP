@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Content/SarasaStyleSheet.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script>
@@ -71,7 +72,7 @@
             })
         }
     </script>
-    <% if (role == "Teacher   ")
+    <% if (role == "Teacher")
         { %>
     <div class="container">
         <button class="btn btn-secondary btn-lg add-trip-btn" type="button" data-toggle="modal" data-target="#addModal"><i class="fa fa-plus"></i></button>
@@ -140,7 +141,7 @@
                                 <tr>
                                     <td>Images:(Three)<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Image required" ControlToValidate="tripImageUpload" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
                                     <td>
-                                        <asp:FileUpload ID="tripImageUpload" runat="server" CssClass="form-control-file" AllowMultiple="true" OnClick=""/></td>
+                                        <asp:FileUpload ID="tripImageUpload" runat="server" CssClass="form-control-file" AllowMultiple="true" OnClick="" /></td>
                                 </tr>
                                 <tr>
                                     <td>From:<asp:CustomValidator ID="CustomValidator5" runat="server" ErrorMessage="Trip start date cannot be in the past" ClientValidationFunction="addTripCompareNowStart" Text="*" ValidationGroup="1"></asp:CustomValidator><asp:CustomValidator ID="CustomValidator3" runat="server" ErrorMessage="Trip start date must be before trip end date" ClientValidationFunction="addTripValidation" ValidationGroup="1" Text="*"></asp:CustomValidator><asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Start date required" ControlToValidate="tbAddStart" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
@@ -199,7 +200,7 @@
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="card h-100 text-center">
                     <a href="#">
-                        <img src="<%=trip.tripImg %>" class="card-img-top" style="width:347.99px; height:400px" /></a>
+                        <img src="<%=trip.tripImg %>" class="card-img-top" style="width: 347.99px; height: 400px" /></a>
                     <div class="card-body">
                         <h4 class="card-title">
                             <%= trip.tripTitle %>
@@ -209,12 +210,12 @@
                         <p class="card-text">Expected cost: <%= trip.tripCost.ToString("c") %></p>
                         <p class="card-text">Location: <b><%= trip.tripLocation %></b></p>
                     </div>
-                    <button type="button" class="btn btn-primary trip-btn" style="margin:0 auto;" data-toggle="modal" data-target="#tripModal<%= trip.tripId %>">
+                    <button type="button" class="btn btn-primary trip-btn" style="margin: 0 auto;" data-toggle="modal" data-target="#tripModal<%= trip.tripId %>">
                         View details
                     </button>
                 </div>
 
-            
+
             </div>
             <!-- Modal -->
             <div class="modal fade" id="tripModal<%=trip.tripId %>" tabindex="-1" role="dialog" aria-labelledby="tripModal<%=trip.tripId %>" aria-hidden="true">
@@ -282,26 +283,18 @@
 
                                 </tbody>
                             </table>
-                            <% if (role == "Teacher")
-                                { %>
-                            <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="btn btn-success">Edit details</a>
-                            <a href="OverseasRegisteredList.aspx?tripId=<%=trip.tripId %>" class="btn btn-info">View Student details</a>
-                            <% }
-                                else if (listId.Contains(trip.tripId) && Session[adminNo] != null)
-                                { %>
-                            <button type="button" class="form-control btn btn-secondary" disabled>Signed up</button>
-                            <% }
-                                else if (role == "1" || role == "2" || role == "3")
-                                {
-                                    if (role != "3" && trip.tripType == "Internship" || role == "2" && DateTime.Now.Month > 0)
-                                    {%>
-                            <button type="button" class="form-control btn btn-secondary" disabled>Only for year 3</button>
-                            <%}
-                            else
-                            {%>
-                            <button type="button" onclick="sendTripId(<%= trip.tripId %>)" class="form-control btn btn-primary">Sign up</button>
-                            <%} %>
-                            <%} %>
+                            <% if (listId.Contains(trip.tripId)){ %>
+                                <button type="button" class="form-control btn btn-secondary" disabled>Signed up</button>
+                            <% }else if(role == "Teacher") { %>
+                                <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="btn btn-success">Edit details</a>
+                                <a href="OverseasRegisteredList.aspx?tripId=<%=trip.tripId %>" class="btn btn-info">View Student details</a>
+                            <% }else if(role =="1" || role == "2" || role == "3"){ %>
+                                <% if (role != "3" && trip.tripType == "Internship" || role == "2" && DateTime.Now.Month > 0) {%>
+                                    <button type="button" class="form-control btn btn-secondary" disabled>Only for year 3</button>
+                                <% }else { %>
+                                    <button type="button" onclick="sendTripId(<%= trip.tripId %>)" class="form-control btn btn-primary">Sign up</button>
+                                <% } %>
+                            <% } %>
                         </div>
                     </div>
                 </div>

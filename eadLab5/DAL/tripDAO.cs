@@ -121,21 +121,20 @@ namespace eadLab5.DAL
                     foreach (DataColumn column in ds.Tables["Trip"].Columns)
                     {
                         listId.Add(Convert.ToInt32(row3[column]));
-
                     }
                 }
                 return listId;
             }
         }
 
-        public int insertTrip(string location, string tripImage1, string title, DateTime start, DateTime end, DateTime openingDay, string activities, double cost, string triptype, string tripImage2, string tripImage3)
+        public int insertTrip(string location, string tripImage1, string title, DateTime start, DateTime end, DateTime openingDay, string activities, double cost, string triptype, string tripImage2, string tripImage3, int StaffId)
         {
             StringBuilder sqlStr = new StringBuilder();
             int result = 0;
             SqlCommand sqlCmd = new SqlCommand();
 
             sqlStr.AppendLine("INSERT INTO Trip(Location,Image,TripTitle,OpeningDay,TripStart,TripEnd,Activities,cost,TripType,status,staffId,image2,image3)");
-            sqlStr.AppendLine("VALUES (@pLocation,@pImage,@pTitle,@pOpeningDay,@pStart,@pEnd,@pActivities,@pCost,@pType,'pending',1,@pImage2,@pImage3)");
+            sqlStr.AppendLine("VALUES (@pLocation,@pImage,@pTitle,@pOpeningDay,@pStart,@pEnd,@pActivities,@pCost,@pType,'pending',@pStaffId,@pImage2,@pImage3)");
 
             SqlConnection myConn = new SqlConnection(DBConnect);
 
@@ -152,6 +151,7 @@ namespace eadLab5.DAL
             sqlCmd.Parameters.AddWithValue("@pImage", tripImage1);
             sqlCmd.Parameters.AddWithValue("@pImage2", tripImage2);
             sqlCmd.Parameters.AddWithValue("@pImage3", tripImage3);
+            sqlCmd.Parameters.AddWithValue("@pStaffId", StaffId);
 
             myConn.Open();
             result = sqlCmd.ExecuteNonQuery();
