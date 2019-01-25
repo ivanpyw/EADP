@@ -13,6 +13,8 @@ namespace eadLab5
         protected void Page_Load(object sender, EventArgs e)
         {
             lblErrorMessage.Visible = false;
+            Session["Staffid"] = null;
+            Session["role"] = null;
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {

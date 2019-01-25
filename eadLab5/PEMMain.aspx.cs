@@ -12,12 +12,17 @@ namespace eadLab5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            StudentDAO stuObj = new StudentDAO();
+            if (Session["Staffid"] == null)
+            {
+                Response.Redirect("loginStaff.aspx");
+            }
+            else {StudentDAO stuObj = new StudentDAO();
             TripDAO Trip1 = new TripDAO();
             StudentRepeater.DataSource = stuObj.getAllstudent();
             StudentRepeater.DataBind();
             TripRepeater.DataSource = Trip1.getAllTrip();
-            TripRepeater.DataBind();
+            TripRepeater.DataBind(); }
+            
 
         }
     }

@@ -12,10 +12,18 @@ namespace eadLab5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Lbl_Address.Visible = true;
-            TripDAO Trip1 = new TripDAO();
-            TripRepeater.DataSource = Trip1.getAllTrip();
-            TripRepeater.DataBind();
+            if (Session["AdminNo"] == null)
+            {
+                Response.Redirect("loginStudent.aspx");
+            }
+            else
+            {
+                Lbl_Address.Visible = true;
+                TripDAO Trip1 = new TripDAO();
+                TripRepeater.DataSource = Trip1.getAllTrip();
+                TripRepeater.DataBind();
+            }
+            
         }
         
     }
