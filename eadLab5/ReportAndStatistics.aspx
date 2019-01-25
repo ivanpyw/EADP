@@ -11,14 +11,11 @@
 
     <form id="form1" runat="server">
 
-    <div id="wrapper">
+    <div id="content-wrapper">
 
         <br />
 
       <!-- Sidebar -->
-    
-      <div id="content-wrapper">
-
         <div class="container-fluid">
 
         
@@ -30,6 +27,7 @@
                     Area Chart Example
                 </div>
                 <div class="card-body">
+                    <div class="table-responsive">
                     <table class="auto-style5">
                         <tr>
                             <td class="auto-style3">Country:</td>
@@ -63,7 +61,8 @@
                             </td>
                         </tr>
                     </table>
-                    <canvas id="myAreaChart" width="100%" height="30"></canvas>
+                    <canvas id="myAreaChart" width="100%" height="30" ></canvas>
+                    
                     <asp:Chart ID="Chart2" runat="server" Width="1028px" BackGradientStyle="VerticalCenter">
                         <Series>
                             <asp:Series Name="Series1" XValueMember="Location" YValueMembers="Cost">
@@ -74,6 +73,7 @@
                             </asp:ChartArea>
                         </ChartAreas>
                     </asp:Chart>
+                        </div>
 
                     <div class="row">
                         <div class="col-lg-8">
@@ -82,7 +82,7 @@
                                     <i class="fas fa-chart-bar"></i>
                                     Bar Chart Example
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body table-responsive">
                                     <table class="auto-style11">
                                         <tr>
                                             <td>
@@ -156,7 +156,7 @@
                             <div class="card-header">
                                 Line Graph Example
                             </div>
-                            <div class="card-body">
+                            <div class="card-body table-responsive">
                                 <canvas id="myAreaChart" width="100%" height="30"></canvas>
 
                                 <table class="auto-style5">
@@ -199,9 +199,6 @@
                         </div>
 
                     </div>
-
-                </div>
-
             </div>
             <!-- /.container-fluid -->
 
@@ -211,7 +208,6 @@
           <!-- /.content-wrapper -->
 
       </div>
-    </div>
 
     </form>
 </asp:Content>

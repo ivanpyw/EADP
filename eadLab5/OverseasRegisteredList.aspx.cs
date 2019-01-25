@@ -180,5 +180,15 @@ namespace eadLab5
             }
 
         }
+
+        protected void Chart3_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridViewWaitingList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
