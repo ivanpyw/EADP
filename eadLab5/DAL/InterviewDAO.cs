@@ -39,6 +39,7 @@ namespace eadLab5.DAL
                     myInt.tripEnd = Convert.ToDateTime(row["TripEnd"]);
                     myInt.tripStart = Convert.ToDateTime(row["TripStart"]);
                     myInt.tripLocation = row["Location"].ToString();
+                    myInt.interviewId = Convert.ToInt32(row["InterviewId"]);
                     interviews.Add(myInt);
                 }
             }

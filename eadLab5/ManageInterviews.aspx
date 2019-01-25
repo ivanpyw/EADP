@@ -17,9 +17,17 @@
                             <p>From <%=interview.tripStart.ToString("dd/MM/yyyy") %> to <%=interview.tripEnd.ToString("dd/MM/yyyy") %></p>
                             <p>Location: <%=interview.tripLocation %></p>
                         </div>
-                        <button type="button" class="align-middle btn btn-primary">Schedule interview</button>
+                        <input type="datetime" id="datetimeTrip<%=interview.interviewId %>"/>
+                        <button type="button" class="align-middle btn btn-primary" onclick="testing(<%=interview.interviewId %>)">Schedule interview</button>
                     </div>
                 </div>
+                <script type="text/javascript">
+                    function testing(id) {
+                        var datetimeId = "datetimeTrip" + id;
+                        var value = document.getElementById(datetimeId).value;
+                        console.log(value);
+                    }
+                </script>
                 <%} %>
         </div>
     </div>
