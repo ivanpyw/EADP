@@ -467,7 +467,7 @@ namespace eadLab5.DAL
             StringBuilder sqlStr = new StringBuilder();
             sqlStr.AppendLine("select r.tripid, triptitle, location, CONVERT(VARCHAR(10), tripstart, 103) + '-' + CONVERT(VARCHAR(10), tripend, 103) AS [TIMERANGE]  from trip r ");
             sqlStr.AppendLine("inner join interview i on r.tripid = i.tripid ");
-            sqlStr.AppendLine("where tripend < GETDATE() and studentchoice = 'Accept' and AdminNo = @paraAdminNo and FeedbackDone ='' or FeedbackDone IS NULL ");
+            sqlStr.AppendLine("where tripend < GETDATE() and studentchoice = 'Accept' and AdminNo = @paraAdminNo and (FeedbackDone ='' or FeedbackDone IS NULL) ");
 
             // Step 4 :Instantiate SqlConnection instance and SqlDataAdapter instance
 
