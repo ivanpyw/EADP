@@ -233,13 +233,13 @@
                                     <div class="carousel-item active">
                                         <img class="img-fluid" src="<%=trip.tripImg %>" alt="First slide" />
                                     </div>
-                                    <% if (trip.tripImg2 != "")
+                                    <% if (trip.tripImg2 != "NULL")
                                         { %>
                                     <div class="carousel-item">
                                         <img class="img-fluid" src="<%=trip.tripImg2 %>" alt="Second slide" />
                                     </div>
                                     <% } %>
-                                    <% if (trip.tripImg3 != "")
+                                    <% if (trip.tripImg3 != "NULL" && trip.tripImg2 != "NULL")
                                         {%>
                                     <div class="carousel-item">
                                         <img class="img-fluid" src="<%=trip.tripImg3 %>" alt="Third slide" />

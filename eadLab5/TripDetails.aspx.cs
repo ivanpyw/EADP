@@ -99,7 +99,14 @@ namespace eadLab5
                         images[i] = SaveFile(userPostedFile);
                         System.Diagnostics.Debug.WriteLine(images[i]);
                     }
-
+                    if(uploadedFiles.Count == 1)
+                    {
+                        images[1] = "NULL";
+                        images[2] = "NULL";
+                    }else if(uploadedFiles.Count == 2)
+                    {
+                        images[2] = "NULL";
+                    }
                     int results = addTD.insertTrip(addLocation, images[0], addTitle, addStart, addEnd, addOpen , addActivities, cost, addType,images[1],images[2],staffId);
 
                     Response.Redirect("TripDetails.aspx");
