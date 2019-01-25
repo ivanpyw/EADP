@@ -195,20 +195,26 @@
         <div class="row">
             <% foreach (var trip in tripObj)
                 { %>
-            <div class="col-md-4">
-                <div class="text-center trip-panels">
-                    <h4><%= trip.tripTitle %></h4>
-                    <img src="<%=trip.tripImg %>" class="trip-image" />
-                    <div class="trip-text">
-                        <p>Program period: <%=trip.tripStart.ToString("dd/MM/yy") %> to <%= trip.tripEnd.ToString("dd/MM/yy") %></p>
-                        <p>Program duration: <%= trip.tripDays %></p>
-                        <p>Expected cost: <%= trip.tripCost.ToString("c") %></p>
-                        <p>Location: <b><%= trip.tripLocation %></b></p>
+
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="card h-100 text-center">
+                    <a href="#">
+                        <img src="<%=trip.tripImg %>" class="card-img-top" style="width:347.99px; height:400px" /></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <%= trip.tripTitle %>
+                        </h4>
+                        <p class="card-text">Program period: <%=trip.tripStart.ToString("dd/MM/yy") %> to <%= trip.tripEnd.ToString("dd/MM/yy") %></p>
+                        <p class="card-text">Program duration: <%= trip.tripDays %></p>
+                        <p class="card-text">Expected cost: <%= trip.tripCost.ToString("c") %></p>
+                        <p class="card-text">Location: <b><%= trip.tripLocation %></b></p>
                     </div>
-                    <button type="button" class="btn btn-primary trip-btn" data-toggle="modal" data-target="#tripModal<%= trip.tripId %>">
+                    <button type="button" class="btn btn-primary trip-btn" style="margin:0 auto;" data-toggle="modal" data-target="#tripModal<%= trip.tripId %>">
                         View details
                     </button>
                 </div>
+
+            
             </div>
             <!-- Modal -->
             <div class="modal fade" id="tripModal<%=trip.tripId %>" tabindex="-1" role="dialog" aria-labelledby="tripModal<%=trip.tripId %>" aria-hidden="true">

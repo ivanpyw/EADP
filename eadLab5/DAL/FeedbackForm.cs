@@ -27,6 +27,7 @@ namespace eadLab5.DAL
         public string TripTitle { get; set; }
         public string TimeRange { get; set; }
         public string location { get; set; }
+        public string DateCreated { get; set; }
 
     }
 

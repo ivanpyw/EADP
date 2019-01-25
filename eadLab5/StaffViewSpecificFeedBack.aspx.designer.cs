@@ -13,15 +13,6 @@ namespace eadLab5 {
     public partial class StaffViewSpecificFeedBack {
         
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
         /// NameLabel control.
         /// </summary>
         /// <remarks>
@@ -49,13 +40,13 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.Label CountryLabel;
         
         /// <summary>
-        /// AffordablitityLabel control.
+        /// DateCreatedLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AffordablitityLabel;
+        protected global::System.Web.UI.WebControls.Label DateCreatedLabel;
         
         /// <summary>
         /// EnjoymentLabel control.
@@ -67,13 +58,22 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.Label EnjoymentLabel;
         
         /// <summary>
-        /// Freedom control.
+        /// AffordablitityLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Freedom;
+        protected global::System.Web.UI.WebControls.Label AffordablitityLabel;
+        
+        /// <summary>
+        /// FreedomLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FreedomLabel;
         
         /// <summary>
         /// HighlightsLabel control.

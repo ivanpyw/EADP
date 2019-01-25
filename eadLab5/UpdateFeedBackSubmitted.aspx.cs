@@ -36,8 +36,8 @@ namespace eadLab5
             , HighlightTbUpdate.Text, DownsidesTbUpdate.Text, ImprovementTbUpdate.Text,"Ivan", "Australia",Session["AdminNo"].ToString(), "1", Session["FeedBackIdStudentUpdate"].ToString());
             if (updCnt == 1)
             {
-                LblResult.Text = "Feedback has been changed!";
-                LblResult.ForeColor = System.Drawing.Color.Black;
+                LblResult.Text = "Feedback Submitted! Thank you! You will be redirected in 5 seconds to the homepage!";
+                Response.AddHeader("REFRESH", "5;URL=http://localhost:3355");
             }
 
         }

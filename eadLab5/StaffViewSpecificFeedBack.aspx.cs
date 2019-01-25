@@ -22,14 +22,16 @@ namespace eadLab5
             if (cusObj != null)
             {  
                 AffordablitityLabel.Text = cusObj.Affordability;
-                CountryLabel.Text = cusObj.Enjoyment;
+                CountryLabel.Text = cusObj.Country;
                 DownsidesLabel.Text = cusObj.ReviewCons;
                 NameLabel.Text = cusObj.StudentName;
                 HighlightsLabel.Text = cusObj.ReviewPros;
                 AdminLabel.Text = cusObj.AdminNo;
                 EnjoymentLabel.Text = cusObj.Enjoyment;
-                Freedom.Text = cusObj.Freedom;
+                FreedomLabel.Text = cusObj.Freedom;
                 ImprovementsLabel.Text = cusObj.ReviewImprovement;
+                DateCreatedLabel.Text = cusObj.DateCreated;
+
             }
         }
     }

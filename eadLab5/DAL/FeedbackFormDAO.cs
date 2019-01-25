@@ -113,6 +113,7 @@ namespace eadLab5.DAL
                 myTD.TripId = Convert.ToInt32(row["TripId"]);
                 myTD.Country = row["Country"].ToString();
                 myTD.StudentName = row["StudentName"].ToString();
+                myTD.DateCreated = row["DateCreated"].ToString();
 
             }
 
