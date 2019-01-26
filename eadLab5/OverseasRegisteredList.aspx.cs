@@ -365,7 +365,7 @@ namespace eadLab5
                 HtmlTextWriter hw = new HtmlTextWriter(sw);
                 GridViewShortlisted.AllowPaging = false;
                 GridViewShortlisted.HeaderRow.Style.Add("background-color", "#ffffff");
-                for (int i = 0; i < GridViewRegistered.HeaderRow.Cells.Count; i++)
+                for (int i = 0; i < GridViewShortlisted.HeaderRow.Cells.Count; i++)
                 {
                     GridViewShortlisted.HeaderRow.Cells[i].Style.Add("background-color", "#df5015");
                 }
