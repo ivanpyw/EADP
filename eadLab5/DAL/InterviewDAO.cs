@@ -85,5 +85,27 @@ namespace eadLab5.DAL
             string adminNo = ds.Tables["Trip"].Rows[0][0].ToString();
             return adminNo;
         }
+
+        public int insertDateTime(string intId,string date, string time)
+        {
+            StringBuilder sqlStr = new StringBuilder();
+            int result = 0;    // Execute NonQuery return an integer value
+            SqlCommand sqlCmd = new SqlCommand();
+
+            sqlStr.AppendLine("UPDATE Interview");
+            sqlStr.AppendLine("SET interviewDate=@pDate,interviewTime=@pTime");
+            sqlStr.AppendLine("WHERE InterviewId = @pIntId");
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+            sqlCmd.Parameters.AddWithValue("@pIntId", intId);
+            sqlCmd.Parameters.AddWithValue("@pDate", date);
+            sqlCmd.Parameters.AddWithValue("@pTime", time);
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+            myConn.Close();
+            return result;
+        }
     }
 }
