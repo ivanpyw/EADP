@@ -18,6 +18,10 @@
                         <p>Signing up for <%=interview.tripName %></p>
                         <p>From <%=interview.tripStart.ToString("dd/MM/yyyy") %> to <%=interview.tripEnd.ToString("dd/MM/yyyy") %></p>
                         <p>Location: <%=interview.tripLocation %></p>
+                        <% if(interview.interviewDate.ToString() != null && interview.interviewTime.ToString() != null) { %>
+                            <p>Scheduled on(yyyy/mm/dd): <b><%=interview.interviewDate.ToString() %>,<%=interview.interviewTime.ToString() %></b></p>
+                        <%} %>
+                        <p></p>
                     </div>
                     <button type="button" data-toggle="modal" data-target="#emailModal<%=interview.interviewId %>" class="btn btn-primary">Schedule interview</button><p>&nbsp</p>
                     <button type="button" class="btn btn-secondary" onclick="createSession(<%=interview.interviewId %>)">Start interview</button>
@@ -69,8 +73,30 @@
                         dataType: "json",
                         contentType: "application/json",
                         success: function (response) {
-                            console.log(response);
+                            console.log(response)
                             //window.location.reload()
+                        },
+                        error: function () {
+                            console.log("error")
+                        }
+                    })
+                }
+
+                function createSession(id) {
+                    var data = { "intId": id }
+                    $.ajax({
+                        url: "http://localhost:3355/manageInterviews.aspx/createSession",
+                        type: 'POST',
+                        data: JSON.stringify(data),
+                        dataType: "json",
+                        contentType: "application/json",
+                        success: function (response) {
+                            console.log(response["d"])
+                            var sessionToken = response["d"];
+                            var split = sessionToken.split("__________");
+                            var token = split[0];
+                            var session = split[1];
+                            window.location.href = "Interview.aspx?sessionId=" + session + "&token=" + token;
                         },
                         error: function () {
                             console.log("error")
