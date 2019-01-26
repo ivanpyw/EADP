@@ -7,10 +7,9 @@
 }
 
 #subscriber {
-    position: relative;
-    width: 40%;
-    height: 40%;
-    z-index: 10;
+    position: static;
+    width: 75%;
+    height: 75%;
 }
 
 #publisher {
@@ -18,7 +17,4 @@
     height: 240px;
     bottom: 50px;
     left: 10px;
-    z-index: 10;
-    border: 3px solid white;
-    border-radius: 3px;
 }
