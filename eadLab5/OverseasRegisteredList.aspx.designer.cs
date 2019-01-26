@@ -31,6 +31,24 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
+        /// ExportButtonRegistered control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ExportButtonRegistered;
+        
+        /// <summary>
+        /// LabelRegisterExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelRegisterExport;
+        
+        /// <summary>
         /// GridViewRegistered control.
         /// </summary>
         /// <remarks>
@@ -38,6 +56,15 @@ namespace eadLab5 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewRegistered;
+        
+        /// <summary>
+        /// GridViewRegisteredIncharge control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewRegisteredIncharge;
         
         /// <summary>
         /// Label2 control.
@@ -49,6 +76,24 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
+        /// ExportButtonNorminated control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ExportButtonNorminated;
+        
+        /// <summary>
+        /// LabelNorminatedExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelNorminatedExport;
+        
+        /// <summary>
         /// GridViewNorminated control.
         /// </summary>
         /// <remarks>
@@ -56,6 +101,15 @@ namespace eadLab5 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewNorminated;
+        
+        /// <summary>
+        /// GridViewNorminatedIncharge control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewNorminatedIncharge;
         
         /// <summary>
         /// Label4 control.
@@ -67,6 +121,24 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
+        /// ExportButtonWaiting control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ExportButtonWaiting;
+        
+        /// <summary>
+        /// LabelWaitingExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelWaitingExport;
+        
+        /// <summary>
         /// GridViewWaitingList control.
         /// </summary>
         /// <remarks>
@@ -76,6 +148,15 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.GridView GridViewWaitingList;
         
         /// <summary>
+        /// GridViewWaitingListIncharge control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewWaitingListIncharge;
+        
+        /// <summary>
         /// Label5 control.
         /// </summary>
         /// <remarks>
@@ -83,6 +164,24 @@ namespace eadLab5 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label5;
+        
+        /// <summary>
+        /// ExportButtonShortlisted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ExportButtonShortlisted;
+        
+        /// <summary>
+        /// LabelShortlistExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelShortlistExport;
         
         /// <summary>
         /// GridViewShortlisted control.
