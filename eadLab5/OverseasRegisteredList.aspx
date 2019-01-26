@@ -56,8 +56,8 @@
                             </asp:GridView>
 
                              <% }
-                                            else if (Session["role"].ToString() == "InCharge")
-                                            {%>
+                                else if (Session["role"].ToString() == "Incharge")
+                                {%>
 
                             <asp:GridView ID="GridViewRegisteredIncharge" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped" Height="284px" OnRowCommand="GridActionRegistered" Style="table-layout: fixed;">
                                 <AlternatingRowStyle BackColor="White" />
@@ -138,7 +138,7 @@
                                         </asp:GridView>
 
                                         <% }
-                                            else if (Session["role"].ToString() == "InCharge")
+                                            else if (Session["role"].ToString() == "Incharge")
                                             {%>
 
                                         <asp:GridView ID="GridViewNorminatedIncharge" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped" Height="284px" OnRowCommand="GridActionNorminate">
@@ -208,7 +208,7 @@
                                         </asp:GridView>
 
                                         <% }
-                                            else if (Session["role"].ToString() == "InCharge")
+                                            else if (Session["role"].ToString() == "Incharge")
                                             {%>
                                         <asp:GridView ID="GridViewWaitingListIncharge" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped" Height="284px" OnRowCommand="GridActionWaitingList" OnSelectedIndexChanged="GridViewWaitingList_SelectedIndexChanged">
                                             <AlternatingRowStyle BackColor="White" />

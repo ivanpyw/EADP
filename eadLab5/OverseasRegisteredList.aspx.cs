@@ -27,29 +27,28 @@ namespace eadLab5
                 GridViewShortlisted.DataSource = TripList;
                 GridViewShortlisted.DataBind();
 
-               
-                    TripList = TripDAO.GetRegisteredList(tripId);
-                    GridViewRegistered.DataSource = TripList;
-                    GridViewRegistered.DataBind();
+                TripList = TripDAO.GetRegisteredList(tripId);
+                GridViewRegistered.DataSource = TripList;
+                GridViewRegistered.DataBind();
 
-                    TripList = TripDAO.GetWaitingList(tripId);
-                    GridViewWaitingList.DataSource = TripList;
-                    GridViewWaitingList.DataBind();
+                TripList = TripDAO.GetWaitingList(tripId);
+                GridViewWaitingList.DataSource = TripList;
+                GridViewWaitingList.DataBind();
 
-                    TripList = TripDAO.GetNorminated(tripId);
-                    GridViewNorminated.DataSource = TripList;
+                TripList = TripDAO.GetNorminated(tripId);
+                GridViewNorminated.DataSource = TripList;
  
-                    TripList = TripDAO.GetRegisteredList(tripId);
-                    GridViewRegisteredIncharge.DataSource = TripList;
-                    GridViewRegisteredIncharge.DataBind();
+                TripList = TripDAO.GetRegisteredList(tripId);
+                GridViewRegisteredIncharge.DataSource = TripList;
+                GridViewRegisteredIncharge.DataBind();
 
-                    TripList = TripDAO.GetNorminated(tripId);
-                    GridViewNorminatedIncharge.DataSource = TripList;
-                    GridViewNorminatedIncharge.DataBind();
+                TripList = TripDAO.GetNorminated(tripId);
+                GridViewNorminatedIncharge.DataSource = TripList;
+                GridViewNorminatedIncharge.DataBind();
 
-                    TripList = TripDAO.GetWaitingList(tripId);
-                    GridViewWaitingListIncharge.DataSource = TripList;
-                    GridViewWaitingListIncharge.DataBind();
+                TripList = TripDAO.GetWaitingList(tripId);
+                GridViewWaitingListIncharge.DataSource = TripList;
+                GridViewWaitingListIncharge.DataBind();
 
                
             }
