@@ -22,12 +22,12 @@ namespace eadLab5
         }
 
         [WebMethod]
-        public static string emailStudent(string emailDate, string emailTime,string intId)
+        public static string emailStudent(string emailDate, string emailTime, string intId)
         {
             System.Diagnostics.Debug.WriteLine(emailDate + " this is tripId@@@ ");
             System.Diagnostics.Debug.WriteLine(emailTime + " this is adminNo@@@ ");
             InterviewDAO interviewDao = new InterviewDAO();
-            interviewDao.insertDateTime(intId,emailDate, emailTime);
+            interviewDao.insertDateTime(intId, emailDate, emailTime);
             string adminNo = interviewDao.exchangeRegIdForAdminNo(intId);
             SmtpClient client = new SmtpClient();
             client.Port = 25;
@@ -39,7 +39,7 @@ namespace eadLab5
             string recipient = adminNo + "@mymail.nyp.edu.sg";
             MailMessage mail = new MailMessage("sarasaeadp@outlook.com", recipient);
             mail.Subject = "You are scheduled for an interview!";
-            mail.Body = "The interview will be on "+emailDate+", "+emailTime;
+            mail.Body = "The interview will be on " + emailDate + ", " + emailTime;
             client.Send(mail);
 
             return emailDate + emailTime;
