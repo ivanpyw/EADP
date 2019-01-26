@@ -25,5 +25,10 @@ namespace eadLab5
                 token = "T1==cGFydG5lcl9pZD00NjI0Mzk0MiZzaWc9MmJhOGZmZWNiMjZhZDc2NmNhZTExYjE1ZDBkMDg0Y2RjNzZkZmY4YzpzZXNzaW9uX2lkPTFfTVg0ME5qSTBNemswTW41LU1UVTBOelk1T1RFM016VTJNbjU2U2xOMWFXeHRTMEpIYzFoVmFYSm9abEUzTkc4d00xRi1VSDQmY3JlYXRlX3RpbWU9MTU0NzY5OTE3NSZub25jZT05MjE5MzUmcm9sZT1QVUJMSVNIRVI=";
             }
         }
+
+        protected void ArchiveBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="./MasterPage1.master" AutoEventWireup="true" CodeBehind="Interview.aspx.cs" Inherits="eadLab5.interview" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="MasterPage1.master" AutoEventWireup="true" CodeBehind="Interview.aspx.cs" Inherits="eadLab5.interview" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Content/Interview.css" rel="stylesheet" />
@@ -7,11 +7,11 @@
         <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
     <div class="container">
         <div id="videos">
-            <div id="subscriber">Mr Tham
+            <div id="subscriber"><p>Mr Tham</p>
             </div>
-            <div class="container">
-            <div id="publisher">You</div>
-                </div>
+            <br />
+            <br />
+            <div id="publisher"><p class="text-center">You</p></div>
         </div>
         <script type="text/javascript">
             var apiKey = "46243942";

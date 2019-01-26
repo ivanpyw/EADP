@@ -18,5 +18,9 @@ namespace eadLab5.DAL
         public DateTime tripStart { get; set; }
         public DateTime tripEnd { get; set; }
         public int interviewId { get; set; }
+        public string interviewDate { get; set; }
+        public string interviewTime { get; set;}
+        public string interviewSession { get; set; }
+        public string interviewToken { get; set; }
     }
 }
