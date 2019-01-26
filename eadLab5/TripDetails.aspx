@@ -72,7 +72,7 @@
             })
         }
     </script>
-    <% if (role == "Teacher")
+    <% if (role == "Teacher" || role=="Incharge")
         { %>
     <div class="container">
         <button class="btn btn-secondary btn-lg add-trip-btn" type="button" data-toggle="modal" data-target="#addModal"><i class="fa fa-plus"></i></button>
@@ -285,7 +285,7 @@
                             </table>
                             <% if (listId.Contains(trip.tripId)){ %>
                                 <button type="button" class="form-control btn btn-secondary" disabled>Signed up</button>
-                            <% }else if(role == "Teacher") { %>
+                            <% }else if(role == "Teacher" || role=="Incharge") { %>
                                 <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="btn btn-success">Edit details</a>
                                 <a href="OverseasRegisteredList.aspx?tripId=<%=trip.tripId %>" class="btn btn-info">View Student details</a>
                             <% }else if(role =="1" || role == "2" || role == "3"){ %>

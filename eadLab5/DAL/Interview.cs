@@ -22,5 +22,7 @@ namespace eadLab5.DAL
         public string interviewTime { get; set;}
         public string interviewSession { get; set; }
         public string interviewToken { get; set; }
+        public string staffName { get; set; }
+        public string staffHonorifics { get; set; }
     }
 }

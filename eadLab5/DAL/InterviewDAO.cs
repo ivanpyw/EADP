@@ -138,8 +138,10 @@ namespace eadLab5.DAL
 
             SqlConnection myConn = new SqlConnection(DBConnect);
             StringBuilder tripCommand = new StringBuilder();
-            tripCommand.AppendLine("Select interviewSession,interviewToken from Interview");
-            tripCommand.AppendLine("WHERE AdminNo = @pAdminNo");
+            tripCommand.AppendLine("Select * from Interview i");
+            tripCommand.AppendLine("INNER JOIN Staff s on s.staffId = i.staffId");
+            tripCommand.AppendLine("INNER JOIN Trip t on t.tripId = i.tripId");
+            tripCommand.AppendLine("WHERE AdminNo = @pAdminNo AND interviewSession IS NOT NULL");
 
             SqlDataAdapter da = new SqlDataAdapter(tripCommand.ToString(), myConn);
             da.SelectCommand.Parameters.AddWithValue("@pAdminNo", adminNo);
@@ -153,6 +155,11 @@ namespace eadLab5.DAL
                     Interview myInt = new Interview();
                     myInt.interviewSession = row["interviewSession"].ToString();
                     myInt.interviewToken = row["interviewToken"].ToString();
+                    myInt.tripName = row["tripTitle"].ToString();
+                    myInt.interviewDate = row["interviewDate"].ToString();
+                    myInt.interviewTime = row["interviewTime"].ToString();
+                    myInt.staffHonorifics = row["Honorifics"].ToString();
+                    myInt.staffName = row["Name"].ToString();
                     intSession.Add(myInt);
                 }
             }
