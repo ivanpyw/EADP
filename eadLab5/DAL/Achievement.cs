@@ -10,6 +10,7 @@ namespace eadLab5.DAL
         public Achievement()
         {
         }
+        public int AchievementId { get; set; }
         public String AchievementName { get; set; }
         public int AyearTaken { get; set; }
         public String AdminNo { get; set; }
