@@ -25,11 +25,13 @@ namespace eadLab5
             }else
             {
                 Choice choice = tripObj.checkOffer(Session["AdminNo"].ToString(),tripId);
-                if(choice == null || choice.choice == "Accepted" || choice.choice =="rejected")
+                if(choice == null || choice.choice == "Accepted" || choice.choice =="Rejected")
                 {
+                    System.Diagnostics.Debug.WriteLine("its here");
                     Response.Redirect("./ErrorPages/Oops.aspx");
                 }else if(choice.teacherChoice != "Accepted")
                 {
+                    System.Diagnostics.Debug.WriteLine("its here2");
                     Response.Redirect("./ErrorPages/Oops.aspx");
                 }
                 tripName = choice.tripName;
@@ -44,6 +46,7 @@ namespace eadLab5
             Trip tripClass = new Trip();
             TripDAO tripObj = new TripDAO();
             tripObj.chooseOffer("Accepted",Session["AdminNo"].ToString());
+            Response.Redirect("Tripdetails.aspx");
         }
 
         protected void Unnamed2_Click(object sender, EventArgs e)
@@ -51,6 +54,7 @@ namespace eadLab5
             Trip tripClass = new Trip();
             TripDAO tripObj = new TripDAO();
             tripObj.chooseOffer("Rejected", Session["AdminNo"].ToString());
+            Response.Redirect("Tripdetails.aspx");
         }
     }
 }
