@@ -25,6 +25,7 @@
                 <div class="card-header">
                     <i class="fas fa-chart-area"></i>
                     Area Chart Example
+                    <asp:Button ID="ExportAverageCostChart" runat="server" OnClick="btnChart2Excel_Click" Text="Export" />
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -52,7 +53,7 @@
                             <td class="auto-style2">&nbsp;</td>
                             <td class="auto-style2">Year Start:</td>
                             <td class="auto-style2">
-                                <asp:TextBox ID="DateStartRange" runat="server" type="date" AutoPostBack="True" class="form-control"></asp:TextBox>
+                                <asp:TextBox ID="DateStartRange" runat="server" type="date" AutoPostBack="True" class="form-control" OnTextChanged="DateStartRange_TextChanged"></asp:TextBox>
                             </td>
                             <td class="auto-style2">&nbsp;</td>
                             <td class="auto-style2">Year End:</td>
@@ -63,7 +64,7 @@
                     </table>
                     <canvas id="myAreaChart" width="100%" height="30" ></canvas>
                     
-                    <asp:Chart ID="Chart2" runat="server" Width="1028px" BackGradientStyle="VerticalCenter">
+                    <asp:Chart ID="Chart2" runat="server" Width="1028px" BackGradientStyle="VerticalCenter"  OnDataBound="Chart2_DataBound">
                         <Series>
                             <asp:Series Name="Series1" XValueMember="Location" YValueMembers="Cost">
                             </asp:Series>
@@ -81,6 +82,7 @@
                                 <div class="card-header">
                                     <i class="fas fa-chart-bar"></i>
                                     Bar Chart Example
+                                    <asp:Button ID="ExportPaxNo" runat="server" OnClick="btnChart4Excel_Click" Text="Export" />
                                 </div>
                                 <div class="card-body table-responsive">
                                     <table class="auto-style11">
@@ -102,7 +104,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    <asp:Chart ID="Chart4" runat="server" Palette="Berry" Width="600px">
+                                    <asp:Chart ID="Chart4" runat="server" Palette="Berry" Width="600px"  OnDataBound="Chart4_DataBound">
                                         <Series>
                                             <asp:Series Name="Series1" XValueMember="Location" YValueMembers="NoOfStudents">
                                             </asp:Series>
@@ -121,6 +123,7 @@
                                 <div class="card-header">
                                     <i class="fas fa-chart-pie"></i>
                                     Pie Chart Example
+                                    <asp:Button ID="ExportPieChart" runat="server" OnClick="btnChart1Excel_Click" Text="Export" />
                                 </div>
 
                                 <div class="card-body">
@@ -137,7 +140,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    <asp:Chart ID="Chart1" runat="server" Width="270.656px" Height="264.484px" Palette="Fire">
+                                    <asp:Chart ID="Chart1" runat="server" Width="270.656px" Height="264.484px" Palette="Fire"  OnDataBound="Chart1_DataBound">
                                         <Series>
                                             <asp:Series ChartType="Pie" Name="Series1" XValueMember="Diploma" YValueMembers="NoOfStudents">
                                             </asp:Series>
@@ -155,6 +158,7 @@
                         <div class="col-lg-12">
                             <div class="card-header">
                                 Line Graph Example
+                                <asp:Button ID="ExportLineGraph" runat="server" OnClick="btnChart3Excel_Click" Text="Export" />
                             </div>
                             <div class="card-body table-responsive">
                                 <canvas id="myAreaChart" width="100%" height="30"></canvas>
@@ -184,7 +188,7 @@
 
 
                                 <br />
-                                <asp:Chart ID="Chart3" runat="server" Width="1028px">
+                                <asp:Chart ID="Chart3" runat="server" Width="1028px"  OnDataBound="Chart3_DataBound">
                                     <Series>
                                         <asp:Series ChartType="Line" Name="Series1" XValueMember="Month" YValueMembers="NoOfStudents">
                                         </asp:Series>
