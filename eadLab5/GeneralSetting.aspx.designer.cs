@@ -67,6 +67,24 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.Label LblStudentName;
         
         /// <summary>
+        /// StudentPicture control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload StudentPicture;
+        
+        /// <summary>
+        /// StudentCurrentPicture control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image StudentCurrentPicture;
+        
+        /// <summary>
         /// LblMedicalCondition control.
         /// </summary>
         /// <remarks>

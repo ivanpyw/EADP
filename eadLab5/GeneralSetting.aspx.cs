@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using eadLab5.DAL;
+using System.IO;
 
 namespace eadLab5
 {
@@ -17,7 +18,7 @@ namespace eadLab5
                 if (Session["AdminNo"] != null)
                 {
                     LblAdminNo.Text = Session["AdminNo"].ToString();
-                    LblStudentName.Text = Session["SSStudentName"].ToString();
+                    //LblStudentName.Text = Session["SSStudentName"].ToString();
                     StudentProfile selTD = new StudentProfile();
                     StudentProfileDAO updTD = new StudentProfileDAO();
                     selTD = updTD.getStudentById(LblAdminNo.Text);
@@ -26,6 +27,7 @@ namespace eadLab5
                     LblSummary.Text = selTD.Summary.ToString();
                     //LblHpNumber.Text = selTD.HpNumber.ToString();
                     LblEmail.Text = selTD.Email.ToString();
+                    StudentCurrentPicture.ImageUrl = selTD.ProfilePicture;
                 }
             }
         }
@@ -52,7 +54,8 @@ namespace eadLab5
             StudentProfile selTD = new StudentProfile();
             StudentProfileDAO updTD = new StudentProfileDAO();
             int updCnt;
-            updCnt = updTD.updateTD(LblAdminNo.Text, LblStudentName.Text, LblMedicalCondition.Text, LblMedicalHistory.Text, LblSummary.Text, LblEmail.Text);
+            string imgName = SaveFile(StudentPicture.PostedFile);
+            updCnt = updTD.updateTD(LblAdminNo.Text, LblStudentName.Text, LblMedicalCondition.Text, LblMedicalHistory.Text, LblSummary.Text, LblEmail.Text, imgName);
             if (updCnt == 1)
             {
                 LblResult.Text = "Profile has been changed!";
@@ -79,6 +82,18 @@ namespace eadLab5
         protected void BtnEvent_Click(object sender, EventArgs e)
         {
             Response.Redirect("EventPage.aspx");
+        }
+
+        string SaveFile(HttpPostedFile file)
+        {
+            string savePath = "../Images/";
+            //string filename = file.FileName + DateTime.Now.ToString("ddmmyyyyfffffff");
+            string filename = Path.GetFileNameWithoutExtension(file.FileName);
+            string ext = Path.GetExtension(file.FileName);
+            savePath += filename + DateTime.Now.ToString("ddmmyyyyfffffff") + ext;
+            string fullPath = Path.Combine(Server.MapPath("~/Images"), savePath);
+            file.SaveAs(fullPath);
+            return savePath;
         }
 
         protected void BtnPassword_Click(object sender, EventArgs e)

@@ -48,7 +48,7 @@ namespace eadLab5.DAL
 
             return obj;
         }
-        public int updateTD(String AdminNo, String StudentName, String MedicalCondition, String MedicalHistory, String Summary, String Email)
+        public int updateTD(String AdminNo, String StudentName, String MedicalCondition, String MedicalHistory, String Summary, String Email, String Img)
         {
             string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
             StringBuilder sqlStr = new StringBuilder();
@@ -59,7 +59,7 @@ namespace eadLab5.DAL
             //         parameterised query in values clause
             //
             sqlStr.AppendLine("UPDATE Student");
-            sqlStr.AppendLine("SET StudentName = @paraStudentName, MedicalCondition = @paraMedicalCondition, MedicalHistory =@paraMedicalHistory, Summary=@paraSummary, Email=@paraEmail ");
+            sqlStr.AppendLine("SET StudentName = @paraStudentName, MedicalCondition = @paraMedicalCondition, MedicalHistory =@paraMedicalHistory, Summary=@paraSummary, Email=@paraEmail, ProfilePicture = @paraImg ");
             sqlStr.AppendLine("where AdminNo = @paraAdminNo");
 
 
@@ -78,6 +78,7 @@ namespace eadLab5.DAL
             sqlCmd.Parameters.AddWithValue("@paraSummary", Summary);
             //sqlCmd.Parameters.AddWithValue("@paraHpNumber", HpNumber);
             sqlCmd.Parameters.AddWithValue("@paraEmail", Email);
+            sqlCmd.Parameters.AddWithValue("@paraImg", Img);
             // Step 4 Open connection the execute NonQuery of sql command   
 
 

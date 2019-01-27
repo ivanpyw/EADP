@@ -61,6 +61,13 @@
                 </td>
             </tr>
             <tr>
+                <td class="auto-style1">Student Image:</td>
+                <td>
+                    <asp:FileUpload ID="StudentPicture" runat="server" />
+                    <asp:Image ID="StudentCurrentPicture" runat="server" />
+                </td>
+            </tr>
+            <tr>
                 <td class="auto-style1">Medical Condition:</td>
                 <td>
                     <asp:TextBox ID="LblMedicalCondition" runat="server"></asp:TextBox>
