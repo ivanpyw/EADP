@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eadLab5.DAL;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -31,19 +32,29 @@ namespace eadLab5
                         buildPieChart("All");
                         buildHorizontalChart("All");
                         buildLineChart("All", "All");
+
+                        TripDAO tripDao = new TripDAO();
+                        List<String> countryList = tripDao.getCountry();
+                        CountryDropDown.DataSource = countryList;
+                        CountryDropDown.DataBind();
+                        CountryDropDown.Items.Insert(0, new ListItem("All", "All"));
+
+                        DropDownListCountryPieChart.DataSource = countryList;
+                        DropDownListCountryPieChart.DataBind();
+                        DropDownListCountryPieChart.Items.Insert(0, new ListItem("All", "All"));
                     }
                 }
                 else
                 {
                     Response.Redirect("./Oops.aspx");
                 }
-            } catch (Exception)
+            }
+            catch (Exception)
             {
                 Response.Redirect("./Oops.aspx");
             }
-          
 
-          
+           
 
         }
 
@@ -76,36 +87,43 @@ namespace eadLab5
             if (!country.Equals("All"))
             {
                 strSQL += "where location = @paraCountry ";
+                strSQL += "and status != 'Cancelled' ";
             }
 
             if (!type.Equals("All") && (!country.Equals("All")))
             {
                 strSQL += "and triptype = @paratype ";
+                strSQL += "and status != 'Cancelled' ";
 
             }
             else if (!type.Equals("All") && (country.Equals("All")))
             {
 
                 strSQL += "where triptype = @paratype ";
+                strSQL += "and status != 'Cancelled' ";
             }
 
             if ((!dateStart.Equals("") || (!dateEnd.Equals(""))) && (country.Equals("All")) && (type.Equals("All")))
             {
                 strSQL += "where TRIPSTART BETWEEN @paradateStart and @paradateEnd ";
+                strSQL += "and status != 'Cancelled' ";
 
             }
             else if ((!dateStart.Equals("") || (!dateEnd.Equals(""))) && (!country.Equals("All")) && (type.Equals("All")))
             {
                 strSQL += "and TRIPSTART BETWEEN @paradateStart and @paradateEnd ";
+                strSQL += "and status != 'Cancelled' ";
 
             }
             else if ((!dateStart.Equals("") || (!dateEnd.Equals(""))) && (country.Equals("All")) && (!type.Equals("All")))
             {
                 strSQL += "and TRIPSTART BETWEEN @paradateStart and @paradateEnd ";
+                strSQL += "and status != 'Cancelled' ";
             }
             else if ((!dateStart.Equals("") || (!dateEnd.Equals(""))) && (!country.Equals("All")) && (!type.Equals("All")))
             {
                 strSQL += "and TRIPSTART BETWEEN @paradateStart and @paradateEnd ";
+                strSQL += "and status != 'Cancelled' ";
             }
 
 
@@ -150,7 +168,8 @@ namespace eadLab5
             DataSet ds = new DataSet();
             
             String strSQL = "SELECT COUNT([Diploma]) NoOfStudents, [Diploma] FROM [Trip] o ";
-            strSQL += "INNER JOIN [Student] S ON o.[TripId] = s.[TripId] ";
+            strSQL += "INNER JOIN[Register] R on o.tripid = r.tripid ";
+            strSQL += "INNER JOIN[Student] S on r.adminNo = s.adminNo ";
 
             if (!country.Equals("All"))
             {
@@ -186,7 +205,10 @@ namespace eadLab5
             DateTime now = DateTime.Now;
 
 
-            String strSQL = "SELECT COUNT([adminno]) NoOfStudents, DATENAME(month, TripEnd) AS [Month] FROM [Trip] o INNER JOIN [Student] S ON o.[TripId] = s.[TripId] ";
+            String strSQL = "SELECT COUNT(i.adminno) NoOfStudents, DATENAME(month, TripEnd) AS [Month] FROM [interview] i ";
+            strSQL += "INNER JOIN trip t on i.tripid = t.tripid ";
+            strSQL += "INNER JOIN register r on i.AdminNo = r.AdminNo ";
+            strSQL += "INNER JOIN Student s on r.adminNo = s.adminno ";
 
             if (!Diploma.Equals("All"))
             {
@@ -199,14 +221,14 @@ namespace eadLab5
                     {
                         int studentyr = int.Parse(StudentYear);
                         studentyr--;
-                        strSQL += "AND ((year(getdate()) - 2000) - convert(int, SUBSTRING(AdminNo, 1, 2))) = @paraStudentYear Group By [TripEnd] ";
+                        strSQL += "AND ((year(getdate()) - 2000) - convert(int, SUBSTRING(i.AdminNo, 1, 2))) = @paraStudentYear Group By [TripEnd] ";
                         //check
                         da = new SqlDataAdapter(strSQL.ToString(), myConn);
                         da.SelectCommand.Parameters.AddWithValue("@paraStudentYear", studentyr);
                     }
                     else
                     {
-                        strSQL += "AND ((year(getdate()) - 2000) - convert(int, SUBSTRING(AdminNo, 1, 2))) = @paraStudentYear Group By [TripEnd] ";
+                        strSQL += "AND ((year(getdate()) - 2000) - convert(int, SUBSTRING(i.AdminNo, 1, 2))) = @paraStudentYear Group By [TripEnd] ";
                         //check
                         da = new SqlDataAdapter(strSQL.ToString(), myConn);
                         da.SelectCommand.Parameters.AddWithValue("@paraStudentYear", StudentYear);
@@ -227,14 +249,14 @@ namespace eadLab5
                 {
                     int studentyr = int.Parse(StudentYear);
                     studentyr--;
-                    strSQL += "WHERE ((year(getdate()) - 2000) - convert(int, SUBSTRING(AdminNo, 1, 2))) = @paraStudentYear Group By [TripEnd] ";
+                    strSQL += "WHERE ((year(getdate()) - 2000) - convert(int, SUBSTRING(i.AdminNo, 1, 2))) = @paraStudentYear Group By [TripEnd] ";
                     //check
                     da = new SqlDataAdapter(strSQL.ToString(), myConn);
                     da.SelectCommand.Parameters.AddWithValue("@paraStudentYear", studentyr);
                 }
                 else
                 {
-                    strSQL += "WHERE ((year(getdate()) - 2000) - convert(int, SUBSTRING(AdminNo, 1, 2))) = @paraStudentYear Group By [TripEnd] ";
+                    strSQL += "WHERE ((year(getdate()) - 2000) - convert(int, SUBSTRING(i.AdminNo, 1, 2))) = @paraStudentYear Group By [TripEnd] ";
                     //check
                     da = new SqlDataAdapter(strSQL.ToString(), myConn);
                     da.SelectCommand.Parameters.AddWithValue("@paraStudentYear", StudentYear);
@@ -261,7 +283,10 @@ namespace eadLab5
 
             DataSet ds = new DataSet();
 
-            String strSQL = "SELECT Count(AdminNo) NoOfStudents,Location FROM [Trip] O Inner join [Student] S on O.[TripId] = S.[TripId] ";
+            String strSQL = "SELECT  Count(i.AdminNo) NoOfStudents, Location FROM [interview] i ";
+            strSQL += "INNER JOIN trip t on i.tripid = t.tripid ";
+            strSQL += "INNER JOIN register r on i.AdminNo = r.AdminNo ";
+            strSQL += "INNER JOIN Student s on r.adminNo = s.adminno ";
 
             SqlDataAdapter da;
 

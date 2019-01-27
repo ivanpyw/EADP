@@ -24,7 +24,7 @@
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-chart-area"></i>
-                    Area Chart Example
+                    Average Cost Per Country
                     <asp:Button ID="ExportAverageCostChart" runat="server" OnClick="btnChart2Excel_Click" Text="Export" class="btn btn-secondary"/>
                 </div>
                 <div class="card-body">
@@ -47,7 +47,7 @@
                                     <asp:ListItem>All</asp:ListItem>
                                     <asp:ListItem>Immersion</asp:ListItem>
                                     <asp:ListItem>Study</asp:ListItem>
-                                    <asp:ListItem>OSEP</asp:ListItem>
+                                    <asp:ListItem>Internship</asp:ListItem>
                                 </asp:DropDownList>
                             </td>
                             <td class="auto-style2">&nbsp;</td>
@@ -81,7 +81,7 @@
                             <div class="card mb-3">
                                 <div class="card-header">
                                     <i class="fas fa-chart-bar"></i>
-                                    Bar Chart Example
+                                    Number Of Student Who Went Overseas Per Country
                                     <asp:Button ID="ExportPaxNo" runat="server" OnClick="btnChart4Excel_Click" Text="Export" class="btn btn-secondary"/>
                                 </div>
                                 <div class="card-body table-responsive">
@@ -122,7 +122,7 @@
                             <div class="card mb-3">
                                 <div class="card-header">
                                     <i class="fas fa-chart-pie"></i>
-                                    Pie Chart Example
+                                    Confirmed Trips In Each Diploma Per Country
                                     <asp:Button ID="ExportPieChart" runat="server" OnClick="btnChart1Excel_Click" Text="Export" class="btn btn-secondary "/>
                                 </div>
 
@@ -157,7 +157,7 @@
 
                         <div class="col-lg-12">
                             <div class="card-header">
-                                Line Graph Example
+                                Number Of Confirmed Trips Per Month
                                 <asp:Button ID="ExportLineGraph" runat="server" OnClick="btnChart3Excel_Click" Text="Export" class="btn btn-secondary"/>
                             </div>
                             <div class="card-body table-responsive">
@@ -169,8 +169,10 @@
                                         <td class="auto-style7">
                                             <asp:DropDownList ID="DropDownDiplomaLine" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" class="dropdown-toggle btn btn-secondary">
                                                 <asp:ListItem>All</asp:ListItem>
-                                                <asp:ListItem>Diploma in insecurity</asp:ListItem>
-                                                <asp:ListItem>Diploma in making ppl life hard</asp:ListItem>
+                                                <asp:ListItem>DIT</asp:ListItem>
+                                                <asp:ListItem>DSF</asp:ListItem>
+                                                <asp:ListItem>DBI</asp:ListItem>
+                                                <asp:ListItem>DBA</asp:ListItem>
                                             </asp:DropDownList>
                                         </td>
                                         <td class="auto-style1">&nbsp;</td>
