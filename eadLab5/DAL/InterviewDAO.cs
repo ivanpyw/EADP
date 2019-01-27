@@ -117,7 +117,7 @@ namespace eadLab5.DAL
             SqlCommand sqlCmd = new SqlCommand();
 
             sqlStr.AppendLine("UPDATE Interview");
-            sqlStr.AppendLine("SET interviewToken=@pIntToken,interviewSession=@pIntSession,studentStatus='Interviewed'");
+            sqlStr.AppendLine("SET interviewToken=@pIntToken,interviewSession=@pIntSession,StudentStatus='Interview'");
             sqlStr.AppendLine("WHERE InterviewId = @pIntId");
             SqlConnection myConn = new SqlConnection(DBConnect);
 
