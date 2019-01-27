@@ -102,7 +102,7 @@ namespace eadLab5
         {
             TripDAO delTD = new DAL.TripDAO();
             int tripId = Convert.ToInt32(Request.QueryString["tripId"]);
-            //int results = delTD.delTrip(tripId);
+            int results = delTD.delTrip(tripId);
             SmtpClient client = new SmtpClient();
             client.Port = 25;
             client.Host = "smtp-mail.outlook.com";
