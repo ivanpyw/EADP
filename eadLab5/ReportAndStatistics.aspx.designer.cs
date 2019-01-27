@@ -22,6 +22,15 @@ namespace eadLab5 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// ExportAverageCostChart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ExportAverageCostChart;
+        
+        /// <summary>
         /// CountryDropDown control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace eadLab5 {
         protected global::System.Web.UI.DataVisualization.Charting.Chart Chart2;
         
         /// <summary>
+        /// ExportPaxNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ExportPaxNo;
+        
+        /// <summary>
         /// DropDownYear control.
         /// </summary>
         /// <remarks>
@@ -85,6 +103,15 @@ namespace eadLab5 {
         protected global::System.Web.UI.DataVisualization.Charting.Chart Chart4;
         
         /// <summary>
+        /// ExportPieChart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ExportPieChart;
+        
+        /// <summary>
         /// DropDownListCountryPieChart control.
         /// </summary>
         /// <remarks>
@@ -101,6 +128,15 @@ namespace eadLab5 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.DataVisualization.Charting.Chart Chart1;
+        
+        /// <summary>
+        /// ExportLineGraph control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ExportLineGraph;
         
         /// <summary>
         /// DropDownDiplomaLine control.
