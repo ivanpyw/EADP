@@ -15,5 +15,17 @@ namespace eadLab5
             //string roleformasterpage = Session["role"].ToString();
          //}
         }
+
+        protected void btnStaffLogOut_Click(object sender, EventArgs e)
+        {
+            Session["Staffid"] = null;
+            Session["role"] = null;
+        }
+
+        protected void btnStudentLogOut_Click(object sender, EventArgs e)
+        {
+            Session["AdminNo"] = null;
+            Session["role"] = null;
+        }
     }
 }
