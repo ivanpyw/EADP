@@ -19,6 +19,7 @@ namespace eadLab5
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            tbLogin.Text.ToUpper();
             validateLogin.Visible = false;
             validatePassword.Visible = false;
             if (string.IsNullOrEmpty(tbLogin.Text) || string.IsNullOrEmpty(tbPassword.Text))
