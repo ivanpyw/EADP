@@ -88,6 +88,21 @@ namespace eadLab5.DAL
             return adminNo;
         }
 
+        public string exchangeIntIdForAdminNo(string IntId)
+        {
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            StringBuilder tripCommand = new StringBuilder();
+            tripCommand.AppendLine("Select AdminNo from Interview");
+            tripCommand.AppendLine("WHERE InterviewId = @pIntId");
+
+            SqlDataAdapter da = new SqlDataAdapter(tripCommand.ToString(), myConn);
+            da.SelectCommand.Parameters.AddWithValue("@pIntId", IntId);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "Trip");
+            string adminNo = ds.Tables["Trip"].Rows[0][0].ToString();
+            return adminNo;
+        }
+
         public int insertDateTime(string intId, string date, string time)
         {
             StringBuilder sqlStr = new StringBuilder();

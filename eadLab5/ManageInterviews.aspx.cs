@@ -39,7 +39,7 @@ namespace eadLab5
             System.Diagnostics.Debug.WriteLine(emailTime + " this is adminNo@@@ ");
             InterviewDAO interviewDao = new InterviewDAO();
             interviewDao.insertDateTime(intId, emailDate, emailTime);
-            string adminNo = interviewDao.exchangeRegIdForAdminNo(intId);
+            string adminNo = interviewDao.exchangeIntIdForAdminNo(intId);
             SmtpClient client = new SmtpClient();
             client.Port = 25;
             client.Host = "smtp-mail.outlook.com";

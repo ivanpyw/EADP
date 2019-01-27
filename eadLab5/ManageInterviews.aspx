@@ -8,6 +8,9 @@
     <div class="container">
         <div class="card">
             <div class="card-header">Scheduling interviews</div>
+            <% if (interviewList == null) { %>
+                Sorry, no interview ongoing
+            <%} else{%>
             <% foreach (var interview in interviewList)
                 { %>
             <div class="card-body">
@@ -19,7 +22,7 @@
                         <p>From <%=interview.tripStart.ToString("dd/MM/yyyy") %> to <%=interview.tripEnd.ToString("dd/MM/yyyy") %></p>
                         <p>Location: <%=interview.tripLocation %></p>
                         <% if (interview.interviewDate.ToString() != null && interview.interviewTime.ToString() != null)
-                            { %>
+    { %>
                         <p>Scheduled on(yyyy/mm/dd): <b><%=interview.interviewDate.ToString() %>,<%=interview.interviewTime.ToString() %></b></p>
                         <%} %>
                         <p></p>
@@ -59,6 +62,7 @@
                     </div>
                 </div>
             </div>
+            <%} %>
             <%} %>
             <form runat="server">
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped" OnRowCommand="GridView1_RowCommand" DataKeyNames="InterviewId">
