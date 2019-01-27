@@ -27,7 +27,7 @@
                         <div class="table-responsive">
 
                         <%if (Session["role"].ToString() == "Teacher")
-                                            { %>
+                            { %>
                             <asp:GridView ID="GridViewRegistered" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped" Height="284px" OnRowCommand="GridActionRegistered" Style="table-layout: fixed;">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
@@ -53,11 +53,12 @@
                                 <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                <EmptyDataTemplate><center>No records found!</center></EmptyDataTemplate>
                             </asp:GridView>
-
+                        
                              <% }
-                                else if (Session["role"].ToString() == "Incharge")
-                                {%>
+                                 else if (Session["role"].ToString() == "Incharge")
+                                 {%>
 
                             <asp:GridView ID="GridViewRegisteredIncharge" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped" Height="284px" OnRowCommand="GridActionRegistered" Style="table-layout: fixed;">
                                 <AlternatingRowStyle BackColor="White" />
@@ -94,8 +95,10 @@
                                 <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                 <EmptyDataTemplate><center>No records found!</center></EmptyDataTemplate>
                             </asp:GridView>
 
+                      
                             <%} %>
                         </div>
 
@@ -135,7 +138,9 @@
                                             <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                                             <SortedDescendingCellStyle BackColor="#E9EBEF" />
                                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                            <EmptyDataTemplate><center>No records found!</center></EmptyDataTemplate>
                                         </asp:GridView>
+                                       
 
                                         <% }
                                             else if (Session["role"].ToString() == "Incharge")
@@ -169,8 +174,10 @@
                                             <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                                             <SortedDescendingCellStyle BackColor="#E9EBEF" />
                                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                             <EmptyDataTemplate><center>No records found!</center></EmptyDataTemplate>
                                         </asp:GridView>
-                                        <%} %>
+                                     
+                                         <%} %>
                                     </div>
 
                                 </div>
@@ -205,7 +212,9 @@
                                             <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                                             <SortedDescendingCellStyle BackColor="#E9EBEF" />
                                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                             <EmptyDataTemplate><center>No records found!</center></EmptyDataTemplate>
                                         </asp:GridView>
+                                     
 
                                         <% }
                                             else if (Session["role"].ToString() == "Incharge")
@@ -238,9 +247,11 @@
                                             <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                                             <SortedDescendingCellStyle BackColor="#E9EBEF" />
                                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                            <EmptyDataTemplate><center>No records found!</center></EmptyDataTemplate>
                                         </asp:GridView>
 
-                                        <%} %>
+                                     
+                                         <%} %>
                                     </div>
                                 </div>
                             </div>
@@ -271,6 +282,7 @@
                                         <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                                         <SortedDescendingCellStyle BackColor="#E9EBEF" />
                                         <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                         <EmptyDataTemplate><center>No records found!</center></EmptyDataTemplate>
                                     </asp:GridView>
 
                                 </div>

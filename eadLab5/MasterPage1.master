@@ -28,8 +28,6 @@
 
                          <% if (Session["role"]== null)
                         { %>
-            
-
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="TripDetails.aspx">Trip Details</a>

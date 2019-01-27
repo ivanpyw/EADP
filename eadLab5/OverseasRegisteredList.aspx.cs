@@ -58,8 +58,6 @@ namespace eadLab5
             LabelShortlistExport.Visible = false;
             LabelRegisterExport.Visible = false;
 
-                
-           
         }
 
         //protected void GridActionRegistered(object sender, GridViewCommandEventArgs e)
