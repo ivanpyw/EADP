@@ -63,7 +63,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Trip location:<asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="Location is required" Text="*" ControlToValidate="ddlUpdateLocation" ValidationGroup="1"></asp:RequiredFieldValidator></td>
+                    <td>Trip location:<asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="Location is required" Text="*" ControlToValidate="ddlUpdateLocation" ValidationGroup="1" InitialValue="-1"></asp:RequiredFieldValidator></td>
                     <td>
                         <asp:DropDownList ID="ddlUpdateLocation" runat="server" CssClass="form-control" Enabled="False" ValidationGroup="1"></asp:DropDownList>
                     </td>

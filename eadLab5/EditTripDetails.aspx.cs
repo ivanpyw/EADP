@@ -23,6 +23,7 @@ namespace eadLab5
                 List<String> countryList = tripDao.getCountry();
                 ddlUpdateLocation.DataSource = countryList;
                 ddlUpdateLocation.DataBind();
+                ddlUpdateLocation.Items.Insert(0, new ListItem("--Select--", "-1"));
                 int tripId = Convert.ToInt32(Request.QueryString["tripId"]);
                 Trip tripObj = tripDao.getTripById(tripId);
                 if (tripObj == null)

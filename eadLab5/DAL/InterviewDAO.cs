@@ -253,5 +253,26 @@ namespace eadLab5.DAL
 
             return interview;
         }
+
+        public int updateStatusStudent(string status,int intId)
+        {
+            StringBuilder sqlStr = new StringBuilder();
+            int result = 0;    // Execute NonQuery return an integer value
+            SqlCommand sqlCmd = new SqlCommand();
+
+            sqlStr.AppendLine("UPDATE Interview");
+            sqlStr.AppendLine("SET StudentStatus = @pStudentStatus");
+            sqlStr.AppendLine("WHERE InterviewId = @pIntId");
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+            sqlCmd.Parameters.AddWithValue("@pIntId", intId);
+            sqlCmd.Parameters.AddWithValue("@pStudentStatus", status);
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+            myConn.Close();
+            return result;
+        }
     }
 }

@@ -40,6 +40,7 @@ namespace eadLab5
                 List<String> countryList = tripDao.getCountry();
                 ddlAddLocation.DataSource = countryList;
                 ddlAddLocation.DataBind();
+                ddlAddLocation.Items.Insert(0, new ListItem("--Select--", "-1"));
                 if (role == "")
                 {
                     System.Diagnostics.Debug.WriteLine("its empty");
