@@ -154,7 +154,7 @@
     <Content Include="Default.aspx" />
     <Content Include="EditTripDetails.aspx" />
     <Content Include="Enquiry.aspx" />
-    <Content Include="ErrorPages\Oops.aspx" />
+    <Content Include="Oops.aspx" />
     <Content Include="FeedBackFormStudent.aspx" />
     <Content Include="FeedBacks.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -283,11 +283,11 @@
     <Compile Include="Enquiry.aspx.designer.cs">
       <DependentUpon>Enquiry.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ErrorPages\Oops.aspx.cs">
+    <Compile Include="Oops.aspx.cs">
       <DependentUpon>Oops.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ErrorPages\Oops.aspx.designer.cs">
+    <Compile Include="Oops.aspx.designer.cs">
       <DependentUpon>Oops.aspx</DependentUpon>
     </Compile>
     <Compile Include="FeedBackFormStudent.aspx.cs">
@@ -445,7 +445,9 @@
       <DependentUpon>WaitingList.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ErrorPages\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -21,14 +21,27 @@ namespace eadLab5
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-            if (!IsPostBack)
+            try
             {
-                buildBarChart("All", "All", DateTime.Parse("1-1-1753"), DateTime.Parse("1-1-9999"));
-                buildPieChart("All");
-                buildHorizontalChart("All");
-                buildLineChart("All", "All");
+                if ((Session["role"].ToString() == "Teacher") || (Session["role"].ToString() == "Incharge"))
+                {
+                    if (!IsPostBack)
+                    {
+                        buildBarChart("All", "All", DateTime.Parse("1-1-1753"), DateTime.Parse("1-1-9999"));
+                        buildPieChart("All");
+                        buildHorizontalChart("All");
+                        buildLineChart("All", "All");
+                    }
+                }
+                else
+                {
+                    Response.Redirect("./Oops.aspx");
+                }
+            } catch (Exception)
+            {
+                Response.Redirect("./Oops.aspx");
             }
+          
 
           
 
