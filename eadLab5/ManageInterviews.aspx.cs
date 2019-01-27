@@ -14,11 +14,15 @@ namespace eadLab5
     public partial class ManageInterviews : System.Web.UI.Page
     {
         protected List<Interview> interviewList = new List<Interview>();
+        protected List<Interview> interviewedStudents = new List<Interview>();
         Interview interview = new Interview();
         InterviewDAO interviewDao = new InterviewDAO();
         protected void Page_Load(object sender, EventArgs e)
         {
             interviewList = interviewDao.retrieveInterview();
+            interviewedStudents = interviewDao.fetchGridview();
+            GridView1.DataSource = interviewedStudents;
+            GridView1.DataBind();
         }
 
         [WebMethod]
@@ -54,12 +58,42 @@ namespace eadLab5
             var OpenTok = new OpenTok(apiKey, apiSecret);
             var session = OpenTok.CreateSession();
             string sessionId = session.Id;
-
             string token = session.GenerateToken();
             InterviewDAO interviewDao = new InterviewDAO();
             interviewDao.createSession(sessionId, token, intId);
 
             return token + "__________" + sessionId;
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int interviewNo = Convert.ToInt32(e.CommandArgument.ToString());
+            Interview interview = interviewDao.fetchSingleInterview(interviewNo);
+            SmtpClient client = new SmtpClient();
+            client.Port = 25;
+            client.Host = "smtp-mail.outlook.com";
+            client.EnableSsl = true;
+            client.Timeout = 10000;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential("sarasaeadp@outlook.com", "msJasmine1");
+            MailMessage mail = new MailMessage("sarasaeadp@outlook.com", "170313Q@mymail.nyp.edu.sg");
+            if (e.CommandName == "Approve")
+            {
+
+                mail.Subject = "You were approved for the trip";
+                mail.Body = "Dear "+interview.studentName+"\nThis is regarding the trip you sign up for: " + interview.tripName + "\nTo confirm your request, login and go to http://eadlab520190123024847.azurewebsites.net/chooseOffer.aspx?tripId="+interview.tripid;
+                client.Send(mail);
+            }
+            else if(e.CommandName == "Reject")
+            {
+                mail.Subject = "You were rejected for the trip";
+                mail.Body = "Dear " + interview.staffName + "\nThis is regarding the trip you sign up for: " + interview.tripName + "\nUnfortunately, you were rejected for the trip after the interview.";
+                client.Send(mail);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

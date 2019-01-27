@@ -18,8 +18,9 @@
                         <p>Signing up for <%=interview.tripName %></p>
                         <p>From <%=interview.tripStart.ToString("dd/MM/yyyy") %> to <%=interview.tripEnd.ToString("dd/MM/yyyy") %></p>
                         <p>Location: <%=interview.tripLocation %></p>
-                        <% if(interview.interviewDate.ToString() != null && interview.interviewTime.ToString() != null) { %>
-                            <p>Scheduled on(yyyy/mm/dd): <b><%=interview.interviewDate.ToString() %>,<%=interview.interviewTime.ToString() %></b></p>
+                        <% if (interview.interviewDate.ToString() != null && interview.interviewTime.ToString() != null)
+                            { %>
+                        <p>Scheduled on(yyyy/mm/dd): <b><%=interview.interviewDate.ToString() %>,<%=interview.interviewTime.ToString() %></b></p>
                         <%} %>
                         <p></p>
                     </div>
@@ -59,13 +60,44 @@
                 </div>
             </div>
             <%} %>
+            <form runat="server">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped" OnRowCommand="GridView1_RowCommand" DataKeyNames="InterviewId">
+                    <AlternatingRowStyle BackColor="White" />
+                    <Columns>
+                        <asp:BoundField DataField="InterviewId" HeaderText="Id" />
+                        <asp:BoundField DataField="StudentAdminNo" HeaderText="Admin number" />
+                        <asp:BoundField DataField="studentName" HeaderText="Student name" />
+                        <asp:BoundField DataField="remarks" HeaderText="Remarks" />
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnApprove" runat="server" CommandArgument='<%# Eval("InterviewId") %>' CommandName="Approve" Text="Approve" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnReject" runat="server" CommandArgument='<%# Eval("InterviewId") %>' CommandName="Reject" Text="Reject" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    <EditRowStyle BackColor="#2461BF" />
+                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#EFF3FB" />
+                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                </asp:GridView>
+            </form>
             <script type="text/javascript">
                 function sendMail(id) {
                     var dateId = "dateTrip" + id;
                     var timeId = "timeTrip" + id;
                     var emailDate = document.getElementById(dateId).value;
                     var emailTime = document.getElementById(timeId).value;
-                    var data = { "emailDate":emailDate,"emailTime":emailTime,"intId":id }
+                    var data = { "emailDate": emailDate, "emailTime": emailTime, "intId": id }
                     $.ajax({
                         url: "http://localhost:3355/manageInterviews.aspx/emailStudent",
                         type: 'POST',

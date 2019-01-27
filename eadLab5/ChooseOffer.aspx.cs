@@ -28,6 +28,9 @@ namespace eadLab5
                 if(choice == null || choice.choice == "Accepted" || choice.choice =="rejected")
                 {
                     Response.Redirect("./ErrorPages/Oops.aspx");
+                }else if(choice.teacherChoice != "Accepted")
+                {
+                    Response.Redirect("./ErrorPages/Oops.aspx");
                 }
                 tripName = choice.tripName;
                 tripStart = choice.tripStart.ToString("dd/MM/yyyy");
