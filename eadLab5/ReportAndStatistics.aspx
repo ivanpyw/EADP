@@ -25,7 +25,7 @@
                 <div class="card-header">
                     <i class="fas fa-chart-area"></i>
                     Area Chart Example
-                    <asp:Button ID="ExportAverageCostChart" runat="server" OnClick="btnChart2Excel_Click" Text="Export" />
+                    <asp:Button ID="ExportAverageCostChart" runat="server" OnClick="btnChart2Excel_Click" Text="Export" class="btn btn-secondary"/>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -82,7 +82,7 @@
                                 <div class="card-header">
                                     <i class="fas fa-chart-bar"></i>
                                     Bar Chart Example
-                                    <asp:Button ID="ExportPaxNo" runat="server" OnClick="btnChart4Excel_Click" Text="Export" />
+                                    <asp:Button ID="ExportPaxNo" runat="server" OnClick="btnChart4Excel_Click" Text="Export" class="btn btn-secondary"/>
                                 </div>
                                 <div class="card-body table-responsive">
                                     <table class="auto-style11">
@@ -123,7 +123,7 @@
                                 <div class="card-header">
                                     <i class="fas fa-chart-pie"></i>
                                     Pie Chart Example
-                                    <asp:Button ID="ExportPieChart" runat="server" OnClick="btnChart1Excel_Click" Text="Export" />
+                                    <asp:Button ID="ExportPieChart" runat="server" OnClick="btnChart1Excel_Click" Text="Export" class="btn btn-secondary "/>
                                 </div>
 
                                 <div class="card-body">
@@ -158,7 +158,7 @@
                         <div class="col-lg-12">
                             <div class="card-header">
                                 Line Graph Example
-                                <asp:Button ID="ExportLineGraph" runat="server" OnClick="btnChart3Excel_Click" Text="Export" />
+                                <asp:Button ID="ExportLineGraph" runat="server" OnClick="btnChart3Excel_Click" Text="Export" class="btn btn-secondary"/>
                             </div>
                             <div class="card-body table-responsive">
                                 <canvas id="myAreaChart" width="100%" height="30"></canvas>
