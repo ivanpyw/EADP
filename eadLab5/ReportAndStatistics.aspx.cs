@@ -236,7 +236,7 @@ namespace eadLab5
                 }
                 else
                 {
-                    strSQL += "Group By [TripEnd] ";
+                    strSQL += "Group By DATENAME(month, TripEnd) ";
                     da = new SqlDataAdapter(strSQL.ToString(), myConn);
 
                 }
@@ -265,7 +265,7 @@ namespace eadLab5
 
             else
             {
-                strSQL += "Group By [TripEnd] ";
+                strSQL += "Group By DATENAME(month, TripEnd) ";
                 da = new SqlDataAdapter(strSQL.ToString(), myConn);
             }
             da.Fill(ds, "tripTable");
@@ -298,14 +298,14 @@ namespace eadLab5
                 {
                     int studentyr= int.Parse(StudentYear);
                     studentyr--;
-                    strSQL += "WHERE ((year(getdate()) - 2000) - convert(int, SUBSTRING(AdminNo, 1, 2))) = @paraStudentYear Group By [Location] ";
+                    strSQL += "WHERE ((year(getdate()) - 2000) - convert(int, SUBSTRING(i.AdminNo, 1, 2))) = @paraStudentYear Group By [Location] ";
                     //check
                     da = new SqlDataAdapter(strSQL.ToString(), myConn);
                     da.SelectCommand.Parameters.AddWithValue("@paraStudentYear", studentyr);
                 }
                 else
                 {
-                    strSQL += "WHERE ((year(getdate()) - 2000) - convert(int, SUBSTRING(AdminNo, 1, 2))) = @paraStudentYear Group By [Location] ";
+                    strSQL += "WHERE ((year(getdate()) - 2000) - convert(int, SUBSTRING(i.AdminNo, 1, 2))) = @paraStudentYear Group By [Location] ";
                     //check
                     da = new SqlDataAdapter(strSQL.ToString(), myConn);
                     da.SelectCommand.Parameters.AddWithValue("@paraStudentYear", StudentYear);

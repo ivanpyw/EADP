@@ -23,10 +23,10 @@
           <!-- Area Chart Example-->
             <div class="card mb-3">
                 <div class="card-header">
+                    <asp:Button ID="ExportAverageCostChart" runat="server" OnClick="btnChart2Excel_Click" Text="Export" class="btn btn-secondary" style="float:right"/>
                     <i class="fas fa-chart-area"></i>
                     Average Cost Per Country
-                    <asp:Button ID="ExportAverageCostChart" runat="server" OnClick="btnChart2Excel_Click" Text="Export" class="btn btn-secondary"/>
-                </div>
+                    </div>
                 <div class="card-body">
                     <div class="table-responsive">
                     <table class="auto-style5">
@@ -50,7 +50,17 @@
                                     <asp:ListItem>Internship</asp:ListItem>
                                 </asp:DropDownList>
                             </td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style3">&nbsp;</td>
+                            <td class="auto-style2">
+                                &nbsp;</td>
                             <td class="auto-style2">&nbsp;</td>
+                            <td class="auto-style2">&nbsp;</td>
+                            <td class="auto-style2">
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
                             <td class="auto-style2">Year Start:</td>
                             <td class="auto-style2">
                                 <asp:TextBox ID="DateStartRange" runat="server" type="date" AutoPostBack="True" class="form-control" OnTextChanged="DateStartRange_TextChanged"></asp:TextBox>
@@ -80,10 +90,10 @@
                         <div class="col-lg-8">
                             <div class="card mb-3">
                                 <div class="card-header">
+                                    <asp:Button ID="ExportPaxNo" runat="server" OnClick="btnChart4Excel_Click" Text="Export" class="btn btn-secondary" style="float:right"/>
                                     <i class="fas fa-chart-bar"></i>
                                     Number Of Student Who Went Overseas Per Country
-                                    <asp:Button ID="ExportPaxNo" runat="server" OnClick="btnChart4Excel_Click" Text="Export" class="btn btn-secondary"/>
-                                </div>
+                                    </div>
                                 <div class="card-body table-responsive">
                                     <table class="auto-style11">
                                         <tr>
@@ -121,10 +131,10 @@
                         <div class="col-lg-4">
                             <div class="card mb-3">
                                 <div class="card-header">
+                                    <asp:Button ID="ExportPieChart" runat="server" OnClick="btnChart1Excel_Click" Text="Export" class="btn btn-secondary" style="float:right"/>
                                     <i class="fas fa-chart-pie"></i>
                                     Confirmed Trips In Each Diploma Per Country
-                                    <asp:Button ID="ExportPieChart" runat="server" OnClick="btnChart1Excel_Click" Text="Export" class="btn btn-secondary "/>
-                                </div>
+                                    </div>
 
                                 <div class="card-body">
                                     <table class="auto-style5">
@@ -156,12 +166,12 @@
                         </div>
 
                         <div class="col-lg-12">
+                            <div class="card mb-3">
                             <div class="card-header">
-                                Number Of Confirmed Trips Per Month
-                                <asp:Button ID="ExportLineGraph" runat="server" OnClick="btnChart3Excel_Click" Text="Export" class="btn btn-secondary"/>
-                            </div>
+                                <asp:Button ID="ExportLineGraph" runat="server" OnClick="btnChart3Excel_Click" Text="Export" class="btn btn-secondary" style="float:right"/>
+                                <i class="fas fa-chart-line"></i>Number Of Confirmed Trips Per Month
+                                </div>
                             <div class="card-body table-responsive">
-                                <canvas id="myAreaChart" width="100%" height="30"></canvas>
 
                                 <table class="auto-style5">
                                     <tr>
@@ -203,6 +213,7 @@
                             </div>
 
                         </div>
+                            </div>
 
                     </div>
             </div>

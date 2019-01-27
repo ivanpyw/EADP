@@ -13,6 +13,33 @@ namespace eadLab5 {
     public partial class OverseasRegisteredList {
         
         /// <summary>
+        /// TripTitleLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TripTitleLabel;
+        
+        /// <summary>
+        /// LabelTripId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelTripId;
+        
+        /// <summary>
+        /// CountryLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CountryLabel;
+        
+        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -67,6 +94,15 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.GridView GridViewRegisteredIncharge;
         
         /// <summary>
+        /// GridViewRegisteredExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewRegisteredExport;
+        
+        /// <summary>
         /// Label2 control.
         /// </summary>
         /// <remarks>
@@ -85,15 +121,6 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.Button ExportButtonNorminated;
         
         /// <summary>
-        /// LabelNorminatedExport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelNorminatedExport;
-        
-        /// <summary>
         /// GridViewNorminated control.
         /// </summary>
         /// <remarks>
@@ -110,6 +137,15 @@ namespace eadLab5 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewNorminatedIncharge;
+        
+        /// <summary>
+        /// GridViewNorminatedExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewNorminatedExport;
         
         /// <summary>
         /// Label4 control.
@@ -157,13 +193,13 @@ namespace eadLab5 {
         protected global::System.Web.UI.WebControls.GridView GridViewWaitingListIncharge;
         
         /// <summary>
-        /// Label5 control.
+        /// GridViewWaitingListExport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.WebControls.GridView GridViewWaitingListExport;
         
         /// <summary>
         /// ExportButtonShortlisted control.
@@ -173,6 +209,15 @@ namespace eadLab5 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ExportButtonShortlisted;
+        
+        /// <summary>
+        /// Label5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
         /// LabelShortlistExport control.

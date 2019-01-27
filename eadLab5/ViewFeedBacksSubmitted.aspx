@@ -18,7 +18,7 @@
                             <asp:Label ID="Label1" runat="server" Style="text-align: center;" Text="Feedbacks you submitted"></asp:Label>
                         </div>
                         <div class="table-responsive">
-                            <asp:GridView ID="GridView_GetOwnFB" runat="server" AutoGenerateColumns="False" CssClass="table table-striped" Height="74px" OnSelectedIndexChanged="GridView_GetOwnFB_SelectedIndexChanged" Width="1024px" CellPadding="4" ForeColor="#333333" GridLines="None" Style="margin: 0 auto; text-align: left;" >
+                            <asp:GridView ID="GridView_GetOwnFB" runat="server" AutoGenerateColumns="False" CssClass="table table-striped" Height="74px" OnSelectedIndexChanged="GridView_GetOwnFB_SelectedIndexChanged" Width="1024px" CellPadding="4" ForeColor="#333333" GridLines="None" Style="margin: 0 auto; text-align: left;">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
 
@@ -41,6 +41,9 @@
                                 <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                <EmptyDataTemplate>
+                                    <center>No records found!</center>
+                                </EmptyDataTemplate>
                             </asp:GridView>
                         </div>
                     </div>
@@ -52,5 +55,5 @@
         </div>
     </form>
 
-    
+
 </asp:Content>

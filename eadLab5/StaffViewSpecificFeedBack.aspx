@@ -111,7 +111,7 @@
     border-radius: 0px;
     border: 1px solid #ed687c;
     color: #ed687c;
-    background: #e6e6e6;
+    background: #cdcdcd;
     position: relative;
     transition: all 0.6s ease 0s;
 }
@@ -219,7 +219,7 @@
             </div>
               <div class="row">
                     <div class="col-md-12">
-                        <div class="card card-block text-xs-left">
+                        <div class="card card-block text-xs-left" style="left: 0px; top: 0px">
                             <h4 class="card-title" style="color: #009688"><i class="fa fa-user fa-fw"></i>Trip Highlights:</h4>
                             <div style="height: 15px"></div>
                             <h6><asp:Label ID="HighlightsLabel" runat="server" Text="[Highlights]"></asp:Label></h6>

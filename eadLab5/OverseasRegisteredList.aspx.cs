@@ -31,13 +31,26 @@ namespace eadLab5
                 GridViewRegistered.DataSource = TripList;
                 GridViewRegistered.DataBind();
 
+                TripList = TripDAO.GetRegisteredList(tripId);
+                GridViewRegisteredExport.DataSource = TripList;
+                GridViewRegisteredExport.DataBind();
+
                 TripList = TripDAO.GetWaitingList(tripId);
                 GridViewWaitingList.DataSource = TripList;
                 GridViewWaitingList.DataBind();
 
+                TripList = TripDAO.GetWaitingList(tripId);
+                GridViewWaitingListExport.DataSource = TripList;
+                GridViewWaitingListExport.DataBind();
+
                 TripList = TripDAO.GetNorminated(tripId);
                 GridViewNorminated.DataSource = TripList;
- 
+                GridViewNorminated.DataBind();
+
+                TripList = TripDAO.GetNorminated(tripId);
+                GridViewNorminatedExport.DataSource = TripList;
+                GridViewNorminatedExport.DataBind();
+
                 TripList = TripDAO.GetRegisteredList(tripId);
                 GridViewRegisteredIncharge.DataSource = TripList;
                 GridViewRegisteredIncharge.DataBind();
@@ -53,7 +66,7 @@ namespace eadLab5
                
             }
 
-            LabelNorminatedExport.Visible = false;
+            LabelShortlistExport.Visible = false;
             LabelWaitingExport.Visible = false;
             LabelShortlistExport.Visible = false;
             LabelRegisterExport.Visible = false;
@@ -237,26 +250,14 @@ namespace eadLab5
                 Response.ContentType = "application/ms-excel";
                 StringWriter sw = new StringWriter();
                 HtmlTextWriter hw = new HtmlTextWriter(sw);
-                if (Session["role"].ToString() == "Teacher")
+               
+                GridViewRegisteredExport.AllowPaging = false;
+                GridViewRegisteredExport.HeaderRow.Style.Add("background-color", "#ffffff");
+                for (int i = 0; i < GridViewRegisteredExport.HeaderRow.Cells.Count; i++)
                 {
-                    GridViewRegistered.AllowPaging = false;
-                    GridViewRegistered.HeaderRow.Style.Add("background-color", "#ffffff");
-                    for (int i = 0; i < GridViewRegistered.HeaderRow.Cells.Count; i++)
-                    {
-                        GridViewRegistered.HeaderRow.Cells[i].Style.Add("background-color", "#df5015");
-                    }
-                    GridViewRegistered.RenderControl(hw);
+                    GridViewRegisteredExport.HeaderRow.Cells[i].Style.Add("background-color", "#df5015");
                 }
-                else if (Session["role"].ToString() == "Incharge")
-                {
-                    GridViewRegisteredIncharge.AllowPaging = false;
-                    GridViewRegisteredIncharge.HeaderRow.Style.Add("background-color", "#ffffff");
-                    for (int i = 0; i < GridViewRegisteredIncharge.HeaderRow.Cells.Count; i++)
-                    {
-                        GridViewRegisteredIncharge.HeaderRow.Cells[i].Style.Add("background-color", "#df5015");
-                    }
-                    GridViewRegisteredIncharge.RenderControl(hw);
-                }
+                GridViewRegisteredExport.RenderControl(hw);
                 Response.Write(sw.ToString());
                 Response.End();
             }
@@ -267,8 +268,8 @@ namespace eadLab5
         {
             if ((GridViewNorminated.Rows.Count == 0) || (GridViewNorminatedIncharge.Rows.Count == 0))
             {
-                LabelNorminatedExport.Text = "No data to export!";
-                LabelNorminatedExport.Visible = true;
+                LabelShortlistExport.Text = "No data to export!";
+                LabelShortlistExport.Visible = true;
             }
             else
             {
@@ -278,30 +279,17 @@ namespace eadLab5
                 Response.ContentType = "application/ms-excel";
                 StringWriter sw = new StringWriter();
                 HtmlTextWriter hw = new HtmlTextWriter(sw);
-                if (Session["role"].ToString() == "Teacher")
-                {
-                    GridViewNorminated.AllowPaging = false;
-                    GridViewNorminated.HeaderRow.Style.Add("background-color", "#ffffff");
-                    for (int i = 0; i < GridViewNorminated.HeaderRow.Cells.Count; i++)
+               
+                    GridViewNorminatedExport.AllowPaging = false;
+                    GridViewNorminatedExport.HeaderRow.Style.Add("background-color", "#ffffff");
+                    for (int i = 0; i < GridViewNorminatedExport.HeaderRow.Cells.Count; i++)
                     {
-                        GridViewNorminated.HeaderRow.Cells[i].Style.Add("background-color", "#df5015");
+                        GridViewNorminatedExport.HeaderRow.Cells[i].Style.Add("background-color", "#df5015");
                     }
-                    GridViewNorminated.RenderControl(hw);
+                    GridViewNorminatedExport.RenderControl(hw);
+                    Response.Write(sw.ToString());
+                    Response.End();
                 }
-                else if (Session["role"].ToString() == "Incharge")
-                {
-                    GridViewNorminatedIncharge.AllowPaging = false;
-                    GridViewNorminatedIncharge.HeaderRow.Style.Add("background-color", "#ffffff");
-                    for (int i = 0; i < GridViewNorminated.HeaderRow.Cells.Count; i++)
-                    {
-                        GridViewNorminatedIncharge.HeaderRow.Cells[i].Style.Add("background-color", "#df5015");
-                    }
-                    GridViewNorminatedIncharge.RenderControl(hw);
-                }
-
-                Response.Write(sw.ToString());
-                Response.End();
-            }
            
         }
 
@@ -320,27 +308,13 @@ namespace eadLab5
                 Response.ContentType = "application/ms-excel";
                 StringWriter sw = new StringWriter();
                 HtmlTextWriter hw = new HtmlTextWriter(sw);
-
-                if (Session["role"].ToString() == "Teacher")
+                GridViewWaitingListExport.AllowPaging = false;
+                GridViewWaitingListExport.HeaderRow.Style.Add("background-color", "#ffffff");
+                for (int i = 0; i < GridViewWaitingListExport.HeaderRow.Cells.Count; i++)
                 {
-                    GridViewWaitingList.AllowPaging = false;
-                    GridViewWaitingList.HeaderRow.Style.Add("background-color", "#ffffff");
-                    for (int i = 0; i < GridViewWaitingList.HeaderRow.Cells.Count; i++)
-                    {
-                        GridViewWaitingList.HeaderRow.Cells[i].Style.Add("background-color", "#df5015");
-                    }
-                    GridViewWaitingList.RenderControl(hw);
+                    GridViewWaitingListExport.HeaderRow.Cells[i].Style.Add("background-color", "#df5015");
                 }
-                else if (Session["role"].ToString() == "Incharge")
-                {
-                    GridViewWaitingListIncharge.AllowPaging = false;
-                    GridViewWaitingListIncharge.HeaderRow.Style.Add("background-color", "#ffffff");
-                    for (int i = 0; i < GridViewWaitingListIncharge.HeaderRow.Cells.Count; i++)
-                    {
-                        GridViewWaitingListIncharge.HeaderRow.Cells[i].Style.Add("background-color", "#df5015");
-                    }
-                    GridViewWaitingListIncharge.RenderControl(hw);
-                }
+                GridViewWaitingListExport.RenderControl(hw);
                 Response.Write(sw.ToString());
                 Response.End();
             }

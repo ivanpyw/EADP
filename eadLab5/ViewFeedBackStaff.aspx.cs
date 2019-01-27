@@ -16,13 +16,33 @@ namespace eadLab5
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                FeedbackFormDAO tdDAO = new FeedbackFormDAO();
-                List<FeedbackForm> tdList = new List<FeedbackForm>();
-                tdList = tdDAO.GetAllFeedBack();
-                GridView_GetFB.DataSource = tdList;
-                GridView_GetFB.DataBind();
+                if ((Session["role"].ToString() == "Teacher") || (Session["role"].ToString() == "Incharge"))
+                {
+                    if (!IsPostBack)
+                    {
+                        FeedbackFormDAO tdDAO = new FeedbackFormDAO();
+                        List<FeedbackForm> tdList = new List<FeedbackForm>();
+                        tdList = tdDAO.GetAllFeedBack();
+                        GridView_GetFB.DataSource = tdList;
+                        GridView_GetFB.DataBind();
+
+                        TripDAO tripDao = new TripDAO();
+                        List<String> countryList = tripDao.getCountry();
+                        CountryFilterDropDown.DataSource = countryList;
+                        CountryFilterDropDown.DataBind();
+                        CountryFilterDropDown.Items.Insert(0, new ListItem("All", "All"));
+                    }
+                }
+                else
+                {
+                    Response.Redirect("./Oops.aspx");
+                }
+            }
+            catch (Exception)
+            {
+                Response.Redirect("./Oops.aspx");
             }
 
         }

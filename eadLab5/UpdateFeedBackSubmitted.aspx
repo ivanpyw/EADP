@@ -96,21 +96,21 @@
 				<div class="form-group">
 				  <label> What is your highlight of the trip? :</label>
 				  <div class="col-sm-10">
-					<asp:TextBox ID="HighlightTbUpdate" runat="server" TextMode="multiline" Columns="50" Rows="1"></asp:TextBox>
+					<asp:TextBox ID="HighlightTbUpdate" runat="server" TextMode="multiline" Columns="50" Rows="1" class="form-control"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="HighlightTbUpdate" ErrorMessage="Highlights Required">*</asp:RequiredFieldValidator>
 				  </div>
 				</div>
                 <div class="form-group">
 				  <label for="comment"> What are the downsides of the trip? :</label>
 				  <div class="col-sm-10">
-					<asp:TextBox ID="DownsidesTbUpdate" runat="server" TextMode="multiline" Columns="50" Rows="1" ></asp:TextBox>
+					<asp:TextBox ID="DownsidesTbUpdate" runat="server" TextMode="multiline" Columns="50" class="form-control" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'>></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="DownsidesTbUpdate" ErrorMessage="Downsides Required">*</asp:RequiredFieldValidator>
 				  </div>
 				</div>
                 <div class="form-group">
 				  <label for="comment"> What can be improved? :</label>
 				  <div class="col-sm-10">
-					  <asp:TextBox ID="ImprovementTbUpdate" runat="server" TextMode="multiline" Columns="50"  Rows="1"></asp:TextBox>
+					  <asp:TextBox ID="ImprovementTbUpdate" runat="server" TextMode="multiline" Columns="50" class="form-control" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'>></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Improvements Required" ControlToValidate="ImprovementTbUpdate">*</asp:RequiredFieldValidator>
 				  </div>
 				</div>
