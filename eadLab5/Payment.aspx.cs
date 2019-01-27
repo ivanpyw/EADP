@@ -11,15 +11,56 @@ namespace eadLab5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["AdminNo"] == null)
-            {
-                Response.Redirect("loginStudent.aspx");
-            }
+            lblErrorMessage.Visible = false;
+            //if (Session["Staffid"] == null)
+            //{
+              //  Response.Redirect("loginStaff.aspx");
+            //}
         }
 
-        protected void btn_Payment_Click(object sender, EventArgs e)
+        protected void btnLogin_Click(object sender, EventArgs e)
         {
-            Response.Redirect("paymentFurther.aspx");
+            validateHolder.Visible = false;
+            validateNumber.Visible = false;
+            validateExpiry.Visible = false;
+            validateCVC.Visible = false;
+
+            if (string.IsNullOrEmpty(CreditName.Text))
+            {
+                validateHolder.Visible = true;
+            }
+
+            if (string.IsNullOrEmpty(CreditEntry.Text))
+            {
+                validateNumber.Text = "Credit Card Number is required!";
+                validateNumber.Visible = true;
+            }
+            else if (CreditEntry.Text.All(char.IsDigit) == false){
+                validateNumber.Text = "Please enter numbers only!";
+                validateNumber.Visible = true;
+            }
+
+
+            if (CreditExpiry.SelectedDate == null || CreditExpiry.SelectedDate == new DateTime(0001, 1, 1, 0, 0, 0))
+            {
+                validateExpiry.Text = "Please enter a valid date!";
+                validateExpiry.Visible = true;
+            }
+            
+            if (string.IsNullOrEmpty(CreditCVC.Text))
+            {
+                validateCVC.Text = "CVC is required!";
+                validateCVC.Visible = true;
+            }
+            else if (CreditCVC.Text.All(char.IsDigit) == false)
+            {
+                validateCVC.Text = "Please enter numbers only!";
+                validateCVC.Visible = true;
+            }
+
+            lblErrorMessage.Visible = true;
         }
+
+        
     }
 }
