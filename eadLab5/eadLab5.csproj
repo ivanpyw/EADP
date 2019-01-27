@@ -137,11 +137,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AchievementAdd.aspx" />
+    <Content Include="AchievementPage.aspx" />
     <Content Include="Acknowledge.aspx" />
     <Content Include="App_Data\TimeDeposit.mdf" />
     <Content Include="App_Data\TimeDeposit_log.ldf">
       <DependentUpon>TimeDeposit.mdf</DependentUpon>
     </Content>
+    <Content Include="ChangePw.aspx" />
     <Content Include="ChooseInterview.aspx" />
     <Content Include="ChooseOffer.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -152,8 +155,13 @@
     <Content Include="Content\SarasaStyleSheet.css" />
     <Content Include="Corporate.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="EditAchievement.aspx" />
     <Content Include="EditTripDetails.aspx" />
     <Content Include="Enquiry.aspx" />
+    <Content Include="EventAdd.aspx" />
+    <Content Include="EventPage.aspx" />
+    <Content Include="FAQPage.aspx" />
+    <Content Include="GeneralSetting.aspx" />
     <Content Include="Oops.aspx" />
     <Content Include="FeedBackFormStudent.aspx" />
     <Content Include="FeedBacks.aspx" />
@@ -178,6 +186,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Payment.aspx" />
     <Content Include="PEMMain.aspx" />
+    <Content Include="ProfilePage.aspx" />
     <Content Include="RegisteredStudents.aspx" />
     <Content Include="ReportAndStatistics.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -211,12 +220,33 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AchievementAdd.aspx.cs">
+      <DependentUpon>AchievementAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AchievementAdd.aspx.designer.cs">
+      <DependentUpon>AchievementAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AchievementPage.aspx.cs">
+      <DependentUpon>AchievementPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AchievementPage.aspx.designer.cs">
+      <DependentUpon>AchievementPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Acknowledge.aspx.cs">
       <DependentUpon>Acknowledge.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Acknowledge.aspx.designer.cs">
       <DependentUpon>Acknowledge.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePw.aspx.cs">
+      <DependentUpon>ChangePw.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangePw.aspx.designer.cs">
+      <DependentUpon>ChangePw.aspx</DependentUpon>
     </Compile>
     <Compile Include="ChooseInterview.aspx.cs">
       <DependentUpon>ChooseInterview.aspx</DependentUpon>
@@ -239,9 +269,15 @@
     <Compile Include="Corporate.aspx.designer.cs">
       <DependentUpon>Corporate.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Achievement.cs" />
+    <Compile Include="DAL\AchievementDAO.cs" />
     <Compile Include="DAL\Choice.cs" />
     <Compile Include="DAL\customer.cs" />
     <Compile Include="DAL\customerDAO.cs" />
+    <Compile Include="DAL\Event.cs" />
+    <Compile Include="DAL\EventDAO.cs" />
+    <Compile Include="DAL\FAQ.cs" />
+    <Compile Include="DAL\FAQDAO.cs" />
     <Compile Include="DAL\FeedbackForm.cs" />
     <Compile Include="DAL\FeedbackFormDAO.cs" />
     <Compile Include="DAL\interestRte.cs" />
@@ -256,6 +292,8 @@
     <Compile Include="DAL\StudentDAO.cs" />
     <Compile Include="DAL\StudentLogin.cs" />
     <Compile Include="DAL\StudentLoginDAO.cs" />
+    <Compile Include="DAL\StudentProfile.cs" />
+    <Compile Include="DAL\StudentProfileDAO.cs" />
     <Compile Include="DAL\timeDeposit.cs" />
     <Compile Include="DAL\timeDepositDAO.cs" />
     <Compile Include="DAL\Trip.cs" />
@@ -268,6 +306,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditAchievement.aspx.cs">
+      <DependentUpon>EditAchievement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditAchievement.aspx.designer.cs">
+      <DependentUpon>EditAchievement.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditTripDetails.aspx.cs">
       <DependentUpon>EditTripDetails.aspx</DependentUpon>
@@ -282,6 +327,34 @@
     </Compile>
     <Compile Include="Enquiry.aspx.designer.cs">
       <DependentUpon>Enquiry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EventAdd.aspx.cs">
+      <DependentUpon>EventAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EventAdd.aspx.designer.cs">
+      <DependentUpon>EventAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EventPage.aspx.cs">
+      <DependentUpon>EventPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EventPage.aspx.designer.cs">
+      <DependentUpon>EventPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FAQPage.aspx.cs">
+      <DependentUpon>FAQPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FAQPage.aspx.designer.cs">
+      <DependentUpon>FAQPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralSetting.aspx.cs">
+      <DependentUpon>GeneralSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GeneralSetting.aspx.designer.cs">
+      <DependentUpon>GeneralSetting.aspx</DependentUpon>
     </Compile>
     <Compile Include="Oops.aspx.cs">
       <DependentUpon>Oops.aspx</DependentUpon>
@@ -358,6 +431,13 @@
     </Compile>
     <Compile Include="PEMMain.aspx.designer.cs">
       <DependentUpon>PEMMain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilePage.aspx.cs">
+      <DependentUpon>ProfilePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfilePage.aspx.designer.cs">
+      <DependentUpon>ProfilePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisteredStudents.aspx.cs">

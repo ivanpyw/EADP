@@ -90,16 +90,16 @@ namespace eadLab5
                 mail.Subject = "You were approved for the trip";
                 mail.Body = "Dear "+interview.studentName+"\nThis is regarding the trip you sign up for: " + interview.tripName + "\nTo confirm your request, login and go to http://eadlab520190123024847.azurewebsites.net/chooseOffer.aspx?tripId="+interview.tripid;
                 client.Send(mail);
-
                 int result = interviewDao.updateStatusStudent("Approve", interviewNo);
+                Response.Redirect("ManageInterviews.aspx");
             }
             else if(e.CommandName == "Reject")
             {
                 mail.Subject = "You were rejected for the trip";
                 mail.Body = "Dear " + interview.staffName + "\nThis is regarding the trip you sign up for: " + interview.tripName + "\nUnfortunately, you were rejected for the trip after the interview.";
                 client.Send(mail);
-
                 int result = interviewDao.updateStatusStudent("Reject", interviewNo);
+                Response.Redirect("ManageInterviews.aspx");
             }
             else
             {
