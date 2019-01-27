@@ -176,6 +176,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Payment.aspx" />
     <Content Include="PEMMain.aspx" />
     <Content Include="RegisteredStudents.aspx" />
     <Content Include="ReportAndStatistics.aspx" />
@@ -343,6 +344,13 @@
     </Compile>
     <Compile Include="OverseasRegisteredList.aspx.designer.cs">
       <DependentUpon>OverseasRegisteredList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.aspx.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Payment.aspx.designer.cs">
+      <DependentUpon>Payment.aspx</DependentUpon>
     </Compile>
     <Compile Include="PEMMain.aspx.cs">
       <DependentUpon>PEMMain.aspx</DependentUpon>
