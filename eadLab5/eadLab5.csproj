@@ -137,6 +137,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AchievementAdd.aspx" />
     <Content Include="Acknowledge.aspx" />
     <Content Include="App_Data\TimeDeposit.mdf" />
     <Content Include="App_Data\TimeDeposit_log.ldf">
@@ -211,6 +212,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AchievementAdd.aspx.cs">
+      <DependentUpon>AchievementAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AchievementAdd.aspx.designer.cs">
+      <DependentUpon>AchievementAdd.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Acknowledge.aspx.cs">
       <DependentUpon>Acknowledge.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -239,9 +247,15 @@
     <Compile Include="Corporate.aspx.designer.cs">
       <DependentUpon>Corporate.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Achievement.cs" />
+    <Compile Include="DAL\AchievementDAO.cs" />
     <Compile Include="DAL\Choice.cs" />
     <Compile Include="DAL\customer.cs" />
     <Compile Include="DAL\customerDAO.cs" />
+    <Compile Include="DAL\Event.cs" />
+    <Compile Include="DAL\EventDAO.cs" />
+    <Compile Include="DAL\FAQ.cs" />
+    <Compile Include="DAL\FAQDAO.cs" />
     <Compile Include="DAL\FeedbackForm.cs" />
     <Compile Include="DAL\FeedbackFormDAO.cs" />
     <Compile Include="DAL\interestRte.cs" />
@@ -256,6 +270,8 @@
     <Compile Include="DAL\StudentDAO.cs" />
     <Compile Include="DAL\StudentLogin.cs" />
     <Compile Include="DAL\StudentLoginDAO.cs" />
+    <Compile Include="DAL\StudentProfile.cs" />
+    <Compile Include="DAL\StudentProfileDAO.cs" />
     <Compile Include="DAL\timeDeposit.cs" />
     <Compile Include="DAL\timeDepositDAO.cs" />
     <Compile Include="DAL\Trip.cs" />
