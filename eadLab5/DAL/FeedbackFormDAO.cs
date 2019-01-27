@@ -404,7 +404,7 @@ namespace eadLab5.DAL
             return tdList;
         }
 
-        public int updateOwnFB(string Affordability, string Enjoyment, string Freedom, string ReviewPros, string ReviewCons, string ReviewImprovement, string StudentName, string Country, string AdminNo, string TripId, string FeedBackId)
+        public int updateOwnFB(string Affordability, string Enjoyment, string Freedom, string ReviewPros, string ReviewCons, string ReviewImprovement,string FeedBackId)
         {
 
             StringBuilder sqlStr = new StringBuilder();
@@ -415,7 +415,7 @@ namespace eadLab5.DAL
             //         parameterised query in values clause
             //
             sqlStr.AppendLine("UPDATE FeedBack");
-            sqlStr.AppendLine("SET Affordability=@paraAffordability, Enjoyment=@paraEnjoyment, Freedom=@paraFreedom, ReviewPros=@paraReviewCons, ReviewImprovement=@paraReviewImprovement, StudentName=@paraStudentName, Country=@paraCountry, AdminNo=@paraAdminNo, TripId=@paraTripId ");
+            sqlStr.AppendLine("SET Affordability=@paraAffordability, Enjoyment=@paraEnjoyment, Freedom=@paraFreedom, ReviewPros=@paraReviewPros, ReviewCons=@paraReviewCons ,ReviewImprovement=@paraReviewImprovement");
             sqlStr.AppendLine("WHERE FeedBackId = @paraFeedBackId");
 
 
@@ -433,12 +433,8 @@ namespace eadLab5.DAL
             sqlCmd.Parameters.AddWithValue("@paraReviewPros", ReviewPros);
             sqlCmd.Parameters.AddWithValue("@paraReviewCons", ReviewCons);
             sqlCmd.Parameters.AddWithValue("@paraReviewImprovement", ReviewImprovement);
-
-            sqlCmd.Parameters.AddWithValue("@paraStudentName", StudentName);
-            sqlCmd.Parameters.AddWithValue("@paraCountry", Country);
-            sqlCmd.Parameters.AddWithValue("@paraAdminNo", AdminNo);
-            sqlCmd.Parameters.AddWithValue("@paraTripId", TripId);
             sqlCmd.Parameters.AddWithValue("@paraFeedBackId", FeedBackId);
+
 
             // Step 4 Open connection the execute NonQuery of sql command   
 

@@ -16,16 +16,18 @@ namespace eadLab5
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            FeedbackForm cusObj = new FeedbackForm();
-            FeedbackFormDAO cusDao = new FeedbackFormDAO();
-            string str = Convert.ToString(Session["FeedBackActive"].ToString());
-            string AdminNumber = Convert.ToString(Session["AdminNo"].ToString());
-            cusObj = cusDao.GetFeedbackSelected(str, AdminNumber);
-            if (cusObj != null)
+            if (!IsPostBack)
             {
-                CountryLabel.Text = cusObj.location;   
+                FeedbackForm cusObj = new FeedbackForm();
+                FeedbackFormDAO cusDao = new FeedbackFormDAO();
+                string str = Convert.ToString(Session["FeedBackActive"].ToString());
+                string AdminNumber = Convert.ToString(Session["AdminNo"].ToString());
+                cusObj = cusDao.GetFeedbackSelected(str, AdminNumber);
+                if (cusObj != null)
+                {
+                    CountryLabel.Text = cusObj.location;
+                }
             }
-
         }
 
         protected void BtnConfirm_Click(object sender, EventArgs e)
@@ -36,7 +38,7 @@ namespace eadLab5
             string str = Session["FeedBackActive"].ToString();
             string AdminNumber = Session["AdminNo"].ToString();
             cusObj = cusDao.GetFeedbackSelected(str, AdminNumber);
-           
+
 
             String Affordability = AffordabilityDropDown.SelectedValue.ToString();
             String Enjoyment = EnjoymentDropDown.SelectedValue.ToString();
@@ -52,9 +54,9 @@ namespace eadLab5
 
             try
             {
-                
-        FeedbackFormDAO FBF = new FeedbackFormDAO();
-        int insCnt = FBF.InsertTD(Affordability, Enjoyment, Freedom, ReviewPros, ReviewCons, ReviewCons, StudName, Country, AdminNo, TripId, DateCreated);
+
+                FeedbackFormDAO FBF = new FeedbackFormDAO();
+                int insCnt = FBF.InsertTD(Affordability, Enjoyment, Freedom, ReviewPros, ReviewCons, ReviewCons, StudName, Country, AdminNo, TripId, DateCreated);
                 if (insCnt == 1)
                 {
                     LblResult.Text = "Feedback Submitted! Thank you! You will be redirected in 5 seconds to the homepage!";
@@ -66,12 +68,12 @@ namespace eadLab5
                     LblResult.Text = "Unable to submit feedback, please inform system administrator!";
 
                 }
-            BtnConfirm.Enabled = false;
+                BtnConfirm.Enabled = false;
 
             }
             catch (FormatException)
             {
-               
+
             }
 
         }
