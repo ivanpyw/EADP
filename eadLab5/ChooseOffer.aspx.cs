@@ -28,11 +28,11 @@ namespace eadLab5
                 if(choice == null || choice.choice == "Accepted" || choice.choice =="Rejected")
                 {
                     System.Diagnostics.Debug.WriteLine("its here");
-                    Response.Redirect("./ErrorPages/Oops.aspx");
+                    Response.Redirect("Oops.aspx");
                 }else if(choice.teacherChoice != "Accepted")
                 {
                     System.Diagnostics.Debug.WriteLine("its here2");
-                    Response.Redirect("./ErrorPages/Oops.aspx");
+                    Response.Redirect("Oops.aspx");
                 }
                 tripName = choice.tripName;
                 tripStart = choice.tripStart.ToString("dd/MM/yyyy");

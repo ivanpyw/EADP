@@ -194,111 +194,118 @@
             </div>
         </div>
         <div class="row">
-            <% foreach (var trip in tripObj)
+            <% if (tripObj == null)
                 { %>
+                No trips at the moment
+            <% }else { %>
+                <% foreach (var trip in tripObj)
+                    { %>
 
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="card h-100 text-center">
-                    <a href="#">
-                        <img src="<%=trip.tripImg %>" class="card-img-top" style="width: 347.99px; height: 400px" /></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <%= trip.tripTitle %>
-                        </h4>
-                        <p class="card-text">Program period: <%=trip.tripStart.ToString("dd/MM/yy") %> to <%= trip.tripEnd.ToString("dd/MM/yy") %></p>
-                        <p class="card-text">Program duration: <%= trip.tripDays %></p>
-                        <p class="card-text">Expected cost: <%= trip.tripCost.ToString("c") %></p>
-                        <p class="card-text">Location: <b><%= trip.tripLocation %></b></p>
-                    </div>
-                    <button type="button" class="btn btn-primary trip-btn" style="margin: 0 auto;" data-toggle="modal" data-target="#tripModal<%= trip.tripId %>">
-                        View details
-                    </button>
-                </div>
-
-
-            </div>
-            <!-- Modal -->
-            <div class="modal fade" id="tripModal<%=trip.tripId %>" tabindex="-1" role="dialog" aria-labelledby="tripModal<%=trip.tripId %>" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="text-center modal-title"><%=trip.tripTitle %></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                <div class="col-lg-4 col-sm-6 mb-4">
+                    <div class="card h-100 text-center">
+                        <a href="#">
+                            <img src="<%=trip.tripImg %>" class="card-img-top" style="width: 347.99px; height: 400px" /></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <%= trip.tripTitle %>
+                            </h4>
+                            <p class="card-text">Program period: <%=trip.tripStart.ToString("dd/MM/yy") %> to <%= trip.tripEnd.ToString("dd/MM/yy") %></p>
+                            <p class="card-text">Program duration: <%= trip.tripDays %></p>
+                            <p class="card-text">Expected cost: <%= trip.tripCost.ToString("c") %></p>
+                            <p class="card-text">Location: <b><%= trip.tripLocation %></b></p>
                         </div>
-                        <div class="modal-body">
-                            <div id="carouselTrip<%=trip.tripId %>" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img class="img-fluid" src="<%=trip.tripImg %>" alt="First slide" />
+                        <button type="button" class="btn btn-primary trip-btn" style="margin: 0 auto;" data-toggle="modal" data-target="#tripModal<%= trip.tripId %>">
+                            View details
+                        </button>
+                    </div>
+
+
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="tripModal<%=trip.tripId %>" tabindex="-1" role="dialog" aria-labelledby="tripModal<%=trip.tripId %>" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="text-center modal-title"><%=trip.tripTitle %></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="carouselTrip<%=trip.tripId %>" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img class="img-fluid" src="<%=trip.tripImg %>" alt="First slide" />
+                                        </div>
+                                        <% if (trip.tripImg2 != "NULL")
+                                            { %>
+                                        <div class="carousel-item">
+                                            <img class="img-fluid" src="<%=trip.tripImg2 %>" alt="Second slide" />
+                                        </div>
+                                        <% } %>
+                                        <% if (trip.tripImg3 != "NULL" && trip.tripImg2 != "NULL")
+                                            {%>
+                                        <div class="carousel-item">
+                                            <img class="img-fluid" src="<%=trip.tripImg3 %>" alt="Third slide" />
+                                        </div>
+                                        <%} %>
                                     </div>
-                                    <% if (trip.tripImg2 != "NULL")
+                                    <% if (trip.tripImg2 != "" && trip.tripImg3 != "")
                                         { %>
-                                    <div class="carousel-item">
-                                        <img class="img-fluid" src="<%=trip.tripImg2 %>" alt="Second slide" />
-                                    </div>
-                                    <% } %>
-                                    <% if (trip.tripImg3 != "NULL" && trip.tripImg2 != "NULL")
-                                        {%>
-                                    <div class="carousel-item">
-                                        <img class="img-fluid" src="<%=trip.tripImg3 %>" alt="Third slide" />
-                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselTrip<%=trip.tripId %>" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselTrip<%=trip.tripId %>" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
                                     <%} %>
                                 </div>
-                                <% if (trip.tripImg2 != "" && trip.tripImg3 != "")
-                                    { %>
-                                <a class="carousel-control-prev" href="#carouselTrip<%=trip.tripId %>" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#carouselTrip<%=trip.tripId %>" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                                <%} %>
-                            </div>
-                            <table class="table table-hover">
-                                <tbody>
-                                    <tr>
-                                        <td>Frequency and duration:</td>
-                                        <td><%= trip.tripStart.ToString("dd/MM/yy") %> to <%=trip.tripEnd.ToString("dd/MM/yy") %></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Duration: </td>
-                                        <td><%=trip.tripDays %></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Activities: </td>
-                                        <td><%=trip.tripActivities %></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Estimated cost: </td>
-                                        <td><%=trip.tripCost.ToString("c") %></td>
-                                    </tr>
-                                    <tr>
-                                        <td>In charge:</td>
-                                        <td><%=trip.staffHonorifics %> <%=trip.staffName %></td>
-                                    </tr>
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td>Frequency and duration:</td>
+                                            <td><%= trip.tripStart.ToString("dd/MM/yy") %> to <%=trip.tripEnd.ToString("dd/MM/yy") %></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Duration: </td>
+                                            <td><%=trip.tripDays %></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Activities: </td>
+                                            <td><%=trip.tripActivities %></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Estimated cost: </td>
+                                            <td><%=trip.tripCost.ToString("c") %></td>
+                                        </tr>
+                                        <tr>
+                                            <td>In charge:</td>
+                                            <td><%=trip.staffHonorifics %> <%=trip.staffName %></td>
+                                        </tr>
 
-                                </tbody>
-                            </table>
-                            <% if (listId.Contains(trip.tripId)){ %>
-                                <button type="button" class="form-control btn btn-secondary" disabled>Signed up</button>
-                            <% }else if(role == "Teacher" || role=="Incharge") { %>
-                                <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="btn btn-success">Edit details</a>
-                                <a href="OverseasRegisteredList.aspx?tripId=<%=trip.tripId %>" class="btn btn-info">View Student details</a>
-                            <% }else if(role =="1" || role == "2" || role == "3"){ %>
-                                <% if (role != "3" && trip.tripType == "Internship" || role == "2" && DateTime.Now.Month > 0) {%>
-                                    <button type="button" class="form-control btn btn-secondary" disabled>Only for year 3</button>
-                                <% }else { %>
-                                    <button type="button" onclick="sendTripId(<%= trip.tripId %>)" class="form-control btn btn-primary">Sign up</button>
+                                    </tbody>
+                                </table>
+                                <% if (listId.Contains(trip.tripId)) { %>
+                                    <button type="button" class="form-control btn btn-secondary" disabled>Signed up</button>
+                                <% } else if (role == "Incharge") { %>
+                                    <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="btn btn-success">Edit details</a>
+                                    <a href="OverseasRegisteredList.aspx?tripId=<%=trip.tripId %>" class="btn btn-info">View Student details</a>
+                                <%}else if(role == "Teacher") { %>
+                                    <a href="OverseasRegisteredList.aspx?tripId=<%=trip.tripId %>" class="btn btn-info">View Student details</a>
+                                <% }else if(role =="1" || role == "2" || role == "3"){ %>
+                                    <% if ((role == "2" && DateTime.Now.Month > 4 && DateTime.Now.Month < 9) || (role != "3" && trip.tripType == "Internship")) {%>
+                                        <button type="button" class="form-control btn btn-secondary" disabled>Only for year 3</button>
+                                    <% }else { %>
+                                        <button type="button" onclick="sendTripId(<%= trip.tripId %>)" class="form-control btn btn-primary">Sign up</button>
+                                    <% } %>
                                 <% } %>
-                            <% } %>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <% } %>
             <% } %>
         </div>
     </form>
