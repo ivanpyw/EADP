@@ -131,7 +131,7 @@
                                         <asp:TextBox ID="tbAddTitle" runat="server" placeholder="Trip title" CssClass="form-control"></asp:TextBox></td>
                                 </tr>
                                 <tr>
-                                    <td>Trip Location:<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Location is required" Text="*" ControlToValidate="ddlAddLocation" ValidationGroup="1"></asp:RequiredFieldValidator></td>
+                                    <td>Trip Location:<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Location is required" Text="*" ControlToValidate="ddlAddLocation" ValidationGroup="1" InitialValue="-1"></asp:RequiredFieldValidator></td>
 
                                     <td>
                                         <%--<asp:TextBox ID="tbAddLocation" placeholder="Trip held at" runat="server" CssClass="form-control"></asp:TextBox></td>--%>
