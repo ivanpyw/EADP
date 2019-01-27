@@ -15,5 +15,6 @@ namespace eadLab5.DAL
         public string choice { get; set; }
         public DateTime tripStart { get; set; }
         public DateTime tripEnd { get; set; }
+        public string teacherChoice { get; set; }
     }
 }

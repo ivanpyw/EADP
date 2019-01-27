@@ -52,7 +52,7 @@ namespace eadLab5.DAL
             return interviews;
         }
 
-        public int selectForInterview(string adminNo,int staffId,int tripId)
+        public int selectForInterview(string adminNo, int staffId, int tripId)
         {
             StringBuilder sqlStr = new StringBuilder();
             int result = 0;    // Execute NonQuery return an integer value
@@ -88,7 +88,7 @@ namespace eadLab5.DAL
             return adminNo;
         }
 
-        public int insertDateTime(string intId,string date, string time)
+        public int insertDateTime(string intId, string date, string time)
         {
             StringBuilder sqlStr = new StringBuilder();
             int result = 0;    // Execute NonQuery return an integer value
@@ -110,14 +110,14 @@ namespace eadLab5.DAL
             return result;
         }
 
-        public int createSession(string session,string token, int intId)
+        public int createSession(string session, string token, int intId)
         {
             StringBuilder sqlStr = new StringBuilder();
             int result = 0;    // Execute NonQuery return an integer value
             SqlCommand sqlCmd = new SqlCommand();
 
             sqlStr.AppendLine("UPDATE Interview");
-            sqlStr.AppendLine("SET interviewToken=@pIntToken,interviewSession=@pIntSession");
+            sqlStr.AppendLine("SET interviewToken=@pIntToken,interviewSession=@pIntSession,studentStatus='Interviewed'");
             sqlStr.AppendLine("WHERE InterviewId = @pIntId");
             SqlConnection myConn = new SqlConnection(DBConnect);
 
@@ -130,6 +130,39 @@ namespace eadLab5.DAL
             result = sqlCmd.ExecuteNonQuery();
             myConn.Close();
             return result;
+        }
+
+        public List<Interview> fetchGridview()
+        {
+            List<Interview> interviews = new List<Interview>();
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            StringBuilder tripCommand = new StringBuilder();
+            tripCommand.AppendLine("Select * from Interview i");
+            tripCommand.AppendLine("INNER JOIN Student s on s.AdminNo = i.AdminNo");
+            tripCommand.AppendLine("WHERE StudentStatus = 'Interview'");
+            SqlDataAdapter da = new SqlDataAdapter(tripCommand.ToString(), myConn);
+
+            DataSet ds = new DataSet();
+            da.Fill(ds, "interviewTable");
+            int rec_cnt = ds.Tables["interviewTable"].Rows.Count;
+            if (rec_cnt > 0)
+            {
+                foreach (DataRow row in ds.Tables["interviewTable"].Rows)
+                {
+                    Interview myInt = new Interview();
+                    myInt.interviewId = Convert.ToInt32(row["InterviewId"]);
+                    myInt.studentAdminNo = row["AdminNo"].ToString();
+                    myInt.studentName = row["StudentName"].ToString();
+                    myInt.remarks = row["remarks"].ToString();
+                    interviews.Add(myInt);
+                }
+            }
+            else
+            {
+                interviews = null;
+            }
+            return interviews;
         }
 
         public List<Interview> fetchSession(string adminNo)
@@ -168,6 +201,42 @@ namespace eadLab5.DAL
                 intSession = null;
             }
             return intSession;
+        }
+
+        public Interview fetchSingleInterview(int intId)
+        {
+            Interview interview = new Interview();
+
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            StringBuilder tripCommand = new StringBuilder();
+            tripCommand.AppendLine("Select * from Interview i");
+            tripCommand.AppendLine("INNER JOIN Staff s on s.staffId = i.staffId");
+            tripCommand.AppendLine("INNER JOIN Trip t on t.tripId = i.tripId");
+            tripCommand.AppendLine("WHERE interviewId = @pIntId");
+
+            SqlDataAdapter da = new SqlDataAdapter(tripCommand.ToString(), myConn);
+            da.SelectCommand.Parameters.AddWithValue("@pIntId", intId);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "interviewTable");
+            int rec_cnt = ds.Tables["interviewTable"].Rows.Count;
+            if (rec_cnt > 0)
+            {
+                DataRow row = ds.Tables["interviewTable"].Rows[0];
+                interview.interviewSession = row["interviewSession"].ToString();
+                interview.interviewToken = row["interviewToken"].ToString();
+                interview.tripName = row["tripTitle"].ToString();
+                interview.interviewDate = row["interviewDate"].ToString();
+                interview.interviewTime = row["interviewTime"].ToString();
+                interview.staffHonorifics = row["Honorifics"].ToString();
+                interview.staffName = row["Name"].ToString();
+                interview.tripid = Convert.ToInt32(row["tripId"]);
+            }
+            else
+            {
+                interview = null;
+            }
+
+            return interview;
         }
     }
 }
