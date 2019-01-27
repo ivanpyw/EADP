@@ -718,6 +718,7 @@ namespace eadLab5.DAL
                 choice.choice = row["StudentChoice"].ToString();
                 choice.tripStart = Convert.ToDateTime(row["TripStart"]);
                 choice.tripEnd = Convert.ToDateTime(row["TripEnd"]);
+                choice.teacherChoice = row["StudentStatus"].ToString();
                 return choice;
             }
             return null;
