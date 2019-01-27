@@ -295,7 +295,7 @@
                                 <%}else if(role == "Teacher") { %>
                                     <a href="OverseasRegisteredList.aspx?tripId=<%=trip.tripId %>" class="btn btn-info">View Student details</a>
                                 <% }else if(role =="1" || role == "2" || role == "3"){ %>
-                                    <% if ((role == "2" && DateTime.Now.Month > 4 && DateTime.Now.Month < 9) || (role != "3" && trip.tripType == "Internship")) {%>
+                                    <% if (role=="1" && trip.tripType == "Internship") {%>
                                         <button type="button" class="form-control btn btn-secondary" disabled>Only for year 3</button>
                                     <% }else { %>
                                         <button type="button" onclick="sendTripId(<%= trip.tripId %>)" class="form-control btn btn-primary">Sign up</button>
