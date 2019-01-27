@@ -24,7 +24,11 @@ namespace eadLab5
             if (Session["role"] != null)
             {
                 role = Session["role"].ToString();
-                if (role == "1" || role == "2" || role == "3")
+                if(role == "Incharge" || role == "Teacher")
+                {
+                    adminNo = null;
+                }
+                else if (role == "1" || role == "2" || role == "3")
                     adminNo = Session["AdminNo"].ToString();
             }
             if (!IsPostBack)
