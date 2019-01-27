@@ -46,7 +46,6 @@
             var current = new Date();
             var tripOpen = new Date(open.toString());
             if (open != "") {
-                alert(current > tripOpen)
                 if (current > tripOpen) {
                     args.IsValid = false;
                 } else {
