@@ -28,7 +28,7 @@
 
                         <%if (Session["role"].ToString() == "Teacher")
                             { %>
-                             <asp:GridView ID="GridViewRegistered" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped" Height="284px" OnRowCommand="GridActionRegistered" Style="table-layout: fixed;">
+                            <asp:GridView ID="GridViewRegistered" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped" Height="284px" OnRowCommand="GridActionRegistered" Style="table-layout: fixed;">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
                                     <asp:BoundField DataField="RegisterId" HeaderText="ID" AccessibleHeaderText="RegisterID" />
@@ -40,6 +40,8 @@
                                             <asp:LinkButton ID="btnNorminate0" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="Norminate" Text="Norminate" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
+
+
                                 </Columns>
                                 <EditRowStyle BackColor="#2461BF" />
                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -51,7 +53,7 @@
                                 <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                                 <EmptyDataTemplate><center>No records found!</center></EmptyDataTemplate>
+                                <EmptyDataTemplate><center>No records found!</center></EmptyDataTemplate>
                             </asp:GridView>
                         
                              <% }
@@ -136,7 +138,7 @@
                                             <SortedAscendingHeaderStyle BackColor="#6D95E1" />
                                             <SortedDescendingCellStyle BackColor="#E9EBEF" />
                                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                                                <EmptyDataTemplate><center>No records found!</center></EmptyDataTemplate>
+                                            <EmptyDataTemplate><center>No records found!</center></EmptyDataTemplate>
                                         </asp:GridView>
                                        
 

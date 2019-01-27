@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,12 +12,6 @@ namespace eadLab5
 {
     public partial class ReportAndStatistics : System.Web.UI.Page
     {
-        string tmpChartName2 = "test2.jpg";
-        string tmpChartName4 = "test4.jpg";
-
-        string tmpChartName1 = "test1.jpg";
-        string tmpChartName3 = "test3.jpg";
-
         protected void Page_Load(object sender, EventArgs e)
         {
            
@@ -29,9 +22,6 @@ namespace eadLab5
                 buildHorizontalChart("All");
                 buildLineChart("All", "All");
             }
-
-          
-
         }
 
        public string flipDate(string originalD)
@@ -124,9 +114,6 @@ namespace eadLab5
 
             Chart2.DataSource = ds;
             Chart2.DataBind();
-
-            string imgPathing2 = HttpContext.Current.Request.PhysicalApplicationPath + tmpChartName2;
-            Chart2.SaveImage(imgPathing2);
         }
 
         private void buildPieChart(string country)
@@ -157,8 +144,6 @@ namespace eadLab5
 
             Chart1.DataSource = ds;
             Chart1.DataBind();
-            string imgPathing2 = HttpContext.Current.Request.PhysicalApplicationPath + tmpChartName1;
-            Chart1.SaveImage(imgPathing2);
         }
 
         private void buildLineChart(string Diploma, string StudentYear)
@@ -237,8 +222,6 @@ namespace eadLab5
 
             Chart3.DataSource = ds;
             Chart3.DataBind();
-            string imgPathing2 = HttpContext.Current.Request.PhysicalApplicationPath + tmpChartName3;
-            Chart3.SaveImage(imgPathing2);
         }
 
         private void buildHorizontalChart(string StudentYear)
@@ -284,9 +267,6 @@ namespace eadLab5
 
             Chart4.DataSource = ds;
             Chart4.DataBind();
-
-            string imgPath4 = HttpContext.Current.Request.PhysicalApplicationPath + tmpChartName4;
-            Chart4.SaveImage(imgPath4);
         }
 
         protected void DropDownListCountryPieChart_SelectedIndexChanged(object sender, EventArgs e)
@@ -479,215 +459,5 @@ namespace eadLab5
             string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
             buildLineChart(DiplomaLine, StudentYearDD);
         }
-
-        protected void Chart1_DataBound(object sender, EventArgs e)
-        {
-            // If there is no data in the series, show a text annotation
-            if (Chart1.Series[0].Points.Count == 0)
-            {
-                System.Web.UI.DataVisualization.Charting.TextAnnotation annotation =
-                    new System.Web.UI.DataVisualization.Charting.TextAnnotation();
-                annotation.Text = "No data for this period";
-                annotation.X = 5;
-                annotation.Y = 5;
-                annotation.Font = new System.Drawing.Font("Arial", 12);
-                annotation.ForeColor = System.Drawing.Color.Red;
-                Chart1.Annotations.Add(annotation);
-            }
-        }
-
-        protected void Chart2_DataBound(object sender, EventArgs e)
-        {
-            // If there is no data in the series, show a text annotation
-            if (Chart2.Series[0].Points.Count == 0)
-            {
-                System.Web.UI.DataVisualization.Charting.TextAnnotation annotation =
-                    new System.Web.UI.DataVisualization.Charting.TextAnnotation();
-                annotation.Text = "No data for this period";
-                annotation.X = 5;
-                annotation.Y = 5;
-                annotation.Font = new System.Drawing.Font("Arial", 12);
-                annotation.ForeColor = System.Drawing.Color.Red;
-                Chart2.Annotations.Add(annotation);
-            }
-        }
-
-        protected void Chart3_DataBound(object sender, EventArgs e)
-        {
-            // If there is no data in the series, show a text annotation
-
-            if (Chart3.Series[0].Points.Count == 0)
-            {
-                System.Web.UI.DataVisualization.Charting.TextAnnotation annotation =
-                    new System.Web.UI.DataVisualization.Charting.TextAnnotation();
-                annotation.Text = "No data for this period";
-                annotation.X = 5;
-                annotation.Y = 5;
-                annotation.Font = new System.Drawing.Font("Arial", 12);
-                annotation.ForeColor = System.Drawing.Color.Red;
-                Chart3.Annotations.Add(annotation);
-            }
-        }
-
-        protected void Chart4_DataBound(object sender, EventArgs e)
-        {
-            if (Chart4.Series[0].Points.Count == 0)
-            {
-                System.Web.UI.DataVisualization.Charting.TextAnnotation annotation =
-                    new System.Web.UI.DataVisualization.Charting.TextAnnotation();
-                annotation.Text = "No data for this period";
-                annotation.X = 5;
-                annotation.Y = 5;
-                annotation.Font = new System.Drawing.Font("Arial", 12);
-                annotation.ForeColor = System.Drawing.Color.Red;
-                Chart4.Annotations.Add(annotation);
-            }
-        }
-
-        protected void DateStartRange_TextChanged(object sender, EventArgs e)
-        {
-            buildHorizontalChart(DropDownYear.Text);
-
-            string countryBarChart = CountryDropDown.SelectedValue.ToString();
-            string type = TypeDropDown.SelectedValue.ToString();
-
-            string dateStart = flipDate(DateStartRange.Text);
-            string dateEnd = flipDate(DateEndRange.Text);
-            try
-            {
-                buildBarChart(countryBarChart, type, DateTime.Parse(dateStart), DateTime.Parse(dateEnd));
-            }
-            catch (Exception)
-            {
-                buildBarChart(countryBarChart, type, DateTime.Parse("1-1-1753"), DateTime.Parse("1-1-9999"));
-            }
-
-
-            string countryPieChart = DropDownListCountryPieChart.SelectedValue.ToString();
-            buildPieChart(countryPieChart);
-
-            string DiplomaLine = DropDownDiplomaLine.SelectedValue.ToString();
-            string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
-            buildLineChart(DiplomaLine, StudentYearDD);
-        }
-
-        protected void btnChart2Excel_Click(object sender, EventArgs e)
-
-        {
-            string imgPath2 = Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/" + tmpChartName2);
-
-            Response.Clear();
-
-            Response.ContentType = "application/vnd.ms-excel";
-
-            Response.AddHeader("Content-Disposition", "attachment; filename=Chart.xls;");
-
-            StringWriter stringWrite = new StringWriter();
-
-            HtmlTextWriter htmlWrite = new HtmlTextWriter(stringWrite);
-
-            string headerTable = @"<Table><tr><td><img src='" + imgPath2 + @"' \></td></tr></Table>";
-
-            Response.Write(headerTable);
-
-            Response.Write(stringWrite.ToString());
-
-            Response.End();
-
-
-
-        }
-
-        protected void btnChart4Excel_Click(object sender, EventArgs e)
-
-        {
-          
-
-            string imgPath2 = Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/" + tmpChartName4);
-
-            Response.Clear();
-
-            Response.ContentType = "application/vnd.ms-excel";
-
-            Response.AddHeader("Content-Disposition", "attachment; filename=Chart.xls;");
-
-            StringWriter stringWrite = new StringWriter();
-
-            HtmlTextWriter htmlWrite = new HtmlTextWriter(stringWrite);
-
-            string headerTable = @"<Table><tr><td><img src='" + imgPath2 + @"' \></td></tr></Table>";
-
-            Response.Write(headerTable);
-
-            Response.Write(stringWrite.ToString());
-
-            Response.End();
-
-
-
-        }
-
-        protected void btnChart3Excel_Click(object sender, EventArgs e)
-
-        {
-            string imgPath2 = Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/" + tmpChartName3);
-
-            Response.Clear();
-
-            Response.ContentType = "application/vnd.ms-excel";
-
-            Response.AddHeader("Content-Disposition", "attachment; filename=Chart.xls;");
-
-            StringWriter stringWrite = new StringWriter();
-
-            HtmlTextWriter htmlWrite = new HtmlTextWriter(stringWrite);
-
-            string headerTable = @"<Table><tr><td><img src='" + imgPath2 + @"' \></td></tr></Table>";
-
-            Response.Write(headerTable);
-
-            Response.Write(stringWrite.ToString());
-
-            Response.End();
-
-
-
-        }
-
-        protected void btnChart1Excel_Click(object sender, EventArgs e)
-
-        {
-            string imgPath2 = Request.Url.GetLeftPart(UriPartial.Authority) + VirtualPathUtility.ToAbsolute("~/" + tmpChartName1);
-
-            Response.Clear();
-
-            Response.ContentType = "application/vnd.ms-excel";
-
-            Response.AddHeader("Content-Disposition", "attachment; filename=Chart.xls;");
-
-            StringWriter stringWrite = new StringWriter();
-
-            HtmlTextWriter htmlWrite = new HtmlTextWriter(stringWrite);
-
-            string headerTable = @"<Table><tr><td><img src='" + imgPath2 + @"' \></td></tr></Table>";
-
-            Response.Write(headerTable);
-
-            Response.Write(stringWrite.ToString());
-
-            Response.End();
-
-
-
-        }
-
     }
 }
-
-
- 
-
-       
-
-
-       
