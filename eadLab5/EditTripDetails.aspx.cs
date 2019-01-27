@@ -27,7 +27,10 @@ namespace eadLab5
                 Trip tripObj = tripDao.getTripById(tripId);
                 if (tripObj == null)
                 {
-                    Response.Redirect("asd.aspx");
+                    Response.Redirect("Oops.aspx");
+                }else if (Session["role"].ToString() != "Incharge")
+                {
+                    Response.Redirect("Oops.aspx");
                 }
                 else
                 {

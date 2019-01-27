@@ -19,6 +19,13 @@ namespace eadLab5
         InterviewDAO interviewDao = new InterviewDAO();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["role"] == null)
+            {
+                Response.Redirect("Oops.aspx");
+            }else if(Session["role"].ToString() != "Incharge")
+            {
+                Response.Redirect("Oops.aspx");
+            }
             interviewList = interviewDao.retrieveInterview();
             interviewedStudents = interviewDao.fetchGridview();
             GridView1.DataSource = interviewedStudents;

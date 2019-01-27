@@ -283,10 +283,12 @@
 
                                 </tbody>
                             </table>
-                            <% if (listId.Contains(trip.tripId)){ %>
+                            <% if (listId.Contains(trip.tripId)) { %>
                                 <button type="button" class="form-control btn btn-secondary" disabled>Signed up</button>
-                            <% }else if(role == "Teacher" || role=="Incharge") { %>
+                            <% } else if (role == "Incharge") { %>
                                 <a href="editTripDetails.aspx?tripId=<%=trip.tripId %>" class="btn btn-success">Edit details</a>
+                                <a href="OverseasRegisteredList.aspx?tripId=<%=trip.tripId %>" class="btn btn-info">View Student details</a>
+                            <%}else if(role == "Teacher") { %>
                                 <a href="OverseasRegisteredList.aspx?tripId=<%=trip.tripId %>" class="btn btn-info">View Student details</a>
                             <% }else if(role =="1" || role == "2" || role == "3"){ %>
                                 <% if (role != "3" && trip.tripType == "Internship" || role == "2" && DateTime.Now.Month > 0) {%>
