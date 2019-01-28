@@ -12,7 +12,7 @@
  
 
         <h2>Profile</h2>
-        <asp:Image height="200px" width="50%" ID="Image1" runat="server" />
+        <asp:Image height="193px" width="193px" ID="Image1" runat="server" />
         <table class="table">
             <tr>
                 <td class="auto-style1">Name :</td>

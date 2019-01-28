@@ -7,7 +7,7 @@
         <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
     <div class="container">
         <div id="videos">
-            <div id="subscriber"><p>Mr Tham</p>
+            <div id="subscriber"><p class="text-center">Interviewer</p>
             </div>
             <br />
             <br />

@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form runat="server">
-        <h2>Edit Achievement</h2>
+        <h2>Edit Event</h2>
         <table class="table">
             <tr>
                 <td class="auto-style1">Event ID :</td>
