@@ -83,7 +83,7 @@ namespace eadLab5
             System.Diagnostics.Debug.WriteLine(tripId + "this is id");
             string tripTitle = tbUpdateTitle.Text;
             string tripLocation = ddlUpdateLocation.SelectedValue;
-            string tripImgName = SaveFile(tripUploadImg.PostedFile).ToString();
+            string tripImgName = SaveFile(tripUploadImg.PostedFile);
             System.Diagnostics.Debug.WriteLine(tripTitle + "this is title");
             DateTime tripStart = Convert.ToDateTime(tbUpdateStart.Text);
             //LOOK AT THIS SHIT, TRIPSTART WORKS BUT END DOESNT

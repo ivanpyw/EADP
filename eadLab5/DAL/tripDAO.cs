@@ -75,7 +75,7 @@ namespace eadLab5.DAL
             SqlCommand sqlCmd = new SqlCommand();
 
             sqlStr.AppendLine("UPDATE Trip");
-            sqlStr.AppendLine("SET TripTitle = @pTitle,Location = @pLocation,Activities = @pActivities, OpeningDay =@pOpeningday, Cost = @pCost, TripStart = @pStart, TripEnd = @pEnd, TripType = @pType ");
+            sqlStr.AppendLine("SET TripTitle = @pTitle,Location = @pLocation,Activities = @pActivities, OpeningDay =@pOpeningday, Cost = @pCost, TripStart = @pStart, TripEnd = @pEnd, TripType = @pType,Image = @pImg ");
             sqlStr.AppendLine("WHERE TripId = @pId");
             SqlConnection myConn = new SqlConnection(DBConnect);
 
