@@ -71,7 +71,7 @@
                 <tr>
                     <td>Image:<asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="Image required" ControlToValidate="tripUploadImg" Text="*" ValidationGroup="1"></asp:RequiredFieldValidator></td>
                     <td>
-                        <asp:FileUpload ID="tripUploadImg" runat="server" Enabled="False" />
+                        <asp:FileUpload ID="tripUploadImg" runat="server" Enabled="False" CssClass="form-control-file" AllowMultiple="true"/>
                         <asp:Image ID="tripImage" runat="server" CssClass="img-thumbnail"/>
                     </td>
                 </tr>
