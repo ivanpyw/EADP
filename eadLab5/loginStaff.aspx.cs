@@ -41,7 +41,7 @@ namespace eadLab5
                 {
                     Session["Staffid"] = logObj.Staffid;
                     Session["role"] = logObj.Role;
-                    Response.Redirect("PEMMain.aspx");
+                    Response.Redirect("TripDetails.aspx");
                     
                 }
             }

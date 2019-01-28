@@ -21,12 +21,14 @@
         </header>
 
     <div id="content-wrapper">
+
+
+        <form id="form1" runat="server">
         <br />
 
         <!-- Sidebar -->
 
 
-        <form id="form1" runat="server">
             <div class="container" style="max-width: 95%">
 
 
@@ -41,8 +43,9 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                         <%if (Session["role"].ToString() == "Teacher")
-                                                                    { %>
+                               <%if (Session["role"].ToString() == "Teacher")
+                                            { %>
+                         
                              <asp:GridView ID="GridViewRegistered" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped"  OnRowCommand="GridActionRegistered" >
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
@@ -69,10 +72,9 @@
                                  <EmptyDataTemplate><center>No records found!</center></EmptyDataTemplate>
                             </asp:GridView>
                         
-                            <% }
+                              <% }
                                             else if (Session["role"].ToString() == "Incharge")
                                             {%>
-
                             <asp:GridView ID="GridViewRegisteredIncharge" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" CssClass="table table-striped"  OnRowCommand="GridActionRegistered">
                                 <AlternatingRowStyle BackColor="White" />
                                 <Columns>
