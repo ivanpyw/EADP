@@ -19,7 +19,7 @@ namespace eadLab5
             }
             else
             {
-                string adminNo = Session["Adminno"].ToString();
+                string adminNo = Session["AdminNo"].ToString();
                 InterviewDAO interviewDao = new InterviewDAO();
                 intSessions = interviewDao.fetchSession(adminNo);
             }
