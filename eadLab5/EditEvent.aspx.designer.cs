@@ -10,96 +10,69 @@
 namespace eadLab5 {
     
     
-    public partial class ProfilePage {
+    public partial class EditEvent {
         
         /// <summary>
-        /// Image1 control.
+        /// LblEventID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
+        protected global::System.Web.UI.WebControls.Label LblEventID;
         
         /// <summary>
-        /// Lbl_studentname control.
+        /// TbEventName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_studentname;
+        protected global::System.Web.UI.WebControls.TextBox TbEventName;
         
         /// <summary>
-        /// Lbl_Gender control.
+        /// TbEyearTaken control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_Gender;
+        protected global::System.Web.UI.WebControls.TextBox TbEyearTaken;
         
         /// <summary>
-        /// Lbl_Diploma control.
+        /// TbEsemTaken control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_Diploma;
+        protected global::System.Web.UI.WebControls.TextBox TbEsemTaken;
         
         /// <summary>
-        /// Lbl_MedicalCondition control.
+        /// Update control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_MedicalCondition;
+        protected global::System.Web.UI.WebControls.Button Update;
         
         /// <summary>
-        /// Lbl_MedicalHistory control.
+        /// Button2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_MedicalHistory;
+        protected global::System.Web.UI.WebControls.Button Button2;
         
         /// <summary>
-        /// Lbl_HpNumber control.
+        /// LblResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_HpNumber;
-        
-        /// <summary>
-        /// Lbl_Email control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_Email;
-        
-        /// <summary>
-        /// Lbl_Summary control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_Summary;
-        
-        /// <summary>
-        /// SettingDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SettingDetails;
+        protected global::System.Web.UI.WebControls.Label LblResult;
     }
 }

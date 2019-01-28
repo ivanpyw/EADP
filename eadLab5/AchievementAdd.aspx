@@ -33,8 +33,8 @@
             <tr>
                 <td class="auto-style1">&nbsp;</td>
                 <td>
-                    <asp:Button ID="BtnConfirm" runat="server" Text="Confirm" OnClick="BtnConfirm_Click" />&nbsp;&nbsp;
-                 <asp:Button ID="BtnBack" runat="server" OnClick="BtnBack_Click" Text="Back" />
+                    <asp:Button class="btn btn-secondary" ID="BtnConfirm" runat="server" Text="Confirm" OnClick="BtnConfirm_Click" />&nbsp;&nbsp;
+                 <asp:Button class="btn btn-secondary" ID="BtnBack" runat="server" OnClick="BtnBack_Click" Text="Back" />
                 </td>
             </tr>
             <tr>
@@ -44,7 +44,7 @@
             <tr>
                 <td class="auto-style1">&nbsp;</td>
                 <td>
-                    <asp:Label ID="LblResult" Text="" runat="server"></asp:Label>
+                    <asp:Label class="btn btn-secondary" ID="LblResult" Text="" runat="server"></asp:Label>
                 </td>
             </tr>
         </table>

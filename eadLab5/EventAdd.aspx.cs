@@ -16,7 +16,7 @@ namespace eadLab5
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lbAdminNo.Text = Session["SSAdminNo"].ToString();
+            lbAdminNo.Text = Session["AdminNo"].ToString();
         }
 
         protected void BtnConfirm_Click(object sender, EventArgs e)

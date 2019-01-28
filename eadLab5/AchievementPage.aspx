@@ -5,7 +5,7 @@
 
     <form runat="server">
         <asp:Label ID="LblAdminNo" runat="server" Text="Admin No:"></asp:Label>
-     <asp:GridView ID="GridView_Achievement" runat="server" AutoGenerateColumns="False" CssClass="table table-striped" OnRowCommand="gv_Students_RowCommand" CellPadding="4" ForeColor="#333333" GridLines="None" >
+     <asp:GridView ID="GridView_Achievement" runat="server" AutoGenerateColumns="False" CssClass="table table-striped" OnRowCommand="gv_Students_RowCommand" CellPadding="4" ForeColor="#333333" GridLines="None" Border="None" >
          <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="AchievementId" HeaderText="ID" />
@@ -34,7 +34,7 @@
          <SortedDescendingCellStyle BackColor="#E9EBEF" />
          <SortedDescendingHeaderStyle BackColor="#4870BE" />
     </asp:GridView>
-        <asp:Button ID="Button1" runat="server" Text="Add" OnClick="BtnAdd"  />
-        <asp:Button ID="Button2" runat="server" OnClick="BtnBack_Click" Text="Back" />
+        <asp:Button class="btn btn-secondary" ID="Button1" runat="server" Text="Add" OnClick="BtnAdd"  />
+        <asp:Button class="btn btn-secondary" ID="Button2" runat="server" OnClick="BtnBack_Click" Text="Back" />
         </form>
 </asp:Content>

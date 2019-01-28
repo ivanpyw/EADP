@@ -2,10 +2,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+    
     <form runat="server">
         <asp:Label ID="LblAdminNo" runat="server" Text="Admin No:"></asp:Label>
-        <asp:GridView ID="GridView_Event" runat="server" AutoGenerateColumns="False" OnRowCommand="gv_Students_RowCommand" CellPadding="4" ForeColor="#333333" margin-left="auto" margin-right="auto" Width="200px">
+        <asp:GridView ID="GridView_Event" runat="server" AutoGenerateColumns="False" OnRowCommand="gv_Students_RowCommand" CellPadding="4" ForeColor="#333333" CssClass="table table-striped" Border="None"  >
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="EventID" HeaderText="ID" />
@@ -34,9 +34,9 @@
             <SortedDescendingCellStyle BackColor="#E9EBEF" />
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
-        <asp:Button ID="Button1" runat="server" Text="Add" OnClick="BtnAdd"  />
-        <asp:Button ID="Button2" runat="server" OnClick="BtnBack_Click" Text="Back" />
+        <asp:Button class="btn btn-secondary" ID="Button1" runat="server" Text="Add" OnClick="BtnAdd"  />
+        <asp:Button class="btn btn-secondary"  ID="Button2" runat="server" OnClick="BtnBack_Click" Text="Back" />
         </form>
-        </div>
+        
 </asp:Content>
 

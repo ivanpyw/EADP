@@ -18,14 +18,14 @@ namespace eadLab5
                 if (Session["AdminNo"] != null)
                 {
                     LblAdminNo.Text = Session["AdminNo"].ToString();
-                    //LblStudentName.Text = Session["SSStudentName"].ToString();
+                    LblStudentName.Text = Session["SSStudentName"].ToString();
                     StudentProfile selTD = new StudentProfile();
                     StudentProfileDAO updTD = new StudentProfileDAO();
                     selTD = updTD.getStudentById(LblAdminNo.Text);
                     LblMedicalCondition.Text = selTD.MedicalCondition.ToString();
                     LblMedicalHistory.Text = selTD.MedicalHistory.ToString();
                     LblSummary.Text = selTD.Summary.ToString();
-                    //LblHpNumber.Text = selTD.HpNumber.ToString();
+                    LblHpNumber.Text = selTD.HpNumber.ToString();
                     LblEmail.Text = selTD.Email.ToString();
                     StudentCurrentPicture.ImageUrl = selTD.ProfilePicture;
                 }
@@ -50,17 +50,28 @@ namespace eadLab5
             //        LblResult.ForeColor = System.Drawing.Color.Black;
             //    }
             //}
-            LblAdminNo.Text = Session["AdminNo"].ToString();
-            StudentProfile selTD = new StudentProfile();
-            StudentProfileDAO updTD = new StudentProfileDAO();
-            int updCnt;
-            string imgName = SaveFile(StudentPicture.PostedFile);
-            updCnt = updTD.updateTD(LblAdminNo.Text, LblStudentName.Text, LblMedicalCondition.Text, LblMedicalHistory.Text, LblSummary.Text, LblEmail.Text, imgName);
-            if (updCnt == 1)
+            if (String.IsNullOrEmpty(LblMedicalCondition.Text) || String.IsNullOrEmpty(LblMedicalHistory.Text) || String.IsNullOrEmpty(LblSummary.Text) || String.IsNullOrEmpty(LblHpNumber.Text) || String.IsNullOrEmpty(LblEmail.Text))
             {
-                LblResult.Text = "Profile has been changed!";
-                LblResult.ForeColor = System.Drawing.Color.Black;
+
+                LblResult.Text = "Pls Fill in All the Blank !";
             }
+            else
+            {
+                LblAdminNo.Text = Session["AdminNo"].ToString();
+                StudentProfile selTD = new StudentProfile();
+                StudentProfileDAO updTD = new StudentProfileDAO();
+                int updCnt;
+                int hpnumber = Convert.ToInt32(LblHpNumber.Text.ToString());
+                string imgName = SaveFile(StudentPicture.PostedFile);
+                updCnt = updTD.updateTD(LblAdminNo.Text, LblStudentName.Text, LblMedicalCondition.Text, LblMedicalHistory.Text, LblSummary.Text, hpnumber, LblEmail.Text, imgName);
+                if (updCnt == 1)
+                {
+                    LblResult.Text = "Profile has been changed!";
+                    LblResult.ForeColor = System.Drawing.Color.Red;
+                    Response.Redirect("ProfilePage.aspx");
+                }
+            }
+
         }
 
         protected void BtnBack_Click(object sender, EventArgs e)

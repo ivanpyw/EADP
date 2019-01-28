@@ -39,7 +39,7 @@
             <tr>
                 <td class="auto-style1">&nbsp;</td>
                 <td>
-                    <asp:Button ID="BtnConfirm" runat="server" Text="Confirm" OnClick="BtnConfirm_Click" />&nbsp;&nbsp;
+                    <asp:Button class="btn btn-secondary" ID="BtnConfirm" runat="server" Text="Confirm" OnClick="BtnConfirm_Click" />&nbsp;&nbsp;
                 </td>
             </tr>
             <tr>
@@ -49,7 +49,7 @@
             <tr>
                 <td class="auto-style1">&nbsp;</td>
                 <td>
-                    <asp:Label ID="LblResult" Text="" runat="server"></asp:Label>
+                    <asp:Label ID="LblResult" runat="server" ForeColor="Red"></asp:Label>
                 </td>
             </tr>
         </table>

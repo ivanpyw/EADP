@@ -1,25 +1,31 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeBehind="ChangePw.aspx.cs" Inherits="eadLab5.ChangePw" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeBehind="EditEvent.aspx.cs" Inherits="eadLab5.EditEvent" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form runat="server">
-        <h2>Change Password</h2>
+        <h2>Edit Achievement</h2>
         <table class="table">
             <tr>
-                <td class="auto-style1">Admin Number :</td>
+                <td class="auto-style1">Event ID :</td>
                 <td>
-                    <asp:Label ID="LblAdminNo" runat="server"></asp:Label>
+                    <asp:Label ID="LblEventID" runat="server"></asp:Label>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">New Password :</td>
+                <td class="auto-style1">Event Name:</td>
                 <td>
-                    <asp:TextBox ID="TbNewPassword" TextMode="Password" runat="server" ></asp:TextBox>
+                    <asp:TextBox ID="TbEventName" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">Confirm New Password:</td>
+                <td class="auto-style1">Year Taken:</td>
                 <td>
-                    <asp:TextBox ID="TbCfmNewPassword" TextMode="Password" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TbEyearTaken" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style1">Sem Taken:</td>
+                <td>
+                    <asp:TextBox ID="TbEsemTaken" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
