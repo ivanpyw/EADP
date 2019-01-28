@@ -11,16 +11,18 @@
             <td>
                 <asp:Label ID="Label1" runat="server" Text="Admin Number"></asp:Label></td>
             <td>
-                <asp:TextBox ID="tbLogin" CssClass="form-control" runat="server"></asp:TextBox><asp:Label ID="validateLogin" Visible="false" runat="server" Text="Login is required!" ForeColor="Red"></asp:Label>
+                <asp:TextBox ID="tbLogin" CssClass="form-control" runat="server"></asp:TextBox>
 </td>
+            <td><asp:Label ID="validateLogin" Visible="false" runat="server" Text="Login is required!" ForeColor="Red"></asp:Label></td>
         </tr>
 
         <tr>
             <td>
                 <asp:Label ID="Label2" runat="server" Text="Password" ></asp:Label></td>
             <td>
-                <asp:Textbox ID="tbPassword" runat="server" CssClass="form-control" TextMode="Password" ></asp:Textbox><asp:Label ID="validatePassword" Visible="false"  runat="server" Text="Password is required!" ForeColor="Red"></asp:Label>
+                <asp:Textbox ID="tbPassword" runat="server" CssClass="form-control" TextMode="Password" ></asp:Textbox>
 </td>
+            <td><asp:Label ID="validatePassword" Visible="false"  runat="server" Text="Password is required!" ForeColor="Red"></asp:Label></td>
         </tr>
         <tr>
             <td>
