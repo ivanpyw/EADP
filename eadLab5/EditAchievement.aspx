@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form runat="server">
-        <h2>Change</h2>
+        <h2>Edit Achievement</h2>
         <table class="table">
             <tr>
                 <td class="auto-style1">Achievement ID :</td>
@@ -25,8 +25,8 @@
             <tr>
                 <td class="auto-style1">&nbsp;</td>
                 <td>
-                   <asp:Button ID="Update" runat="server" Text="Update" OnClick="BtnUpdate"  />&nbsp;&nbsp;
-                   <asp:Button ID="Button2" runat="server" OnClick="BtnBack_Click" Text="Back" />
+                   <asp:Button class="btn btn-secondary" ID="Update" runat="server" Text="Update" OnClick="BtnUpdate"  />&nbsp;&nbsp;
+                   <asp:Button class="btn btn-secondary" ID="Button2" runat="server" OnClick="BtnBack_Click" Text="Back" />
                 </td>
             </tr>
             <tr>
@@ -36,7 +36,7 @@
             <tr>
                 <td class="auto-style1">&nbsp;</td>       
                 <td>
-                    <asp:Label ID="LblResult" Text="" runat="server"></asp:Label>
+                    <asp:Label ID="LblResult" runat="server" ForeColor="Red"></asp:Label>
                 </td>
             </tr>
         </table>

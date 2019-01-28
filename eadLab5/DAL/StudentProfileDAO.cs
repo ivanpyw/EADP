@@ -38,8 +38,10 @@ namespace eadLab5.DAL
                 obj.Diploma = row["Diploma"].ToString();
                 obj.Summary = row["Summary"].ToString();
                 obj.Achievement = row["Achievement"].ToString();
+                obj.HpNumber = Convert.ToInt32(row["HpNumber"].ToString());
                 obj.Email = row["Email"].ToString();
                 obj.PEMClass = row["PEMClass"].ToString();
+                obj.ProfilePicture = row["ProfilePicture"].ToString();
             }
             else
             {
@@ -48,7 +50,7 @@ namespace eadLab5.DAL
 
             return obj;
         }
-        public int updateTD(String AdminNo, String StudentName, String MedicalCondition, String MedicalHistory, String Summary, String Email, String Img)
+        public int updateTD(String AdminNo, String StudentName, String MedicalCondition, String MedicalHistory, String Summary, int HpNumber, String Email, String Img)
         {
             string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
             StringBuilder sqlStr = new StringBuilder();
@@ -59,7 +61,7 @@ namespace eadLab5.DAL
             //         parameterised query in values clause
             //
             sqlStr.AppendLine("UPDATE Student");
-            sqlStr.AppendLine("SET StudentName = @paraStudentName, MedicalCondition = @paraMedicalCondition, MedicalHistory =@paraMedicalHistory, Summary=@paraSummary, Email=@paraEmail, ProfilePicture = @paraImg ");
+            sqlStr.AppendLine("SET StudentName = @paraStudentName, MedicalCondition = @paraMedicalCondition, MedicalHistory =@paraMedicalHistory, Summary=@paraSummary, HpNumber=@paraHpNumber, Email=@paraEmail, ProfilePicture = @paraImg ");
             sqlStr.AppendLine("where AdminNo = @paraAdminNo");
 
 
@@ -76,7 +78,7 @@ namespace eadLab5.DAL
             sqlCmd.Parameters.AddWithValue("@paraMedicalCondition", MedicalCondition);
             sqlCmd.Parameters.AddWithValue("@paraMedicalHistory", MedicalHistory);
             sqlCmd.Parameters.AddWithValue("@paraSummary", Summary);
-            //sqlCmd.Parameters.AddWithValue("@paraHpNumber", HpNumber);
+            sqlCmd.Parameters.AddWithValue("@paraHpNumber", HpNumber);
             sqlCmd.Parameters.AddWithValue("@paraEmail", Email);
             sqlCmd.Parameters.AddWithValue("@paraImg", Img);
             // Step 4 Open connection the execute NonQuery of sql command   

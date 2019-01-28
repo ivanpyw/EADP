@@ -70,7 +70,7 @@ namespace eadLab5
 
         protected void BtnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("StudentProfile.aspx");
+            Response.Redirect("GeneralSetting.aspx");
         }
     }
 }

@@ -15,11 +15,12 @@ namespace eadLab5
         {
             StudentProfile StudentObj = new StudentProfile();
             StudentProfileDAO StudentDao = new StudentProfileDAO();
-            String adminNo = Session["AdminNo"].ToString(); 
+            String adminNo = Session["AdminNo"].ToString();
             StudentObj = StudentDao.getStudentById(adminNo);
 
             if (StudentObj != null)
             {
+
                 //PanelErrorResult.Visible = false;
                 //Panelstudent.Visible = true;
                 Lbl_studentname.Text = StudentObj.StudentName;
@@ -27,8 +28,11 @@ namespace eadLab5
                 Lbl_Diploma.Text = StudentObj.Diploma;
                 Lbl_MedicalCondition.Text = StudentObj.MedicalCondition;
                 Lbl_MedicalHistory.Text = StudentObj.MedicalHistory;
+                Lbl_Summary.Text = StudentObj.Summary;
+                Lbl_HpNumber.Text = StudentObj.HpNumber.ToString();
+                Lbl_Email.Text = StudentObj.Email;
+                Image1.ImageUrl = StudentObj.ProfilePicture;
                 //Lbl_err.Text = String.Empty;
-                Session["SSstudentName"] = StudentObj.StudentName;
             }
         }
 

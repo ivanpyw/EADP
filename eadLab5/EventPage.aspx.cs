@@ -51,14 +51,14 @@ namespace eadLab5
 
             {
                 Session["SSEventID"] = Convert.ToInt32(e.CommandArgument.ToString());
-                Response.Redirect("EditAchievement.aspx");
+                Response.Redirect("EditEvent.aspx");
             }
 
         }
 
         protected void BtnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("StudentProfile.aspx");
+            Response.Redirect("GeneralSetting.aspx");
         }
     }
 }

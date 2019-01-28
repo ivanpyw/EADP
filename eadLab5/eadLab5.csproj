@@ -156,6 +156,7 @@
     <Content Include="Corporate.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="EditAchievement.aspx" />
+    <Content Include="EditEvent.aspx" />
     <Content Include="EditTripDetails.aspx" />
     <Content Include="Enquiry.aspx" />
     <Content Include="EventAdd.aspx" />
@@ -315,6 +316,13 @@
     </Compile>
     <Compile Include="EditAchievement.aspx.designer.cs">
       <DependentUpon>EditAchievement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditEvent.aspx.cs">
+      <DependentUpon>EditEvent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditEvent.aspx.designer.cs">
+      <DependentUpon>EditEvent.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditTripDetails.aspx.cs">
       <DependentUpon>EditTripDetails.aspx</DependentUpon>

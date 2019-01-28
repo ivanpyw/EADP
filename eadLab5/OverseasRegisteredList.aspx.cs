@@ -17,6 +17,10 @@ namespace eadLab5
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["role"] == null)
+            {
+                Response.Redirect("loginStaff.aspx");
+            }
             if (!IsPostBack)
             {
                 TripDAO TripDAO = new TripDAO();
@@ -155,6 +159,7 @@ namespace eadLab5
             int tripId = Convert.ToInt32(Request.QueryString["tripId"]);
             GridViewRow row = GridViewRegistered.SelectedRow;
             string RegisterID = e.CommandArgument.ToString();
+            int staffId = Convert.ToInt32(Session["StaffId"]);
 
 
             if (e.CommandName == "UnNorminate")
@@ -172,6 +177,9 @@ namespace eadLab5
                 Trip TripList = new Trip();
                 int TRIPPYLIST;
                 TRIPPYLIST = TripDAO.updateShortlisted(RegisterID, tripId);
+                InterviewDAO intDao = new InterviewDAO();
+                string adminNo = intDao.exchangeRegIdForAdminNo(RegisterID);
+                int updateStuds = intDao.selectForInterview(adminNo, staffId, tripId);
                 Response.Redirect(Request.RawUrl);
             }
            
@@ -210,12 +218,16 @@ namespace eadLab5
             int tripId = Convert.ToInt32(Request.QueryString["tripId"]);
             GridViewRow row = GridViewRegistered.SelectedRow;
             string RegisterID = e.CommandArgument.ToString();
+            int staffId = Convert.ToInt32(Session["StaffId"]);
             if (e.CommandName == "Shortlist")
             {
                 TripDAO TripDAO = new TripDAO();
                 Trip TripList = new Trip();
                 int TRIPPYLIST;
                 TRIPPYLIST = TripDAO.updateShortlisted(RegisterID, tripId);
+                InterviewDAO intDao = new InterviewDAO();
+                string adminNo = intDao.exchangeRegIdForAdminNo(RegisterID);
+                int updateStuds = intDao.selectForInterview(adminNo, staffId, tripId);
                 Response.Redirect(Request.RawUrl);
             }
             else if (e.CommandName == "Move to pending")
