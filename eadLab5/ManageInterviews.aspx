@@ -71,6 +71,7 @@
                         <asp:BoundField DataField="InterviewId" HeaderText="Id" />
                         <asp:BoundField DataField="StudentAdminNo" HeaderText="Admin number" />
                         <asp:BoundField DataField="studentName" HeaderText="Student name" />
+                        <asp:BoundField DataField="Remarks" HeaderText="Remarks" />
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnApprove" runat="server" CommandArgument='<%# Eval("InterviewId") %>' CommandName="Approve" Text="Approve" />

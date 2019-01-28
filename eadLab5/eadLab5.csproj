@@ -366,6 +366,7 @@
     <Compile Include="GeneralSetting.aspx.designer.cs">
       <DependentUpon>GeneralSetting.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InterviewDao.cs" />
     <Compile Include="Oops.aspx.cs">
       <DependentUpon>Oops.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

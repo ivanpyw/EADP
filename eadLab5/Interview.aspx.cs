@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using OpenTokSDK;
+using eadLab5.DAL;
 
 namespace eadLab5
 {
@@ -32,6 +33,15 @@ namespace eadLab5
         protected void ArchiveBtn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            sessionId = Request.QueryString["sessionId"];
+            token = Request.QueryString["token"];
+            string remarks = remarksTb.Text;
+            InterviewDAO intDao = new InterviewDAO();
+            intDao.submitRemarks(token, sessionId, remarks);
         }
     }
 }

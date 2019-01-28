@@ -4,14 +4,28 @@
     <link href="Content/Interview.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
+    <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
     <div class="container">
         <div id="videos">
-            <div id="subscriber"><p class="text-center">Interviewer</p>
+            <div id="subscriber">
+                <p class="text-center">Interviewer</p>
             </div>
             <br />
             <br />
-            <div id="publisher"><p class="text-center">You</p></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div id="publisher">
+                        <p class="text-center">You</p>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <p>Remarks for student: </p>
+                    <form runat="server">
+                        <asp:TextBox ID="remarksTb" runat="server" TextMode="MultiLine" CssClass="interviewRemarks"></asp:TextBox>
+                        <asp:Button ID="Button1" runat="server" Text="Button" Onclick="Button1_Click" CssClass="btn btn-primary"/>
+                    </form>
+                </div>
+            </div>
         </div>
         <script type="text/javascript">
             var apiKey = "46243942";
@@ -56,5 +70,5 @@
             }
 
         </script>
-        </div>
+    </div>
 </asp:Content>

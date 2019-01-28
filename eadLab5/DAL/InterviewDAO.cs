@@ -274,5 +274,30 @@ namespace eadLab5.DAL
             myConn.Close();
             return result;
         }
+
+        public int submitRemarks ( string token,string session, string remarks)
+        {
+            int result = 0;
+
+            StringBuilder sqlStr = new StringBuilder();
+            SqlCommand sqlCmd = new SqlCommand();
+
+            sqlStr.AppendLine("UPDATE Interview");
+            sqlStr.AppendLine("SET Remarks = @pRemarks");
+            sqlStr.AppendLine("WHERE interviewSession = @pSession AND interviewToken = @pToken");
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            sqlCmd = new SqlCommand(sqlStr.ToString(), myConn);
+            sqlCmd.Parameters.AddWithValue("@pRemarks", remarks);
+            sqlCmd.Parameters.AddWithValue("@pSession", session);
+            sqlCmd.Parameters.AddWithValue("@pToken", token);
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+            myConn.Close();
+
+            return result;
+        }
+
     }
 }
