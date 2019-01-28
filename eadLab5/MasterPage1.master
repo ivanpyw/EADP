@@ -34,6 +34,7 @@
                         <a class="nav-link" href="TripDetails.aspx">Trip Details</a>
                     </li>
                 </ul>
+
                      <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="loginStudent.aspx">Student login</a>
@@ -49,7 +50,7 @@
                
                     <ul class="navbar-nav mr-auto">
                         
-                          <li class="nav-item">
+                          <li class="nav-item ">
                         <a class="nav-link" href="viewFeedBacksSubmitted.aspx">FeedBack Submitted</a>
                     </li>
                     <li class="nav-item">
@@ -60,7 +61,7 @@
                         <li class="nav-item">
                         <a class="nav-link" href="ChooseInterview.aspx">Interview</a></li>
                     </ul>
-                  </li>
+
                     <ul class="navbar-nav ">
                         <li class="nav-item">
                         <a class="nav-link" href="ProfilePage.aspx">Profile</a>
@@ -68,6 +69,7 @@
                          <li class="nav-item">
                         <a class="nav-link" href="loginStudent.aspx">Log Out</a>
                     </li>
+
                         </ul>
                     <%}
                         else if ((Session["role"].ToString() == "Teacher") || (Session["role"].ToString() == "Incharge" ))
