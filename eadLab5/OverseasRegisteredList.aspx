@@ -55,7 +55,7 @@
 
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="btnNorminate0" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="Norminate" Text="Norminate" />
+                                            <asp:LinkButton ID="btnNorminate0" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="Norminate" Text="Nominate" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -90,7 +90,7 @@
 
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="btnNorminate0" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="Norminate" Text="Norminate" />
+                                            <asp:LinkButton ID="btnNorminate0" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="Norminate" Text="Nominate" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField>
@@ -159,7 +159,7 @@
 
                                                 <asp:TemplateField>
                                                     <ItemTemplate>
-                                                        <asp:LinkButton ID="btnNorminate1" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="UnNorminate" Text="Unnorminate" />
+                                                        <asp:LinkButton ID="btnNorminate1" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="UnNorminate" Text="Unnominate" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -195,7 +195,7 @@
                                                 </asp:TemplateField>
                                                 <asp:TemplateField>
                                                     <ItemTemplate>
-                                                        <asp:LinkButton ID="btnNorminate1" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="UnNorminate" Text="Unnorminate" />
+                                                        <asp:LinkButton ID="btnNorminate1" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="UnNorminate" Text="Unnominate" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
