@@ -599,7 +599,7 @@ namespace eadLab5.DAL
 
         }
 
-        public FeedbackForm GetSpecificCountry(int tripId)
+        public FeedbackForm GetSpecificTrip(int tripId)
         {
             // Step 2 : declare a list to hold collection of customer's timeDeposit
             //           DataSet instance and dataTable instance 

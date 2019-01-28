@@ -63,7 +63,16 @@ namespace eadLab5
                 GridViewWaitingListIncharge.DataSource = TripList;
                 GridViewWaitingListIncharge.DataBind();
 
-               
+                FeedbackForm cusObj = new FeedbackForm();
+                FeedbackFormDAO cusDao = new FeedbackFormDAO();
+                cusObj = cusDao.GetSpecificTrip(tripId);
+                if (cusObj != null)
+                {
+                    TripTitleLabel.Text = cusObj.TripTitle;
+                    CountryLabel.Text = cusObj.Country;
+                    LabelTripId.Text = (cusObj.TripId).ToString();
+
+                }
             }
 
             LabelShortlistExport.Visible = false;

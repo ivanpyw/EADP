@@ -24,9 +24,7 @@
             <div class="card mb-3">
                 <div class="card-header">
                     <asp:Button ID="ExportAverageCostChart" runat="server" OnClick="btnChart2Excel_Click" Text="Export" class="btn btn-secondary" style="float:right"/>
-                    <i class="fas fa-chart-area"></i>
-                    Average Cost Per Country
-                    </div>
+                    <i class="far fa-chart-bar"></i>&nbsp;Bar Chart</div>
                 <div class="card-body">
                     <div class="table-responsive">
                     <table class="auto-style5">
@@ -83,6 +81,12 @@
                             <asp:ChartArea Name="ChartArea1">
                             </asp:ChartArea>
                         </ChartAreas>
+                        <Titles>
+                            <asp:Title Font="Microsoft Sans Serif, 20.25pt, style=Bold" ForeColor="SteelBlue" Name="AverageCost" Text="Average Cost Per Country">
+                            </asp:Title>
+                            <asp:Title Docking="Left" Name="Average Cost" Text="Average Cost">
+                            </asp:Title>
+                        </Titles>
                     </asp:Chart>
                         </div>
 
@@ -91,9 +95,7 @@
                             <div class="card mb-3">
                                 <div class="card-header">
                                     <asp:Button ID="ExportPaxNo" runat="server" OnClick="btnChart4Excel_Click" Text="Export" class="btn btn-secondary" style="float:right"/>
-                                    <i class="fas fa-chart-bar"></i>
-                                    Number Of Student Who Went Overseas Per Country
-                                    </div>
+                                    <i class="far fa-chart-bar"></i>&nbsp;Bar Chart</div>
                                 <div class="card-body table-responsive">
                                     <table class="auto-style11">
                                         <tr>
@@ -123,6 +125,12 @@
                                             <asp:ChartArea Name="ChartArea1">
                                             </asp:ChartArea>
                                         </ChartAreas>
+                                        <Titles>
+                                            <asp:Title Font="Microsoft Sans Serif, 20.25pt, style=Bold" ForeColor="SteelBlue" Name="Title" Text="Number of students per country">
+                                            </asp:Title>
+                                            <asp:Title Docking="Left" Name="Title1" Text="Number of students">
+                                            </asp:Title>
+                                        </Titles>
                                     </asp:Chart>
                                 </div>
 
@@ -132,9 +140,7 @@
                             <div class="card mb-3">
                                 <div class="card-header">
                                     <asp:Button ID="ExportPieChart" runat="server" OnClick="btnChart1Excel_Click" Text="Export" class="btn btn-secondary" style="float:right"/>
-                                    <i class="fas fa-chart-pie"></i>
-                                    Confirmed Trips In Each Diploma Per Country
-                                    </div>
+                                    <i class="fas fa-chart-pie"></i>&nbsp;Pie Chart</div>
 
                                 <div class="card-body">
                                     <table class="auto-style5">
@@ -159,6 +165,10 @@
                                             <asp:ChartArea Name="ChartArea1">
                                             </asp:ChartArea>
                                         </ChartAreas>
+                                        <Titles>
+                                            <asp:Title Font="Microsoft Sans Serif, 8.25pt, style=Bold" ForeColor="SteelBlue" Name="Title1" Text="Number of student from a diplomas in a country">
+                                            </asp:Title>
+                                        </Titles>
                                     </asp:Chart>
 
                                 </div>
@@ -169,8 +179,7 @@
                             <div class="card mb-3">
                             <div class="card-header">
                                 <asp:Button ID="ExportLineGraph" runat="server" OnClick="btnChart3Excel_Click" Text="Export" class="btn btn-secondary" style="float:right"/>
-                                <i class="fas fa-chart-line"></i>Number Of Confirmed Trips Per Month
-                                </div>
+                                <i class="fas fa-chart-line"></i>&nbsp;Line Graph</div>
                             <div class="card-body table-responsive">
 
                                 <table class="auto-style5">
@@ -200,7 +209,7 @@
 
 
                                 <br />
-                                <asp:Chart ID="Chart3" runat="server" Width="1028px"  OnDataBound="Chart3_DataBound">
+                                <asp:Chart ID="Chart3" runat="server" Width="1028px"  OnDataBound="Chart3_DataBound" BorderlineColor="Transparent">
                                     <Series>
                                         <asp:Series ChartType="Line" Name="Series1" XValueMember="Month" YValueMembers="NoOfStudents">
                                         </asp:Series>
@@ -209,6 +218,12 @@
                                         <asp:ChartArea Name="ChartArea1">
                                         </asp:ChartArea>
                                     </ChartAreas>
+                                    <Titles>
+                                        <asp:Title Font="Microsoft Sans Serif, 20pt, style=Bold" ForeColor="SteelBlue" Name="Title1" Text="Number of confirmed trips in a month">
+                                        </asp:Title>
+                                        <asp:Title Docking="Left" Font="Microsoft Sans Serif, 10pt" Name="Title2" Text="Number of trips">
+                                        </asp:Title>
+                                    </Titles>
                                 </asp:Chart>
                             </div>
 

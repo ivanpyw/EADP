@@ -167,13 +167,18 @@ namespace eadLab5
 
             DataSet ds = new DataSet();
             
-            String strSQL = "SELECT COUNT([Diploma]) NoOfStudents, [Diploma] FROM [Trip] o ";
-            strSQL += "INNER JOIN[Register] R on o.tripid = r.tripid ";
+            String strSQL = "SELECT COUNT([Diploma]) NoOfStudents, [Diploma] FROM interview i ";
+            strSQL += "INNER JOIN[Register] R on i.tripid = r.tripid ";
             strSQL += "INNER JOIN[Student] S on r.adminNo = s.adminNo ";
+            strSQL += "INNER JOIN[trip] T on i.tripid = t.tripid ";
 
             if (!country.Equals("All"))
             {
-                strSQL += "where location = @paraCountry ";
+                strSQL += "where location = @paraCountry and [studentchoice] = 'accepted' ";
+            }else
+            {
+                strSQL += "where [studentchoice] = 'accepted' ";
+
             }
 
             strSQL += "Group By [Diploma]";
@@ -212,7 +217,7 @@ namespace eadLab5
 
             if (!Diploma.Equals("All"))
             {
-                strSQL += "WHERE Diploma = @paraDiploma ";
+                strSQL += "WHERE Diploma = @paraDiploma and studentchoice = 'accepted' and (GETDATE() > TripEnd) ";
                 da = new SqlDataAdapter(strSQL.ToString(), myConn);
 
                 if (!StudentYear.Equals("All"))
@@ -236,6 +241,7 @@ namespace eadLab5
                 }
                 else
                 {
+                    strSQL += "where studentchoice = 'accepted' and (GETDATE() > TripEnd) ";
                     strSQL += "Group By DATENAME(month, TripEnd) ";
                     da = new SqlDataAdapter(strSQL.ToString(), myConn);
 

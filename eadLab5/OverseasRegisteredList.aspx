@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <header class="header">
             <div class="container">
-
+                 <div class="card mb-3">
                 <div class="col-md-12">
                     <!-- Rank & Qualifications -->
                     <h2 style="font-size: 38px"><strong>
@@ -16,6 +16,7 @@
                         <asp:Label ID="CountryLabel" runat="server" Text="[Country]"></asp:Label></p>
                     <p>&nbsp;</p>
                 </div>
+                     </div>
             </div>
         </header>
 
