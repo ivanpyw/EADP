@@ -37,7 +37,7 @@
                 <div class="card mb-3">
                     <div class="card-header">
                         <asp:Label ID="Label1" runat="server" Text="Registered List"></asp:Label>
-                        <asp:Button ID="ExportButtonRegistered" runat="server" OnClick="ExportButtonRegistered_Click" Text="Export Registered List" class="btn btn-secondary" style="float: right;"/>
+                        <asp:Button ID="ExportButtonRegistered" runat="server" OnClick="ExportButtonRegistered_Click" Text="Export" class="btn btn-secondary" style="float: right;"/>
                         <br />
                         <asp:Label ID="LabelRegisterExport" runat="server" Text="[NoData]" Visible="False" ForeColor="Red"></asp:Label>
                     </div>
@@ -143,7 +143,7 @@
                                 <div class="card mb-3">
                                     <div class="card-header">
                                         <asp:Label ID="Label2" runat="server" Text="Norminated List"></asp:Label>
-                                        <asp:Button ID="ExportButtonNorminated" runat="server" OnClick="ExportButtonNormination_Click" Text="Export Norminated List" class="btn btn-secondary" style="float: right;"/>
+                                        <asp:Button ID="ExportButtonNorminated" runat="server" OnClick="ExportButtonNormination_Click" Text="Export" class="btn btn-secondary" style="float: right;"/>
                                         <br />
                                     </div>
                                     <div class="card-body table-responsive">
@@ -243,7 +243,7 @@
                                 <div class="card mb-3">
                                     <div class="card-header">
                                         <asp:Label ID="Label4" runat="server" Text="Waiting List"></asp:Label>
-                                        <asp:Button ID="ExportButtonWaiting" runat="server" OnClick="ExportButtonWaiting_Click" Text="Export Waiting List" class="btn btn-secondary" style="float: right;"/>
+                                        <asp:Button ID="ExportButtonWaiting" runat="server" OnClick="ExportButtonWaiting_Click" Text="Export" class="btn btn-secondary" style="float: right;"/>
                                         <br />
                                         <asp:Label ID="LabelWaitingExport" runat="server" Text="[NoData]" ForeColor="Red"></asp:Label>
                                     </div>
@@ -338,7 +338,7 @@
                             <div class="col-lg-12">
                                  <div class="card mb-3">
                                 <div class="card-header">
-                                    <asp:Button ID="ExportButtonShortlisted" runat="server" OnClick="ExportButtonShortlisted_Click" Text="Export Shortlisted List" class="btn btn-secondary" style="float: right;"/>
+                                    <asp:Button ID="ExportButtonShortlisted" runat="server" OnClick="ExportButtonShortlisted_Click" Text="Export" class="btn btn-secondary" style="float: right;"/>
                                     <asp:Label ID="Label5" runat="server" Text="Shortlisted List"></asp:Label>
                                     <br />
                                     <asp:Label ID="LabelShortlistExport" runat="server" Text="[NoData]" ForeColor="Red"></asp:Label>

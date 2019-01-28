@@ -17,67 +17,72 @@ namespace eadLab5
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["role"] == null)
+            if (Session["role"] == null)
             {
                 Response.Redirect("loginStaff.aspx");
-            }
-            if (!IsPostBack)
+            }else
             {
-                TripDAO TripDAO = new TripDAO();
-                List<Trip> TripList = new List<Trip>();
-                int tripId = Convert.ToInt32(Request.QueryString["tripId"]);
-
-                TripList = TripDAO.GetShortlisted(tripId);
-                GridViewShortlisted.DataSource = TripList;
-                GridViewShortlisted.DataBind();
-
-                TripList = TripDAO.GetRegisteredList(tripId);
-                GridViewRegistered.DataSource = TripList;
-                GridViewRegistered.DataBind();
-
-                TripList = TripDAO.GetRegisteredList(tripId);
-                GridViewRegisteredExport.DataSource = TripList;
-                GridViewRegisteredExport.DataBind();
-
-                TripList = TripDAO.GetWaitingList(tripId);
-                GridViewWaitingList.DataSource = TripList;
-                GridViewWaitingList.DataBind();
-
-                TripList = TripDAO.GetWaitingList(tripId);
-                GridViewWaitingListExport.DataSource = TripList;
-                GridViewWaitingListExport.DataBind();
-
-                TripList = TripDAO.GetNorminated(tripId);
-                GridViewNorminated.DataSource = TripList;
-                GridViewNorminated.DataBind();
-
-                TripList = TripDAO.GetNorminated(tripId);
-                GridViewNorminatedExport.DataSource = TripList;
-                GridViewNorminatedExport.DataBind();
-
-                TripList = TripDAO.GetRegisteredList(tripId);
-                GridViewRegisteredIncharge.DataSource = TripList;
-                GridViewRegisteredIncharge.DataBind();
-
-                TripList = TripDAO.GetNorminated(tripId);
-                GridViewNorminatedIncharge.DataSource = TripList;
-                GridViewNorminatedIncharge.DataBind();
-
-                TripList = TripDAO.GetWaitingList(tripId);
-                GridViewWaitingListIncharge.DataSource = TripList;
-                GridViewWaitingListIncharge.DataBind();
-
-                FeedbackForm cusObj = new FeedbackForm();
-                FeedbackFormDAO cusDao = new FeedbackFormDAO();
-                cusObj = cusDao.GetSpecificTrip(tripId);
-                if (cusObj != null)
+                if (!IsPostBack)
                 {
-                    TripTitleLabel.Text = cusObj.TripTitle;
-                    CountryLabel.Text = cusObj.Country;
-                    LabelTripId.Text = (cusObj.TripId).ToString();
+                    TripDAO TripDAO = new TripDAO();
+                    List<Trip> TripList = new List<Trip>();
+                    int tripId = Convert.ToInt32(Request.QueryString["tripId"]);
 
+                    TripList = TripDAO.GetShortlisted(tripId);
+                    GridViewShortlisted.DataSource = TripList;
+                    GridViewShortlisted.DataBind();
+
+                    TripList = TripDAO.GetRegisteredList(tripId);
+                    GridViewRegistered.DataSource = TripList;
+                    GridViewRegistered.DataBind();
+
+                    TripList = TripDAO.GetRegisteredList(tripId);
+                    GridViewRegisteredExport.DataSource = TripList;
+                    GridViewRegisteredExport.DataBind();
+
+                    TripList = TripDAO.GetWaitingList(tripId);
+                    GridViewWaitingList.DataSource = TripList;
+                    GridViewWaitingList.DataBind();
+
+                    TripList = TripDAO.GetWaitingList(tripId);
+                    GridViewWaitingListExport.DataSource = TripList;
+                    GridViewWaitingListExport.DataBind();
+
+                    TripList = TripDAO.GetNorminated(tripId);
+                    GridViewNorminated.DataSource = TripList;
+                    GridViewNorminated.DataBind();
+
+                    TripList = TripDAO.GetNorminated(tripId);
+                    GridViewNorminatedExport.DataSource = TripList;
+                    GridViewNorminatedExport.DataBind();
+
+                    TripList = TripDAO.GetRegisteredList(tripId);
+                    GridViewRegisteredIncharge.DataSource = TripList;
+                    GridViewRegisteredIncharge.DataBind();
+
+                    TripList = TripDAO.GetNorminated(tripId);
+                    GridViewNorminatedIncharge.DataSource = TripList;
+                    GridViewNorminatedIncharge.DataBind();
+
+                    TripList = TripDAO.GetWaitingList(tripId);
+                    GridViewWaitingListIncharge.DataSource = TripList;
+                    GridViewWaitingListIncharge.DataBind();
+
+                    FeedbackForm cusObj = new FeedbackForm();
+                    FeedbackFormDAO cusDao = new FeedbackFormDAO();
+                    cusObj = cusDao.GetSpecificTrip(tripId);
+                    if (cusObj != null)
+                    {
+                        TripTitleLabel.Text = cusObj.TripTitle;
+                        CountryLabel.Text = cusObj.Country;
+                        LabelTripId.Text = (cusObj.TripId).ToString();
+
+                    }
                 }
             }
+
+         
+             
 
             LabelShortlistExport.Visible = false;
             LabelWaitingExport.Visible = false;
