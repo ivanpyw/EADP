@@ -497,7 +497,7 @@ namespace eadLab5.DAL
         }
 
 
-        public int updateNorminate(string ID, int TripId)
+        public int updateNorminate(string ID, int TripId, int Staffid)
         {
 
             StringBuilder sqlStr = new StringBuilder();
@@ -508,8 +508,8 @@ namespace eadLab5.DAL
             //         parameterised query in values clause
             //
             sqlStr.AppendLine("UPDATE register ");
-            sqlStr.AppendLine("SET RegisteredStatus = 'Norminated' ");
-            sqlStr.AppendLine("WHERE RegisterId = @paraRegisterId AND TripId=@paraTripId");
+            sqlStr.AppendLine("SET RegisteredStatus = 'Norminated', staffid = @paraStaffid");
+            sqlStr.AppendLine("WHERE RegisterId = @paraRegisterId AND TripId=@paraTripId ");
 
             // Step 2 :Instantiate SqlConnection instance and SqlCommand instance
 
@@ -521,6 +521,7 @@ namespace eadLab5.DAL
             //          complete to add all parameterised queries
             sqlCmd.Parameters.AddWithValue("@paraRegisterId", ID);
             sqlCmd.Parameters.AddWithValue("@paraTripId", TripId);
+            sqlCmd.Parameters.AddWithValue("@paraStaffid", Staffid);
 
             // Step 4 Open connection the execute NonQuery of sql command   
 
@@ -545,7 +546,7 @@ namespace eadLab5.DAL
             //         parameterised query in values clause
             //
             sqlStr.AppendLine("UPDATE register ");
-            sqlStr.AppendLine("SET RegisteredStatus = 'Shortlisted' ");
+            sqlStr.AppendLine("SET RegisteredStatus = 'Shortlisted'");
             sqlStr.AppendLine("WHERE RegisterId = @paraRegisterId AND TripId=@paraTripId");
 
             // Step 2 :Instantiate SqlConnection instance and SqlCommand instance
@@ -582,7 +583,7 @@ namespace eadLab5.DAL
             //         parameterised query in values clause
             //
             sqlStr.AppendLine("UPDATE register ");
-            sqlStr.AppendLine("SET RegisteredStatus = 'WaitingList' ");
+            sqlStr.AppendLine("SET RegisteredStatus = 'WaitingList'");
             sqlStr.AppendLine("WHERE RegisterId = @paraRegisterId AND TripId=@paraTripId");
 
             // Step 2 :Instantiate SqlConnection instance and SqlCommand instance
@@ -619,7 +620,7 @@ namespace eadLab5.DAL
             //         parameterised query in values clause
             //
             sqlStr.AppendLine("UPDATE register ");
-            sqlStr.AppendLine("SET RegisteredStatus = 'Registered' ");
+            sqlStr.AppendLine("SET RegisteredStatus = 'Registered', staffid = 0 ");
             sqlStr.AppendLine("WHERE RegisterId = @paraRegisterId AND TripId=@paraTripId");
 
             // Step 2 :Instantiate SqlConnection instance and SqlCommand instance

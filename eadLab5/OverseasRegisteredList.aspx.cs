@@ -130,7 +130,7 @@ namespace eadLab5
                 TripDAO TripDAO = new TripDAO();
                 Trip TripList = new Trip();
                 int TRIPPYLIST;
-                TRIPPYLIST = TripDAO.updateNorminate(RegisterID, tripId);
+                TRIPPYLIST = TripDAO.updateNorminate(RegisterID, tripId, staffId);
                 Response.Redirect(Request.RawUrl);
             }
             else if (e.CommandName == "Move to waiting list")

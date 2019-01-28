@@ -157,7 +157,7 @@
 
                                                 <asp:TemplateField>
                                                     <ItemTemplate>
-                                                        <asp:LinkButton ID="btnNorminate1" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="UnNorminate" Text="UnNorminate" />
+                                                        <asp:LinkButton ID="btnNorminate1" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="UnNorminate" Text="Unnorminate" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -193,7 +193,7 @@
                                                 </asp:TemplateField>
                                                 <asp:TemplateField>
                                                     <ItemTemplate>
-                                                        <asp:LinkButton ID="btnNorminate1" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="UnNorminate" Text="UnNorminate" />
+                                                        <asp:LinkButton ID="btnNorminate1" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="UnNorminate" Text="Unnorminate" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -255,7 +255,7 @@
                                                 <asp:BoundField DataField="RegisterId" HeaderText="ID" />
                                                 <asp:BoundField AccessibleHeaderText="AdminNo" DataField="AdminNo" HeaderText="Admin number" />
                                                 <asp:BoundField AccessibleHeaderText="Gender" DataField="GenderType" HeaderText="Gender" />
-                                                <asp:BoundField AccessibleHeaderText="StaffID" DataField="staffName" HeaderText="Staff Name" />
+                                               
                                             </Columns>
                                             <EditRowStyle BackColor="#2461BF" />
                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -280,7 +280,7 @@
                                                 <asp:BoundField DataField="RegisterId" HeaderText="ID" />
                                                 <asp:BoundField AccessibleHeaderText="AdminNo" DataField="AdminNo" HeaderText="Admin number" />
                                                 <asp:BoundField AccessibleHeaderText="Gender" DataField="GenderType" HeaderText="Gender" />
-                                                <asp:BoundField AccessibleHeaderText="StaffID" DataField="staffName" HeaderText="Staff Name" />
+                                                
                                                 <asp:TemplateField>
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="btnShortlist" runat="server" CommandArgument='<%# Eval("RegisterID") %>' CommandName="Shortlist" Text="Shortlist" />
@@ -312,7 +312,7 @@
                                                 <asp:BoundField DataField="RegisterId" HeaderText="ID" />
                                                 <asp:BoundField AccessibleHeaderText="AdminNo" DataField="AdminNo" HeaderText="Admin number" />
                                                 <asp:BoundField AccessibleHeaderText="Gender" DataField="GenderType" HeaderText="Gender" />
-                                                <asp:BoundField AccessibleHeaderText="StaffID" DataField="staffName" HeaderText="Staff Name" />
+                                                
                                             </Columns>
                                             <EditRowStyle BackColor="#2461BF" />
                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -348,8 +348,7 @@
                                         <Columns>
                                             <asp:BoundField DataField="RegisterId" HeaderText="ID" />
                                             <asp:BoundField AccessibleHeaderText="AdminNo" DataField="AdminNo" HeaderText="Admin number" />
-                                            <asp:BoundField AccessibleHeaderText="Gender" DataField="GenderType" HeaderText="Gender" />
-                                            <asp:BoundField AccessibleHeaderText="StaffID" DataField="staffName" HeaderText="Staff Name" />
+                                            <asp:BoundField AccessibleHeaderText="Gender" DataField="GenderType" HeaderText="Gender" />                                         
                                         </Columns>
                                         <EditRowStyle BackColor="#2461BF" />
                                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
