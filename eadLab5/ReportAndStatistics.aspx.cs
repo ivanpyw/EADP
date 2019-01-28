@@ -33,6 +33,13 @@ namespace eadLab5
                         buildHorizontalChart("All");
                         buildLineChart("All", "All");
 
+                        Chart1.Series[0]["PieLabelStyle"] = "Outside";
+                        Chart1.Legends.Add("Legend1");
+                        Chart1.Legends[0].Enabled = true;
+                        Chart1.Series[0].LegendText = "#PERCENT{P1}";
+
+                    
+
                         TripDAO tripDao = new TripDAO();
                         List<String> countryList = tripDao.getCountry();
                         CountryDropDown.DataSource = countryList;
@@ -358,6 +365,11 @@ namespace eadLab5
             string DiplomaLine = DropDownDiplomaLine.SelectedValue.ToString();
             string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
             buildLineChart(DiplomaLine, StudentYearDD);
+
+            Chart1.Series[0]["PieLabelStyle"] = "Outside";
+            Chart1.Legends.Add("Legend1");
+            Chart1.Legends[0].Enabled = true;
+            Chart1.Series[0].LegendText = "#PERCENT{P1}";
         }
 
         protected void CountryDropDown_SelectedIndexChanged(object sender, EventArgs e)
@@ -385,6 +397,10 @@ namespace eadLab5
             string DiplomaLine = DropDownDiplomaLine.SelectedValue.ToString();
             string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
             buildLineChart(DiplomaLine, StudentYearDD);
+            Chart1.Series[0]["PieLabelStyle"] = "Outside";
+            Chart1.Legends.Add("Legend1");
+            Chart1.Legends[0].Enabled = true;
+            Chart1.Series[0].LegendText = "#PERCENT{P1}";
         }
 
         protected void TypeDropDown_SelectedIndexChanged(object sender, EventArgs e)
@@ -412,6 +428,10 @@ namespace eadLab5
             string DiplomaLine = DropDownDiplomaLine.SelectedValue.ToString();
             string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
             buildLineChart(DiplomaLine, StudentYearDD);
+            Chart1.Series[0]["PieLabelStyle"] = "Outside";
+            Chart1.Legends.Add("Legend1");
+            Chart1.Legends[0].Enabled = true;
+            Chart1.Series[0].LegendText = "#PERCENT{P1}";
         }
 
        
@@ -441,6 +461,10 @@ namespace eadLab5
             string DiplomaLine = DropDownDiplomaLine.SelectedValue.ToString();
             string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
             buildLineChart(DiplomaLine, StudentYearDD);
+            Chart1.Series[0]["PieLabelStyle"] = "Outside";
+            Chart1.Legends.Add("Legend1");
+            Chart1.Legends[0].Enabled = true;
+            Chart1.Series[0].LegendText = "#PERCENT{P1}";
         }
 
         protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
@@ -468,6 +492,10 @@ namespace eadLab5
             string DiplomaLine = DropDownDiplomaLine.SelectedValue.ToString();
             string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
             buildLineChart(DiplomaLine, StudentYearDD);
+            Chart1.Series[0]["PieLabelStyle"] = "Outside";
+            Chart1.Legends.Add("Legend1");
+            Chart1.Legends[0].Enabled = true;
+            Chart1.Series[0].LegendText = "#PERCENT{P1}";
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -495,6 +523,10 @@ namespace eadLab5
             string DiplomaLine = DropDownDiplomaLine.SelectedValue.ToString();
             string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
             buildLineChart(DiplomaLine, StudentYearDD);
+            Chart1.Series[0]["PieLabelStyle"] = "Outside";
+            Chart1.Legends.Add("Legend1");
+            Chart1.Legends[0].Enabled = true;
+            Chart1.Series[0].LegendText = "#PERCENT{P1}";
         }
 
         protected void DropDownYearLine_SelectedIndexChanged(object sender, EventArgs e)
@@ -522,6 +554,10 @@ namespace eadLab5
             string DiplomaLine = DropDownDiplomaLine.SelectedValue.ToString();
             string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
             buildLineChart(DiplomaLine, StudentYearDD);
+            Chart1.Series[0]["PieLabelStyle"] = "Outside";
+            Chart1.Legends.Add("Legend1");
+            Chart1.Legends[0].Enabled = true;
+            Chart1.Series[0].LegendText = "#PERCENT{P1}";
         }
 
         protected void Chart1_DataBound(object sender, EventArgs e)
@@ -613,6 +649,10 @@ namespace eadLab5
             string DiplomaLine = DropDownDiplomaLine.SelectedValue.ToString();
             string StudentYearDD = DropDownYearLine.SelectedValue.ToString();
             buildLineChart(DiplomaLine, StudentYearDD);
+            Chart1.Series[0]["PieLabelStyle"] = "Outside";
+            Chart1.Legends.Add("Legend1");
+            Chart1.Legends[0].Enabled = true;
+            Chart1.Series[0].LegendText = "#PERCENT{P1}";
         }
 
         protected void btnChart2Excel_Click(object sender, EventArgs e)
