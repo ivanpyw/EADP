@@ -33,7 +33,7 @@ namespace eadLab5
             }
             else
             {
-                LblAdminNo.Text = Session["SSAdminNo"].ToString();
+                LblAdminNo.Text = Session["AdminNo"].ToString();
                 Student selTD = new Student();
                 StudentProfileDAO updTD = new StudentProfileDAO();
                 if (TbNewPassword.Text == TbCfmNewPassword.Text)
