@@ -110,9 +110,9 @@ namespace eadLab5
             client.EnableSsl = true;
             client.Timeout = 10000;
             client.UseDefaultCredentials = false;
-            client.Credentials = new System.Net.NetworkCredential("sarasaeadp@outlook.com", "msJasmine1");
+            client.Credentials = new System.Net.NetworkCredential("eadpsarasa@outlook.com", "msJasmine1");
             Trip tripObj = delTD.getTripById(tripId);
-            MailMessage mail = new MailMessage("sarasaeadp@outlook.com", "170313Q@mymail.nyp.edu.sg");
+            MailMessage mail = new MailMessage("eadpsarasa@outlook.com", "170313Q@mymail.nyp.edu.sg");
             mail.Subject = "Trip cancelled";
             mail.Body = "This is regarding the trip you sign up for: "+tripObj.tripTitle+"\nReason for cancel: "+tbReason.Text;
             client.Send(mail);

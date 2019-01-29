@@ -82,13 +82,12 @@ namespace eadLab5
             client.EnableSsl = true;
             client.Timeout = 10000;
             client.UseDefaultCredentials = false;
-            client.Credentials = new System.Net.NetworkCredential("sarasaeadp@outlook.com", "msJasmine1");
-            MailMessage mail = new MailMessage("sarasaeadp@outlook.com", "170313Q@mymail.nyp.edu.sg");
+            client.Credentials = new System.Net.NetworkCredential("eadpsarasa@outlook.com", "msJasmine1");
+            MailMessage mail = new MailMessage("eadpsarasa@outlook.com", "170313Q@mymail.nyp.edu.sg");
             if (e.CommandName == "Approve")
             {
-
                 mail.Subject = "You were approved for the trip";
-                mail.Body = "Dear "+interview.studentName+"\nThis is regarding the trip you sign up for: " + interview.tripName + "\nTo confirm your request, login and go to http://eadlab520190123024847.azurewebsites.net/chooseOffer.aspx?tripId="+interview.tripid;
+                mail.Body = "Dear Peh Boon Wah,\nThis is regarding the trip you sign up for: " + interview.tripName + "\nTo confirm your request, login and go to http://eadlab520190123024847.azurewebsites.net/chooseOffer.aspx?tripId="+interview.tripid+"\nYours sincerely,\n"+interview.staffName;
                 client.Send(mail);
                 int result = interviewDao.updateStatusStudent("Approve", interviewNo);
                 Response.Redirect("ManageInterviews.aspx");
@@ -96,7 +95,7 @@ namespace eadLab5
             else if(e.CommandName == "Reject")
             {
                 mail.Subject = "You were rejected for the trip";
-                mail.Body = "Dear " + interview.staffName + "\nThis is regarding the trip you sign up for: " + interview.tripName + "\nUnfortunately, you were rejected for the trip after the interview.";
+                mail.Body = "Dear Peh Boon Wah,\nThis is regarding the trip you sign up for: " + interview.tripName + "\nUnfortunately, you were rejected for the trip after the interview.\nYours sincerely,\n"+interview.staffName;
                 client.Send(mail);
                 int result = interviewDao.updateStatusStudent("Reject", interviewNo);
                 Response.Redirect("ManageInterviews.aspx");
