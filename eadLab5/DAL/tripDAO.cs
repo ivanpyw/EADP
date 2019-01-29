@@ -701,7 +701,7 @@ namespace eadLab5.DAL
             StringBuilder sqlStr = new StringBuilder();
             sqlStr.AppendLine("SELECT * FROM Interview i");
             sqlStr.AppendLine("INNER JOIN Trip t on t.tripId = i.tripId");
-            sqlStr.AppendLine("where AdminNo = @pAdminNo AND t.tripId = @pTripId AND StudentStatus='Approved'");
+            sqlStr.AppendLine("where AdminNo = @pAdminNo AND t.tripId = @pTripId AND StudentStatus='Approve'");
 
             SqlConnection myConn = new SqlConnection(DBConnect);
             SqlDataAdapter da = new SqlDataAdapter(sqlStr.ToString(), myConn);

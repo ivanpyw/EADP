@@ -29,7 +29,7 @@ namespace eadLab5
                 {
                     System.Diagnostics.Debug.WriteLine("its here");
                     Response.Redirect("Oops.aspx");
-                }else if(choice.teacherChoice != "Accepted")
+                }else if(choice.teacherChoice != "Approve")
                 {
                     System.Diagnostics.Debug.WriteLine("its here2");
                     Response.Redirect("Oops.aspx");
