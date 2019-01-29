@@ -46,9 +46,9 @@ namespace eadLab5
             client.EnableSsl = true;
             client.Timeout = 10000;
             client.UseDefaultCredentials = false;
-            client.Credentials = new System.Net.NetworkCredential("sarasaeadp@outlook.com", "msJasmine1");
-            string recipient = adminNo + "@mymail.nyp.edu.sg";
-            MailMessage mail = new MailMessage("sarasaeadp@outlook.com", recipient);
+            client.Credentials = new System.Net.NetworkCredential("eadpsarasa@outlook.com", "msJasmine1");
+            //string recipient = adminNo + "@mymail.nyp.edu.sg";
+            MailMessage mail = new MailMessage("eadpsarasa@outlook.com", "170313Q@mymail.nyp.edu.sg");
             mail.Subject = "You are scheduled for an interview!";
             mail.Body = "The interview will be on " + emailDate + ", " + emailTime;
             client.Send(mail);

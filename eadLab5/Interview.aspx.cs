@@ -18,21 +18,24 @@ namespace eadLab5
         protected void Page_Load(object sender, EventArgs e)
         {
             System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
-            if(Session["role"] == null)
+            if (Session["role"] == null)
             {
                 Response.Redirect("loginStudent.aspx");
             }
             sessionId = Request.QueryString["sessionId"];
             token = Request.QueryString["token"];
-            if(sessionId == null || token == null)
+            if (sessionId == null || token == null)
             {
                 Response.Redirect("loginStudent.aspx");
             }
             InterviewDAO intDao = new InterviewDAO();
-            string adminNo = intDao.checkSession(sessionId,token);
-            if(adminNo != Session["adminNo"].ToString())
+            string adminNo = intDao.checkSession(sessionId, token);
+            if (Session["role"].ToString() != "Incharge")
             {
-                Response.Redirect("./Oops.aspx");
+                if (adminNo != Session["adminNo"].ToString())
+                {
+                    Response.Redirect("./Oops.aspx");
+                }
             }
         }
 

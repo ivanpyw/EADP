@@ -110,7 +110,7 @@
                         contentType: "application/json",
                         success: function (response) {
                             console.log(response)
-                            //window.location.reload()
+                            window.location.reload()
                         },
                         error: function () {
                             console.log("error")
