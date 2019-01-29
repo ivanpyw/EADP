@@ -13,20 +13,24 @@ namespace eadLab5
         string str = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) { 
-            FeedbackForm cusObj = new FeedbackForm();
-            FeedbackFormDAO cusDao = new FeedbackFormDAO();
-            str = Convert.ToString(Session["FeedBackIdStudentUpdate"].ToString());
-            cusObj = cusDao.GetSpecificFeedBack(str);
-            if (cusObj != null)
+            if (!IsPostBack)
             {
-                CountryLabel.Text = cusObj.Country;
-                DownsidesTbUpdate.Text = cusObj.ReviewCons;
-                HighlightTbUpdate.Text = cusObj.ReviewPros;
-                ImprovementTbUpdate.Text = cusObj.ReviewImprovement;
+                FeedbackForm cusObj = new FeedbackForm();
+                FeedbackFormDAO cusDao = new FeedbackFormDAO();
+                str = Convert.ToString(Session["FeedBackIdStudentUpdate"].ToString());
+                cusObj = cusDao.GetSpecificFeedBack(str);
+                if (cusObj != null)
+                {
+                    EnjoymentDropDownUpdate.Text = cusObj.Enjoyment.ToString();
+                    AffordabilityDropDownUpdate.Text = cusObj.Affordability.ToString();
+                    FreedomDropBoxUpdate.Text = cusObj.Freedom.ToString();
+                    CountryLabel.Text = cusObj.Country;
+                    DownsidesTbUpdate.Text = cusObj.ReviewCons;
+                    HighlightTbUpdate.Text = cusObj.ReviewPros;
+                    ImprovementTbUpdate.Text = cusObj.ReviewImprovement;
+                }
             }
         }
-    }
 
         protected void BtnUpdate_Click(object sender, EventArgs e)
         {
