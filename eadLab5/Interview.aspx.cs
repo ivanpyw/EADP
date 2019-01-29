@@ -28,6 +28,12 @@ namespace eadLab5
             {
                 Response.Redirect("loginStudent.aspx");
             }
+            InterviewDAO intDao = new InterviewDAO();
+            string adminNo = intDao.checkSession(sessionId,token);
+            if(adminNo != Session["adminNo"].ToString())
+            {
+                Response.Redirect("./Oops.aspx");
+            }
         }
 
         protected void ArchiveBtn_Click(object sender, EventArgs e)

@@ -299,5 +299,20 @@ namespace eadLab5.DAL
             return result;
         }
 
+        public string checkSession(string session, string token)
+        {
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            StringBuilder tripCommand = new StringBuilder();
+            tripCommand.AppendLine("Select AdminNo from Interview");
+            tripCommand.AppendLine("WHERE interviewSession = @pSession AND interviewToken = @pToken");
+
+            SqlDataAdapter da = new SqlDataAdapter(tripCommand.ToString(), myConn);
+            da.SelectCommand.Parameters.AddWithValue("@pSession", session);
+            da.SelectCommand.Parameters.AddWithValue("@pToken", token);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "Trip");
+            string adminNo = ds.Tables["Trip"].Rows[0][0].ToString();
+            return adminNo;
+        }
     }
 }
