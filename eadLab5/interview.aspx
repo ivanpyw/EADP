@@ -19,11 +19,16 @@
                     </div>
                 </div>
                 <div class="col-md-8">
+                    <% if(Session["role"] != null) { %>
+                        <% if (Session["role"].ToString() == "Incharge")
+                            { %>
                     <p>Remarks for student: </p>
                     <form runat="server">
                         <asp:TextBox ID="remarksTb" runat="server" TextMode="MultiLine" CssClass="interviewRemarks"></asp:TextBox>
-                        <asp:Button ID="Button1" runat="server" Text="Button" Onclick="Button1_Click" CssClass="btn btn-primary"/>
+                        <asp:Button ID="Button1" runat="server" Text="Submit remarks" Onclick="Button1_Click" CssClass="btn btn-primary"/>
                     </form>
+                        <% } %>
+                    <% } %>
                 </div>
             </div>
         </div>
